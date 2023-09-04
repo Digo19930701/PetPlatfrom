@@ -38,6 +38,9 @@
           <a href="#"> 會員登入</a>
         </li>
         <li>
+          <a href="#"> 購物車</a>
+        </li>
+        <li>
           <a href="#"> 通知</a>
         </li>
         <li>
