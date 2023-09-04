@@ -1,4 +1,8 @@
-<script setup></script>
+<script setup>
+import { ref } from 'vue'
+
+const currentDate = ref(new Date())
+</script>
 
 <template>
   <!-- <header class="app-header">
@@ -21,8 +25,8 @@
 
   <header>
     <section class="logo">
-      <img src="./images/logo.png" alt="Logo" />
-      <h1>寵物平台</h1>
+      <a href="#"><img src="../images/logoicon.png" alt="Logo" /></a>
+      <a href="#"><h1>4A2B</h1></a>
     </section>
     <nav>
       <ul>
@@ -50,7 +54,35 @@
     </nav>
   </header>
   <el-container>
-    <el-aside width="200px">Aside</el-aside>
+    <el-aside width="25%">
+      <br />
+      <h2>愛漂亮</h2>
+
+      <a href="/">洗澡&SPA</a>
+      <br />
+      <a href="/">美容</a>
+      <br />
+      <a href="/">療浴</a>
+
+      <el-divider />
+
+      <h2>我需要保母</h2>
+      <a href="/">寵物安親</a>
+      <br />
+      <a href="/">寵物旅館</a>
+      <br />
+      <a href="/">到府服務</a>
+      <br />
+      <a href="/">小奶貓狗照護</a>
+      <el-divider />
+
+      <h2>想知道...</h2>
+      <a href="/">預約寵物溝通</a>
+      <el-divider />
+
+      <h2>記錄美好瞬間</h2>
+      <a href="/">預約寵物攝影</a>
+    </el-aside>
     <el-main>
       <el-carousel :interval="5000" arrow="always">
         <el-carousel-item v-for="item in 4" :key="item">
@@ -59,6 +91,73 @@
       </el-carousel>
       <br />
       <h2>推薦商家</h2>
+      <br />
+      <el-row>
+        <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
+          <el-card :body-style="{ padding: '0px' }">
+            <img
+              src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
+              class="image"
+            />
+            <div style="padding: 14px">
+              <h3>商家</h3>
+              <span
+                >Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny
+                summer</span
+              >
+              <div class="bottom">
+                <el-button text class="button">了解更多</el-button>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
+      <br />
+      <h2>貓奴看這邊</h2>
+      <br />
+      <el-row>
+        <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
+          <el-card :body-style="{ padding: '0px' }">
+            <img
+              src="https://media.istockphoto.com/id/1270634313/photo/cute-fluffy-cat-lies-on-the-grass-in-the-garden-and-catches-the-sun-highlights.jpg?s=1024x1024&w=is&k=20&c=vRaI9nPHgGskq0ZFTmWu5Sys2hPCk6z19ZzXcxEPqJ4="
+              class="image"
+            />
+            <div style="padding: 14px">
+              <h3>給貓貓的服務</h3>
+              <span
+                >Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny
+                summer</span
+              >
+              <div class="bottom">
+                <el-button text class="button">了解更多</el-button>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
+      <br />
+      <h2>狗狗喜歡這個</h2>
+      <br />
+      <el-row>
+        <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
+          <el-card :body-style="{ padding: '0px' }">
+            <img
+              src="https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8="
+              class="image"
+            />
+            <div style="padding: 14px">
+              <h3>給狗狗的服務</h3>
+              <span
+                >Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny
+                summer</span
+              >
+              <div class="bottom">
+                <el-button text class="button">了解更多</el-button>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
     </el-main>
   </el-container>
 </template>
@@ -149,11 +248,16 @@ header {
     }
   }
 }
-
-.el-aside {
-  background-color: #f7f6e8;
-  height: 100vh;
+.el-container {
+  .el-aside {
+    background-color: #f7f6e8;
+    height: 100vh;
+    .a {
+      font-size: 1.35rem;
+    }
+  }
 }
+
 .el-main {
   background-color: #f2f2ef;
   height: 100vh;
@@ -171,5 +275,32 @@ header {
   line-height: 300px;
   margin: 0;
   text-align: center;
+}
+.time {
+  font-size: 12px;
+  color: #999;
+}
+
+.bottom {
+  margin-top: 13px;
+  line-height: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.button {
+  padding: 0;
+  min-height: auto;
+}
+
+.image {
+  width: 100%;
+  display: block;
+}
+
+h2 {
+  font-weight: bold;
+  color: #ff8400;
 }
 </style>
