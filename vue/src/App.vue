@@ -1,32 +1,26 @@
 <script setup>
 // import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
+import HeadBar from './components/HeadBar.vue'
+import Merchant from './components/Merchant.vue'
+import FootBar from './components/FootBar.vue'
 </script>
 
 <template>
+  <div class="index">
+    <HeadBar />
+    <Merchant />
+    <FootBar />
+    
+  </div>
 
-    <!-- <div class="wrapper"> -->
-      <HelloWorld/>
-
-      <!-- <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav> -->
-
-
-  <!-- <RouterView /> -->
 </template>
 
 <style scoped>
-header {
-  line-height: 1.5;
-  max-height: 100vh;
+.index {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
 }
-@media (min-width: 1024px) {
-  header {
-    display: flex;
-    place-items: center;
-    padding-right: calc(var(--section-gap) / 2);
-  }
-}
+
 </style>
