@@ -1,7 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-
-const currentDate = ref(new Date())
+// import { Search } from '@element-plus/icons-vue'
 </script>
 
 <template>
@@ -34,12 +33,13 @@ const currentDate = ref(new Date())
           <div class="wrap">
             <div class="search">
               <input class="search-bar" type="text" name="search" id="search" placeholder="搜尋" />
-              <button class="search-btn"><i class="fas fa-search"></i></button>
+              <!-- <el-button :icon="Search" /> -->
+              <!-- <button class="search-btn"><i class="fas fa-search"></i></button> -->
             </div>
           </div>
         </li>
         <li>
-          <a href="#"> 會員登入</a>
+          <a href="/"> 會員登入</a>
         </li>
         <li>
           <a href="#"> 購物車</a>
@@ -54,7 +54,7 @@ const currentDate = ref(new Date())
     </nav>
   </header>
   <el-container>
-    <el-aside width="25%">
+    <el-aside width="20%">
       <br />
       <h2>愛漂亮</h2>
 
@@ -235,16 +235,16 @@ header {
         border: 3px solid #ff8400;
         background-color: #f9e7d0;
       }
-      .search-btn {
-        width: 36px;
-        height: 32px;
-        background-color: #ff8400;
-        color: #efe9e7;
-        outline: none;
-        border: 2px solid #ff8400;
-        cursor: pointer;
-        position: absolute;
-      }
+      // .search-btn {
+      //   width: 36px;
+      //   height: 32px;
+      //   background-color: #ff8400;
+      //   color: #efe9e7;
+      //   outline: none;
+      //   border: 2px solid #ff8400;
+      //   cursor: pointer;
+      //   position: absolute;
+      // }
     }
   }
 }

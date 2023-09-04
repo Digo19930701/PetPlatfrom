@@ -2,12 +2,14 @@
 // import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
 import Home from './components/Home.vue'
+import Menu from './components/SearchMenu.vue'
 </script>
 
 <template>
   <!-- <div class="wrapper"> -->
   <!-- <HelloWorld /> -->
-  <Home />
+  <!-- <Home /> -->
+  <Menu></Menu>
 
   <!-- <nav>
     <RouterLink to="/">Home</RouterLink>
