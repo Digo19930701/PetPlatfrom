@@ -33,9 +33,11 @@
 
 <script  setup>
 
-// import {ref} from 'vue'
+import {ref} from 'vue'
 
-// const handleSub = ref(item)
+const itemList = ref([{
+    count:'44'
+}])
 // const handledelete = ref(index)
 
 </script>
