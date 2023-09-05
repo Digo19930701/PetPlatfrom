@@ -3,13 +3,18 @@
 import HelloWorld from './components/HelloWorld.vue'
 import Home from './components/Home.vue'
 import Menu from './components/SearchMenu.vue'
+import HomeHeader from './components/HomeHeader.vue'
 </script>
 
 <template>
   <!-- <div class="wrapper"> -->
   <!-- <HelloWorld /> -->
-  <!-- <Home /> -->
+
+  <HomeHeader />
   <Menu></Menu>
+
+  <!-- <Home /> -->
+  <!-- <Footer></Footer> -->
 
   <!-- <nav>
     <RouterLink to="/">Home</RouterLink>

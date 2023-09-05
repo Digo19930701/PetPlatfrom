@@ -22,7 +22,7 @@ import { ref } from 'vue'
     </div>
   </header> -->
 
-  <header>
+  <!-- <header>
     <section class="logo">
       <a href="#"><img src="../images/logoicon.png" alt="Logo" /></a>
       <a href="#"><h1>4A2B</h1></a>
@@ -33,8 +33,8 @@ import { ref } from 'vue'
           <div class="wrap">
             <div class="search">
               <input class="search-bar" type="text" name="search" id="search" placeholder="搜尋" />
-              <!-- <el-button :icon="Search" /> -->
-              <!-- <button class="search-btn"><i class="fas fa-search"></i></button> -->
+              <el-button :icon="Search" />
+              <button class="search-btn"><i class="fas fa-search"></i></button>
             </div>
           </div>
         </li>
@@ -52,36 +52,38 @@ import { ref } from 'vue'
         </li>
       </ul>
     </nav>
-  </header>
+  </header> -->
   <el-container>
     <el-aside width="20%">
       <br />
-      <h2>愛漂亮</h2>
+      <div style="padding: 14px">
+        <h2>愛漂亮</h2>
 
-      <a href="/">洗澡&SPA</a>
-      <br />
-      <a href="/">美容</a>
-      <br />
-      <a href="/">療浴</a>
+        <a href="/">洗澡&SPA</a>
+        <br />
+        <a href="/">美容</a>
+        <br />
+        <a href="/">療浴</a>
 
-      <el-divider />
+        <el-divider />
 
-      <h2>我需要保母</h2>
-      <a href="/">寵物安親</a>
-      <br />
-      <a href="/">寵物旅館</a>
-      <br />
-      <a href="/">到府服務</a>
-      <br />
-      <a href="/">小奶貓狗照護</a>
-      <el-divider />
+        <h2>我需要保母</h2>
+        <a href="/">寵物安親</a>
+        <br />
+        <a href="/">寵物旅館</a>
+        <br />
+        <a href="/">到府服務</a>
+        <br />
+        <a href="/">小奶貓狗照護</a>
+        <el-divider />
 
-      <h2>想知道...</h2>
-      <a href="/">預約寵物溝通</a>
-      <el-divider />
+        <h2>想知道...</h2>
+        <a href="/">預約寵物溝通</a>
+        <el-divider />
 
-      <h2>記錄美好瞬間</h2>
-      <a href="/">預約寵物攝影</a>
+        <h2>記錄美好瞬間</h2>
+        <a href="/">預約寵物攝影</a>
+      </div>
     </el-aside>
     <el-main>
       <el-carousel :interval="5000" arrow="always">
@@ -183,71 +185,71 @@ import { ref } from 'vue'
 // }
 $themeColor: #f7ddba;
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-}
+// * {
+//   margin: 0;
+//   padding: 0;
+//   box-sizing: border-box;
+// }
 
-header {
-  background-color: #f9f8d0;
-  display: flex; // 橫向排
-  flex-wrap: wrap;
-  align-items: center;
+// header {
+//   background-color: #f9f8d0;
+//   display: flex; // 橫向排
+//   flex-wrap: wrap;
+//   align-items: center;
 
-  section.logo {
-    flex: 1 1 400px; //flex: 2 1 400px;
-    display: flex;
-    align-items: center;
-    h1 {
-      font-size: 2.5rem;
-      color: #ff8400;
-    }
-    img {
-      width: 6vw;
-      height: 6vw;
-    }
-  }
-  nav {
-    flex: 5 1 500px;
-    // border: 2px solid red;
-    ul {
-      display: flex;
-      list-style-type: none;
-      justify-content: space-around;
-      li {
-        a {
-          color: #ff8400;
-          text-decoration: none;
-          font-size: 1.35rem;
-          transition: all 0.2s ease;
-          padding-bottom: 0.3rem;
-          &:hover {
-            color: $themeColor;
-            border-bottom: 3px solid $themeColor;
-          }
-        }
-      }
-      .search-bar {
-        width: 90%;
-        height: 32px;
-        font-size: 20px;
-        border: 3px solid #ff8400;
-        background-color: #f9e7d0;
-      }
-      // .search-btn {
-      //   width: 36px;
-      //   height: 32px;
-      //   background-color: #ff8400;
-      //   color: #efe9e7;
-      //   outline: none;
-      //   border: 2px solid #ff8400;
-      //   cursor: pointer;
-      //   position: absolute;
-      // }
-    }
-  }
-}
+//   section.logo {
+//     flex: 1 1 400px; //flex: 2 1 400px;
+//     display: flex;
+//     align-items: center;
+//     h1 {
+//       font-size: 2.5rem;
+//       color: #ff8400;
+//     }
+//     img {
+//       width: 6vw;
+//       height: 6vw;
+//     }
+//   }
+//   nav {
+//     flex: 5 1 500px;
+//     // border: 2px solid red;
+//     ul {
+//       display: flex;
+//       list-style-type: none;
+//       justify-content: space-around;
+//       li {
+//         a {
+//           color: #ff8400;
+//           text-decoration: none;
+//           font-size: 1.35rem;
+//           transition: all 0.2s ease;
+//           padding-bottom: 0.3rem;
+//           &:hover {
+//             color: $themeColor;
+//             border-bottom: 3px solid $themeColor;
+//           }
+//         }
+//       }
+//       .search-bar {
+//         width: 90%;
+//         height: 32px;
+//         font-size: 20px;
+//         border: 3px solid #ff8400;
+//         background-color: #f9e7d0;
+//       }
+//       // .search-btn {
+//       //   width: 36px;
+//       //   height: 32px;
+//       //   background-color: #ff8400;
+//       //   color: #efe9e7;
+//       //   outline: none;
+//       //   border: 2px solid #ff8400;
+//       //   cursor: pointer;
+//       //   position: absolute;
+//       // }
+//     }
+//   }
+// }
 .el-container {
   .el-aside {
     background-color: #f7f6e8;

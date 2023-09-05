@@ -17,7 +17,7 @@
       </div>
     </header> -->
 
-  <header>
+  <!-- <header>
     <section class="logo">
       <a href="#"><img src="../images/logoicon.png" alt="Logo" /></a>
       <a href="#"><h1>4A2B</h1></a>
@@ -46,13 +46,17 @@
         </li>
       </ul>
     </nav>
-  </header>
-  <el-main
-    ><el-button v-popover="popoverRef" v-click-outside="onClickOutside">篩選</el-button>
-    <el-popover ref="popoverRef" trigger="click" title="With title" virtual-triggering persistent>
-      <span> Some content </span>
-    </el-popover>
-    <el-divider />
+  </header> -->
+  <el-main>
+    <el-button type="primary" style="margin-left: 16px" @click="drawer = true">篩選</el-button>
+    <el-drawer v-model="drawer" title="I am the title" :with-header="false" :direction="direction">
+      <span>
+        <div style="padding: 14px">
+          <h2>日期</h2>
+          <el-date-picker v-model="value1" type="date" placeholder="Pick a day" :size="size" />
+        </div>
+      </span>
+    </el-drawer>
     <el-space direction="vertical">
       <el-row v-for="i in 3" :key="i">
         <el-col v-for="(o, index) in 4" :key="o" :span="5" :offset="index > 0 ? 1 : 0">
@@ -78,14 +82,20 @@
   </el-main>
 </template>
 
-<script setup>
+<script lang="ts" setup>
 import { ref } from 'vue'
-import { ClickOutside as vClickOutside } from 'element-plus'
-const buttonRef = ref()
-const popoverRef = ref()
-const onClickOutside = () => {
-  unref(popoverRef).popperRef?.delayHide?.()
-}
+const drawer = ref(false)
+const direction = ref('ltr')
+const value1 = ref('')
+const size = ref('default')
+
+// export default {
+//   data() {
+//     return {
+//       drawer: false
+//     }
+//   }
+// }
 </script>
 
 <style scoped lang="scss">
@@ -97,63 +107,67 @@ $themeColor: #f7ddba;
   box-sizing: border-box;
 }
 
-header {
-  background-color: #f9f8d0;
-  display: flex; // 橫向排
-  flex-wrap: wrap;
-  align-items: center;
-  section.logo {
-    flex: 1 1 400px; //flex: 2 1 400px;
-    display: flex;
-    align-items: center;
-    h1 {
-      font-size: 2.5rem;
-      color: #ff8400;
-    }
-    img {
-      width: 6vw;
-      height: 6vw;
-    }
-  }
-  nav {
-    flex: 5 1 500px;
-  }
-  ul {
-    display: flex;
-    list-style-type: none;
-    justify-content: space-around;
-  }
-  li {
-    a {
-      color: #ff8400;
-      text-decoration: none;
-      font-size: 1.35rem;
-      transition: all 0.2s ease;
-      padding-bottom: 0.3rem;
-      &:hover {
-        color: $themeColor;
-        border-bottom: 3px solid $themeColor;
-      }
-    }
-  }
-  .search-bar {
-    width: 90%;
-    height: 32px;
-    font-size: 20px;
-    border: 3px solid #ff8400;
-    background-color: #f9e7d0;
-  }
-  .search-btn {
-    width: 36px;
-    height: 32px;
-    background-color: #ff8400;
-    color: #efe9e7;
-    outline: none;
-    border: 2px solid #ff8400;
-    cursor: pointer;
-    position: absolute;
-  }
-}
+// .left-drawer {
+//   left: 0;
+//   right: auto;
+// }
+// header {
+//   background-color: #f9f8d0;
+//   display: flex; // 橫向排
+//   flex-wrap: wrap;
+//   align-items: center;
+//   section.logo {
+//     flex: 1 1 400px; //flex: 2 1 400px;
+//     display: flex;
+//     align-items: center;
+//     h1 {
+//       font-size: 2.5rem;
+//       color: #ff8400;
+//     }
+//     img {
+//       width: 6vw;
+//       height: 6vw;
+//     }
+//   }
+//   nav {
+//     flex: 5 1 500px;
+//   }
+//   ul {
+//     display: flex;
+//     list-style-type: none;
+//     justify-content: space-around;
+//   }
+//   li {
+//     a {
+//       color: #ff8400;
+//       text-decoration: none;
+//       font-size: 1.35rem;
+//       transition: all 0.2s ease;
+//       padding-bottom: 0.3rem;
+//       &:hover {
+//         color: $themeColor;
+//         border-bottom: 3px solid $themeColor;
+//       }
+//     }
+//   }
+//   .search-bar {
+//     width: 90%;
+//     height: 32px;
+//     font-size: 20px;
+//     border: 3px solid #ff8400;
+//     background-color: #f9e7d0;
+//   }
+//   .search-btn {
+//     width: 36px;
+//     height: 32px;
+//     background-color: #ff8400;
+//     color: #efe9e7;
+//     outline: none;
+//     border: 2px solid #ff8400;
+//     cursor: pointer;
+//     position: absolute;
+//   }
+// }
 .bottom {
   margin-top: 13px;
   line-height: 12px;
