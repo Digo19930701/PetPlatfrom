@@ -10,10 +10,13 @@
 <style scoped>
 .header {
   background-color: #f8d479;
-  width: auto;
+  width: 100%;
   height: 60px;
   padding: 15px 0px 10px 20px;
   display: inline-flex;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
 }
 
 .trademark {

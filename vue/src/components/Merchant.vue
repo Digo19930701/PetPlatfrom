@@ -1,7 +1,7 @@
 <template>
     <div class="container">
-        <div class="item_header">
-            <div class="item_detail">商品</div>
+        <div class="item_header fixed">
+            <div class="item_detail">服務</div>
             <div class="price">單價</div>
             <div class="count">數量</div>
             <div class="amount">總計</div>
@@ -26,35 +26,92 @@
                 </div>
             </div>
         </div>
-
-
     </div>
 </template>
 
-<script  setup>
+<script>
+export default {
+    data() {
+        return {
+            itemList: [
+                {
+                    id: '1',
+                    itemName: '洗澡',
+                    imgUrl: 'https://images.unsplash.com/photo-1534961880437-ce5ae2033053?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+                    price: '500',
+                    count: '2'
+                },
+                {
+                    id: '2',
+                    itemName: '美容',
+                    imgUrl: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+                    price: '790',
+                    count: '3'
+                },
+                {
+                    id: '3',
+                    itemName: '洗澡',
+                    imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
+                    price: '1200',
+                    count: '1'
+                },
+                {
+                    id: '4',
+                    itemName: '美容',
+                    imgUrl: 'https://images.unsplash.com/photo-1491998664548-0063bef7856c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+                    price: '2300',
+                    count: '1'
+                },
+                {
+                    id: '5',
+                    itemName: '梳毛',
+                    imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
+                    price: '2300',
+                    count: '1'
+                },
+            ]
+        };
+    },
+    methods: {
+        handlePlus: function (item) {
+            item.count++;
+        },
+        handleSub: function (item) {
+            if (item.count > 1) {
+                item.count--;
+            }
+        },
+        handledelete: function (index) {
+            console.log(this);
+            this.itemList.splice(index, 1);
+        }
+    },
+    computed: {
 
-import {ref} from 'vue'
-
-const itemList = ref([{
-    count:'44'
-}])
-// const handledelete = ref(index)
-
+    }
+};
 </script>
 
 <style scoped>
+.fixed {
+    position: fixed;
+    top: 60px;
+    left: 1px;
+}
+
 .item_header {
     display: flex;
-    width: 1000px;
+    width: 100%;
     margin: 0 auto;
     height: 30px;
     background-color: #fff;
     border-radius: 3px;
     padding-left: 10px;
+
 }
 
 .item_header div {
-    width: 200px;
+    width: 21%;
     color: #888;
     line-height: 30px;
 }
@@ -67,13 +124,13 @@ const itemList = ref([{
     margin-top: 20px;
     height: 100px;
     align-items: center;
+    width: 100%;
 }
 
 .item_detail img {
     width: 80px;
     height: 80px;
     border-radius: 3px;
-    /* margin-top: 10px; */
     float: left;
 }
 

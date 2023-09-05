@@ -7,10 +7,12 @@ import FootBar from './components/FootBar.vue'
 
 <template>
   <div class="index">
-    <HeadBar />
-    <Merchant />
-    <FootBar />
-    
+    <el-container>
+      <el-header><HeadBar /></el-header>
+      <el-main><Merchant /></el-main>
+      <el-footer><FootBar /></el-footer>
+    </el-container>
+      
   </div>
 
 </template>
