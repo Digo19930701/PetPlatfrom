@@ -1,10 +1,9 @@
 <template>
   <div class="header">
-    <div class="title" >平台名稱 & icon</div>
-    <div class="avatar"><el-avatar :size="40" :src="circleUrl" /></div>
-    <div class="num-title">XXXXXXXXXX</div>
+    <div class="title"><img src="../assets/logoicon.png" width="20">4A2B</div>
+      <div class="avatar"><el-avatar :size="40" :src="circleUrl" /></div>
+      <div class="num-title">XXXXXXXXXX</div>
   </div>
-    
 </template>
 
 <script lang="ts" setup>
@@ -25,29 +24,29 @@ const { circleUrl, squareUrl, sizeList } = toRefs(state)
 <style scoped>
 .header {
   background-color: #f8d479;
-  width: auto;
+  /* width: auto; */
   height: 60px;
   /* padding: 10px 0px 10px 20px; */
   display: inline-flex;
-  
+
 }
 
 .title {
   font-size: x-large;
   color: #000;
   font-family: 'Times New Roman', Times, serif;
-  font-weight:bold;
+  font-weight: bold;
   margin-top: 10px;
-  margin-left:20px;
+  margin-left: 25px;
 }
 
-.avatar{
+.avatar {
   margin-top: 10px;
-  margin-left:1400px;
+  margin-left: 50%;
 }
 
-.num-title{
-  margin-top: 15px;
-  margin-left:10px;
+.num-title {
+  margin-top: 20px;
+  margin-left: 10px;
 }
 </style>
