@@ -49,11 +49,38 @@
   </header> -->
   <el-main>
     <el-button type="primary" style="margin-left: 16px" @click="drawer = true">篩選</el-button>
-    <el-drawer v-model="drawer" title="I am the title" :with-header="false" :direction="direction">
+    <el-drawer
+      v-model="drawer"
+      title="I am the title"
+      :with-header="false"
+      :direction="direction"
+      style="background-color: #fef4e7"
+    >
       <span>
         <div style="padding: 14px">
           <h2>日期</h2>
           <el-date-picker v-model="value1" type="date" placeholder="Pick a day" :size="size" />
+          <el-divider />
+          <h2>時間</h2>
+          <el-time-select
+            v-model="value_time"
+            start="08:30"
+            step="00:15"
+            end="18:30"
+            placeholder="Select time"
+          />
+          <el-divider />
+          <h2>價格範圍</h2>
+
+          <div class="slider-demo-block">
+            <el-slider v-model="val_price_range" range show-stops :max="10000" />
+          </div>
+          <el-divider />
+          <h2>分類</h2>
+          <el-button round>美容</el-button>
+          <el-button round>照護</el-button>
+          <el-button round>溝通</el-button>
+          <el-button round>攝影</el-button>
         </div>
       </span>
     </el-drawer>
@@ -88,6 +115,8 @@ const drawer = ref(false)
 const direction = ref('ltr')
 const value1 = ref('')
 const size = ref('default')
+const val_price_range = ref([500, 5000])
+const value_time = ref('')
 
 // export default {
 //   data() {
@@ -185,4 +214,12 @@ $themeColor: #f7ddba;
   width: 100%;
   display: block;
 }
+// .slider-demo-block {
+//   display: flex;
+//   align-items: center;
+//   .el-slider {
+//     margin-top: 0;
+//     margin-left: 12px;
+//   }
+// }
 </style>
