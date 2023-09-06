@@ -1,14 +1,16 @@
 <template>
-    <div class="container">
+    <div class="container" >
         <div class="item_header fixed">
             <div class="item_detail">服務</div>
             <div class="price">單價</div>
             <div class="count">數量</div>
-            <div class="amount">總計</div>
+            <div class="amount">小計</div>
             <div class="operate">操作</div>
         </div>
         <div class="item_container" v-for="(item, index) in itemList" :key="item.id">
+            
             <div class="item_header item_body">
+               
                 <div class="item_detail">
                     <img v-bind:src="item.imgUrl" alt="">
                     <div class="name">{{ item.itemName }}</div>
@@ -22,14 +24,21 @@
                 </div>
                 <div class="amount">{{ item.price * item.count }}</div>
                 <div class="operate">
-                    <button @click="handledelete(index)">刪除</button>
+                    <el-button @click="handledelete(index)">刪除</el-button>
                 </div>
             </div>
         </div>
+        <br>
+        <div class="item_header checkout">
+            <div class="checkout">總計</div>
+            <el-button class="checkout">結帳</el-button>
+        </div>
     </div>
+    
 </template>
 
-<script>
+<script >
+
 export default {
     data() {
         return {
@@ -103,7 +112,7 @@ export default {
     display: flex;
     width: 100%;
     margin: 0 auto;
-    height: 30px;
+    height: 33px;
     background-color: #fff;
     border-radius: 3px;
     padding-left: 10px;
@@ -112,7 +121,6 @@ export default {
 
 .item_header div {
     width: 21%;
-    color: #888;
     line-height: 30px;
 }
 
@@ -137,5 +145,11 @@ export default {
 .item_detail .name {
     margin-left: 100px;
     margin-top: 20px;
+}
+
+.checkout {
+    position: fixed;
+    bottom: 60px;
+    right: 1px;
 }
 </style>
