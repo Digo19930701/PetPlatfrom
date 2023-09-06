@@ -6,7 +6,8 @@
       <el-button text> 隱私權政策 </el-button>
   </div>
 </template>
-<img src="../assets/logoicon.png" >
+<script lang="ts" setup>
+</script>
 <style scoped>
 .header {
   background-color: #f8d479;

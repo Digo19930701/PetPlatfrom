@@ -1,5 +1,5 @@
 <template>
-    <div class="container" >
+    <div class="container" v-if="view === 1">
         <div class="item_header fixed">
             <div class="item_detail">服務</div>
             <div class="price">單價</div>
@@ -8,9 +8,7 @@
             <div class="operate">操作</div>
         </div>
         <div class="item_container" v-for="(item, index) in itemList" :key="item.id">
-            
             <div class="item_header item_body">
-               
                 <div class="item_detail">
                     <img v-bind:src="item.imgUrl" alt="">
                     <div class="name">{{ item.itemName }}</div>
@@ -31,73 +29,72 @@
         <br>
         <div class="item_header checkout">
             <div class="checkout">總計</div>
-            <el-button class="checkout">結帳</el-button>
+            <el-button class="checkout" @click="cview(2)">結帳</el-button>
         </div>
     </div>
-    
+    <div v-if="view === 2">
+        <el-button @click="cview(1)">回購物車</el-button>
+    </div>
 </template>
 
-<script >
+<script setup>
+import { ref } from 'vue'
+const view = ref(1)
+const cview = (ind) => {
+    view.value = ind
+}
 
-export default {
-    data() {
-        return {
-            itemList: [
-                {
-                    id: '1',
-                    itemName: '洗澡',
-                    imgUrl: 'https://images.unsplash.com/photo-1534961880437-ce5ae2033053?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
-                    price: '500',
-                    count: '2'
-                },
-                {
-                    id: '2',
-                    itemName: '美容',
-                    imgUrl: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
-                    price: '790',
-                    count: '3'
-                },
-                {
-                    id: '3',
-                    itemName: '洗澡',
-                    imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
-                    price: '1200',
-                    count: '1'
-                },
-                {
-                    id: '4',
-                    itemName: '美容',
-                    imgUrl: 'https://images.unsplash.com/photo-1491998664548-0063bef7856c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
-                    price: '2300',
-                    count: '1'
-                },
-                {
-                    id: '5',
-                    itemName: '梳毛',
-                    imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
-                    price: '2300',
-                    count: '1'
-                },
-            ]
-        };
+const itemList = ref([
+    {
+        id: '1',
+        itemName: '洗澡',
+        imgUrl: 'https://images.unsplash.com/photo-1534961880437-ce5ae2033053?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+        price: '500',
+        count: '2'
     },
-    methods: {
-        handlePlus: function (item) {
-            item.count++;
-        },
-        handleSub: function (item) {
-            if (item.count > 1) {
-                item.count--;
-            }
-        },
-        handledelete: function (index) {
-            console.log(this);
-            this.itemList.splice(index, 1);
-        }
+    {
+        id: '2',
+        itemName: '美容',
+        imgUrl: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+        price: '790',
+        count: '3'
     },
-    computed: {
+    {
+        id: '3',
+        itemName: '洗澡',
+        imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
+        price: '1200',
+        count: '1'
+    },
+    {
+        id: '4',
+        itemName: '美容',
+        imgUrl: 'https://images.unsplash.com/photo-1491998664548-0063bef7856c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+        price: '2300',
+        count: '1'
+    },
+    {
+        id: '5',
+        itemName: '梳毛',
+        imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
+        price: '2300',
+        count: '1'
+    },
+]);
 
+const handlePlus = (item) => {
+    item.count++;
+};
+
+const handleSub = (item) => {
+    if (item.count > 1) {
+        item.count--;
     }
+};
+
+const handledelete = (index) => {
+    console.log(this);
+    itemList.value.splice(index, 1);
 };
 </script>
 
