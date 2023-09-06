@@ -4,6 +4,7 @@ import HelloWorld from './components/HelloWorld.vue'
 import Home from './components/Home.vue'
 import Menu from './components/SearchMenu.vue'
 import HomeHeader from './components/HomeHeader.vue'
+import Good from './components/Good.vue'
 </script>
 
 <template>
@@ -11,7 +12,8 @@ import HomeHeader from './components/HomeHeader.vue'
   <!-- <HelloWorld /> -->
 
   <HomeHeader />
-  <Menu></Menu>
+  <Good />
+  <!-- <Menu></Menu> -->
 
   <!-- <Home /> -->
   <!-- <Footer></Footer> -->
