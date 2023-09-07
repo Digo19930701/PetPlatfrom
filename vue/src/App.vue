@@ -8,6 +8,7 @@ import Good from './components/Good.vue'
 import Merchant from './components/Merchant.vue'
 import HeadBar from './components/HeadBar.vue'
 import ExistingServices from './components/ExistingServices.vue'
+import Preview from './components/Preview.vue'
 </script>
 
 <template>
@@ -18,7 +19,8 @@ import ExistingServices from './components/ExistingServices.vue'
   <HeadBar />
   <div style="display: flex">
     <Merchant />
-    <ExistingServices />
+    <!-- <ExistingServices /> -->
+    <Preview />
   </div>
   <!-- <Good /> -->
   <!-- <Menu></Menu> -->
