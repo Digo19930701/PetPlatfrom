@@ -5,14 +5,22 @@ import Home from './components/Home.vue'
 import Menu from './components/SearchMenu.vue'
 import HomeHeader from './components/HomeHeader.vue'
 import Good from './components/Good.vue'
+import Merchant from './components/Merchant.vue'
+import HeadBar from './components/HeadBar.vue'
+import ExistingServices from './components/ExistingServices.vue'
 </script>
 
 <template>
   <!-- <div class="wrapper"> -->
   <!-- <HelloWorld /> -->
 
-  <HomeHeader />
-  <Good />
+  <!-- <HomeHeader /> -->
+  <HeadBar />
+  <div style="display: flex">
+    <Merchant />
+    <ExistingServices />
+  </div>
+  <!-- <Good /> -->
   <!-- <Menu></Menu> -->
 
   <!-- <Home /> -->
