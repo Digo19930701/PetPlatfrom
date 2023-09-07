@@ -16,12 +16,12 @@
       />
     </div>
     <div class="store">
-      <div style="width: 100%">
+      <el-row style="width: 100%">
         <el-text class="cl_good_title" v-model="good_title" :value="good_title">{{
           good_title
         }}</el-text>
-        <button style="text-align: right">我的最愛</button>
-      </div>
+        <button>我的最愛</button>
+      </el-row>
       <!-- <h2> -->
 
       <!-- <el-divider /> -->
@@ -67,9 +67,18 @@
             <el-button round>方案A</el-button>
             <el-button round>方案B</el-button>
             <el-button round>方案C</el-button>
+            <el-divider />
+            <div>
+              <el-text class="price" v-model="price">NTD:{{ price }}</el-text>
+            </div>
           </div>
         </span>
       </el-card>
+      <el-divider style="width: 95%" />
+      <div class="buttons">
+        <el-button class="cart_btn"> 加入購物車 </el-button>
+        <el-button class="buy_btn"> 立即下單 </el-button>
+      </div>
     </div>
   </div>
 </template>
@@ -92,12 +101,14 @@ const good_title = '洗澡&SPA'
 
 const val_day = ref('')
 const value_time = ref('')
-const size = ref('default')
+
+const price = '5,000'
+// const size = ref('default')
 </script>
 <style scoped lang="scss">
 //
 .good_radius {
-  height: 100pc;
+  height: auto;
   width: 70%;
   border: 3px solid var(--el-border-color);
   border-radius: 0;
@@ -119,6 +130,7 @@ const size = ref('default')
   .store {
     padding-left: 5%;
     padding-bottom: 5px;
+
     .store_space {
       width: 95%;
     }
@@ -136,6 +148,16 @@ const size = ref('default')
       // padding-left: 50%;
       width: 95%;
       background-color: bisque;
+    }
+    .buttons {
+      width: 95%;
+      display: flex;
+      .cart_btn {
+        width: 50%;
+      }
+      .buy_btn {
+        width: 50%;
+      }
     }
   }
 }
