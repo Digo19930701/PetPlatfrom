@@ -2,9 +2,10 @@
     <div class="container" v-if="view === 1">
         <div class="item_header fixed">
             <div class="item_detail">服務</div>
+            <div>預約時間</div>
             <div class="price">單價</div>
-            <div class="count">數量</div>
-            <div class="amount">小計</div>
+            <!-- <div class="count">數量</div> -->
+            <!-- <div class="amount">小計</div> -->
             <div class="operate">操作</div>
         </div>
         <div class="item_container" v-for="(item, index) in itemList" :key="item.id">
@@ -13,14 +14,21 @@
                     <img v-bind:src="item.imgUrl" alt="">
                     <div class="name">{{ item.itemName }}</div>
                 </div>
-
+                <div >
+                    <!-- <div class="block"> -->
+                    <!-- <span class="demonstration">Use value-format</span> -->
+                    <!-- <div class="demonstration">Value：{{ value2 }}</div> -->
+                    <el-date-picker style="width: 175px;" v-model="value2" type="datetime" placeholder="Pick a Date"
+                        format="YYYY/MM/DD hh:00" value-format="YYYY-MM-DD h:m a" />
+                    <!-- </div> -->
+                </div>
                 <div class="price"><span>$</span>{{ item.price }}</div>
-                <div class="count">
+                <!-- <div class="count">
                     <button @click="handleSub(item)">-</button>
                     {{ item.count }}
                     <button @click="handlePlus(item)">+</button>
                 </div>
-                <div class="amount">{{ item.price * item.count }}</div>
+                <div class="amount">{{ item.price * item.count }}</div> -->
                 <div class="operate">
                     <el-button @click="handledelete(index)">刪除</el-button>
                 </div>
@@ -28,17 +36,22 @@
         </div>
         <br>
         <div class="item_header checkout">
+
             <div class="checkout">總計</div>
             <el-button class="checkout" @click="cview(2)">結帳</el-button>
         </div>
     </div>
     <div v-if="view === 2">
+        
         <el-button @click="cview(1)">回購物車</el-button>
+        <checkout/>
     </div>
 </template>
 
 <script setup>
+import checkout from './checkout.vue'
 import { ref } from 'vue'
+const value2 = ref('')
 const view = ref(1)
 const cview = (ind) => {
     view.value = ind
@@ -50,47 +63,47 @@ const itemList = ref([
         itemName: '洗澡',
         imgUrl: 'https://images.unsplash.com/photo-1534961880437-ce5ae2033053?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
         price: '500',
-        count: '2'
+        count: '2023/09/02 12:00'
     },
     {
         id: '2',
         itemName: '美容',
         imgUrl: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
         price: '790',
-        count: '3'
+        count: '2023/02/02 12:00'
     },
     {
         id: '3',
         itemName: '洗澡',
         imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
         price: '1200',
-        count: '1'
+        count: '2023/09/15 12:00'
     },
     {
         id: '4',
         itemName: '美容',
         imgUrl: 'https://images.unsplash.com/photo-1491998664548-0063bef7856c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
-        price: '2300',
-        count: '1'
+        price: '1300',
+        count: '2023/09/02 15:00'
     },
     {
         id: '5',
         itemName: '梳毛',
         imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
-        price: '2300',
-        count: '1'
+        price: '2000',
+        count: '2023/10/02 12:00'
     },
 ]);
 
-const handlePlus = (item) => {
-    item.count++;
-};
+// const handlePlus = (item) => {
+//     item.count++;
+// };
 
-const handleSub = (item) => {
-    if (item.count > 1) {
-        item.count--;
-    }
-};
+// const handleSub = (item) => {
+//     if (item.count > 1) {
+//         item.count--;
+//     }
+// };
 
 const handledelete = (index) => {
     console.log(this);
@@ -99,6 +112,7 @@ const handledelete = (index) => {
 </script>
 
 <style scoped>
+
 .fixed {
     position: fixed;
     top: 60px;
@@ -122,7 +136,7 @@ const handledelete = (index) => {
 }
 
 .item_header .item_detail {
-    width: 50%;
+    width: 35%;
 }
 
 .item_body {
