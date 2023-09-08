@@ -9,32 +9,19 @@ import { ref } from 'vue'
       <a href="#"><img src="../images/logoicon.png" alt="Logo" /></a>
       <a href="#"><h1>4A2B</h1></a>
     </section>
-
     <nav>
       <ul>
         <li>
           <div class="wrap">
             <div class="search">
-              <div class="search_btn">
-                <input
-                  class="search-bar"
-                  type="text"
-                  name="search"
-                  id="search"
-                  placeholder="搜尋"
-                />
-                <!-- <el-button :icon="Search" /> -->
-                <!-- <button class="search-btn"><i class="fas fa-search"></i></button> -->
-
-                <el-button style="width: 10px">
-                  <el-icon :size="size" :color="color"> <Search /> </el-icon>
-                </el-button>
-              </div>
+              <input class="search-bar" type="text" name="search" id="search" placeholder="搜尋" />
+              <!-- <el-button :icon="Search" /> -->
+              <!-- <button class="search-btn"><i class="fas fa-search"></i></button> -->
             </div>
           </div>
         </li>
         <li>
-          <a href="/"><font-awesome-icon icon="fa-solid fa-circle-user" /> 會員登入</a>
+          <a href="/"> 會員登入</a>
         </li>
         <li>
           <a href="#"> 購物車</a>
@@ -95,9 +82,6 @@ header {
             color: $themeColor;
             border-bottom: 3px solid $themeColor;
           }
-        }
-        .search_btn {
-          display: flex;
         }
       }
       .search-bar {
