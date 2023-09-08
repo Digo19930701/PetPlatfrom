@@ -15,13 +15,13 @@ import Preview from './components/Preview.vue'
   <!-- <div class="wrapper"> -->
   <!-- <HelloWorld /> -->
 
-  <!-- <HomeHeader /> -->
-  <HeadBar />
-  <div style="display: flex">
-    <Merchant />
-    <!-- <ExistingServices /> -->
-    <Preview />
-  </div>
+  <HomeHeader />
+  <!-- <HeadBar /> -->
+  <!-- <div style="display: flex"> -->
+  <!-- <Merchant /> -->
+  <!-- <ExistingServices /> -->
+  <!-- <Preview /> -->
+  <!-- </div> -->
   <!-- <Good /> -->
   <!-- <Menu></Menu> -->
 
