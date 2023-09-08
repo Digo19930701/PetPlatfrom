@@ -21,7 +21,7 @@ import { ref } from 'vue'
           </div>
         </li>
         <li>
-          <a href="/"> 會員登入</a>
+          <a href="/"><font-awesome-icon icon="fa-solid fa-circle-user" /> 會員登入</a>
         </li>
         <li>
           <a href="#"> 購物車</a>
