@@ -25,6 +25,7 @@ const { circleUrl, squareUrl, sizeList } = toRefs(state)
 
 <style scoped>
 .header {
+  z-index: 1;
   background-color: #f8d479;
   width: 100%;
   height: 60px;

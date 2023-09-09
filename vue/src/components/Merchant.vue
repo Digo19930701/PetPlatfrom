@@ -1,11 +1,9 @@
 <template>
     <div class="container" v-if="view === 1">
-        <div class="item_header fixed">
+        <div class="item_header fixed" style="z-index: 1;">
             <div class="item_detail">服務</div>
             <div>預約時間</div>
             <div class="price">單價</div>
-            <!-- <div class="count">數量</div> -->
-            <!-- <div class="amount">小計</div> -->
             <div class="operate">操作</div>
         </div>
         <div class="item_container" v-for="(item, index) in itemList" :key="item.id">
@@ -14,13 +12,9 @@
                     <img v-bind:src="item.imgUrl" alt="">
                     <div class="name">{{ item.itemName }}</div>
                 </div>
-                <div >
-                    <!-- <div class="block"> -->
-                    <!-- <span class="demonstration">Use value-format</span> -->
-                    <!-- <div class="demonstration">Value：{{ value2 }}</div> -->
-                    <el-date-picker style="width: 175px;" v-model="value2" type="datetime" placeholder="Pick a Date"
-                        format="YYYY/MM/DD hh:00" value-format="YYYY-MM-DD h:m a" />
-                    <!-- </div> -->
+                <div class="block">
+                    <el-date-picker v-model="value2" type="datetime" placeholder="Pick a Date" format="YYYY/MM/DD hh:00"
+                        value-format="YYYY-MM-DD h:m a" />
                 </div>
                 <div class="price"><span>$</span>{{ item.price }}</div>
                 <!-- <div class="count">
@@ -42,9 +36,14 @@
         </div>
     </div>
     <div v-if="view === 2">
-        
-        <el-button @click="cview(1)">回購物車</el-button>
-        <checkout/>
+        <div class="item_header fixed">
+            <el-button @click="cview(1)">回購物車</el-button>
+        </div>
+        <checkout />
+        <div class="item_header checkout">
+            <el-button class="checkout">付款</el-button>
+        </div>
+
     </div>
 </template>
 
@@ -112,8 +111,12 @@ const handledelete = (index) => {
 </script>
 
 <style scoped>
+.block {
+    display: flex;
+}
 
 .fixed {
+    z-index: 1;
     position: fixed;
     top: 60px;
     left: 1px;
