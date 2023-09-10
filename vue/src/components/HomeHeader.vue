@@ -1,20 +1,41 @@
 <script setup>
 import { ref } from 'vue'
-// import { Search } from '@element-plus/icons-vue'
+import { Search } from '@element-plus/icons-vue'
+// function goHome() {
+//   this.$router.push('/Home')
+// }
 </script>
 
 <template>
   <header>
     <section class="logo">
-      <a href="#"><img src="../images/logoicon.png" alt="Logo" /></a>
-      <a href="#"><h1>4A2B</h1></a>
+      <!-- 這邊連結研究到一半 -->
+      <a @click="goHome"><img src="../images/logoicon.png" alt="Logo" /></a>
+      <a @click="goHome"><h1>4A2B</h1></a>
     </section>
     <nav>
       <ul>
         <li>
           <div class="wrap">
             <div class="search">
-              <input class="search-bar" type="text" name="search" id="search" placeholder="搜尋" />
+              <el-row>
+                <!-- <el-col> -->
+                <input
+                  class="search-bar"
+                  type="text"
+                  name="search"
+                  id="search"
+                  placeholder="搜尋"
+                />
+                &nbsp
+                <!-- </el-col> -->
+                <!-- <el-col :span="2"> -->
+                <a class="search_btn" href="/">
+                  <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
+                </a>
+                <!-- </el-col> -->
+              </el-row>
+
               <!-- <el-button :icon="Search" /> -->
               <!-- <button class="search-btn"><i class="fas fa-search"></i></button> -->
             </div>
@@ -24,13 +45,13 @@ import { ref } from 'vue'
           <a href="/"><font-awesome-icon icon="fa-solid fa-circle-user" /> 會員登入</a>
         </li>
         <li>
-          <a href="#"> 購物車</a>
+          <a href="#"><font-awesome-icon icon="fa-solid fa-cart-shopping" /> 購物車</a>
         </li>
         <li>
-          <a href="#"> 通知</a>
+          <a href="#"><font-awesome-icon icon="fa-solid fa-bell" /> 通知</a>
         </li>
         <li>
-          <a href="#"> 訊息</a>
+          <a href="#"><font-awesome-icon icon="fa-solid fa-message" /> 訊息</a>
         </li>
       </ul>
     </nav>

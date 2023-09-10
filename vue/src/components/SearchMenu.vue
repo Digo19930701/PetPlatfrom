@@ -48,7 +48,9 @@
     </nav>
   </header> -->
   <el-main>
-    <el-button type="primary" style="margin-left: 16px" @click="drawer = true">篩選</el-button>
+    <el-button type="primary" style="margin-left: 16px" @click="drawer = true">
+      <font-awesome-icon icon="fa-solid fa-sliders" />
+    </el-button>
     <el-drawer
       v-model="drawer"
       title="I am the title"
@@ -58,10 +60,11 @@
     >
       <span>
         <div style="padding: 14px">
-          <h2>日期</h2>
+          <!-- <div></div> -->
+          <h2>日期 <font-awesome-icon icon="fa-solid fa-calendar-days" /></h2>
           <el-date-picker v-model="value1" type="date" placeholder="Pick a day" :size="size" />
           <el-divider />
-          <h2>時間</h2>
+          <h2>時間 <font-awesome-icon icon="fa-solid fa-clock" /></h2>
           <el-time-select
             v-model="value_time"
             start="08:30"
@@ -70,13 +73,14 @@
             placeholder="Select time"
           />
           <el-divider />
-          <h2>價格範圍</h2>
+          <h2>價格範圍 <font-awesome-icon icon="fa-solid fa-money-check-dollar" /></h2>
+          <div>NTD{{ val_price_range[0] }} ~ NTD{{ val_price_range[1] }}</div>
 
           <div class="slider-demo-block">
             <el-slider v-model="val_price_range" range show-stops :max="10000" />
           </div>
           <el-divider />
-          <h2>分類</h2>
+          <h2>分類 <font-awesome-icon icon="fa-solid fa-paw" /></h2>
           <el-button round>美容</el-button>
           <el-button round>照護</el-button>
           <el-button round>溝通</el-button>

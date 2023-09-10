@@ -20,7 +20,7 @@
         <el-text class="cl_good_title" v-model="good_title" :value="good_title">{{
           good_title
         }}</el-text>
-        <button>我的最愛</button>
+        <button>我的最愛 <font-awesome-icon icon="fa-solid fa-heart" /></button>
       </el-row>
       <!-- <h2> -->
 
