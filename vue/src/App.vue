@@ -14,10 +14,10 @@ import Preview from './components/Preview.vue'
 <template>
   <!-- <div class="wrapper"> -->
   <!-- <HelloWorld /> -->
-
-  <HomeHeader />
-  <!-- <HeadBar />
-  <div style="display: flex"> -->
+  <router-view></router-view>
+  <!-- <HomeHeader /> -->
+  <!-- <HeadBar /> -->
+  <!-- <div style="display: flex"> -->
   <!-- <Merchant /> -->
   <!-- <ExistingServices /> -->
   <!-- <Preview /> -->

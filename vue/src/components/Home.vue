@@ -4,85 +4,42 @@ import { ref } from 'vue'
 </script>
 
 <template>
-  <!-- <header class="app-header">
-    <div class="container">
-      <h1 class="logo">
-        <RouterLink to="/">4A2B</RouterLink>
-      </h1>
-      <div class="search">
-        <input type="text" placeholder="搜尋" />
-      </div>
-      <ul class="app-header-nav">
-        <li class="home">
-          <RouterLink to="/">會員登入</RouterLink>
-        </li>
-        <li><RouterLink to="/">通知</RouterLink></li>
-        <li><RouterLink to="/">訊息</RouterLink></li>
-      </ul>
-    </div>
-  </header> -->
-
-  <!-- <header>
-    <section class="logo">
-      <a href="#"><img src="../images/logoicon.png" alt="Logo" /></a>
-      <a href="#"><h1>4A2B</h1></a>
-    </section>
-    <nav>
-      <ul>
-        <li>
-          <div class="wrap">
-            <div class="search">
-              <input class="search-bar" type="text" name="search" id="search" placeholder="搜尋" />
-              <el-button :icon="Search" />
-              <button class="search-btn"><i class="fas fa-search"></i></button>
-            </div>
-          </div>
-        </li>
-        <li>
-          <a href="/"> 會員登入</a>
-        </li>
-        <li>
-          <a href="#"> 購物車</a>
-        </li>
-        <li>
-          <a href="#"> 通知</a>
-        </li>
-        <li>
-          <a href="#"> 訊息</a>
-        </li>
-      </ul>
-    </nav>
-  </header> -->
   <el-container>
     <el-aside width="20%">
       <br />
       <div style="padding: 14px">
         <h2>愛漂亮</h2>
+        <router-link to="/search"><a>洗澡&SPA</a></router-link>
 
-        <a href="/">洗澡&SPA</a>
         <br />
-        <a href="/">美容</a>
+        <router-link to="/search"><a href="/">美容</a></router-link>
+
         <br />
-        <a href="/">療浴</a>
+        <router-link to="/search"><a href="/">療浴</a></router-link>
 
         <el-divider />
 
         <h2>我需要保母</h2>
-        <a href="/">寵物安親</a>
+        <router-link to="/search"><a href="/">寵物安親</a></router-link>
+
         <br />
-        <a href="/">寵物旅館</a>
+        <router-link to="/search"><a href="/">寵物旅館</a></router-link>
+
         <br />
-        <a href="/">到府服務</a>
+        <router-link to="/search"><a href="/">到府服務</a></router-link>
+
         <br />
-        <a href="/">小奶貓狗照護</a>
+        <router-link to="/search"><a href="/">小奶貓狗照護</a></router-link>
+
         <el-divider />
 
         <h2>想知道...</h2>
-        <a href="/">預約寵物溝通</a>
+        <router-link to="/search"><a href="/">預約寵物溝通</a></router-link>
+
         <el-divider />
 
         <h2>記錄美好瞬間</h2>
-        <a href="/">預約寵物攝影</a>
+        <router-link to="/search"><a href="/">預約寵物攝影</a></router-link>
       </div>
     </el-aside>
     <el-main>
@@ -108,7 +65,9 @@ import { ref } from 'vue'
                 summer</span
               >
               <div class="bottom">
-                <el-button text class="button">了解更多</el-button>
+                <router-link to="/good">
+                  <el-button text class="button">了解更多</el-button>
+                </router-link>
               </div>
             </div>
           </el-card>
@@ -131,7 +90,9 @@ import { ref } from 'vue'
                 summer</span
               >
               <div class="bottom">
-                <el-button text class="button">了解更多</el-button>
+                <router-link to="/good">
+                  <el-button text class="button">了解更多</el-button>
+                </router-link>
               </div>
             </div>
           </el-card>
@@ -154,7 +115,9 @@ import { ref } from 'vue'
                 summer</span
               >
               <div class="bottom">
-                <el-button text class="button">了解更多</el-button>
+                <router-link to="/good">
+                  <el-button text class="button">了解更多</el-button>
+                </router-link>
               </div>
             </div>
           </el-card>

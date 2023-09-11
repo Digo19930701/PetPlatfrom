@@ -1,18 +1,18 @@
 <script setup>
 import { ref } from 'vue'
+// import { reactive, toRefs } from 'vue'
 import { Search } from '@element-plus/icons-vue'
-// function goHome() {
-//   this.$router.push('/Home')
-// }
 </script>
 
 <template>
   <header>
-    <section class="logo">
-      <!-- 這邊連結研究到一半 -->
-      <a @click="goHome"><img src="../images/logoicon.png" alt="Logo" /></a>
-      <a @click="goHome"><h1>4A2B</h1></a>
-    </section>
+    <router-link to="/"
+      ><section class="logo">
+        <a><img src="../images/logoicon.png" alt="Logo" /></a>
+        <a><h1>4A2B</h1></a>
+      </section>
+    </router-link>
+
     <nav>
       <ul>
         <li>

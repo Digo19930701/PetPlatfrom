@@ -1,52 +1,4 @@
 <template>
-  <!-- <header class="app-header">
-      <div class="container">
-        <h1 class="logo">
-          <RouterLink to="/">4A2B</RouterLink>
-        </h1>
-        <div class="search">
-          <input type="text" placeholder="搜尋" />
-        </div>
-        <ul class="app-header-nav">
-          <li class="home">
-            <RouterLink to="/">會員登入</RouterLink>
-          </li>
-          <li><RouterLink to="/">通知</RouterLink></li>
-          <li><RouterLink to="/">訊息</RouterLink></li>
-        </ul>
-      </div>
-    </header> -->
-
-  <!-- <header>
-    <section class="logo">
-      <a href="#"><img src="../images/logoicon.png" alt="Logo" /></a>
-      <a href="#"><h1>4A2B</h1></a>
-    </section>
-    <nav>
-      <ul>
-        <li>
-          <div class="wrap">
-            <div class="search">
-              <input class="search-bar" type="text" name="search" id="search" placeholder="搜尋" />
-              <button class="search-btn"><i class="fas fa-search"></i></button>
-            </div>
-          </div>
-        </li>
-        <li>
-          <a href="/"> 會員登入</a>
-        </li>
-        <li>
-          <a href="#"> 購物車</a>
-        </li>
-        <li>
-          <a href="#"> 通知</a>
-        </li>
-        <li>
-          <a href="#"> 訊息</a>
-        </li>
-      </ul>
-    </nav>
-  </header> -->
   <el-main>
     <el-button type="primary" style="margin-left: 16px" @click="drawer = true">
       <font-awesome-icon icon="fa-solid fa-sliders" />
@@ -103,7 +55,9 @@
                 summer</span
               >
               <div class="bottom">
-                <el-button text class="button">了解更多</el-button>
+                <router-link to="/good">
+                  <el-button text class="button">了解更多</el-button>
+                </router-link>
               </div>
             </div>
           </el-card>
