@@ -17,7 +17,7 @@ public class OrderService {
 		AllInOne all = new AllInOne("");
 		
 		AioCheckOutALL obj = new AioCheckOutALL();
-		obj.setMerchantTradeNo("eeit699");
+		obj.setMerchantTradeNo(uuId);
 		obj.setMerchantTradeDate("2017/01/01 08:05:23");
 		obj.setTotalAmount("20");
 		obj.setTradeDesc("test Description");
