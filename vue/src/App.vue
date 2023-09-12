@@ -3,7 +3,7 @@
 import HelloWorld from './components/HelloWorld.vue'
 import Home from './components/Home.vue'
 import Menu from './components/SearchMenu.vue'
-import HomeHeader from './components/HomeHeader.vue'
+// import HomeHeader from './components/HomeHeader.vue'
 import Good from './components/Good.vue'
 import Merchant from './components/Merchant.vue'
 import HeadBar from './components/HeadBar.vue'
