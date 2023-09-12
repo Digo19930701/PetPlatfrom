@@ -32,7 +32,7 @@
         <div class="item_header checkout">
 
             <div class="checkout">總計</div>
-            <el-button class="checkout" @click="cview(2)">結帳</el-button>
+            <el-button class="checkout" @click="cview(2)" >結帳</el-button>
         </div>
     </div>
     <div v-if="view === 2">
@@ -41,15 +41,40 @@
         </div>
         <checkout />
         <div class="item_header checkout">
-            <el-button class="checkout">付款</el-button>
+            <el-button class="checkout" @click="sendPostRequest">付款</el-button>
         </div>
-
+        
     </div>
+    <div v-html="responseHTML"></div>
+    
 </template>
+
 
 <script setup>
 import checkout from './checkout.vue'
 import { ref } from 'vue'
+import axios from 'axios';
+import { useRouter } from 'vue-router'; // 导入Vue Router
+const responseHTML = ref('');
+const postData = ref({
+    // 在这里添加你要发送的数据字段
+});
+
+const router = useRouter();
+
+const sendPostRequest = async () => {
+    axios.post('http://localhost:8080/ecpayCheckout', {})
+  .then(response => {
+    responseHTML.value = response.data
+    console.log(responseHTML.value)
+  })
+  .catch(error => {
+    console.log(error)
+  })
+
+};
+
+
 const value2 = ref('')
 const view = ref(1)
 const cview = (ind) => {
