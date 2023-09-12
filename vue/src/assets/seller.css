@@ -1,0 +1,87 @@
+/*服務類別*/
+/* 服務:美容 */
+.beauty{
+    background-color: #FFBFD6;
+}
+/* 服務:保母/訓練 */
+.nannyTraining{
+    background-color:#BFF3FF
+}
+/* 服務:溝通 */
+.whisperer{
+    background-color:#BFF3B3
+}
+/* 服務:攝影 */
+.graphy{
+    background-color:#E3BFFF
+}
+
+.tag-cloud {
+    display: inline-block;
+    color: #666666;
+    width: 80px;
+    border-radius: 25px;
+    margin-top: 2px;
+    text-align: center;
+}
+
+/**/
+.title{
+    min-height: 40px;
+}
+.title h2{
+    font-weight: bold;
+    color: #666666;
+}
+
+.subtitle{
+    background-color: white;
+    border: 3px solid #F8D479;
+    margin: 2%;
+    margin-top: 5px;
+}
+
+.board {
+    background-color: white;
+    padding: 4px;
+    border-radius: 10px; 
+    box-shadow: 1px 1px 5px lightgray;
+    /* min-width: 640px; */
+}
+
+.orderEnd{
+    text-align: end;
+}
+
+.button{
+    width: 70px;
+    transition-duration: 0.4s;
+    background-color: #D9D9D9;
+    border: 1px solid #666666 ;
+}
+
+.button:hover { 
+    background-color: #F8D479;
+}
+
+.el-row{
+    margin: 0px 0px 5px 0px;
+}
+
+:root{
+    --el-color-primary: #CD7B00;
+    --el-color-primary-light-3: #eebe77;
+    --el-color-primary-light-5: #f3d19e;
+    --el-color-primary-light-7: #f8e3c5;
+    --el-color-primary-light-8: #faecd8;
+    --el-color-primary-light-9: #fdf6ec;
+    --el-color-primary-dark-2: #b88230;
+
+    --el-color-warning: #409eff;
+    --el-color-warning-light-3: #79bbff;
+    --el-color-warning-light-5: #a0cfff;
+    --el-color-warning-light-7: #c6e2ff;
+    --el-color-warning-light-8: #d9ecff;
+    --el-color-warning-light-9: #ecf5ff;
+    --el-color-warning-dark-2: #337ecc;
+}

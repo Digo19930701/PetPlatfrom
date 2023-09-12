@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+// import SellerHome from '../views/SellerHomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -7,15 +7,37 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      component: HomeView
+      // component: SellerHome
+    },
+    // {
+    //   path: '/serviceEdit',
+    //   name: 'serviceEdit',
+    //   component: () => import('../views/ServiceEditView.vue')
+    // },
+    {
+      path: '/sellerOrder1',
+      name: 'sellerOrder1',
+      component: () => import('../views/SellerOrderView.vue')
     },
     {
-      path: '/about',
-      name: 'about',
-      // route level code-splitting
-      // this generates a separate chunk (About.[hash].js) for this route
-      // which is lazy-loaded when the route is visited.
-      component: () => import('../views/AboutView.vue')
+      path: '/sellerOrder2',
+      name: 'sellerOrder2',
+      component: () => import('../views/SellerOrderView.vue')
+    },
+    {
+      path: '/sellerOrder3',
+      name: 'sellerOrder3',
+      component: () => import('../views/SellerOrderView.vue')
+    },
+    {
+      path: '/sellerChart',
+      name: 'sellerChart',
+      component: () => import('../views/SellerChartView.vue')
+    },
+    {
+      path: '/sellerRate',
+      name: 'sellerRate',
+      component: () => import('../views/SellerRateView.vue')
     }
   ]
 })

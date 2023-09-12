@@ -1,7 +1,6 @@
 <script lang="ts" setup>
-import { ref, onMounted } from 'vue'
-import SellerChartTurnover from './SellerChartTurnover.vue';
-import SellerChartMultiX from './SellerChartMultiX.vue';
+import SellerChartTurnover from '../components/SellerChartTurnover.vue';
+import SellerChartMultiX from '../components/SellerChartMultiX.vue';
 
 </script>
 
@@ -10,8 +9,8 @@ import SellerChartMultiX from './SellerChartMultiX.vue';
         <h2>數據管理</h2>
     </header>
     <main>
-        <div class="chartBoard">
-            <div class="chartName tag-cloud">營業額</div>
+        <div class="board">
+            <div class="subtitle tag-cloud">營業額</div>
             <SellerChartMultiX 
                 :name="['2016', '2015']"
                 :xData="[['2016-1', '2016-2', '2016-3', '2016-4', '2016-5', '2016-6', '2016-7', '2016-8', '2016-9', '2016-10', '2016-11', '2016-12'],
@@ -23,8 +22,8 @@ import SellerChartMultiX from './SellerChartMultiX.vue';
             />
         </div>
         <br/>
-        <div class="chartBoard">
-            <div class="chartName tag-cloud">訂單數</div>
+        <div class="board">
+            <div class="subtitle tag-cloud">訂單數</div>
             <SellerChartTurnover 
             :name="['顧客1','顧客2']"
             :xData="['星期一', '星期二', '星期三', '星期四', '星期五', '星期六', '星期日']"
@@ -32,8 +31,8 @@ import SellerChartMultiX from './SellerChartMultiX.vue';
             />
         </div>
         <br/>
-        <div class="chartBoard">
-            <div class="chartName tag-cloud">瀏覽數</div>
+        <div class="board">
+            <div class="subtitle tag-cloud">瀏覽數</div>
             <SellerChartMultiX 
                 :name="['2016', '2015']"
                 :xData="[['2016-1', '2016-2', '2016-3', '2016-4', '2016-5', '2016-6', '2016-7', '2016-8', '2016-9', '2016-10', '2016-11', '2016-12'],
@@ -50,13 +49,4 @@ import SellerChartMultiX from './SellerChartMultiX.vue';
 </template>
 
 
-
-<style>
-.chartName{
-    border: 3px solid #F8D479;
-    margin: 2%;
-}
-.chartBoard{
-    background-color: white;
-}
-</style>
+<style src="../assets/seller.css"></style>
