@@ -16,12 +16,12 @@ import Preview from './components/Preview.vue'
   <!-- <HelloWorld /> -->
   <router-view></router-view>
   <!-- <HomeHeader /> -->
-  <!-- <HeadBar /> -->
-  <!-- <div style="display: flex"> -->
-  <!-- <Merchant /> -->
+  <!-- <HeadBar />
+  <div style="display: flex">
+    <Merchant /> -->
   <!-- <ExistingServices /> -->
-  <!-- <Preview /> -->
-  <!-- </div> -->
+  <!-- <Preview />
+  </div> -->
   <!-- <Good /> -->
   <!-- <Menu></Menu> -->
 

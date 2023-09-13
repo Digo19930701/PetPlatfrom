@@ -22,7 +22,8 @@ import { Search } from '@element-plus/icons-vue'
                 <!-- <el-col> -->
                 <input
                   class="search-bar"
-                  type="text"
+                  type="search"
+                  v-model.lazy.trim="search"
                   name="search"
                   id="search"
                   placeholder="搜尋"

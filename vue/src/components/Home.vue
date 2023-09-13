@@ -2,7 +2,7 @@
 import { ref } from 'vue'
 const ad_url = [
   'https://www.shutterstock.com/shutterstock/photos/1034939470/display_1500/stock-photo-row-of-the-tops-of-heads-of-cats-and-dogs-with-paws-up-peeking-over-a-blank-white-sign-sized-for-1034939470.jpg',
-  'https://fuss10.elemecdn.com/1/34/19aa98b1fcb2781c4fba33d850549jpeg.jpeg',
+  'https://images.pexels.com/photos/1254140/pexels-photo-1254140.jpeg',
   'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
   'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg'
 ]
@@ -60,7 +60,7 @@ const ad_url = [
         </router-link>
       </el-carousel>
       <br />
-      <h2>推薦商家</h2>
+      <h2>推薦商家&服務</h2>
       <br />
       <el-row>
         <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
