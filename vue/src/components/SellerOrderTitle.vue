@@ -22,7 +22,7 @@ function handleCollapse() {
 
 <template>
   <div>
-    <el-row :gutter="20" class="board" style="margin: 0px 0px 5px 0px;">
+    <el-row :gutter="20" class="board orderTitle" style="margin: 0px 0px 5px 0px">
         <table style="border-collapse: collapse;">
             <tr>
                 <td rowspan="2" class="date" style="width: 60px;">
@@ -67,11 +67,10 @@ function handleCollapse() {
   transition: height var(--vc-auto-duration) cubic-bezier(0.3, 0, 0.3, 1);
 }
 
-// .board{
-//     background-color: white;
-//     border-radius: 10px;
-//     padding: 1%;
-// }
+.board{
+    border-radius: 10px;
+    padding: 1%;
+}
 
 
 .date {
