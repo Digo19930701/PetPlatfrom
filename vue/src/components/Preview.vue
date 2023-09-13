@@ -5,13 +5,14 @@
     </el-header>
     <el-main>
       <el-row>
-        <el-col
-          ><el-row
-            ><h3>現有服務</h3>
+        <el-col>
+          <el-row>
+            <h3>現有服務</h3>
             <div class="radius_pre">
               <el-text class="text">預覽模式</el-text>
-            </div></el-row
-          ><el-row>
+            </div>
+          </el-row>
+          <el-row>
             <h3>{{ good_title }}</h3>
             <el-button round class="delete_btn"> 刪除 </el-button>
             <el-button round class="edit_btn"> 編輯 </el-button>
@@ -39,7 +40,10 @@
             <el-text class="cl_good_title" v-model="good_title" :value="good_title">{{
               good_title
             }}</el-text>
-            <button>我的最愛</button>
+
+            <el-button plain @click="open">
+              我的最愛 <font-awesome-icon icon="fa-solid fa-heart" />
+            </el-button>
           </el-row>
           <el-space class="store_space" direction="vertical">
             <el-card class="store_inf">
@@ -91,8 +95,8 @@
           </el-card>
           <el-divider style="width: 95%" />
           <div class="buttons">
-            <el-button class="cart_btn"> 加入購物車 </el-button>
-            <el-button class="buy_btn"> 立即下單 </el-button>
+            <el-button plain @click="open" class="cart_btn"> 加入購物車 </el-button>
+            <el-button plain @click="open" class="buy_btn"> 立即下單 </el-button>
           </div>
         </div>
       </div>
@@ -179,7 +183,10 @@
 </style>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+// import { ref } from 'vue'
+import { h, ref } from 'vue'
+import { ElMessageBox, ElSwitch } from 'element-plus'
+
 // import { Text, ref } from 'vue'
 
 const radiusGroup = ref([
@@ -192,4 +199,14 @@ const good_title = '小貓小狗洗香香'
 const val_day = ref('')
 const value_time = ref('')
 const price = '5,000'
+
+const open = () => {
+  ElMessageBox({
+    title: 'Message',
+    message: h('p', null, [
+      h('span', null, '此為預覽模式 無法執行動作')
+      // h('i', { style: 'color: teal' }, 'VNode')
+    ])
+  })
+}
 </script>
