@@ -12,6 +12,7 @@
   "dependencies": {
     "echarts": "^5.4.3",
     "element-plus": "^2.3.12",
+    "qalendar": "^3.5.0",
     "vue": "^3.3.4",
     "vue-collapsed": "^1.2.7",
     "vue-router": "^4.2.4"
