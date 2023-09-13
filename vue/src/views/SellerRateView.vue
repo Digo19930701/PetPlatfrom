@@ -11,7 +11,8 @@ const radio = ref(0)
         <h2>評價管理</h2>
     </header>
 
-    <SellerRateTitle :rate="[4.2, 11, 2]"
+    <SellerRateTitle :rateItem="['平均評價', '總評價數', '未回覆評價']"
+                     :rate="[4.2, 11, 2]"
                      :note="['與前月評價相差','本月增加','筆']"
                      :rateSub="[0.5, 1, 2]"/>
     <el-row>

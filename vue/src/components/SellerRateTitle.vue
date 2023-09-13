@@ -6,30 +6,39 @@ import {
 } from '@element-plus/icons-vue'
 
 const props=defineProps({
+    rateItem:{
+        type:Array,
+        // default:['平均評價', '總評價數', '未回覆評價']
+        default:['','',''],
+    },
     rate:{
         type:Array,
         default:[4.5, 120, 15]
     },
     note:{
         type:Array,
-        // default:['與前月評價相差','本月增加 ','筆'], 
+        // default:['與前月相差','本月增加 ','筆'], 
         default:['','',''], 
     },
     rateSub:{
         type:Array,
         // default:[1.5, 20, 30]
         default:[,,]
+    },
+    colors:{
+        type:Array,
+        default:['white', '#666666']
     }
 })
 </script>
 <template>
-    <el-row display="" class="statistic">
+    <el-row class="statistic">
         <el-col :span="8">
             <div class="statistic-card">
                 <el-statistic :formatter="(value: number) => props.rate[0]" >
                     <template #title>
                         <div style="display: inline-flex; align-items: center">
-                            平均評價
+                            {{props.rateItem[0]}}
                         </div>
                     </template>
                 </el-statistic>
@@ -53,7 +62,7 @@ const props=defineProps({
                 <el-statistic :value="props.rate[1]">
                     <template #title>
                         <div style="display: inline-flex; align-items: center">
-                            總評價數
+                            {{props.rateItem[1]}}
                         </div>
                     </template>
                 </el-statistic>
@@ -74,7 +83,7 @@ const props=defineProps({
                 <el-statistic :value="props.rate[2]">
                     <template #title>
                         <div style="display: inline-flex; align-items: center">
-                            未回覆評價
+                            {{props.rateItem[2]}}
                         </div>
                     </template>
                 </el-statistic>
@@ -83,30 +92,33 @@ const props=defineProps({
     </el-row>
 </template>
 
-<style >
-/* .statistic{
-    min-width: 410px;
-} */
+<style lang="scss">
+// .statistic{
+//     min-width: 420px;
+// }
 .el-statistic {
-  --el-statistic-content-font-size: 24px;
+  /* --el-statistic-content-font-size: 1rem; */
   --el-statistic-content-color: #888888;
   --el-statistic-content-color: #CD7B00;
 }
 
 .statistic-card {
   height: 100%;
-  padding: 0px 10px;
-  border-radius: 4px;
+  min-width: 120px;
+  padding: 5px 10px;
+  border-radius: 10px;
+  margin: 0 1rem 0 0 ;
+  background-color: white;
+  box-shadow: 1px 1px 5px lightgray;
 }
-
+.el-statistic__head {
+    font-size: var(--el-statistic-title-font-size);
+    // font-size: 1rem;
+}
 .statistic-footer {
   display: flex;
-  justify-content: space-between;
-  align-items: center;
-  flex-wrap: wrap;
-  font-size: 12px;
-  color: var(--el-text-color-regular);
-  margin-top: 16px;
+  font-size: 0.5rem;
+  margin-top: 10px;
 }
 
 .statistic-footer .footer-item {
@@ -127,7 +139,6 @@ const props=defineProps({
 .red {
     color: var(--el-color-error);
 }
-
 .brown{
     color: #CD7B00;
 }
