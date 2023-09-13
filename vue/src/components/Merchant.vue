@@ -30,7 +30,7 @@
               </el-icon>
               <span>服務管理</span>
             </template>
-              <el-menu-item index="2-1">現有服務</el-menu-item>
+              <el-menu-item index="2-1"><router-link to="/servicesExist">現有服務</router-link></el-menu-item>
               <el-menu-item index="2-2"><router-link to="/serviceEdit">新增/編輯服務</router-link></el-menu-item>
           </el-sub-menu>
           
