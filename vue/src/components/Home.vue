@@ -1,6 +1,6 @@
 <script setup>
 import { ref } from 'vue'
-const ad_url = [
+const adUrl = [
   'https://www.shutterstock.com/shutterstock/photos/1034939470/display_1500/stock-photo-row-of-the-tops-of-heads-of-cats-and-dogs-with-paws-up-peeking-over-a-blank-white-sign-sized-for-1034939470.jpg',
   'https://images.pexels.com/photos/1254140/pexels-photo-1254140.jpeg',
   'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
@@ -52,7 +52,7 @@ const ad_url = [
       <el-carousel :interval="5000" arrow="always">
         <router-link to="/good">
           <el-carousel-item v-for="item in 4" :key="item">
-            <el-image class="ad_img" :src="ad_url[item - 1]"> </el-image>
+            <el-image class="adImg" :src="adUrl[item - 1]"> </el-image>
           </el-carousel-item>
 
           <!-- <h3 text="2xl" justify="center"></h3> -->
@@ -158,7 +158,7 @@ $themeColor: #f7ddba;
 }
 .el-carousel__item:nth-child(n) {
   background-color: #99a9bf;
-  .ad_img {
+  .adImg {
     width: 100%;
     height: 100%;
   }
