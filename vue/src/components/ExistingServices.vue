@@ -1,7 +1,7 @@
 <template>
   <el-container>
     <el-header class="header">
-      <el-text class="h_text">(推撥內容/畫面) </el-text>
+      <el-text class="hText">(推撥內容/畫面) </el-text>
     </el-header>
     <el-main>
       <el-row>
@@ -32,8 +32,8 @@
           </el-card>
 
           <el-row class="btns">
-            <el-button round class="delete_btn"> 刪除 </el-button>
-            <el-button round class="edit_btn"> 編輯 </el-button>
+            <el-button round class="deleteBtn"> 刪除 </el-button>
+            <el-button round class="editBtn"> 編輯 </el-button>
           </el-row>
         </el-col>
       </el-row>
@@ -63,8 +63,8 @@
           </el-card>
 
           <el-row class="btns">
-            <el-button round class="delete_btn"> 刪除 </el-button>
-            <el-button round class="edit_btn"> 編輯 </el-button>
+            <el-button round class="deleteBtn"> 刪除 </el-button>
+            <el-button round class="editBtn"> 編輯 </el-button>
           </el-row>
         </el-col>
       </el-row>
@@ -94,8 +94,8 @@
           </el-card>
 
           <el-row class="btns">
-            <el-button round class="delete_btn"> 刪除 </el-button>
-            <el-button round class="edit_btn"> 編輯 </el-button>
+            <el-button round class="deleteBtn"> 刪除 </el-button>
+            <el-button round class="editBtn"> 編輯 </el-button>
           </el-row>
         </el-col>
       </el-row> -->
@@ -124,8 +124,8 @@
           </el-card>
 
           <el-row class="btns">
-            <el-button round class="delete_btn"> 刪除 </el-button>
-            <el-button round class="edit_btn"> 編輯 </el-button>
+            <el-button round class="deleteBtn"> 刪除 </el-button>
+            <el-button round class="editBtn"> 編輯 </el-button>
           </el-row>
         </el-col>
       </el-row> -->
@@ -139,7 +139,7 @@
   background-color: rgb(199, 197, 197);
   width: 100%;
   display: inline-flex;
-  .h_text {
+  .hText {
     position: absolute;
     left: 55%;
   }
