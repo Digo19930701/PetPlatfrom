@@ -45,7 +45,7 @@
         </div>
         
     </div>
-    <div v-html="responseHTML"></div>
+    <div id="ECpayt"></div>
     
 </template>
 
@@ -66,6 +66,7 @@ const sendPostRequest = async () => {
     axios.post('http://localhost:8080/ecpayCheckout', {})
   .then(response => {
     responseHTML.value = response.data
+    document.getElementById('ECpayt').innerHTML = responseHTML.value;
     console.log(responseHTML.value)
   })
   .catch(error => {
