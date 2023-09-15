@@ -43,17 +43,20 @@
     <el-space direction="vertical">
       <el-row v-for="i in 3" :key="i">
         <el-col v-for="(o, index) in 4" :key="o" :span="5" :offset="index > 0 ? 1 : 0">
+          <!-- 都先帶0 不知道為什麼跑不出來QAQ -->
           <el-card :body-style="{ padding: '0px' }">
-            <img
+            <!-- <img
               src="https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8="
               class="image"
-            />
+            /> -->
+            <el-image class="sellerImg" :src="sellers[0].sellerImg"> </el-image>
+            <!-- (i - 1) * 4 + o - 1 -->
             <div style="padding: 14px">
-              <h3>各種選項</h3>
-              <span
-                >Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny
-                summer</span
-              >
+              <!-- <h3>各種選項</h3> -->
+              <h3>{{ sellers[0].serviceName }}</h3>
+              <span>
+                {{ sellers[0].serviceDescription }}
+              </span>
               <div class="bottom">
                 <router-link to="/good">
                   <el-button text class="button">了解更多</el-button>
@@ -62,6 +65,24 @@
             </div>
           </el-card>
         </el-col>
+        <!-- <el-col v-for="(seller, index) in 4" :key="seller" :span="5" :offset="index > 0 ? 1 : 0">
+          <el-card :body-style="{ padding: '0px' }">
+            <el-image class="sellerImg" :src="sellers[(i - 1) * 4 + seller - 1].sellerImg">
+            </el-image>
+
+            <div style="padding: 14px">
+              <h3>{{ sellers[(i - 1) * 4 + seller - 1].serviceName }}</h3>
+              <span>
+                {{ sellers[0].serviceDescription }}
+              </span>
+              <div class="bottom">
+                <router-link to="/good">
+                  <el-button text class="button">了解更多</el-button>
+                </router-link>
+              </div>
+            </div>
+          </el-card>
+        </el-col> -->
       </el-row>
     </el-space>
   </el-main>
@@ -83,6 +104,38 @@ const value_time = ref('')
 //     }
 //   }
 // }
+
+const sellers = [
+  {
+    sellerImg:
+      'https://www.shutterstock.com/shutterstock/photos/1034939470/display_1500/stock-photo-row-of-the-tops-of-heads-of-cats-and-dogs-with-paws-up-peeking-over-a-blank-white-sign-sized-for-1034939470.jpg',
+    sellerName: '商家一',
+    sellerDescription:
+      '描述商家一的地方，Cute fluffy friends a cat and a dog catch a flying butterfly in a sunnysummer',
+    serviceName: '服務名稱一',
+    serviceDescription: '服務描述一'
+  },
+  {
+    // Second seller's data here
+    sellerImg:
+      'https://images.pexels.com/photos/2248516/pexels-photo-2248516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    sellerName: '商家2',
+    sellerDescription:
+      '描述商家二的地方，Cute fluffy friends a cat and a dog catch a flying butterfly in a sunnysummer',
+    serviceName: '服務名稱2',
+    serviceDescription: '服務描述2'
+  },
+  {
+    // Third seller's data here
+    sellerImg:
+      'https://images.pexels.com/photos/3196887/pexels-photo-3196887.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    sellerName: '商家3',
+    sellerDescription:
+      '描述商家3的地方，Cute fluffy friends a cat and a dog catch a flying butterfly in a sunnysummer',
+    serviceName: '服務名稱3',
+    serviceDescription: '服務描述3'
+  }
+]
 </script>
 
 <style scoped lang="scss">

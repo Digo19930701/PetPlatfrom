@@ -1,14 +1,3 @@
-<script setup>
-import { ref } from 'vue'
-const adUrl = [
-  'https://www.shutterstock.com/shutterstock/photos/1034939470/display_1500/stock-photo-row-of-the-tops-of-heads-of-cats-and-dogs-with-paws-up-peeking-over-a-blank-white-sign-sized-for-1034939470.jpg',
-  'https://images.pexels.com/photos/1254140/pexels-photo-1254140.jpeg',
-  'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
-  'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg'
-]
-// import { Search } from '@element-plus/icons-vue'
-</script>
-
 <template>
   <el-container>
     <el-aside width="20%">
@@ -63,19 +52,20 @@ const adUrl = [
       <h2>推薦商家&服務</h2>
       <br />
       <el-row>
-        <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
+        <el-col v-for="(seller, index) in 3" :key="seller" :span="7" :offset="index > 0 ? 1 : 0">
           <el-card :body-style="{ padding: '0px' }">
-            <!-- <el-image class="image" :src="store[o - 1].img"> </el-image> -->
-            <img
+            <el-image class="sellerImg" :src="sellers[seller - 1].sellerImg"> </el-image>
+            <!-- <img
               src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
               class="image"
-            />
+            /> -->
             <div style="padding: 14px">
-              <h3>商家</h3>
-              <span
-                >Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny
-                summer</span
-              >
+              <!-- <h3>商家</h3> -->
+              <h3>{{ sellers[seller - 1].sellerName }}</h3>
+              <span>
+                <!-- Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny summer -->
+                {{ sellers[seller - 1].sellerDescription }}
+              </span>
               <div class="bottom">
                 <router-link to="/good">
                   <el-button text class="button">了解更多</el-button>
@@ -89,18 +79,20 @@ const adUrl = [
       <h2>貓奴看這邊</h2>
       <br />
       <el-row>
-        <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
+        <el-col v-for="(seller, index) in 3" :key="seller" :span="7" :offset="index > 0 ? 1 : 0">
           <el-card :body-style="{ padding: '0px' }">
-            <img
-              src="https://media.istockphoto.com/id/1270634313/photo/cute-fluffy-cat-lies-on-the-grass-in-the-garden-and-catches-the-sun-highlights.jpg?s=1024x1024&w=is&k=20&c=vRaI9nPHgGskq0ZFTmWu5Sys2hPCk6z19ZzXcxEPqJ4="
+            <el-image class="sellerImg" :src="sellers[seller - 1].sellerImg"> </el-image>
+            <!-- <img
+              src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
               class="image"
-            />
+            /> -->
             <div style="padding: 14px">
-              <h3>給貓貓的服務</h3>
-              <span
-                >Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny
-                summer</span
-              >
+              <!-- <h3>商家</h3> -->
+              <h3>{{ sellers[seller - 1].serviceName }}</h3>
+              <span>
+                <!-- Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny summer -->
+                {{ sellers[seller - 1].serviceDescription }}
+              </span>
               <div class="bottom">
                 <router-link to="/good">
                   <el-button text class="button">了解更多</el-button>
@@ -114,18 +106,20 @@ const adUrl = [
       <h2>狗狗喜歡這個</h2>
       <br />
       <el-row>
-        <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
+        <el-col v-for="(seller, index) in 3" :key="seller" :span="7" :offset="index > 0 ? 1 : 0">
           <el-card :body-style="{ padding: '0px' }">
-            <img
-              src="https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8="
+            <el-image class="sellerImg" :src="sellers[seller - 1].sellerImg"> </el-image>
+            <!-- <img
+              src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
               class="image"
-            />
+            /> -->
             <div style="padding: 14px">
-              <h3>給狗狗的服務</h3>
-              <span
-                >Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny
-                summer</span
-              >
+              <!-- <h3>商家</h3> -->
+              <h3>{{ sellers[seller - 1].serviceName }}</h3>
+              <span>
+                <!-- Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny summer -->
+                {{ sellers[seller - 1].serviceDescription }}
+              </span>
               <div class="bottom">
                 <router-link to="/good">
                   <el-button text class="button">了解更多</el-button>
@@ -138,6 +132,49 @@ const adUrl = [
     </el-main>
   </el-container>
 </template>
+
+<script setup>
+import { ref } from 'vue'
+const adUrl = [
+  'https://www.shutterstock.com/shutterstock/photos/1034939470/display_1500/stock-photo-row-of-the-tops-of-heads-of-cats-and-dogs-with-paws-up-peeking-over-a-blank-white-sign-sized-for-1034939470.jpg',
+  'https://images.pexels.com/photos/1254140/pexels-photo-1254140.jpeg',
+  'https://fuss10.elemecdn.com/0/6f/e35ff375812e6b0020b6b4e8f9583jpeg.jpeg',
+  'https://fuss10.elemecdn.com/9/bb/e27858e973f5d7d3904835f46abbdjpeg.jpeg'
+]
+const sellers = [
+  {
+    sellerImg:
+      'https://www.shutterstock.com/shutterstock/photos/1034939470/display_1500/stock-photo-row-of-the-tops-of-heads-of-cats-and-dogs-with-paws-up-peeking-over-a-blank-white-sign-sized-for-1034939470.jpg',
+    sellerName: '商家一',
+    sellerDescription:
+      '描述商家一的地方，Cute fluffy friends a cat and a dog catch a flying butterfly in a sunnysummer',
+    serviceName: '服務名稱一',
+    serviceDescription: '服務描述一'
+  },
+  {
+    // Second seller's data here
+    sellerImg:
+      'https://images.pexels.com/photos/2248516/pexels-photo-2248516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    sellerName: '商家2',
+    sellerDescription:
+      '描述商家二的地方，Cute fluffy friends a cat and a dog catch a flying butterfly in a sunnysummer',
+    serviceName: '服務名稱2',
+    serviceDescription: '服務描述2'
+  },
+  {
+    // Third seller's data here
+    sellerImg:
+      'https://images.pexels.com/photos/3196887/pexels-photo-3196887.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    sellerName: '商家3',
+    sellerDescription:
+      '描述商家3的地方，Cute fluffy friends a cat and a dog catch a flying butterfly in a sunnysummer',
+    serviceName: '服務名稱3',
+    serviceDescription: '服務描述3'
+  }
+]
+
+// import { Search } from '@element-plus/icons-vue'
+</script>
 
 <style scoped lang="scss">
 $themeColor: #f7ddba;
@@ -162,6 +199,10 @@ $themeColor: #f7ddba;
     width: 100%;
     height: 100%;
   }
+}
+.sellerImg {
+  width: 100%;
+  height: 250px;
 }
 
 // .el-carousel__item:nth-child(2n + 1) {

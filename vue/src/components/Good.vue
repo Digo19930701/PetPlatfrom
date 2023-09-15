@@ -144,7 +144,7 @@ const price = '5,000'
       width: 95%;
       background-color: bisque;
     }
-    .store_c {
+    .storeC {
       // padding-left: 50%;
       width: 95%;
       background-color: bisque;
