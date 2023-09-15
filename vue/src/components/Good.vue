@@ -1,23 +1,23 @@
 <template>
   <div
-    class="good_radius"
-    v-for="(good_radius, i) in radiusGroup"
+    class="goodRadius"
+    v-for="(goodRadius, i) in radiusGroup"
     :key="i"
     :span="6"
     :xs="{ span: 12 }"
     :style="{
-      borderRadius: good_radius.type ? `var(--el-border-radius-${good_radius.type})` : ''
+      borderRadius: goodRadius.type ? `var(--el-border-radius-${goodRadius.type})` : ''
     }"
   >
-    <div class="good_pic">
+    <div class="goodPic">
       <img
         src="https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8="
-        class="pic_img"
+        class="picImg"
       />
     </div>
     <div class="store">
       <el-row style="width: 100%">
-        <el-text class="cl_good_title" v-model="good_title" :value="good_title">{{
+        <el-text class="clGoodTitle" v-model="good_title" :value="good_title">{{
           good_title
         }}</el-text>
         <button>我的最愛 <font-awesome-icon icon="fa-solid fa-heart" /></button>
@@ -26,8 +26,8 @@
 
       <!-- <el-divider /> -->
       <!-- </h2> -->
-      <el-space class="store_space" direction="vertical">
-        <el-card class="store_inf">
+      <el-space class="storeSpace" direction="vertical">
+        <el-card class="storeInf">
           <h2>商家簡介</h2>
           <span class="inf">
             寵曖貓狗生活館位於民族路上，鄰近日新影城。店內同時有 4-5
@@ -35,7 +35,7 @@
           </span>
         </el-card>
         <!-- <el-divider style="width: 95%" /> -->
-        <el-card class="store_intro">
+        <el-card class="storeIntro">
           <h2>服務介紹</h2>
           <span class="int">
             寵曖貓狗生活館位於民族路上，鄰近日新影城。店內同時有 4-5
@@ -46,7 +46,7 @@
           <h2>選擇方案</h2>
         </el-card> -->
       </el-space>
-      <el-card class="store_c">
+      <el-card class="storeC">
         <h2>選擇方案</h2>
         <span class="ccc">
           <div>
@@ -76,8 +76,8 @@
       </el-card>
       <el-divider style="width: 95%" />
       <div class="buttons">
-        <el-button class="cart_btn"> 加入購物車 </el-button>
-        <el-button class="buy_btn"> 立即下單 </el-button>
+        <el-button class="cartBtn"> 加入購物車 </el-button>
+        <el-button class="buyBtn"> 立即下單 </el-button>
       </div>
     </div>
   </div>
@@ -107,7 +107,7 @@ const price = '5,000'
 </script>
 <style scoped lang="scss">
 //
-.good_radius {
+.goodRadius {
   height: auto;
   width: 70%;
   border: 3px solid var(--el-border-color);
@@ -115,15 +115,15 @@ const price = '5,000'
   margin-top: 20px;
   // align-items: center;
   margin: 25px auto; // div至中
-  .good_pic {
+  .goodPic {
     width: 90%;
     margin: 5px auto;
-    .pic_img {
+    .picImg {
       width: 100%;
       margin: 5px auto;
     }
   }
-  .cl_good_title {
+  .clGoodTitle {
     font-size: x-large;
     color: rgb(148, 96, 0);
   }
@@ -131,16 +131,16 @@ const price = '5,000'
     padding-left: 5%;
     padding-bottom: 5px;
 
-    .store_space {
+    .storeSpace {
       width: 95%;
     }
 
-    .store_inf {
+    .storeInf {
       // width: 95%;
       width: 95%;
       background-color: bisque;
     }
-    .store_intro {
+    .storeIntro {
       width: 95%;
       background-color: bisque;
     }
@@ -152,10 +152,10 @@ const price = '5,000'
     .buttons {
       width: 95%;
       display: flex;
-      .cart_btn {
+      .cartBtn {
         width: 50%;
       }
-      .buy_btn {
+      .buyBtn {
         width: 50%;
       }
     }

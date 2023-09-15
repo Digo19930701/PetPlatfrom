@@ -1,35 +1,35 @@
 <template>
   <el-container>
     <el-header class="header">
-      <el-text class="h_text">(推撥內容/畫面) </el-text>
+      <el-text class="hText">(推撥內容/畫面) </el-text>
     </el-header>
     <el-main>
       <el-row>
         <el-col>
           <el-row>
             <h3>現有服務</h3>
-            <div class="radius_pre">
+            <div class="radiusPre">
               <el-text class="text">預覽模式</el-text>
             </div>
           </el-row>
           <el-row>
-            <h3>{{ good_title }}</h3>
-            <el-button round class="delete_btn"> 刪除 </el-button>
-            <el-button round class="edit_btn"> 編輯 </el-button>
+            <h3>{{ goodTitle }}</h3>
+            <el-button round class="deleteBtn"> 刪除 </el-button>
+            <el-button round class="editBtn"> 編輯 </el-button>
           </el-row></el-col
         >
       </el-row>
       <div
-        class="good_radius"
-        v-for="(good_radius, i) in radiusGroup"
+        class="goodRadius"
+        v-for="(goodRadius, i) in radiusGroup"
         :key="i"
         :span="6"
         :xs="{ span: 12 }"
         :style="{
-          borderRadius: good_radius.type ? `var(--el-border-radius-${good_radius.type})` : ''
+          borderRadius: goodRadius.type ? `var(--el-border-radius-${goodRadius.type})` : ''
         }"
       >
-        <div class="good_pic">
+        <div class="goodPic">
           <img
             src="https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8="
             class="pic_img"
@@ -37,8 +37,8 @@
         </div>
         <div class="store">
           <el-row style="width: 100%">
-            <el-text class="cl_good_title" v-model="good_title" :value="good_title">{{
-              good_title
+            <el-text class="cl_goodTitle" v-model="goodTitle" :value="goodTitle">{{
+              goodTitle
             }}</el-text>
 
             <el-button plain @click="open">
@@ -70,7 +70,7 @@
             <span class="ccc">
               <div>
                 <h2>日期</h2>
-                <el-date-picker v-model="val_day" type="date" placeholder="Pick a day" />
+                <el-date-picker v-model="valDay" type="date" placeholder="Pick a day" />
                 <el-divider />
                 <h2>時間</h2>
                 <el-time-select
@@ -95,8 +95,8 @@
           </el-card>
           <el-divider style="width: 95%" />
           <div class="buttons">
-            <el-button plain @click="open" class="cart_btn"> 加入購物車 </el-button>
-            <el-button plain @click="open" class="buy_btn"> 立即下單 </el-button>
+            <el-button plain @click="open" class="cartBtn"> 加入購物車 </el-button>
+            <el-button plain @click="open" class="buyBtn"> 立即下單 </el-button>
           </div>
         </div>
       </div>
@@ -109,14 +109,14 @@
   background-color: rgb(199, 197, 197);
   width: 100%;
   display: inline-flex;
-  .h_text {
+  .hText {
     position: absolute;
     left: 55%;
   }
 }
 .el-main {
   background-color: rgb(248, 244, 218);
-  .radius_pre {
+  .radiusPre {
     border-radius: 25px;
     background-color: #ffbc88;
     width: 80px;
@@ -126,7 +126,7 @@
     }
   }
 }
-.good_radius {
+.goodRadius {
   height: auto;
   width: 70%;
   border: 3px solid var(--el-border-color);
@@ -134,7 +134,7 @@
   margin-top: 20px;
   // align-items: center;
   margin: 25px auto; // div至中
-  .good_pic {
+  .goodPic {
     width: 90%;
     margin: 5px auto;
     .pic_img {
@@ -142,7 +142,7 @@
       margin: 5px auto;
     }
   }
-  .cl_good_title {
+  .cl_goodTitle {
     font-size: x-large;
     color: rgb(148, 96, 0);
   }
@@ -171,10 +171,10 @@
     .buttons {
       width: 95%;
       display: flex;
-      .cart_btn {
+      .cartBtn {
         width: 50%;
       }
-      .buy_btn {
+      .buyBtn {
         width: 50%;
       }
     }
@@ -195,8 +195,8 @@ const radiusGroup = ref([
     type: 'base'
   }
 ])
-const good_title = '小貓小狗洗香香'
-const val_day = ref('')
+const goodTitle = '小貓小狗洗香香'
+const valDay = ref('')
 const value_time = ref('')
 const price = '5,000'
 
