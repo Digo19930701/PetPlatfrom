@@ -1,6 +1,5 @@
 package com.example.ECPayDemo.service;
 
-import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.UUID;
@@ -14,20 +13,25 @@ import ecpay.payment.integration.domain.AioCheckOutALL;
 public class OrderService {
 
 	public String ecpayCheckout() {
+		
 		String uuId = UUID.randomUUID().toString().replaceAll("-", "").substring(0, 20);
 		
-		DateFormat dateFormat = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
-        String date = dateFormat.format(new Date());
-        
+		Date currentTime = new Date();
+        SimpleDateFormat sdf = new SimpleDateFormat("yyyy/MM/dd HH:mm:ss");
+        String formattedTime = sdf.format(currentTime);
+
+		
 		AllInOne all = new AllInOne("");
+		
 		AioCheckOutALL obj = new AioCheckOutALL();
 		obj.setMerchantTradeNo(uuId);
-		obj.setMerchantTradeDate(date);
-		obj.setTotalAmount("1314");
-		obj.setTradeDesc("test Description");
-		obj.setItemName("TestItem");
+		obj.setMerchantTradeDate(formattedTime);
+		obj.setTotalAmount("10");
+		obj.setTradeDesc("5teamtest Description");
+		obj.setItemName("5teamTestItem");
 		obj.setReturnURL("http://211.23.128.214:5000");
 		obj.setNeedExtraPaidInfo("N");
+		obj.setClientBackURL("http:/localhost:8080/views/cart.html");
 		String form = all.aioCheckOut(obj, null);
 		
 		return form;

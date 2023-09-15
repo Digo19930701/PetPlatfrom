@@ -74,10 +74,7 @@
   
   const value1 = ref(true)
   const value2 = ref(true)
-  const value3 = ref(true)
-  const value4 = ref(true)
-  const value5 = ref(true)
-  const value6 = ref(true)
+
   </script>
   
   
@@ -93,18 +90,7 @@
     vertical-align: middle;
   }
   
-  .el-button--text {
-    margin-right: 15px;
-  }
-  
-  .el-select {
-    width: 300px;
-  }
-  
-  .el-input {
-    width: 300px;
-  }
-  
+
   .dialog-footer button:first-child {
     margin-right: 10px;
   }

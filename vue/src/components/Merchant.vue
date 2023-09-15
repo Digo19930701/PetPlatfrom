@@ -32,46 +32,51 @@
         <div class="item_header checkout">
 
             <div class="checkout">總計</div>
-            <el-button class="checkout" @click="cview(2)" >結帳</el-button>
+            <el-button class="checkout" @click="cview(2)">結帳</el-button>
         </div>
     </div>
     <div v-if="view === 2">
         <div class="item_header fixed">
             <el-button @click="cview(1)">回購物車</el-button>
         </div>
-        <checkout />
+        <Checkout />
         <div class="item_header checkout">
             <el-button class="checkout" @click="sendPostRequest">付款</el-button>
         </div>
-        
+
     </div>
-    <div id="ECpayt"></div>
-    
+    <!-- <div v-if="view === 3">
+        <ECpayt/>
+    </div> -->
 </template>
 
 
 <script setup>
-import checkout from './checkout.vue'
+// import ECpayt from './ECpayt.vue';
+import Checkout from './checkout.vue';
 import { ref } from 'vue'
 import axios from 'axios';
-import { useRouter } from 'vue-router'; // 导入Vue Router
-const responseHTML = ref('');
-const postData = ref({
-    // 在这里添加你要发送的数据字段
-});
+// const showPayment = ref(false);
+// import { useRouter } from 'vue-router'; // 导入Vue Router
+// const responseHTML = ref('');
+// const postData = ref({
+//     // 在这里添加你要发送的数据字段
+// });
 
-const router = useRouter();
+// const router = useRouter();
 
 const sendPostRequest = async () => {
+    // showPayment.value = true;
+    // cview(3)
     axios.post('http://localhost:8080/ecpayCheckout', {})
-  .then(response => {
-    responseHTML.value = response.data
-    document.getElementById('ECpayt').innerHTML = responseHTML.value;
-    console.log(responseHTML.value)
-  })
-  .catch(error => {
-    console.log(error)
-  })
+        .then(response => {
+            responseHTML.value = response.data
+            document.getElementById('ECpayt').innerHTML = responseHTML.value;
+            console.log(responseHTML.value)
+        })
+        .catch(error => {
+            console.log(error)
+        })
 
 };
 
