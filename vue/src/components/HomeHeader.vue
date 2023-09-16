@@ -1,13 +1,13 @@
 <script setup>
 import { ref } from 'vue'
 // import { reactive, toRefs } from 'vue'
-import { Search } from '@element-plus/icons-vue'
+// import { Search } from '@element-plus/icons-vue'
 </script>
 
 <template>
   <header>
-    <router-link to="/"
-      ><section class="logo">
+    <router-link to="/">
+      <section class="logo">
         <a><img src="../images/logoicon.png" alt="Logo" /></a>
         <a><h1>4A2B</h1></a>
       </section>
@@ -31,7 +31,7 @@ import { Search } from '@element-plus/icons-vue'
                 &nbsp
                 <!-- </el-col> -->
                 <!-- <el-col :span="2"> -->
-                <a class="search_btn" href="/">
+                <a class="search_btn" href="/search">
                   <font-awesome-icon icon="fa-solid fa-magnifying-glass" />
                 </a>
                 <!-- </el-col> -->
@@ -43,7 +43,7 @@ import { Search } from '@element-plus/icons-vue'
           </div>
         </li>
         <li>
-          <a href="/"><font-awesome-icon icon="fa-solid fa-circle-user" /> 會員登入</a>
+          <a href="#"><font-awesome-icon icon="fa-solid fa-circle-user" /> 會員登入</a>
         </li>
         <li>
           <a href="#"><font-awesome-icon icon="fa-solid fa-cart-shopping" /> 購物車</a>
