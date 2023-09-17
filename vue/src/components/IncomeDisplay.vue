@@ -49,7 +49,7 @@ h2 {
 }
 
 .hw {
-  width: 55%;
+  width: 70%;
   height: 300px;
   min-width: 600px;
 }

@@ -114,7 +114,7 @@ const tableData = [
     remit: '2023/09/01',
     payMethod: '信用卡',
     payment: 'NT$350'
-  },
+  }
 ]
 </script>
 
@@ -149,7 +149,7 @@ h2 {
   font-size: large;
 }
 .hw {
-  width: 55%;
+  width: 70%;
   height: 100%;
   min-width: 600px;
 }

@@ -154,7 +154,6 @@
       </el-row>
       <span class="dialog-footer">
         <div class="left-bn">
-          ``
           <el-button :disabled="enable">刪除</el-button>
         </div>
         <el-button @click="BankAccoutDetail = false">關閉</el-button>
@@ -231,6 +230,7 @@ h2 {
   text-align: center;
   padding-top: 40px;
 }
+
 .statement {
   width: 80%;
   font-size: small;
