@@ -1,87 +1,103 @@
+.el-popper.is-customized {
+  width: 10%;
+  background: #888888;
+  color: #fff;
+}
+.el-popper.is-customized .el-popper__arrow::before {
+  background: #888888;
+  left: 10px;
+}
+.base {
+  background: #fff;
+  padding: 15px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px lightgray;
+  border-color: #e3e1dc;
+}
 /*服務類別*/
 /* 服務:美容 */
-.beauty{
-    background-color: #FFBFD6;
+.beauty {
+  background-color: #ffbfd6;
 }
 /* 服務:保母/訓練 */
-.nannyTraining{
-    background-color:#BFF3FF
+.nannyTraining {
+  background-color: #bff3ff;
 }
 /* 服務:溝通 */
-.whisperer{
-    background-color:#BFF3B3
+.whisperer {
+  background-color: #bff3b3;
 }
 /* 服務:攝影 */
-.graphy{
-    background-color:#E3BFFF
+.graphy {
+  background-color: #e3bfff;
 }
 
 .tag-cloud {
-    display: inline-block;
-    color: #666666;
-    width: 80px;
-    border-radius: 25px;
-    margin-top: 2px;
-    text-align: center;
+  display: inline-block;
+  color: #666666;
+  width: 80px;
+  border-radius: 25px;
+  margin-top: 2px;
+  text-align: center;
 }
 
 /**/
-.title{
-    min-height: 40px;
+.title {
+  min-height: 40px;
 }
-.title h2{
-    font-weight: bold;
-    color: #666666;
+.title h2 {
+  font-weight: bold;
+  color: #666666;
 }
 
-.subtitle{
-    background-color: white;
-    border: 3px solid #F8D479;
-    margin: 2%;
-    margin-top: 5px;
+.subtitle {
+  background-color: white;
+  border: 3px solid #f8d479;
+  margin: 2%;
+  margin-top: 5px;
 }
 
 .board {
-    background-color: white;
-    padding: 4px;
-    border-radius: 10px; 
-    box-shadow: 1px 1px 5px lightgray;
-    /* min-width: 640px; */
+  background-color: white;
+  padding: 4px;
+  border-radius: 10px;
+  box-shadow: 1px 1px 5px lightgray;
+  /* min-width: 640px; */
 }
 
-.orderEnd{
-    text-align: end;
+.orderEnd {
+  text-align: end;
 }
 
-.button{
-    width: 70px;
-    transition-duration: 0.4s;
-    background-color: #D9D9D9;
-    border: 1px solid #666666 ;
+.button {
+  width: 70px;
+  transition-duration: 0.4s;
+  background-color: #d9d9d9;
+  border: 1px solid #666666;
 }
 
-.button:hover { 
-    background-color: #F8D479;
+.button:hover {
+  background-color: #f8d479;
 }
 
-.el-row{
-    margin: 0px 0px 5px 0px;
+.el-row {
+  margin: 0px 0px 5px 0px;
 }
 
-:root{
-    --el-color-primary: #CD7B00;
-    --el-color-primary-light-3: #eebe77;
-    --el-color-primary-light-5: #f3d19e;
-    --el-color-primary-light-7: #f8e3c5;
-    --el-color-primary-light-8: #faecd8;
-    --el-color-primary-light-9: #fdf6ec;
-    --el-color-primary-dark-2: #b88230;
+:root {
+  --el-color-primary: #cd7b00;
+  --el-color-primary-light-3: #eebe77;
+  --el-color-primary-light-5: #f3d19e;
+  --el-color-primary-light-7: #f8e3c5;
+  --el-color-primary-light-8: #faecd8;
+  --el-color-primary-light-9: #fdf6ec;
+  --el-color-primary-dark-2: #b88230;
 
-    --el-color-warning: #409eff;
-    --el-color-warning-light-3: #79bbff;
-    --el-color-warning-light-5: #a0cfff;
-    --el-color-warning-light-7: #c6e2ff;
-    --el-color-warning-light-8: #d9ecff;
-    --el-color-warning-light-9: #ecf5ff;
-    --el-color-warning-dark-2: #337ecc;
+  --el-color-warning: #409eff;
+  --el-color-warning-light-3: #79bbff;
+  --el-color-warning-light-5: #a0cfff;
+  --el-color-warning-light-7: #c6e2ff;
+  --el-color-warning-light-8: #d9ecff;
+  --el-color-warning-light-9: #ecf5ff;
+  --el-color-warning-dark-2: #337ecc;
 }

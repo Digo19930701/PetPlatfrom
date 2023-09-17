@@ -1,7 +1,6 @@
 <template>
   <!-- <div style="min-height: calc(100vh - 120px);background-color: #f8f6e9;width: 20%;"> -->
-  <div style="min-height: calc(100vh - 120px);
-              background-color: #f8f6e9">
+  <div style="height: 100%; min-height: calc(100vh - 120px); background-color: #f8f6e9">
     <el-row>
       <el-col>
         <el-menu
@@ -19,10 +18,14 @@
               </el-icon>
               <span>商家設定</span>
             </template>
-              <el-menu-item index="1-1">基本資料</el-menu-item>
-              <el-menu-item index="1-2">通知設定</el-menu-item>
+            <el-menu-item index="1-1">
+              <router-link to="/sellerSetting" class="router">基本資料</router-link>
+            </el-menu-item>
+            <el-menu-item index="1-2">
+              <router-link to="/notifySetting" class="router">通知設定</router-link>
+            </el-menu-item>
           </el-sub-menu>
-          
+
           <el-sub-menu index="2">
             <template #title>
               <el-icon>
@@ -30,18 +33,28 @@
               </el-icon>
               <span>服務管理</span>
             </template>
-              <el-menu-item index="2-1"><router-link to="/servicesExist">現有服務</router-link></el-menu-item>
-              <el-menu-item index="2-2"><router-link to="/serviceEdit">新增/編輯服務</router-link></el-menu-item>
+            <el-menu-item index="2-1">
+              <router-link to="/servicesExist" class="router">現有服務</router-link>
+            </el-menu-item>
+            <el-menu-item index="2-2">
+              <router-link to="/serviceEdit" class="router">新增/編輯服務</router-link>
+            </el-menu-item>
           </el-sub-menu>
-          
+
           <el-sub-menu index="3">
             <template #title>
               <el-icon><DocumentCopy /></el-icon>
               <span>訂單管理</span>
             </template>
-              <el-menu-item index="3-1"><router-link to="/sellerOrder1">待辦訂單</router-link></el-menu-item>
-              <el-menu-item index="3-2"><router-link to="/sellerOrder2">取消訂單</router-link></el-menu-item>
-              <el-menu-item index="3-3"><router-link to="/sellerOrder3">過去訂單</router-link></el-menu-item>
+            <el-menu-item index="3-1">
+              <router-link to="/sellerOrder1" class="router">待辦訂單</router-link>
+            </el-menu-item>
+            <el-menu-item index="3-2">
+              <router-link to="/sellerOrder2" class="router">取消訂單</router-link>
+            </el-menu-item>
+            <el-menu-item index="3-3">
+              <router-link to="/sellerOrder3" class="router">過去訂單</router-link>
+            </el-menu-item>
           </el-sub-menu>
 
           <el-sub-menu index="4">
@@ -49,8 +62,12 @@
               <el-icon><Histogram /></el-icon>
               <span>數據中心</span>
             </template>
-              <el-menu-item index="4-1"><router-link to="/sellerChart">數據管理</router-link></el-menu-item>
-              <el-menu-item index="4-1"><router-link to="/sellerRate">評價管理</router-link></el-menu-item>
+            <el-menu-item index="4-1">
+              <router-link to="/sellerChart" class="router">數據管理</router-link>
+            </el-menu-item>
+            <el-menu-item index="4-1">
+              <router-link to="/sellerRate" class="router">評價管理</router-link>
+            </el-menu-item>
           </el-sub-menu>
 
           <el-sub-menu index="5">
@@ -58,18 +75,24 @@
               <el-icon><CreditCard /></el-icon>
               <span>帳務管理</span>
             </template>
-              <el-menu-item index="5-1">銀行帳號</el-menu-item>
-              <el-menu-item index="5-1">我的進帳</el-menu-item>
+            <el-menu-item index="5-1">
+              <router-link to="/bankAccount" class="router">銀行帳號</router-link>
+            </el-menu-item>
+            <el-menu-item index="5-1">
+              <router-link to="/accountingPage" class="router">我的進帳</router-link>
+            </el-menu-item>
           </el-sub-menu>
 
           <el-menu-item index="6">
-            <el-icon><Bell /></el-icon>
-            <span>通知中心</span>
+            <router-link to="/notifyPage" class="router">
+              <el-icon><Bell /></el-icon>
+              <span>通知中心</span>
+            </router-link>
           </el-menu-item>
         </el-menu>
       </el-col>
     </el-row>
-</div>
+  </div>
 </template>
 
 <script lang="ts" setup>
@@ -95,8 +118,15 @@ const loginForm = reactive({
 })
 const login = () => {}
 
-import { Document, Menu as DocumentCopy, Location, Histogram , Bell, CreditCard } from '@element-plus/icons-vue'
-import router from '../router';
+import {
+  Document,
+  Menu as DocumentCopy,
+  Location,
+  Histogram,
+  Bell,
+  CreditCard
+} from '@element-plus/icons-vue'
+import router from '../router'
 const handleOpen = (key: string, keyPath: string[]) => {
   console.log(key, keyPath)
   // console.log(typeof(key));
@@ -149,7 +179,12 @@ const handleClose = (key: string, keyPath: string[]) => {
 .dialog-footer button:first-child {
   margin-right: 10px;
 }
-
-
-
+.router {
+  color: black;
+  font-weight: 600;
+}
+.router:hover {
+  color: var(--el-color-primary);
+  background: transparent;
+}
 </style>

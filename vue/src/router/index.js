@@ -43,6 +43,31 @@ const router = createRouter({
       path: '/sellerRate',
       name: 'sellerRate',
       component: () => import('../views/SellerRateView.vue')
+    },
+    {
+      path: '/sellerSetting',
+      name: 'sellerSetting',
+      component: () => import('../views/SellerSettingView.vue')
+    },
+    {
+      path: '/notifySetting',
+      name: 'notifySetting',
+      component: () => import('../views/NotifySettingView.vue')
+    },
+    {
+      path: '/notifyPage',
+      name: 'notifyPage',
+      component: () => import('../views/NotifyPageView.vue')
+    },
+    {
+      path: '/accountingPage',
+      name: 'accountingPage',
+      component: () => import('../views/AccountingPageView.vue')
+    },
+    {
+      path: '/bankAccount',
+      name: 'bankAccount',
+      component: () => import('../views/BankAccountView.vue')
     }
   ]
 })

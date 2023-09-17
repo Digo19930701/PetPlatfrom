@@ -1,0 +1,85 @@
+.bankcard-area {
+  justify-content: center;
+  padding: 10px;
+}
+.bankcard {
+  width: 300px;
+  height: 150px;
+  border-radius: 20px;
+  border: 1px solid #888;
+  background: rgba(217, 217, 217, 0.35);
+  box-shadow: 1px 1px 5px lightgray;
+  cursor: pointer;
+}
+.bankcard:hover {
+  transform: translateY(-1px);
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.add-bankcard:hover {
+  border: 2px dashed #cd7b00;
+  color: #cd7b00;
+  box-shadow: 0px 2px 5px 0px rgba(0, 0, 0, 0.5);
+}
+.add-bankcard {
+  width: 300px;
+  height: 150px;
+  border-radius: 20px;
+  border: 2px dashed #888;
+  background: #fff;
+  padding: 10px;
+  cursor: pointer;
+  color: #888;
+}
+.card-head {
+  border-radius: 20px 20px 0px 0px;
+  background: #f8d479;
+  position: relative;
+  padding: 10px;
+  height: 50px;
+}
+.bankname {
+  color: #888;
+  font-size: large;
+  font-weight: 600;
+  padding-left: 25px;
+}
+.card-body {
+  width: 300;
+  height: 100px;
+}
+.bank-num {
+  height: 50%;
+  color: black;
+  font-size: x-large;
+  font-weight: 600;
+  padding-top: 10px;
+  padding-left: 50px;
+}
+.account-area {
+  height: 50%;
+  display: flex;
+  padding-left: 50px;
+  padding-top: 10px;
+}
+.account-name {
+  width: 150px;
+  color: #666;
+  font-size: large;
+  font-weight: 500;
+  margin-left: 20px;
+}
+.default-pos {
+  text-align: right;
+  width: 120px;
+  padding: 5px;
+  padding-left: 20px;
+}
+.default-mark {
+  width: 55px;
+  border-radius: 20px;
+  border: 1px solid #888;
+  background: #fff;
+  text-align: center;
+  color: #5f5c5c;
+  font-size: smaller;
+}
