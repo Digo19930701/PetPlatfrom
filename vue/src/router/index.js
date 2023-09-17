@@ -14,11 +14,11 @@ const router = createRouter({
       name: 'servicesExist',
       component: () => import('../views/ServicesExistView.vue')
     },
-    // {
-    //   path: '/serviceEdit',
-    //   name: 'serviceEdit',
-    //   component: () => import('../views/ServiceEditView.vue')
-    // },
+    {
+      path: '/serviceEdit',
+      name: 'serviceEdit',
+      component: () => import('../views/ServiceEditView.vue')
+    },
     {
       path: '/sellerOrder1',
       name: 'sellerOrder1',
