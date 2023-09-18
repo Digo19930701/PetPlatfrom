@@ -1,5 +1,6 @@
 <script setup>
 import { ref } from 'vue'
+import Login from '../views/Login.vue'
 // import { reactive, toRefs } from 'vue'
 // import { Search } from '@element-plus/icons-vue'
 </script>
@@ -43,7 +44,8 @@ import { ref } from 'vue'
           </div>
         </li>
         <li>
-          <a href="#"><font-awesome-icon icon="fa-solid fa-circle-user" /> 會員登入</a>
+          <a href="Login"><font-awesome-icon icon="fa-solid fa-circle-user" /> 會員登入</a>
+          <a href="/Member"><font-awesome-icon icon="fa-solid fa-circle-user" /> 會員資料</a>
         </li>
         <li>
           <a href="#"><font-awesome-icon icon="fa-solid fa-cart-shopping" /> 購物車</a>

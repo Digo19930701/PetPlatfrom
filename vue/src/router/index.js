@@ -31,6 +31,54 @@ const router = createRouter({
       path: '/good',
       name: 'good',
       component: () => import('../views/MyGood.vue')
+    },
+    // 會員相關
+    {
+      path: '/Member',
+      name: 'Member',
+      component: () => import('../views/Member.vue'),
+      children: [
+        {
+          path: 'settingPage',
+          component:() => import('../views/settingPage.vue')
+        },
+        {
+          path: 'creditcard',
+          component:() => import('../views/creditcard.vue')
+        },
+        {
+          path: 'password',
+          component:() => import('../views/password.vue')
+        },
+        {
+          path: 'petinformation',
+          component:() => import('../views/petinformation.vue')
+        },
+        {
+          path: 'order',
+          component:() => import('../views/order.vue')
+        },
+        {
+          path: 'orderhistory',
+          component:() => import('../views/orderhistory.vue')
+        },
+      ]
+    },
+    {
+      path: '/Login',
+      name: 'Login',
+      component: () => import('../views/Login.vue')
+    },
+    
+    {
+      path: '/order',
+      name: 'order',
+      component: () => import('../views/order.vue')
+    },
+    {
+      path: '/orderhistory',
+      name: 'orderhistory',
+      component: () => import('../views/orderhistory.vue')
     }
   ]
 })
