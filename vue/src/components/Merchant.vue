@@ -45,38 +45,29 @@
         </div>
 
     </div>
-    <!-- <div v-if="view === 3">
-        <ECpayt/>
-    </div> -->
+    
 </template>
 
 
 <script setup>
-// import ECpayt from './ECpayt.vue';
-import Checkout from './checkout.vue';
+import Checkout from './Checkout.vue';
 import { ref } from 'vue'
-import axios from 'axios';
-// const showPayment = ref(false);
-// import { useRouter } from 'vue-router'; // 导入Vue Router
-// const responseHTML = ref('');
+
 // const postData = ref({
 //     // 在这里添加你要发送的数据字段
 // });
 
-// const router = useRouter();
-
 const sendPostRequest = async () => {
-    // showPayment.value = true;
-    // cview(3)
-    axios.post('http://localhost:8080/ecpayCheckout', {})
-        .then(response => {
-            responseHTML.value = response.data
-            document.getElementById('ECpayt').innerHTML = responseHTML.value;
-            console.log(responseHTML.value)
-        })
-        .catch(error => {
-            console.log(error)
-        })
+    window.location.href = 'http://localhost:8080/ecpayCheckout';
+    // axios.post('http://localhost:8080/ecpayCheckout', {})
+    //     .then(response => {
+    //         responseHTML.value = response.data
+    //         document.getElementById('ECpayt').innerHTML = responseHTML.value;
+    //         console.log(responseHTML.value)
+    //     })
+    //     .catch(error => {
+    //         console.log(error)
+    //     })
 
 };
 

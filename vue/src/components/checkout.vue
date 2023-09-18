@@ -26,7 +26,6 @@
                 <el-radio-button label="到場現金" />
                 <el-radio-button label="信用卡/金融卡" />
                 <el-radio-button label="銀行轉帳" />
-                <el-radio-button label="Apple Pay" />
             </el-radio-group>
         </el-form-item>
         <el-form-item label="優惠代碼">

@@ -26,12 +26,12 @@ public class OrderService {
 		AioCheckOutALL obj = new AioCheckOutALL();
 		obj.setMerchantTradeNo(uuId);
 		obj.setMerchantTradeDate(formattedTime);
-		obj.setTotalAmount("10");
-		obj.setTradeDesc("5teamtest Description");
-		obj.setItemName("5teamTestItem");
+		obj.setTotalAmount("1000");
+		obj.setTradeDesc("舒舒服服");
+		obj.setItemName("美容");
 		obj.setReturnURL("http://211.23.128.214:5000");
 		obj.setNeedExtraPaidInfo("N");
-		obj.setClientBackURL("http:/localhost:8080/views/cart.html");
+		obj.setClientBackURL("http:/localhost:5173");
 		String form = all.aioCheckOut(obj, null);
 		
 		return form;
