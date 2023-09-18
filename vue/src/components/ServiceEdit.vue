@@ -14,41 +14,24 @@
       <!-- <el-button color="#F8D479"  >
         <span style="color: #666666;">上傳圖片</span><el-icon class="el-icon--right"><Upload /></el-icon>
       </el-button> -->
-      <el-upload action="#" list-type="picture-card" :auto-upload="false">
+      <el-upload
+        action=""
+        list-type="picture-card"
+        :on-preview="handlePictureCardPreview"
+        :on-remove="handleRemove"
+        :auto-upload="false"
+        :limit="5"
+        :on-exceed='exceedHandler'
+      >
         <el-icon><Plus /></el-icon>
-        <template #file="{ file }">
-          <div>
-            <img class="el-upload-list__item-thumbnail" :src="file.url" alt="" />
-            <span class="el-upload-list__item-actions">
-              <span
-                class="el-upload-list__item-preview"
-                @click="handlePictureCardPreview(file)"
-              >
-                <el-icon><zoom-in /></el-icon>
-              </span>
-              <span
-                v-if="!disabled"
-                class="el-upload-list__item-delete"
-                @click="handleDownload(file)"
-              >
-                <el-icon><Download /></el-icon>
-              </span>
-              <span
-                v-if="!disabled"
-                class="el-upload-list__item-delete"
-                @click="handleRemove(file)"
-              >
-                <el-icon><Delete /></el-icon>
-              </span>
-            </span>
-          </div>
-        </template>
       </el-upload>
 
-      <el-dialog v-model="dialogVisible">
-        <img w-full :src="dialogImageUrl" alt="Preview Image" />
+      <el-dialog v-model="dialogVisible" style="text-align: center;">
+        <img :src="dialogImageUrl" alt="Preview Image" class="imgwd" />
       </el-dialog>
-
+      <el-alert class="alertInf" type="info" show-icon :closable="false">
+      <p>第一張圖片預設為封面圖，其餘皆用於說明圖。(含封面圖，上傳數量上限5張)</p>
+      </el-alert>
     </el-form-item>
     
     <el-form-item label="服務名稱" prop="name">
@@ -191,27 +174,32 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
-import type { FormInstance, FormRules, UploadFile } from 'element-plus'
+import { ElMessage, type FormInstance, type FormRules,type UploadProps } from 'element-plus'
 // import { Upload } from '@element-plus/icons-vue'
-// 刪除、預覽大小、數量限制、封面尚未處理
-import { Delete, Download, Plus, ZoomIn } from '@element-plus/icons-vue'
+// 待處理：刪除✅、預覽大小✅、數量限制✅、封面
+import {Plus} from '@element-plus/icons-vue'
 
 const dialogImageUrl = ref('')
 const dialogVisible = ref(false)
-const disabled = ref(false)
 
-const handleRemove = (file: UploadFile) => {
-  console.log(file)
+function exceedHandler(){
+   ElMessage({
+      message: '最多只能上傳5張圖片！',
+      type: 'error',
+      offset: 100 // 偏離上面多少距離，有被其他元件擋住時可以調整顯示的位置
+    });
 }
 
-const handlePictureCardPreview = (file: UploadFile) => {
-  dialogImageUrl.value = file.url!
+const handleRemove: UploadProps['onRemove'] = (uploadFile, uploadFiles) => {
+  console.log(uploadFile, uploadFiles)
+}
+
+const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
+  dialogImageUrl.value = uploadFile.url!
   dialogVisible.value = true
+  console.log("onPreview")
 }
 
-const handleDownload = (file: UploadFile) => {
-  console.log(file)
-}
 
 interface RuleForm {
   name: string
@@ -398,4 +386,9 @@ const options = Array.from({ length: 10000 }).map((_, idx) => ({
 .alertInf{
   margin-top: 5px;
 }
+.imgwd{
+  max-width: 600px;
+  max-height: 800px;
+}
+
 </style>

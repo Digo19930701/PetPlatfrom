@@ -1,3 +1,4 @@
+
 <script setup>
 // import { RouterLink, RouterView } from 'vue-router'
 
@@ -15,8 +16,8 @@ import ElementPlus from 'element-plus'
       <header><HeadBar /></header>
       <el-container>
         <el-aside width="200px"><Merchant /></el-aside>
-        <el-container style="background-color: #F8F6E9;">
-          <el-main >
+        <el-container >
+          <el-main style="background-color: #F8F6E9;">
             <router-view></router-view>
             </el-main>
         </el-container>
