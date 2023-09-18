@@ -9,23 +9,20 @@
       <div class="base hw">
         <br />
         <el-form-item label="上傳頭像">
-          <!-- ⚠ 要處理上傳的問題 ⚠ -->
           <el-upload
-            class="avatar-uploader"
             action=""
-            :show-file-list="false"
-            :on-success="handleAvatarSuccess"
-            :before-upload="beforeAvatarUpload"
+            list-type="picture-card"
+            :on-preview="handlePictureCardPreview"
+            :on-remove="handleRemove"
+            :auto-upload="false"
+            :limit="1"
           >
-            <img v-if="imageUrl" :src="imageUrl" class="avatar" />
-            <el-icon v-else class="avatar-uploader-icon">
-              <Plus />
-            </el-icon>
-
-            <template #tip>
-              <div class="el-upload__tip">jpg files with a size less than 2MB.</div>
-            </template>
+            <el-icon><Plus /></el-icon>
           </el-upload>
+
+          <el-dialog v-model="dialogVisible" style="text-align: center;">
+            <img :src="dialogImageUrl" alt="Preview Image" class="imgwd" />
+          </el-dialog>
         </el-form-item>
 
         <el-form-item
@@ -104,9 +101,8 @@
 <style src="../assets/seller.css"></style>
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
-import { Plus } from '@element-plus/icons-vue'
-import { ElMessage } from 'element-plus'
 import type { UploadProps } from 'element-plus'
+import {  Plus } from '@element-plus/icons-vue'
 
 // test
 // do not use same name with ref
@@ -122,21 +118,17 @@ const form = reactive({
 const onSubmit = () => {
   console.log('submit!')
 }
-const imageUrl = ref('')
+const dialogImageUrl = ref('')
+const dialogVisible = ref(false)
 
-const handleAvatarSuccess: UploadProps['onSuccess'] = (response, uploadFile) => {
-  imageUrl.value = URL.createObjectURL(uploadFile.raw!)
+
+const handleRemove: UploadProps['onRemove'] = (uploadFile, uploadFiles) => {
+  console.log(uploadFile, uploadFiles)
 }
 
-const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
-  if (rawFile.type !== 'image/jpeg') {
-    ElMessage.error('Avatar picture must be JPG format!')
-    return false
-  } else if (rawFile.size / 1024 / 1024 > 2) {
-    ElMessage.error('Avatar picture size can not exceed 2MB!')
-    return false
-  }
-  return true
+const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
+  dialogImageUrl.value = uploadFile.url!
+  dialogVisible.value = true
 }
 </script>
 
@@ -149,30 +141,9 @@ const beforeAvatarUpload: UploadProps['beforeUpload'] = (rawFile) => {
 .el-input {
   width: 80%;
 }
-.avatar-uploader .avatar {
-  width: 100px;
-  height: 100px;
-  display: block;
-}
-.avatar-uploader .el-upload {
-  border: 1px dashed #666;
-  border-radius: 100px;
-  cursor: pointer;
-  position: relative;
-  overflow: hidden;
-  transition: var(--el-transition-duration-fast);
-}
-
-.avatar-uploader .el-upload:hover {
-  border-color: var(--el-color-primary);
-}
-
-.el-icon.avatar-uploader-icon {
-  font-size: 30px;
-  color: #8c939d;
-  width: 150px;
-  height: 150px;
-  text-align: center;
+.imgwd{
+  max-width: 600px;
+  max-height: 800px;
 }
 :root {
   .--el-input-width {

@@ -39,7 +39,7 @@
       </div>
       <div style="padding: 10px">
         <div class="add-bankcard" text @click="addBankAccout = true">
-          <div class="button">
+          <div class="addicon">
             <el-icon size="30" color="#888"><Plus /></el-icon>
           </div>
           <div class="create">新增銀行帳號</div>
@@ -50,7 +50,7 @@
 
   <!-- 新增銀行帳號畫面 -->
   <el-dialog v-model="addBankAccout" title="新增銀行帳號" width="35%" align-center>
-    <el-form :model="form" hide-required-asterisk="false">
+    <el-form :model="form" hide-required-asterisk="false" >
       <el-form-item
         label="真實姓名"
         :label-width="formLabelWidth"
@@ -205,7 +205,7 @@ function handleSave() {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 h2 {
   color: #888888;
   font-weight: bolder;
@@ -226,7 +226,7 @@ h2 {
   line-height: 1;
   height: 24px;
 }
-.button {
+.addicon {
   text-align: center;
   padding-top: 40px;
 }
@@ -259,7 +259,7 @@ h2 {
   overflow-y: scroll;
   overflow-x: hidden;
 }
-.el-form-item__label {
+.el-form-item_label {
   font-size: medium;
   font-weight: 600;
   color: black;
