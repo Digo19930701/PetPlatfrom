@@ -1,28 +1,24 @@
-
 <script setup>
 // import { RouterLink, RouterView } from 'vue-router'
 
-import HeadBar from'./components/HeadBar.vue';
-import Merchant from './components/Merchant.vue';
-import FootBar from'./components/FootBar.vue';
-import router from './router';
-
-import ElementPlus from 'element-plus'
-
+import HeadBar from './components/HeadBar.vue'
+import Merchant from './components/Merchant.vue'
+import FootBar from './components/FootBar.vue'
+import router from './router'
 </script>
 
-<template>     
+<template>
   <div class="index">
-      <header><HeadBar /></header>
+    <header><HeadBar /></header>
+    <el-container>
+      <el-aside width="200px"><Merchant /></el-aside>
       <el-container>
-        <el-aside width="200px"><Merchant /></el-aside>
-        <el-container >
-          <el-main style="background-color: #F8F6E9;">
-            <router-view></router-view>
-            </el-main>
-        </el-container>
+        <el-main style="background-color: #f8f6e9">
+          <router-view></router-view>
+        </el-main>
       </el-container>
-      <footer><FootBar /></footer>
+    </el-container>
+    <footer><FootBar /></footer>
   </div>
 </template>
 
@@ -46,5 +42,4 @@ import ElementPlus from 'element-plus'
   display: flex;
   flex-direction: column;
 }
-
 </style>

@@ -83,21 +83,3 @@
 .el-row {
   margin: 0px 0px 5px 0px;
 }
-
-:root {
-  --el-color-primary: #cd7b00;
-  --el-color-primary-light-3: #eebe77;
-  --el-color-primary-light-5: #f3d19e;
-  --el-color-primary-light-7: #f8e3c5;
-  --el-color-primary-light-8: #faecd8;
-  --el-color-primary-light-9: #fdf6ec;
-  --el-color-primary-dark-2: #b88230;
-
-  --el-color-warning: #409eff;
-  --el-color-warning-light-3: #79bbff;
-  --el-color-warning-light-5: #a0cfff;
-  --el-color-warning-light-7: #c6e2ff;
-  --el-color-warning-light-8: #d9ecff;
-  --el-color-warning-light-9: #ecf5ff;
-  --el-color-warning-dark-2: #337ecc;
-}

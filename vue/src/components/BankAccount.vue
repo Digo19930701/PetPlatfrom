@@ -50,7 +50,7 @@
 
   <!-- 新增銀行帳號畫面 -->
   <el-dialog v-model="addBankAccout" title="新增銀行帳號" width="35%" align-center>
-    <el-form :model="form" hide-required-asterisk="false" >
+    <el-form :model="form" hide-required-asterisk="false">
       <el-form-item
         label="真實姓名"
         :label-width="formLabelWidth"
@@ -267,15 +267,15 @@ h2 {
   padding-left: 15px;
 }
 
-.el-dialog__title {
+/deep/.el-dialog__title {
   font-weight: 600;
   font-size: large;
   color: #666;
 }
-.el-dialog__body {
+/deep/.el-dialog__body {
   padding-bottom: 10px;
 }
-.el-form-item__content {
+/deep/.el-form-item__content {
   font-size: medium;
   color: #abaaaa;
   font-weight: 600;
