@@ -78,66 +78,67 @@
     <div class="tag-cloud subtitle">銷售資訊</div>
     <!-- 要處理驗證三個項目, 重置不會重置petType -->
     <!-- 各規格值如果要各自獨立,驗證就會失靈 (我很頭痛直接不驗) -->
+    <!-- "+ 規格"的按鍵到上限值要disable(但我無法達成),目前控制數量的部分由specCounter決定 -->
     <el-form-item label="服務對象與規格" required>
               <el-button
                 v-bind:disabled="specCounter"
                 color="#666666"
                 @click="addDomain"
                 plain round disable>+ 規格</el-button>
-            </el-form-item>
-            <el-form-item
-              v-for="(domain, index) in dynamicValidateForm.domains"
-              :key="domain.key"
-              :label="'規格' + (index+1)"
-              :prop="'domains.' + index + '.petType'"
+    </el-form-item>
+
+    <el-form-item
+      v-for="(domain, index) in dynamicValidateForm.domains"
+      :key="domain.key"
+      :label="'規格' + (index+1)"
+      :prop="'domains.' + index + '.petType'"
+    >
+      <el-form-item >
+        <el-col :span="8">
+          <el-form-item >
+            <el-select 
+              v-model="domain.petType"
+              placeholder="請選擇"
+              style="width: auto"
             >
-              <el-form-item >
-              <el-col :span="8">
-                <el-form-item >
-                  <el-select 
-                    v-model="domain.petType"
-                    placeholder="請選擇"
-                    style="width: auto"
-                  >
               <el-option label="貓" value="cat" />
               <el-option label="狗" value="dog" />
             </el-select>
           </el-form-item>
-              </el-col>
-              <el-col class="text-center" :span="7">
-                <el-form-item>
-                  <el-input v-model="domain.spec" 
-                    placeholder="規格名(例如:大型犬)"
-                    maxlength="5"
-                  />
-                </el-form-item>
-              </el-col>
-              <el-col :span="1">&nbsp</el-col>
-              <el-col :span="6">
-                <el-form-item >
-                  <el-input style="width: auto"
-                    v-model="domain.price"
-                    placeholder="價格"
-                    :formatter="(value) => `NT$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')"
-                    :parser="(value) => value.replace(/NT\$\s?|(,*)/g, '')"
-                  />
-                </el-form-item>
-              </el-col>
-            </el-form-item>
-              <el-button
-                class="mt-2" 
-                @click.prevent="removeDomain(domain)"
-                color="#666666" 
-                plain round
-                style="margin: 16px 0px;"
-              >
-                刪除
-              </el-button>
+        </el-col>
+        <el-col class="text-center" :span="7">
+          <el-form-item>
+            <el-input v-model="domain.spec" 
+              placeholder="規格名(例如:大型犬)"
+              maxlength="5"
+            />
+          </el-form-item>
+        </el-col>
+        <el-col :span="1">&nbsp</el-col>
+        <el-col :span="6">
+          <el-form-item >
+            <el-input style="width: auto"
+              v-model="domain.price"
+              placeholder="價格"
+              :formatter="(value) => `NT$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')"
+              :parser="(value) => value.replace(/NT\$\s?|(,*)/g, '')"
+            />
+          </el-form-item>
+        </el-col>
+      </el-form-item>
+      <el-button
+        class="mt-2" 
+        @click.prevent="removeDomain(domain)"
+        color="#666666" 
+        plain round
+        style="margin: 16px 0px;"
+      >
+        刪除
+      </el-button>
     </el-form-item>
 
-    <!-- 要檢查時間是否>0分鐘 -->
     <el-form-item label="服務所需時間長" class="serviceTime">
-      <el-input-number v-model="servicePeriod" :step="30" :min="0" :max="300" step-strictly />
+      <el-input-number v-model="servicePeriod" :step="30" :min="30" :max="300" step-strictly />
       <p>分鐘</p>
     </el-form-item>
 
@@ -162,7 +163,7 @@
     </el-form-item>
 
     <el-form-item label="可預約時段" required>
-      <!-- required 可以檢查有沒有填但沒辦法檢查時間 -->
+      <!-- required 可以檢查有沒有填但沒辦法檢查開始時間早於結束時間 -->
       <el-col :span="5" class="timeRange">
         <el-form-item prop="availTime1">
           <el-time-picker
@@ -197,15 +198,12 @@
       </el-alert>
     </el-form-item>
 
-    <!-- 檢查:服務開始前至少1小時前完成服務 -->
-    <!-- 檢查:最晚接受預約服務時間 > 服務時間長度 -->
     <el-form-item label="最後接受預約時間" class="serviceTime">
       <span>服務開始前&nbsp</span>
       <el-input-number v-model="ruleForm.acceptDay1" :min="1" :max="ruleForm.acceptDay2-1" @change="handleChange1" />
       <p>日</p>
     </el-form-item>
 
-    <!-- 檢查 最早開放預約時間 > 最晚開放預約時間 -->
     <el-form-item label="最早開放預約時間" class="serviceTime">
       <span>服務開始前&nbsp</span>
       <el-input-number v-model="ruleForm.acceptDay2" :min="ruleForm.acceptDay1+1" :max="90" @change="handleChange2" />
