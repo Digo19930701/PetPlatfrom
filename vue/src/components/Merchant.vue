@@ -11,15 +11,15 @@
           @open="handleOpen"
           @close="handleClose"
         >
-          <el-sub-menu index="1">
+          <el-sub-menu index="1" class="sub-menu">
             <template #title>
               <el-icon>
                 <location />
               </el-icon>
-              <span>商家設定</span>
+              <span class="sub-menu">商家設定</span>
             </template>
             <el-menu-item index="1-1">
-              <router-link to="/sellerSetting">基本資料</router-link>
+              <router-link to="/sellerSetting" style="font-size: 1.4rem">基本資料</router-link>
             </el-menu-item>
             <el-menu-item index="1-2">
               <router-link to="/notifySetting">通知設定</router-link>
@@ -171,7 +171,10 @@ const handleClose = (key: string, keyPath: string[]) => {
 .el-select {
   width: 300px;
 }
-
+.sub-menu {
+  font-size: 1.5rem;
+  font-weight: 600;
+}
 .el-input {
   width: 300px;
 }
@@ -179,5 +182,4 @@ const handleClose = (key: string, keyPath: string[]) => {
 .dialog-footer button:first-child {
   margin-right: 10px;
 }
-
 </style>
