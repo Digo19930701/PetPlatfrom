@@ -9,6 +9,11 @@
 <script lang="ts" setup>
 </script>
 <style scoped>
+
+div .el-button{
+    font-size: 25px;
+   
+}
 .header {
   background-color: #f8d479;
   width: 100%;
@@ -18,6 +23,7 @@
   position: fixed;
   bottom: 0px;
   left: 0px;
+  
 }
 
 .trademark {
@@ -26,5 +32,6 @@
   width: 150px;
   background-color: #fff3bf;
   padding: 3px 30px;
+  
 }
 </style>

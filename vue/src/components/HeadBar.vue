@@ -1,6 +1,7 @@
 <template>
   <div class="header">
-    <div class="title"><img src="../assets/logoicon.png" width="20">4A2B</div>
+    <img src="../assets/logoicon.png">
+    <div class="title">4A2B</div>
     <div class="avatar">
       <el-avatar :size="40" :src="circleUrl" />
       <a class="num-title">acc</a>
@@ -24,6 +25,7 @@ const { circleUrl, squareUrl, sizeList } = toRefs(state)
 
 
 <style scoped>
+
 .header {
   z-index: 1;
   background-color: #f8d479;
@@ -36,24 +38,24 @@ const { circleUrl, squareUrl, sizeList } = toRefs(state)
 }
 
 .title {
-  font-size: x-large;
+  font-size: 40px;
   color: #000;
   font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
-  margin-top: 10px;
-  margin-left: 25px;
+  margin-left: 10px;
 }
 
 .avatar {
-  margin-top: 10px;
+  margin-top: -10px;
   position: fixed;
   right: 30px;
   font-size: 25px;
 }
 
-.num-title{
+.num-title {
+  font-size: 50px;
   margin-left: 10px;
   position: relative;
-  top: -10px;
+  top: -6px;
 }
 </style>

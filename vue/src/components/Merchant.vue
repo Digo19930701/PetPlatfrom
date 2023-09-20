@@ -1,13 +1,14 @@
 <template>
-    <div class="container" v-if="view === 1">
+    <div v-if="view === 1">
         <div class="item_header fixed" style="z-index: 1;">
             <div class="item_detail">服務</div>
             <div>預約時間</div>
-            <div class="price">單價</div>
-            <div class="operate">操作</div>
+            <div>單價</div>
+            <div>操作</div>
         </div>
-        <div class="item_container" v-for="(item, index) in itemList" :key="item.id">
+        <div v-for="(item, index) in itemList" :key="item.id">
             <div class="item_header item_body">
+                <input style="transform: scale(2);" type="checkbox" v-model="item.checked" />&nbsp&nbsp
                 <div class="item_detail">
                     <img v-bind:src="item.imgUrl" alt="">
                     <div class="name">{{ item.itemName }}</div>
@@ -16,22 +17,23 @@
                     <el-date-picker v-model="value2" type="datetime" placeholder="Pick a Date" format="YYYY/MM/DD hh:00"
                         value-format="YYYY-MM-DD h:m a" />
                 </div>
-                <div class="price"><span>$</span>{{ item.price }}</div>
+                <div><span>$</span>{{ item.price }}</div>
                 <!-- <div class="count">
                     <button @click="handleSub(item)">-</button>
                     {{ item.count }}
                     <button @click="handlePlus(item)">+</button>
                 </div>
                 <div class="amount">{{ item.price * item.count }}</div> -->
-                <div class="operate">
+                <div>
                     <el-button @click="handledelete(index)">刪除</el-button>
                 </div>
             </div>
         </div>
         <br>
         <div class="item_header checkout">
-
-            <div class="checkout">總計</div>
+            <input style="transform: scale(2);" type="checkbox" v-model="selectAll" @change="toggleSelectAll" />
+            <div>&nbsp全選</div>
+            <div class="checkout">總計<span>$</span>{{ totalAmount }}</div>
             <el-button class="checkout" @click="cview(2)">結帳</el-button>
         </div>
     </div>
@@ -41,22 +43,22 @@
         </div>
         <Checkout />
         <div class="item_header checkout">
+            <div class="checkout">總計<span>$</span>{{ totalAmount }}</div>
             <el-button class="checkout" @click="sendPostRequest">付款</el-button>
         </div>
 
     </div>
-    
 </template>
 
 
 <script setup>
 import Checkout from './Checkout.vue';
-import { ref } from 'vue'
-
+import { ref, computed } from 'vue'
 // const postData = ref({
-//     // 在这里添加你要发送的数据字段
+//     // 在这里加要发送的數據字段
 // });
 
+//綠界
 const sendPostRequest = async () => {
     window.location.href = 'http://localhost:8080/ecpayCheckout';
     // axios.post('http://localhost:8080/ecpayCheckout', {})
@@ -68,51 +70,71 @@ const sendPostRequest = async () => {
     //     .catch(error => {
     //         console.log(error)
     //     })
-
 };
 
-
-const value2 = ref('')
+const value2 = ref('')//時間
+//畫面
 const view = ref(1)
 const cview = (ind) => {
     view.value = ind
 }
+//全選
+const selectAll = ref(false);
+const toggleSelectAll = () => {
+    const allChecked = itemList.value.every(item => item.checked);
+    itemList.value.forEach(item => (item.checked = !allChecked));
+};
+//總計
+const totalAmount = computed(() => {
+    return itemList.value.reduce((total, item) => {
+        // 如果商品被選中，才將其價格加入金额
+        if (item.checked) {
+            total += parseInt(item.price);
+        }
+        return total;
+    }, 0);
+});
 
 const itemList = ref([
     {
         id: '1',
         itemName: '洗澡',
         imgUrl: 'https://images.unsplash.com/photo-1534961880437-ce5ae2033053?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
-        price: '500',
-        count: '2023/09/02 12:00'
+        price: 500,
+        count: '2023/09/02 12:00',
+        checked: false
     },
     {
         id: '2',
         itemName: '美容',
         imgUrl: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
-        price: '790',
-        count: '2023/02/02 12:00'
+        price: 790,
+        count: '2023/02/02 12:00',
+        checked: false
     },
     {
         id: '3',
         itemName: '洗澡',
         imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
-        price: '1200',
-        count: '2023/09/15 12:00'
+        price: 1200,
+        count: '2023/09/15 12:00',
+        checked: false
     },
     {
         id: '4',
         itemName: '美容',
         imgUrl: 'https://images.unsplash.com/photo-1491998664548-0063bef7856c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
-        price: '1300',
-        count: '2023/09/02 15:00'
+        price: 1300,
+        count: '2023/09/02 15:00',
+        checked: false
     },
     {
         id: '5',
         itemName: '梳毛',
         imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
-        price: '2000',
-        count: '2023/10/02 12:00'
+        price: 2000,
+        count: '2023/10/02 12:00',
+        checked: false
     },
 ]);
 
@@ -126,6 +148,7 @@ const itemList = ref([
 //     }
 // };
 
+//刪除
 const handledelete = (index) => {
     console.log(this);
     itemList.value.splice(index, 1);
@@ -133,6 +156,14 @@ const handledelete = (index) => {
 </script>
 
 <style scoped>
+
+div {
+    font-size: 25px;
+}
+
+ div .el-button{
+    font-size: 25px;
+}
 .block {
     display: flex;
 }
@@ -156,7 +187,7 @@ const handledelete = (index) => {
 }
 
 .item_header div {
-    width: 21%;
+    width: 24%;
     line-height: 30px;
 }
 
