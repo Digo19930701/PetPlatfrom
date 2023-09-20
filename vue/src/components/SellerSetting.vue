@@ -1,8 +1,3 @@
-<!-- "美容","salon"  -->
-<!-- "溝通","comm"(Communication) -->
-<!-- "攝影","photog"(photography) -->
-<!-- "褓姆/訓練","nanny" -->
-
 <template>
   <main>
     <el-form :model="form" label-width="120px">
@@ -16,12 +11,13 @@
             :on-remove="handleRemove"
             :auto-upload="false"
             :limit="1"
+            :on-exceed="HandleAvatar"
           >
             <el-icon><Plus /></el-icon>
           </el-upload>
 
-          <el-dialog v-model="dialogVisible" style="text-align: center;">
-            <img :src="dialogImageUrl" alt="Preview Image" class="imgwd" />
+          <el-dialog v-model="dialogVisible" style="text-align: center">
+            <img :src="avatarImageUrl" alt="Preview Image" class="imgwd" />
           </el-dialog>
         </el-form-item>
 
@@ -39,24 +35,37 @@
           />
         </el-form-item>
 
+        <el-form-item label="Email(帳號)" prop="account">
+          <p style="color: #888; padding-left: 10px">xxxxxxx@gmail.com</p>
+        </el-form-item>
+
+        <el-form-item label="統一編號" prop="taxID">
+          <p style="color: #888; padding-left: 10px">
+            81****78&emsp;
+            <el-tooltip
+              placement="top-start"
+              effect="customized"
+              content="如需更動統一編號&emsp;請與平台方聯繫"
+            >
+              <el-icon style="color: #888" :size="15"><WarningFilled /></el-icon>
+            </el-tooltip>
+          </p>
+        </el-form-item>
+
         <el-form-item
-          label="服務類別"
-          prop="category"
-          :rules="[
-            {
-              type: 'array',
-              required: true,
-              message: '至少要勾選一個類別',
-              trigger: 'change'
-            }
-          ]"
+          label="負責人"
+          prop="incharge"
+          :rules="[{ required: true, message: '此為必填欄位' }]"
         >
-          <el-checkbox-group v-model="form.category">
-            <el-checkbox label="美容" value="salon" size="large" />
-            <el-checkbox label="溝通" value="comm" size="large" />
-            <el-checkbox label="攝影" value="photog" size="large" />
-            <el-checkbox label="保母/訓練" value="nanny" size="large" />
-          </el-checkbox-group>
+          <el-input v-model="form.incharge" type="text" autocomplete="off" />
+          <el-upload ref="uploadRef" class="upload-demo" action="" :auto-upload="false">
+            <el-button type="primary" class="uploadbn" plain>
+              上傳文件<el-icon class="el-icon--right"><Upload /></el-icon>
+            </el-button>
+          </el-upload>
+          <el-alert class="alertwh" type="info" show-icon :closable="false">
+            <p>請上傳公司相關登記證明文件</p>
+          </el-alert>
         </el-form-item>
 
         <el-form-item
@@ -101,14 +110,17 @@
 <style src="../assets/seller.css"></style>
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
-import type { UploadProps } from 'element-plus'
-import {  Plus } from '@element-plus/icons-vue'
+import type { UploadProps, UploadInstance } from 'element-plus'
+import { Plus, Upload, WarningFilled } from '@element-plus/icons-vue'
+import { ElMessage } from 'element-plus'
 
 // test
 // do not use same name with ref
 const form = reactive({
   name: '',
-  category: [],
+  account: '',
+  taxID: '',
+  incharge: '',
   cell: '',
   desc: '',
   addre: '',
@@ -118,17 +130,27 @@ const form = reactive({
 const onSubmit = () => {
   console.log('submit!')
 }
-const dialogImageUrl = ref('')
+const avatarImageUrl = ref('')
 const dialogVisible = ref(false)
-
 
 const handleRemove: UploadProps['onRemove'] = (uploadFile, uploadFiles) => {
   console.log(uploadFile, uploadFiles)
 }
 
 const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
-  dialogImageUrl.value = uploadFile.url!
+  avatarImageUrl.value = uploadFile.url!
   dialogVisible.value = true
+}
+
+const uploadRef = ref<UploadInstance>()
+
+function HandleAvatar() {
+  ElMessage({
+    message: '僅能上傳1張頭像！',
+    type: 'error',
+    offset: 100
+    // 偏離上面多少距離，有被其他元件擋住時可以調整顯示的位置
+  })
 }
 </script>
 
@@ -141,9 +163,17 @@ const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
 .el-input {
   width: 80%;
 }
-.imgwd{
+.imgwd {
   max-width: 600px;
   max-height: 800px;
+}
+.uploadbn {
+  margin-top: 10px;
+}
+.alertwh {
+  margin-top: 10px;
+  width: 80%;
+  line-height: 1;
 }
 :root {
   .--el-input-width {

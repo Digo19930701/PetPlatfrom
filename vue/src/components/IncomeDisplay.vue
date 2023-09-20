@@ -19,7 +19,7 @@
             <el-tooltip
               placement="top-start"
               effect="customized"
-              content="基於個人資料保護法，&#32;已撥款進帳僅計算過去 5 年內的訂單進帳總和"
+              content="基於個人資料保護法，已撥款進帳僅計算過去 5 年內的訂單進帳總和"
             >
               <el-icon style="color: #888"><QuestionFilled /></el-icon>
             </el-tooltip>
