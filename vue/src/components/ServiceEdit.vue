@@ -61,49 +61,88 @@
         <el-option label="攝影" value="graphy" />
         <el-option label="保母/訓練" value="nannyTraining" />
       </el-select>
+      <el-alert class="alertInf" type="info" show-icon :closable="false">
+        <!-- 還沒寫這個邏輯 -->
+        <p>一旦建立服務，類別將無法再透過編輯更改。(要寫編輯時disable)</p>
+        </el-alert>
     </el-form-item>
 
     <el-form-item label="服務描述" prop="desc">
-      <el-input v-model="ruleForm.desc" type="textarea" placeholder="服務內容詳細描述" autosize />
+      <el-input v-model="ruleForm.desc"
+                type="textarea"
+                placeholder="服務內容詳細描述"
+                autosize
+       />
     </el-form-item>
 
     <div class="tag-cloud subtitle">銷售資訊</div>
-    <!-- 要處理驗證三個項目 -->
-    <el-form-item label="服務對象與規格" required prop="spec">
-      <div>
-        <el-input v-model="ruleForm.spec" placeholder="規格 (例如:大型犬)">
-          <template #prepend>
-            <el-select v-model="ruleForm.petType" placeholder="請選擇" style="width: auto">
+    <!-- 要處理驗證三個項目, 重置不會重置petType -->
+    <!-- 各規格值如果要各自獨立,驗證就會失靈 (我很頭痛直接不驗) -->
+    <el-form-item label="服務對象與規格" required>
+              <el-button
+                v-bind:disabled="specCounter"
+                color="#666666"
+                @click="addDomain"
+                plain round disable>+ 規格</el-button>
+            </el-form-item>
+            <el-form-item
+              v-for="(domain, index) in dynamicValidateForm.domains"
+              :key="domain.key"
+              :label="'規格' + (index+1)"
+              :prop="'domains.' + index + '.petType'"
+            >
+              <el-form-item >
+              <el-col :span="8">
+                <el-form-item >
+                  <el-select 
+                    v-model="domain.petType"
+                    placeholder="請選擇"
+                    style="width: auto"
+                  >
               <el-option label="貓" value="cat" />
               <el-option label="狗" value="dog" />
             </el-select>
-          </template>
-          <template #append>
-            <!-- radius尚未處理 -->
-            <el-input
-              style="width: auto"
-              v-model="ruleForm.price"
-              placeholder="價格"
-              :formatter="(value) => `NT$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')"
-              :parser="(value) => value.replace(/NT\$\s?|(,*)/g, '')"
-            />
-          </template>
-        </el-input>
-        <!-- 要處理新增規格的問題 -->
-        <el-button color="#666666" plain round>+ 規格</el-button>
-      </div>
+          </el-form-item>
+              </el-col>
+              <el-col class="text-center" :span="7">
+                <el-form-item>
+                  <el-input v-model="domain.spec" 
+                    placeholder="規格名(例如:大型犬)"
+                    maxlength="5"
+                  />
+                </el-form-item>
+              </el-col>
+              <el-col :span="1">&nbsp</el-col>
+              <el-col :span="6">
+                <el-form-item >
+                  <el-input style="width: auto"
+                    v-model="domain.price"
+                    placeholder="價格"
+                    :formatter="(value) => `NT$ ${value}`.replace(/\B(?=(\d{3})+(?!\d))/g, ',')"
+                    :parser="(value) => value.replace(/NT\$\s?|(,*)/g, '')"
+                  />
+                </el-form-item>
+              </el-col>
+            </el-form-item>
+              <el-button
+                class="mt-2" 
+                @click.prevent="removeDomain(domain)"
+                color="#666666" 
+                plain round
+                style="margin: 16px 0px;"
+              >
+                刪除
+              </el-button>
     </el-form-item>
 
     <!-- 要檢查時間是否>0分鐘 -->
     <el-form-item label="服務所需時間長" class="serviceTime">
-      <el-input-number v-model="num1" :min="0" :max="24" @change="handleChange1" />
-      <p>小時</p>
-      <el-input-number v-model="num2" :step="15" :min="0" :max="45" step-strictly />
+      <el-input-number v-model="servicePeriod" :step="30" :min="0" :max="300" step-strictly />
       <p>分鐘</p>
     </el-form-item>
 
     <el-form-item label="同時段組數上限">
-      <el-input-number v-model="num0" :min="1" :max="99" @change="handleChange1" />
+      <el-input-number v-model="upperLimit" :min="1" :max="99" @change="handleChange1" />
       <el-alert class="alertInf" type="info" show-icon :closable="false">
         <p>此服務在同時段內可提供的數量。(不知道需不需要的說明，總之我先加了!)</p>
       </el-alert>
@@ -126,33 +165,50 @@
       <!-- required 可以檢查有沒有填但沒辦法檢查時間 -->
       <el-col :span="5" class="timeRange">
         <el-form-item prop="availTime1">
-          <el-time-picker v-model="ruleForm.availTime1" placeholder="開始時間" format="HH:mm" />
+          <el-time-picker
+            v-model="ruleForm.availTime1"
+            placeholder="開始時間"
+            format="HH:mm"
+          />
         </el-form-item>
       </el-col>
-      <el-col :span="1" style="text-align: center">
+      <el-col :span="1" style="text-align: center;">
         <p>~</p>
       </el-col>
       <el-col :span="5" class="timeRange">
         <el-form-item prop="availTime2">
-          <el-time-picker v-model="ruleForm.availTime2" placeholder="結束時間" format="HH:mm" />
+          <el-time-picker 
+            v-model="ruleForm.availTime2" 
+            placeholder="結束時間"
+            format="HH:mm"
+          />
         </el-form-item>
       </el-col>
+    </el-form-item>
+
+    <el-form-item label="接受預約單位時間" class="serviceTime">
+      <span>每&nbsp</span>
+      <el-input-number v-model="ruleForm.acceptUnit" :step="30" :min="30" :max="servicePeriod" step-strictly />
+      <p>分鐘為單位接受預約</p>
+      <el-alert class="alertInf" type="info" show-icon :closable="false">
+        <p>
+          上限值由「服務所需時間長」決定。(感覺這邊有一個Q&A解釋會更好)
+        </p>
+      </el-alert>
     </el-form-item>
 
     <!-- 檢查:服務開始前至少1小時前完成服務 -->
     <!-- 檢查:最晚接受預約服務時間 > 服務時間長度 -->
     <el-form-item label="最後接受預約時間" class="serviceTime">
       <span>服務開始前&nbsp</span>
-      <el-input-number v-model="ruleForm.acceptDay1" :min="0" :max="30" @change="handleChange1" />
+      <el-input-number v-model="ruleForm.acceptDay1" :min="1" :max="ruleForm.acceptDay2-1" @change="handleChange1" />
       <p>日</p>
-      <el-input-number v-model="ruleForm.acceptHour1" :min="0" :max="23" @change="handleChange1" />
-      <p>小時</p>
     </el-form-item>
 
     <!-- 檢查 最早開放預約時間 > 最晚開放預約時間 -->
     <el-form-item label="最早開放預約時間" class="serviceTime">
       <span>服務開始前&nbsp</span>
-      <el-input-number v-model="ruleForm.acceptDay2" :min="1" :max="90" @change="handleChange1" />
+      <el-input-number v-model="ruleForm.acceptDay2" :min="ruleForm.acceptDay1+1" :max="90" @change="handleChange2" />
       <p>日</p>
       <el-alert class="alertInf" type="info" show-icon :closable="false">
         <p>
@@ -171,7 +227,6 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import { ElMessage, type FormInstance, type FormRules, type UploadProps } from 'element-plus'
-// import { Upload } from '@element-plus/icons-vue'
 import { Plus } from '@element-plus/icons-vue'
 
 const coverImageUrl = ref('') //封面圖
@@ -192,6 +247,75 @@ function HandleService() {
     type: 'error',
     offset: 100
   })
+}
+// (code很亂我很抱歉)
+const dynamicValidateForm = reactive<{
+  domains: DomainItem[]
+}>({
+  domains: [
+    {
+      key: 1,
+      spec: '',
+      petType: '',
+      price: '',
+    },
+  ],
+})
+
+interface DomainItem {
+  key: number
+  spec: string
+  petType: string
+  price: string
+}
+const domainsRules = reactive<FormRules<DomainItem>>({
+  spec: [
+    {
+      required: true,
+      message: '請選擇一個項目',
+      trigger: 'change',
+    },
+  ],
+  petType: [
+    {
+      required: true,
+      message: '請填寫規格',
+      trigger: 'change',
+    },
+  ],
+  price: [
+    {
+      required: true,
+      message: '請填寫價格',
+      trigger: 'change',
+    },
+  ],
+})
+
+let specCounter = 0;
+const removeDomain = (item: DomainItem) => {
+  const index = dynamicValidateForm.domains.indexOf(item)
+  if (index !== -1) {
+    dynamicValidateForm.domains.splice(index, 1)
+  }
+  specCounter--;
+  console.log(specCounter)
+}
+
+
+const addDomain = () => {
+  if (specCounter <4) {
+    dynamicValidateForm.domains.push({
+      key: Date.now(),
+      spec: '',
+      petType: '',
+      price: '',
+    })
+    specCounter++;
+    console.log(specCounter)
+  } else{
+    
+  }
 }
 
 const handleRemove: UploadProps['onRemove'] = (uploadFile, uploadFiles) => {
@@ -215,9 +339,9 @@ interface RuleForm {
   type: string[]
   availTime1: string
   availTime2: string
-  acceptDay1: string
-  acceptHour1: string
-  acceptDay2: string
+  acceptUnit: number
+  acceptDay1: number
+  acceptDay2: number
 }
 
 const formSize = ref('default')
@@ -232,9 +356,9 @@ const ruleForm = reactive<RuleForm>({
   type: [],
   availTime1: '',
   availTime2: '',
-  acceptDay1: '',
-  acceptHour1: '',
-  acceptDay2: ''
+  acceptUnit: 30,
+  acceptDay1:  1,
+  acceptDay2:  7,
 })
 
 const rules = reactive<FormRules<RuleForm>>({
@@ -249,7 +373,12 @@ const rules = reactive<FormRules<RuleForm>>({
       trigger: 'change'
     }
   ],
-  desc: [{ required: true, message: '請輸入服務描述', trigger: 'blur' }],
+  desc: [
+    { required: true,
+       message: '請輸入服務描述',
+     trigger: 'blur' 
+    }
+  ],
   spec: [
     {
       required: true,
@@ -302,13 +431,7 @@ const rules = reactive<FormRules<RuleForm>>({
   //     trigger: 'change',
   //   },
   // ],
-  // acceptHour1: [
-  //   {
-  //     required: true,
-  //     message: '請至少挑選一個預約日',
-  //     trigger: 'change',
-  //   },
-  // ],
+
   // acceptDay2: [
   //   {
   //     required: true,
@@ -330,14 +453,13 @@ const submitForm = async (formEl: FormInstance | undefined) => {
 }
 
 // 服務所需時間長
-const num0 = ref(0)
-const num1 = ref(1)
-const num2 = ref(0)
-const num3 = ref(0)
-const num4 = ref(0)
-const num5 = ref(1)
+const upperLimit = ref(0)
+const servicePeriod = ref(60)
 
 const handleChange1 = (value: number) => {
+  console.log(value)
+}
+const handleChange2 = (value: number) => {
   console.log(value)
 }
 
@@ -363,7 +485,7 @@ const options = Array.from({ length: 10000 }).map((_, idx) => ({
   padding: 0;
 }
 .el-input-number {
-  width: 100px;
+  width: 120px;
 }
 .serviceTime p {
   margin: 0px 10px;
