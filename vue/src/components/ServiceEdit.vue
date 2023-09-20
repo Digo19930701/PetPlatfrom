@@ -81,10 +81,10 @@
     <!-- "+ 規格"的按鍵到上限值要disable(但我無法達成),目前控制數量的部分由specCounter決定 -->
     <el-form-item label="服務對象與規格" required>
               <el-button
-                v-bind:disabled="specCounter"
                 color="#666666"
                 @click="addDomain"
-                plain round disable>+ 規格</el-button>
+                plain round 
+                :disabled="specCounter===4">+ 規格</el-button>
     </el-form-item>
 
     <el-form-item
@@ -290,27 +290,27 @@ const domainsRules = reactive<FormRules<DomainItem>>({
   ],
 })
 
-let specCounter = 0;
+let specCounter = ref(0);
 const removeDomain = (item: DomainItem) => {
   const index = dynamicValidateForm.domains.indexOf(item)
   if (index !== -1) {
     dynamicValidateForm.domains.splice(index, 1)
   }
-  specCounter--;
-  console.log(specCounter)
+  specCounter.value--;
+  console.log(specCounter.value)
 }
 
 
 const addDomain = () => {
-  if (specCounter <4) {
+  if (specCounter.value <4) {
     dynamicValidateForm.domains.push({
       key: Date.now(),
       spec: '',
       petType: '',
       price: '',
     })
-    specCounter++;
-    console.log(specCounter)
+    specCounter.value++;
+    console.log(specCounter.value)
   } else{
     
   }
@@ -470,6 +470,8 @@ const options = Array.from({ length: 10000 }).map((_, idx) => ({
   value: `${idx + 1}`,
   label: `${idx + 1}`
 }))
+
+
 </script>
 
 <style lang="scss">
