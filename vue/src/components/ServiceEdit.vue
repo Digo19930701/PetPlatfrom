@@ -171,7 +171,6 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import { ElMessage, type FormInstance, type FormRules, type UploadProps } from 'element-plus'
-// import { Upload } from '@element-plus/icons-vue'
 import { Plus } from '@element-plus/icons-vue'
 
 const coverImageUrl = ref('') //封面圖
@@ -333,11 +332,12 @@ const submitForm = async (formEl: FormInstance | undefined) => {
 const num0 = ref(0)
 const num1 = ref(1)
 const num2 = ref(0)
-const num3 = ref(0)
-const num4 = ref(0)
-const num5 = ref(1)
+
 
 const handleChange1 = (value: number) => {
+  console.log(value)
+}
+const handleChange2 = (value: number) => {
   console.log(value)
 }
 
