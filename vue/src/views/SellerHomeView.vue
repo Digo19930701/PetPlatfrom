@@ -7,28 +7,23 @@ import SellerRateTitle from '../components/SellerRateTitle.vue'
 <template>
   <!-- 排版的部分就交給宛仟了! (我覺得怎麼調都不滿意可以索性第一列直接只留月曆) -->
   <el-row>
-    <el-col :span="14">
-      <el-row style="">
         <SellerRateTitle
           :rateItem="['本月待辦訂單', '本月取消訂單', '本月過去訂單']"
           :rate="[13, 1, 3]"
           :note="['今日待辦數', '', '']"
           :rateSub="[3, ,]"
         />
-      </el-row>
-      <el-row>
+
         <SellerRateTitle
           :rateItem="['平均評價', '總評價數', '本月未回覆評價']"
           :rate="[4.2, 11, 2]"
           :note="['與前月相差', '本月增加', '筆']"
           :rateSub="[0.5, 1, 2]"
         />
-      </el-row>
-    </el-col>
-    <el-col :span="10">
-      <SellerCalender />
-    </el-col>
   </el-row>
+  <el-row class="calenderBoard board">
+        <SellerCalender/>
+    </el-row>
   <div class="title board">
     <h2>近期訂單</h2>
     <div class="comingOrder"><SellerOrderTitle /></div>
@@ -85,6 +80,9 @@ import SellerRateTitle from '../components/SellerRateTitle.vue'
 <style scoped>
 .title h2 {
   margin-bottom: 10px;
+}
+.calenderBoard{
+    height: 35rem
 }
 .board {
   padding: 10px;

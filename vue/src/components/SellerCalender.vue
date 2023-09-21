@@ -3,6 +3,30 @@
 <script>
 import { Qalendar } from "qalendar";
 
+// const props=defineProps({
+//   events: {
+//     type: Object,
+//     default:{
+//       id:{
+//         type: String,
+//         default: "orderId"
+//       },
+//       title:{
+//         type: String,
+//         default: "保母/訓練"
+//       },
+//       time:{
+//         type: String,
+//         default: '{ start: "2023-09-21 20:30", end: "2023-09-21 21:00" }'
+//       },
+//       colorScheme: {
+//         type: String,
+//         default: "nannyTraining"
+//       },
+//     } 
+//   }
+// })
+
 export default {
   components: {
     Qalendar,
@@ -12,41 +36,68 @@ export default {
     return {
       events: [
         {
-          // title: "寵物溝通",
-          // with: "Albert Einstein",
-          time: { start: "2023-09-11 04:00", end: "2023-09-11 05:00" },
-          colorScheme: "whisperer",
-          isEditable: false,
-          id: "de471c78cb5c",
-          description:
-            "Think of me as Yoda. Only instead of being little and green, I wear suites and I'm awesome.",
-        },
-        {
-          // title: "Advanced algebra",
+          id: 'props.events.id', 
+          title: "保母/訓練",
           // with: "Pheobe Buffay",
-          time: { start: "2023-09-11 20:30", end: "2023-09-11 21:00" },
+          time: { start: "2023-09-21 20:30", end: "2023-09-21 21:00" },
           colorScheme: "nannyTraining",
-          // isEditable: true,
-          id: "6d3c0980a5cf",
-          description:
-            "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda corporis doloremque et expedita molestias necessitatibus quam quas temporibus veritatis. Deserunt excepturi illum nobis perferendis praesentium repudiandae saepe sapiente voluptatem!",
-        },
-        {
-          // title: "Break",
-          // with: "Marshall Eriksen",
-          time: { start: "2023-09-02 22:10", end: "2023-09-02 22:55" },
-          colorScheme: "beauty",
-          // isEditable: true,
-          
-          id: "9f1b209982f1",
+          // description:
+          //   "Lorem ipsum dolor sit amet, consectetur adipisicing elit. Asperiores assumenda corporis doloremque et expedita molestias necessitatibus quam quas temporibus veritatis. Deserunt excepturi illum nobis perferendis praesentium repudiandae saepe sapiente voluptatem!",
           // location: "Zoom",
         },
-        // ... and more
+        {
+          id: "9f1b209982f1",
+          title: "寵物美容",
+          time: { start: "2023-09-21 08:30", end: "2023-09-21 09:00" },
+          colorScheme: "beauty",       
+        },
+        {
+          id: "9f1b209982f1",
+          title: "寵物攝影",
+          time: { start: "2023-09-21 20:30", end: "2023-09-21 21:00" },
+          colorScheme: "graphy",       
+        },
+        {
+          id: "9f1b209982f1",
+          title: "寵物美容",
+          time: { start: "2023-09-21 20:30", end: "2023-09-21 21:00" },
+          colorScheme: "beauty",       
+        },
+
+        // {
+        //   id: "9f1b209982f1",
+        //   title: "寵物美容",
+        //   time: { start: "2023-10-01 20:30", end: "2023-10-01 21:00" },
+        //   colorScheme: "beauty",       
+        // },
+        // {
+        //   id: "9f1b209982f1",
+        //   title: "寵物美容",
+        //   time: { start: "2023-10-01 20:30", end: "2023-10-01 21:00" },
+        //   colorScheme: "beauty",       
+        // },
+        // {
+        //   id: "9f1b209982f1",
+        //   title: "寵物美容",
+        //   time: { start: "2023-10-01 20:30", end: "2023-10-01 21:00" },
+        //   colorScheme: "beauty",       
+        // },
+        // {
+        //   title: "寵物攝影",
+        //   time: { start: "2023-10-23 19:30", end: "2023-10-23 21:00" },
+        //   colorScheme: "graphy",       
+        //   id: "9f1b209982f1",
+        // },
       ],
 
       config: {
-        locale: "zh-CN",
-        defaultMode: "month",
+        locale: "en-US",  //中文版"zh-CN"翻譯不佳故用英文
+        defaultMode: "week",
+        showCurrentTime: true,
+        dayBoundaries: {
+          start: 6,
+          end: 23,
+        },
         style: {
           colorSchemes: {
             beauty: {
@@ -76,7 +127,6 @@ export default {
 
 <template>
   <Qalendar
-    :selected-date="new Date(2023, 8, 18)"
     :events="events"
     :config="config"
   />
@@ -104,8 +154,10 @@ export default {
   .agenda__wrapper[data-v-b60cbce5] {
     padding: 10px 5px;
   }
+
   .calendar-root-wrapper .calendar-root{
     background-color: white;
+    height: 100%
   }
   .calendar-root, .date-picker-root {
     --system-yellow: #F8D479;
