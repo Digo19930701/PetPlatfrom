@@ -138,7 +138,7 @@
 
   <!-- 銀行帳號詳情畫面 -->
   <el-dialog v-model="BankAccoutDetail" title="銀行帳號" :width="minWidth" align-center>
-    <el-form :model="form" label-width="120px">
+    <el-form :model="form" label-width="120px" >
       <el-form-item prop="name" label="真實姓名">XXX</el-form-item>
       <el-form-item prop="id" label="身分證字號">L12345678</el-form-item>
       <el-form-item prop="bank" label="銀行名稱">國泰世華商業銀行</el-form-item>
@@ -259,27 +259,7 @@ h2 {
   overflow-y: scroll;
   overflow-x: hidden;
 }
-.el-form-item_label {
-  font-size: medium;
-  font-weight: 600;
-  color: black;
-  flex-direction: column;
-  padding-left: 15px;
-}
 
-/deep/.el-dialog__title {
-  font-weight: 600;
-  font-size: large;
-  color: #666;
-}
-/deep/.el-dialog__body {
-  padding-bottom: 10px;
-}
-/deep/.el-form-item__content {
-  font-size: medium;
-  color: #abaaaa;
-  font-weight: 600;
-}
 .row {
   font-size: medium;
   color: #666;

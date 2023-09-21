@@ -1,109 +1,127 @@
 <template>
   <main>
-    <el-form :model="form" label-width="120px">
-      <div class="base hw">
-        <br />
-        <el-form-item label="上傳頭像">
-          <el-upload
-            action=""
-            list-type="picture-card"
-            :on-preview="handlePictureCardPreview"
-            :on-remove="handleRemove"
-            :auto-upload="false"
-            :limit="1"
-            :on-exceed="HandleAvatar"
-          >
-            <el-icon><Plus /></el-icon>
-          </el-upload>
-
-          <el-dialog v-model="dialogVisible" style="text-align: center">
-            <img :src="avatarImageUrl" alt="Preview Image" class="imgwd" />
-          </el-dialog>
-        </el-form-item>
-
-        <el-form-item
-          label="商家名稱"
-          prop="name"
-          :rules="[{ required: true, message: '此為必填欄位' }]"
-        >
-          <el-input
-            v-model="form.name"
-            type="text"
-            placeholder="最多10字(不分中英文數字)"
-            maxlength="10"
-            show-word-limit
-          />
-        </el-form-item>
-
-        <el-form-item label="Email(帳號)" prop="account">
-          <p style="color: #888; padding-left: 10px">xxxxxxx@gmail.com</p>
-        </el-form-item>
-
-        <el-form-item label="統一編號" prop="taxID">
-          <p style="color: #888; padding-left: 10px">
-            81****78&emsp;
-            <el-tooltip
-              placement="top-start"
-              effect="customized"
-              content="如需更動統一編號&emsp;請與平台方聯繫"
+    <el-scrollbar style="height: 750px;">
+      <el-form :model="form" label-width="150px">
+        <div class="base hw">
+          <br />
+          <el-form-item label="上傳頭像">
+            <el-upload
+              action=""
+              list-type="picture-card"
+              :on-preview="handlePictureCardPreview"
+              :on-remove="handleRemove"
+              :auto-upload="false"
+              :limit="1"
+              :on-exceed="HandleAvatar"
             >
-              <el-icon style="color: #888" :size="15"><WarningFilled /></el-icon>
-            </el-tooltip>
-          </p>
+              <el-icon><Plus /></el-icon>
+            </el-upload>
+  
+            <el-dialog v-model="dialogVisible" style="text-align: center">
+              <img :src="avatarImageUrl" alt="Preview Image" class="imgwd" />
+            </el-dialog>
+          </el-form-item>
+  
+          <el-form-item
+            label="商家名稱"
+            prop="name"
+            :rules="[{ required: true, message: '此為必填欄位' }]"
+          >
+            <el-input
+              v-model="form.name"
+              type="text"
+              placeholder="最多10字(不分中英文數字)"
+              maxlength="10"
+              show-word-limit
+            />
+          </el-form-item>
+  
+          <el-form-item label="Email(帳號)" prop="account">
+            <p style="color: #888; padding-left: 10px">xxxxxxx@gmail.com</p>
+          </el-form-item>
+  
+          <el-form-item label="統一編號" prop="taxID">
+            <p style="color: #888; padding-left: 10px">
+              81****78&emsp;
+              <el-tooltip
+                placement="top-start"
+                effect="customized"
+                content="如需更動統一編號&emsp;請與平台方聯繫"
+              >
+                <el-icon style="color: #888" :size="15"><WarningFilled /></el-icon>
+              </el-tooltip>
+            </p>
+          </el-form-item>
+  
+          <el-form-item
+            label="負責人"
+            prop="incharge"
+            
+            :rules="[{ required: true, message: '此為必填欄位' }]"
+          >
+            <el-input v-model="form.incharge" type="text" autocomplete="off" placeholder="負責人姓名" />
+          </el-form-item>
+          <el-form-item label="公司證明文件">
+            <el-upload ref="uploadRef" class="upload-demo" action="" :auto-upload="false">
+              <el-button type="primary" class="uploadbn" plain>
+                上傳文件<el-icon class="el-icon--right"><Upload /></el-icon>
+              </el-button>
+            </el-upload>
+            <el-alert class="alertwh" type="info" show-icon :closable="false">
+              <p>請上傳公司相關登記證明文件</p>
+            </el-alert>
+          </el-form-item>
+          <el-form-item
+            label="聯絡電話"
+            prop="cell"
+            :rules="[{ required: true, message: '此為必填欄位' }]"
+          >
+            <el-input
+              v-model="form.cell"
+              type="text"
+              autocomplete="off"
+              maxlength="10"
+              show-word-limit
+            />
+          </el-form-item>
+  
+          <el-form-item label="商家簡述">
+            <el-input v-model="form.desc" type="textarea" class="--el-input-width" autosize />
+          </el-form-item>
+  
+          <el-form-item
+            label="商家地址"
+            prop="addre"
+            :rules="[{ required: true, message: '此為必填欄位' }]"
+          >
+            <el-input v-model="form.addre" type="text" autocomplete="off" />
+          </el-form-item>
+  
+          <el-form-item label="交通/停車資訊">
+            <el-input v-model="form.park" type="textarea" class="--el-input-width" />
+          </el-form-item>
+        </div>
+        <br />
+        <div class="base hw">
+          <br>
+          <el-form-item label="接受預約單位時間" class="serviceTime">
+            <span>每&nbsp</span>
+            <el-input-number v-model="form.acceptUnit" :step="30" :min="30" :max="servicePeriod" step-strictly />
+            <p>分鐘為單位接受預約</p>
+            <el-alert class="alertwh" type="info" show-icon :closable="false">
+              <p>
+                上限值由「服務所需時間長」決定。(感覺這邊有一個Q&A解釋會更好)
+              </p>
+            </el-alert>
+          </el-form-item>
+        </div>
+        <br>
+        <el-form-item label-width="17%">
+          <el-button F8D479 round>編輯</el-button>
+          <el-button type="primary" round @click="onSubmit">儲存</el-button>
         </el-form-item>
-
-        <el-form-item
-          label="負責人"
-          prop="incharge"
-          :rules="[{ required: true, message: '此為必填欄位' }]"
-        >
-          <el-input v-model="form.incharge" type="text" autocomplete="off" />
-          <el-upload ref="uploadRef" class="upload-demo" action="" :auto-upload="false">
-            <el-button type="primary" class="uploadbn" plain>
-              上傳文件<el-icon class="el-icon--right"><Upload /></el-icon>
-            </el-button>
-          </el-upload>
-          <el-alert class="alertwh" type="info" show-icon :closable="false">
-            <p>請上傳公司相關登記證明文件</p>
-          </el-alert>
-        </el-form-item>
-
-        <el-form-item
-          label="聯絡電話"
-          prop="cell"
-          :rules="[{ required: true, message: '此為必填欄位' }]"
-        >
-          <el-input
-            v-model="form.cell"
-            type="text"
-            autocomplete="off"
-            maxlength="10"
-            show-word-limit
-          />
-        </el-form-item>
-
-        <el-form-item label="商家簡述">
-          <el-input v-model="form.desc" type="textarea" class="--el-input-width" autosize />
-        </el-form-item>
-
-        <el-form-item
-          label="商家地址"
-          prop="addre"
-          :rules="[{ required: true, message: '此為必填欄位' }]"
-        >
-          <el-input v-model="form.addre" type="text" autocomplete="off" />
-        </el-form-item>
-
-        <el-form-item label="交通/停車資訊">
-          <el-input v-model="form.park" type="textarea" class="--el-input-width" />
-        </el-form-item>
-      </div>
-      <br />
-      <el-form-item label-width="17%">
-        <el-button F8D479 round>編輯</el-button>
-        <el-button type="primary" round @click="onSubmit">儲存</el-button>
-      </el-form-item>
-    </el-form>
+      </el-form>
+    </el-scrollbar>
   </main>
 </template>
 
@@ -124,7 +142,8 @@ const form = reactive({
   cell: '',
   desc: '',
   addre: '',
-  park: ''
+  park: '',
+  acceptUnit: 30,
 })
 
 const onSubmit = () => {
@@ -132,6 +151,7 @@ const onSubmit = () => {
 }
 const avatarImageUrl = ref('')
 const dialogVisible = ref(false)
+const servicePeriod = ref(60)
 
 const handleRemove: UploadProps['onRemove'] = (uploadFile, uploadFiles) => {
   console.log(uploadFile, uploadFiles)
@@ -154,12 +174,13 @@ function HandleAvatar() {
 }
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .hw {
   width: 580px;
   height: 100%;
   padding: 10px;
 }
+
 .el-input {
   width: 80%;
 }
@@ -173,7 +194,7 @@ function HandleAvatar() {
 .alertwh {
   margin-top: 10px;
   width: 80%;
-  line-height: 1;
+  line-height: 1.5;
 }
 :root {
   .--el-input-width {
