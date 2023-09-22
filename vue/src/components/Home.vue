@@ -183,9 +183,6 @@ $themeColor: #f7ddba;
   .el-aside {
     background-color: #f7f6e8;
     height: 100vh;
-    .a {
-      font-size: 1.35rem;
-    }
   }
 }
 

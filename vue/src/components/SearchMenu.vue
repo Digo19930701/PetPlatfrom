@@ -39,6 +39,12 @@
           <el-button round>攝影</el-button>
         </div>
       </span>
+      <template #footer>
+        <div style="flex: auto">
+          <el-button @click="cancelClick">取消</el-button>
+          <el-button type="primary" @click="confirmClick">確定</el-button>
+        </div>
+      </template>
     </el-drawer>
     <el-space direction="vertical">
       <el-row v-for="i in 3" :key="i">
@@ -96,7 +102,12 @@ const value1 = ref('')
 const size = ref('default')
 const val_price_range = ref([500, 5000])
 const value_time = ref('')
-
+function cancelClick() {
+  drawer.value = false
+}
+function confirmClick() {
+  drawer.value = false
+}
 // export default {
 //   data() {
 //     return {
