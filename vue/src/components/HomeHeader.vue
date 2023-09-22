@@ -48,7 +48,7 @@ import Login from '../views/Login.vue'
           <a href="/Member"><font-awesome-icon icon="fa-solid fa-circle-user" /> 會員資料</a>
         </li>
         <li>
-          <a href="#"><font-awesome-icon icon="fa-solid fa-cart-shopping" /> 購物車</a>
+          <a href="/Shopcar"><font-awesome-icon icon="fa-solid fa-cart-shopping" /> 購物車</a>
         </li>
         <li>
           <a href="#"><font-awesome-icon icon="fa-solid fa-bell" /> 通知</a>

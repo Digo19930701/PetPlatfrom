@@ -64,6 +64,18 @@ const router = createRouter({
         },
       ]
     },
+    // 購物車相關
+    {
+      path: '/Shopcar',
+      name: 'Shopcar',
+      component: () => import('../views/Shopcar.vue'),
+      // children: [
+      //   {
+      //     path: 'settingPage',
+      //     component:() => import('../views/settingPage.vue')
+      //   },
+      // ]
+    },
     {
       path: '/Login',
       name: 'Login',
