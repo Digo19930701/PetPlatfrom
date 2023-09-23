@@ -106,7 +106,6 @@ td {
   color: black;
   line-height: 1;
   font-size: large;
-
   font-weight: bolder;
   padding-left: 20px;
 }
@@ -116,6 +115,7 @@ td {
   font-size: large;
   width: 50%;
   padding-bottom: 10px;
+  text-align: center;
 }
 .mid_line {
   border-right: 2px solid #888;
