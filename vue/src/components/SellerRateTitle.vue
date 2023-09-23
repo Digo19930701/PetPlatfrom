@@ -104,7 +104,7 @@ const props = defineProps({
 
 .statistic-card {
   height: 100%;
-  min-width: 120px;
+  min-width: 150px;
   padding: 5px 10px;
   border-radius: 10px;
   margin: 0 1rem 0 0;
@@ -113,7 +113,6 @@ const props = defineProps({
 }
 .el-statistic__head {
   font-size: var(--el-statistic-title-font-size);
-  // font-size: 1rem;
 }
 .statistic-footer {
   display: flex;
@@ -125,6 +124,7 @@ const props = defineProps({
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-size: medium;
 }
 
 .statistic-footer .footer-item span:last-child {
@@ -141,5 +141,13 @@ const props = defineProps({
 }
 .brown {
   color: #cd7b00;
+}
+:root {
+  .el-statistic {
+    --el-statistic-title-font-size: larger;
+    --el-statistic-content-font-weight: bolder;
+    --el-statistic-content-font-size: x-large;
+    --el-statistic-content-color: black;
+  }
 }
 </style>

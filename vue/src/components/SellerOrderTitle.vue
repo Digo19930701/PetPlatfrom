@@ -25,7 +25,7 @@ function handleCollapse() {
     <el-row :gutter="20" class="board orderTitle" style="margin: 0px 0px 5px 0px">
       <table style="border-collapse: collapse">
         <tr>
-          <td rowspan="2" class="date" style="width: 60px">
+          <td rowspan="2" class="date" style="width: 60px; font-size: 20px">
             <p>週四</p>
             <span>10/19</span>
           </td>
@@ -36,7 +36,7 @@ function handleCollapse() {
           </td>
           <td class="orderContent"><span class="tag-cloud beauty">美容</span><br /></td>
           <td style="text-align: right">
-            <span class="orderNum">訂單編號:{12asd456q8w4f3}</span>
+            <span class="orderNum" style="font-size: 18px">訂單編號:{12asd456q8w4f3}</span>
           </td>
         </tr>
         <tr>
@@ -99,6 +99,7 @@ function handleCollapse() {
 .orderContent {
   border-left: 1px solid #d9d9d9;
   border-radius: 0%;
+  padding-left: 15px;
 }
 
 .el-row:last-child {

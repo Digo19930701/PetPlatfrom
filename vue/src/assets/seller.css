@@ -39,6 +39,7 @@
   border-radius: 25px;
   margin-top: 2px;
   text-align: center;
+  font-size: medium;
 }
 
 /**/
@@ -55,6 +56,7 @@
   border: 3px solid #f8d479;
   margin: 2%;
   margin-top: 5px;
+  font-size: larger;
 }
 
 .board {
@@ -70,7 +72,7 @@
 }
 
 .button {
-  width: 70px;
+  width: 80px;
   transition-duration: 0.4s;
   background-color: #d9d9d9;
   border: 1px solid #666666;

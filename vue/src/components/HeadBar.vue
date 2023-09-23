@@ -27,7 +27,7 @@ const { circleUrl, squareUrl, sizeList } = toRefs(state)
 }
 
 .title {
-  font-size: x-large;
+  font-size: xx-large;
   color: #000;
   font-family: 'Times New Roman', Times, serif;
   font-weight: bold;
