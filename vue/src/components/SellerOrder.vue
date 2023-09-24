@@ -46,8 +46,11 @@ const activities = [
           <br>
           <button class="tag-cloud button" id="report">檢舉</button>
         </td>
-        <th colspan="3" class="productTitle">
+        <th colspan="2" class="productTitle">
           <h3>飼主下單的店家服務名稱飼主下單的店家服務名稱(限20字)</h3>
+        </th>
+        <th colspan="1" class="productPrice">
+          <span>單價: </span>
         </th>
       </tr>
       <tr>
@@ -138,6 +141,11 @@ th{
 .productTitle h3 {
   color: #666666;
   font-weight: bold;
+}
+
+.productPrice {
+  color: #666666;
+  padding-left: 5%;
 }
 
 .ownerMsg {
