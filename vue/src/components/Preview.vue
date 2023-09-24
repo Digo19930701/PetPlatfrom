@@ -1,13 +1,10 @@
 <template>
   <el-container>
-    <el-header class="header">
-      <el-text class="hText">(推撥內容/畫面) </el-text>
-    </el-header>
     <el-main>
       <el-row>
         <el-col>
+          <h3>現有服務</h3>
           <el-row>
-            <h3>現有服務</h3>
             <div class="radiusPre">
               <el-text class="text">預覽模式</el-text>
             </div>
@@ -16,8 +13,8 @@
             <h3>{{ goodTitle }}</h3>
             <el-button round class="deleteBtn"> 刪除 </el-button>
             <el-button round class="editBtn"> 編輯 </el-button>
-          </el-row></el-col
-        >
+          </el-row>
+        </el-col>
       </el-row>
       <div
         class="goodRadius"

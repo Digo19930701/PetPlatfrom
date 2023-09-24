@@ -46,9 +46,10 @@
 .title {
   min-height: 40px;
 }
-.title h2 {
+.title p {
   font-weight: bold;
-  color: #666666;
+  color: #888;
+  font-size: 1.7rem;
 }
 
 .subtitle {

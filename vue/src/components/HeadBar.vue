@@ -1,6 +1,9 @@
 <template>
   <div class="header">
-    <div><button class="title">4A2B</button></div>
+    <div class="logo">
+      <img src="../assets/logoicon.png" width="90" />
+      <button class="title">4A2B</button>
+    </div>
     <div class="avatar"><el-avatar :size="40" :src="circleUrl" /></div>
     <div class="num-title"><router-link to="/">XXXXXXXXXX</router-link></div>
   </div>
@@ -19,38 +22,43 @@ const { circleUrl, squareUrl, sizeList } = toRefs(state)
 </script>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 .header {
   background-color: #f8d479;
   width: 100%;
-  height: 60px;
-  display: inline-flex;
+  height: 80px;
+  display: flex;
 }
 
 .title {
-  font-size: xx-large;
+  font-size: 2.5rem;
   color: #000;
-  font-family: 'Times New Roman', Times, serif;
-  font-weight: bold;
-  margin-top: 10px;
-  margin-left: 20px;
+  font-family: 'Varela Round', sans-serif;
   background: transparent;
   border-color: transparent;
+  font-weight: 600;
+  margin-top: 7px;
 }
 .title:hover {
   color: #cd7b00;
 }
 
 .avatar {
-  margin-top: 10px;
+  margin-top: 20px;
   margin-left: 65%;
   /* position: absolute; */
   /* left: 70%; */
 }
 
 .num-title {
-  margin-top: 15px;
+  margin-top: 25px;
   margin-left: 10px;
   /* position: absolute; */
   /* left: 75%; */
+}
+.logo {
+  display: flex;
+  align-items: center;
+  padding-left: 20px;
 }
 </style>

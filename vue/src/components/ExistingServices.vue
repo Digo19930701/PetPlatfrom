@@ -1,12 +1,6 @@
 <template>
   <el-container>
-    <el-header class="header">
-      <el-text class="hText">(推撥內容/畫面) </el-text>
-    </el-header>
     <el-main>
-      <el-row>
-        <h3>現有服務</h3>
-      </el-row>
       <el-row>
         <div class="radius">
           <el-text class="text">美容</el-text>
@@ -15,7 +9,7 @@
       <el-row>
         <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
           <el-text v-model="good_title">
-            <h3>{{ good_title }}</h3>
+            <p>{{ good_title }}</p>
           </el-text>
           <el-card :body-style="{ padding: '0px' }">
             <img
@@ -37,7 +31,7 @@
           </el-row>
         </el-col>
       </el-row>
-
+      <br />
       <el-row>
         <div class="radius2">
           <el-text class="text">保母/訓練</el-text>
@@ -46,7 +40,7 @@
       <el-row>
         <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
           <el-text v-model="good_title">
-            <h3>{{ good_title }}</h3>
+            <p>{{ good_title }}</p>
           </el-text>
           <el-card :body-style="{ padding: '0px' }">
             <img
@@ -68,7 +62,7 @@
           </el-row>
         </el-col>
       </el-row>
-
+      <br />
       <el-row>
         <div class="radius3">
           <el-text class="text">攝影</el-text>
@@ -134,7 +128,7 @@
   </el-container>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .header {
   background-color: rgb(199, 197, 197);
   width: 100%;
@@ -145,16 +139,19 @@
   }
 }
 .el-main {
-  background-color: rgb(248, 244, 218);
+  background-color: #f8f6e9;
   .radius {
     border-radius: 25px;
     background-color: #ffbfd6;
     width: 80px;
-
     .text {
-      font-size: small;
+      font-size: medium;
       padding-left: 25px;
     }
+  }
+  p {
+    font-size: large;
+    font-weight: 600;
   }
   .image {
     width: 100%;
@@ -163,10 +160,10 @@
   .radius2 {
     border-radius: 25px;
     background-color: #bff3ff;
-    width: 80px;
+    width: 95px;
 
     .text {
-      font-size: small;
+      font-size: medium;
       padding-left: 15%;
     }
   }
@@ -176,7 +173,7 @@
     width: 80px;
 
     .text {
-      font-size: small;
+      font-size: medium;
       padding-left: 25px;
     }
   }
@@ -186,13 +183,13 @@
     width: 80px;
 
     .text {
-      font-size: small;
+      font-size: medium;
       padding-left: 25px;
     }
   }
-  // .btns {
-  //   padding: 10%;
-  // }
+  .btns {
+    padding: 10px;
+  }
 }
 </style>
 

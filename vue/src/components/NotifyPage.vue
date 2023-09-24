@@ -188,21 +188,14 @@ const singleRead = () => {
   margin-top: 2px;
   text-align: center;
 }
-/* 服務:美容 */
-.beauty {
-  background-color: #ffbfd6;
+ins {
+  font-size: medium;
 }
-/* 服務:褓姆/訓練 */
-.nannyTraining {
-  background-color: #bff3ff;
+span {
+  font-size: medium;
 }
-/* 服務:溝通 */
-.whisperer {
-  background-color: #bff3b3;
-}
-/* 服務:攝影 */
-.graphy {
-  background-color: #e3bfff;
+p {
+  font-size: medium;
 }
 
 :root {
