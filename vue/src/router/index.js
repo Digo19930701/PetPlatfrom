@@ -8,13 +8,17 @@ const router = createRouter({
     {
       path: '/',
       name: 'home',
-      // component: SellerHome
-      component: Preview
+      component: SellerHome
     },
     {
       path: '/servicesExist',
       name: 'servicesExist',
       component: () => import('../views/ServicesExistView.vue')
+    },
+    {
+      path: '/preview',
+      name: 'preview',
+      component: () => import('../components/Preview.vue')
     },
     {
       path: '/serviceEdit',
@@ -57,9 +61,9 @@ const router = createRouter({
       component: () => import('../views/NotifySettingView.vue')
     },
     {
-      path: '/notifyPage',
-      name: 'notifyPage',
-      component: () => import('../views/NotifyPageView.vue')
+      path: '/notifyCenter',
+      name: 'notifyCenter',
+      component: () => import('../views/NotifyCenterView.vue')
     },
     {
       path: '/accountingPage',

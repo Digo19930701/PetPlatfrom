@@ -1,12 +1,12 @@
 <script setup>
-import NotifyPage from '../components/NotifyPage.vue'
+import NotifyCenter from '../components/NotifyCenter.vue'
 </script>
 
 <template>
-    <header>
+  <header>
     <h2 style="color: #888888; font-weight: bolder">所有通知</h2>
   </header>
   <main>
-    <NotifyPage />
+    <NotifyCenter />
   </main>
 </template>

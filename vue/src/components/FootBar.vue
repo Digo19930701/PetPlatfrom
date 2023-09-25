@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="trademark">
-      <img src="../assets/logoicon.png" width="50" object-fit="cover" />
+      <img src="../images/4a2b_icon.png" width="50" object-fit="cover" />
       &copy;4A2B
     </div>
     <div id="bn-area">

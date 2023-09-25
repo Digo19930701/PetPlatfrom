@@ -24,7 +24,7 @@
         </div>
       </div>
       <br />
-      <div class="table">
+      <div class="table" style="width: 600px">
         <el-table :data="tableData" border style="width: 600px">
           <el-table-column prop="orderNum" label="訂單編號" width="200" />
           <el-table-column prop="remit" label="撥款時間" width="130" />
@@ -159,7 +159,7 @@ h2 {
   justify-content: center;
 }
 .table {
-  justify-content: center;
-  padding-left: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

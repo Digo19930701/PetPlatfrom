@@ -11,19 +11,20 @@
           <el-text v-model="good_title">
             <p>{{ good_title }}</p>
           </el-text>
-          <el-card :body-style="{ padding: '0px' }">
-            <img
-              src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
-              class="image"
-            />
-            <div style="padding: 14px">
-              <h3>商家</h3>
-              <span
-                >Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny
-                summer</span
-              >
-            </div>
-          </el-card>
+          <router-link to="/preview">
+            <el-card :body-style="{ padding: '0px' }">
+              <img
+                src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
+                class="image"
+              />
+              <div style="padding: 14px">
+                <h3>商家</h3>
+                <span>
+                  Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny summer
+                </span>
+              </div>
+            </el-card>
+          </router-link>
 
           <el-row class="btns">
             <el-button round class="deleteBtn"> 刪除 </el-button>
@@ -42,19 +43,20 @@
           <el-text v-model="good_title">
             <p>{{ good_title }}</p>
           </el-text>
-          <el-card :body-style="{ padding: '0px' }">
-            <img
-              src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
-              class="image"
-            />
-            <div style="padding: 14px">
-              <h3>商家</h3>
-              <span
-                >Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny
-                summer</span
-              >
-            </div>
-          </el-card>
+          <router-link to="/preview">
+            <el-card :body-style="{ padding: '0px' }">
+              <img
+                src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
+                class="image"
+              />
+              <div style="padding: 14px">
+                <h3>商家</h3>
+                <span>
+                  Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny summer
+                </span>
+              </div>
+            </el-card>
+          </router-link>
 
           <el-row class="btns">
             <el-button round class="deleteBtn"> 刪除 </el-button>
@@ -68,61 +70,13 @@
           <el-text class="text">攝影</el-text>
         </div>
       </el-row>
-      <!-- <el-row>
-        <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
-          <el-text v-model="good_title">
-            <h3>{{ good_title }}</h3>
-          </el-text>
-          <el-card :body-style="{ padding: '0px' }">
-            <img
-              src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
-              class="image"
-            />
-            <div style="padding: 14px">
-              <h3>商家</h3>
-              <span
-                >Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny
-                summer</span
-              >
-            </div>
-          </el-card>
-
-          <el-row class="btns">
-            <el-button round class="deleteBtn"> 刪除 </el-button>
-            <el-button round class="editBtn"> 編輯 </el-button>
-          </el-row>
-        </el-col>
-      </el-row> -->
       <el-empty description="暫無項目" />
+
       <el-row>
         <div class="radius4">
           <el-text class="text">溝通</el-text>
         </div>
       </el-row>
-      <!-- <el-row>
-        <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
-          <el-text v-model="good_title">
-            <h3>{{ good_title }}</h3>
-          </el-text>
-          <el-card :body-style="{ padding: '0px' }">
-            <img
-              src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
-              class="image"
-            />
-            <div style="padding: 14px">
-              <h3>商家</h3>
-              <span>
-                Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny summer
-              </span>
-            </div>
-          </el-card>
-
-          <el-row class="btns">
-            <el-button round class="deleteBtn"> 刪除 </el-button>
-            <el-button round class="editBtn"> 編輯 </el-button>
-          </el-row>
-        </el-col>
-      </el-row> -->
       <el-empty description="暫無項目" />
     </el-main>
   </el-container>
@@ -152,6 +106,7 @@
   p {
     font-size: large;
     font-weight: 600;
+    color: rgb(96, 98, 102);
   }
   .image {
     width: 100%;
