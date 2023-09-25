@@ -45,7 +45,7 @@
         </div>
 
     </div>
-    
+
 </template>
 
 
@@ -58,16 +58,16 @@ import { ref } from 'vue'
 // });
 
 const sendPostRequest = async () => {
-    window.location.href = 'http://localhost:8080/ecpayCheckout';
-    // axios.post('http://localhost:8080/ecpayCheckout', {})
-    //     .then(response => {
-    //         responseHTML.value = response.data
-    //         document.getElementById('ECpayt').innerHTML = responseHTML.value;
-    //         console.log(responseHTML.value)
-    //     })
-    //     .catch(error => {
-    //         console.log(error)
-    //     })
+window.location.href = 'http://localhost:8080/ecpayCheckout';
+// axios.post('http://localhost:8080/ecpayCheckout', {})
+//     .then(response => {
+//         responseHTML.value = response.data
+//         document.getElementById('ECpayt').innerHTML = responseHTML.value;
+//         console.log(responseHTML.value)
+//     })
+//     .catch(error => {
+//         console.log(error)
+//     })
 
 };
 
@@ -75,45 +75,45 @@ const sendPostRequest = async () => {
 const value2 = ref('')
 const view = ref(1)
 const cview = (ind) => {
-    view.value = ind
+view.value = ind
 }
 
 const itemList = ref([
-    {
-        id: '1',
-        itemName: '洗澡',
-        imgUrl: 'https://images.unsplash.com/photo-1534961880437-ce5ae2033053?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
-        price: '500',
-        count: '2023/09/02 12:00'
-    },
-    {
-        id: '2',
-        itemName: '美容',
-        imgUrl: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
-        price: '790',
-        count: '2023/02/02 12:00'
-    },
-    {
-        id: '3',
-        itemName: '洗澡',
-        imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
-        price: '1200',
-        count: '2023/09/15 12:00'
-    },
-    {
-        id: '4',
-        itemName: '美容',
-        imgUrl: 'https://images.unsplash.com/photo-1491998664548-0063bef7856c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
-        price: '1300',
-        count: '2023/09/02 15:00'
-    },
-    {
-        id: '5',
-        itemName: '梳毛',
-        imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
-        price: '2000',
-        count: '2023/10/02 12:00'
-    },
+{
+    id: '1',
+    itemName: '洗澡',
+    imgUrl: 'https://images.unsplash.com/photo-1534961880437-ce5ae2033053?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+    price: '500',
+    count: '2023/09/02 12:00'
+},
+{
+    id: '2',
+    itemName: '美容',
+    imgUrl: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+    price: '790',
+    count: '2023/02/02 12:00'
+},
+{
+    id: '3',
+    itemName: '洗澡',
+    imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
+    price: '1200',
+    count: '2023/09/15 12:00'
+},
+{
+    id: '4',
+    itemName: '美容',
+    imgUrl: 'https://images.unsplash.com/photo-1491998664548-0063bef7856c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+    price: '1300',
+    count: '2023/09/02 15:00'
+},
+{
+    id: '5',
+    itemName: '梳毛',
+    imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
+    price: '2000',
+    count: '2023/10/02 12:00'
+},
 ]);
 
 // const handlePlus = (item) => {
@@ -127,65 +127,65 @@ const itemList = ref([
 // };
 
 const handledelete = (index) => {
-    console.log(this);
-    itemList.value.splice(index, 1);
+console.log(this);
+itemList.value.splice(index, 1);
 };
 </script>
 
 <style scoped>
 .block {
-    display: flex;
+display: flex;
 }
 
 .fixed {
-    z-index: 1;
-    position: fixed;
-    top: 60px;
-    left: 1px;
+z-index: 1;
+position: fixed;
+top: 60px;
+left: 1px;
 }
 
 .item_header {
-    display: flex;
-    width: 100%;
-    margin: 0 auto;
-    height: 33px;
-    background-color: #fff;
-    border-radius: 3px;
-    padding-left: 10px;
+display: flex;
+width: 100%;
+margin: 0 auto;
+height: 33px;
+background-color: #fff;
+border-radius: 3px;
+padding-left: 10px;
 
 }
 
 .item_header div {
-    width: 21%;
-    line-height: 30px;
+width: 21%;
+line-height: 30px;
 }
 
 .item_header .item_detail {
-    width: 35%;
+width: 35%;
 }
 
 .item_body {
-    margin-top: 20px;
-    height: 100px;
-    align-items: center;
-    width: 100%;
+margin-top: 20px;
+height: 100px;
+align-items: center;
+width: 100%;
 }
 
 .item_detail img {
-    width: 80px;
-    height: 80px;
-    border-radius: 3px;
-    float: left;
+width: 80px;
+height: 80px;
+border-radius: 3px;
+float: left;
 }
 
 .item_detail .name {
-    margin-left: 100px;
-    margin-top: 20px;
+margin-left: 100px;
+margin-top: 20px;
 }
 
 .checkout {
-    position: fixed;
-    bottom: 60px;
-    right: 1px;
+position: fixed;
+bottom: 60px;
+right: 1px;
 }
 </style>
