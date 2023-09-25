@@ -1,7 +1,13 @@
 @import './base.css';
 
 #app {
+<<<<<<< HEAD
   margin: 0 auto;
+=======
+  /* max-width: 1280px; */
+  /* margin: 0 auto; */
+
+>>>>>>> base
   font-weight: normal;
 }
 
@@ -20,17 +26,27 @@ a,
 }
 
 @media (min-width: 1024px) {
+<<<<<<< HEAD
   body {
     /* display: flex; */
+=======
+  /* body {
+    display: flex;
+>>>>>>> base
     place-items: center;
-  }
+  } */
 
   #app {
+<<<<<<< HEAD
     /* display: grid; */
     /* grid-template-columns: 1fr 1fr; */
     /* padding: 0 2rem; */
     display: flex;
     flex-direction: column;
     min-width: 1280px;
+=======
+    grid-template-columns: 1fr 1fr;
+    padding: 0 rem;
+>>>>>>> base
   }
 }

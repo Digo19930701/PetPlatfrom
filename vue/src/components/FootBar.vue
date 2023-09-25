@@ -1,5 +1,6 @@
 <template>
   <div class="header">
+<<<<<<< HEAD
     <div class="trademark">
       <img src="../assets/logoicon.png" width="50" object-fit="cover" />
       &copy;4A2B
@@ -12,17 +13,37 @@
   </div>
 </template>
 
+=======
+    <div class="trademark"><img src="../assets/logoicon.png" width="15">&copy;4A2B</div>
+      <el-button text> 關於4A2B </el-button>
+      <el-button text> 聯絡我們 </el-button>
+      <el-button text> 隱私權政策 </el-button>
+  </div>
+</template>
+<script lang="ts" setup>
+</script>
+>>>>>>> base
 <style scoped>
 .header {
   background-color: #f8d479;
   width: 100%;
+<<<<<<< HEAD
   height: 65px;
   padding: 15px 0px 15px 20px;
   display: inline-flex;
+=======
+  height: 60px;
+  padding: 15px 0px 10px 20px;
+  display: inline-flex;
+  position: fixed;
+  bottom: 0px;
+  left: 0px;
+>>>>>>> base
 }
 
 .trademark {
   border-radius: 10px;
+<<<<<<< HEAD
   height: 40px;
   width: 150px;
   background-color: #fff3bf;
@@ -43,5 +64,11 @@
 #bn:hover {
   background: transparent;
   color: #cd7b00;
+=======
+  height: 30px;
+  width: 150px;
+  background-color: #fff3bf;
+  padding: 3px 30px;
+>>>>>>> base
 }
 </style>

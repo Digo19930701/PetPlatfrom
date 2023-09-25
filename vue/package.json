@@ -10,7 +10,11 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+<<<<<<< HEAD
     "echarts": "^5.4.3",
+=======
+    "axios": "^1.5.0",
+>>>>>>> base
     "element-plus": "^2.3.12",
     "qalendar": "^3.5.0",
     "use-element-plus-theme": "^0.0.5",
