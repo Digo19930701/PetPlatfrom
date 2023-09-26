@@ -17,6 +17,7 @@
     <div style="margin-top: 20px; ">
       <el-button @click="dialogFormVisible = true" style="width: 200px; height: 50px;">會員註冊</el-button>
       <el-button @click="sellerSignup = true" style="width: 200px; height: 50px;">商家註冊</el-button>
+      <el-button @click="test" style="width: 200px; height: 50px;">三方登入</el-button>
     </div>
 
 
@@ -87,7 +88,6 @@
 </template>
   
 <script lang="ts" setup>
-import { dataType } from 'element-plus/es/components/table-v2/src/common';
 import { reactive, ref } from 'vue'
 import {useRouter} from 'vue-router'
 
@@ -135,6 +135,61 @@ const sellersignup = reactive({
   Password: '',
   againPassword: ''
 })
+
+import firebaseConfig from '../firebaseConfig';
+import { API_URL } from "@/config";
+import { getAuth, signInWithPopup, GoogleAuthProvider} from "firebase/auth";
+
+  firebaseConfig
+
+    // getAuth()：用於獲取 Firebase 的 auth 服務的實例，處理身份驗證的主要介面
+    const auth = getAuth();
+    // GoogleAuthProvider：用於提供 Google 登入的驗證提供者物件，設定相關的登入選項和參數。
+    const googleProvider = new GoogleAuthProvider();
+
+    const userUid = ref();
+    const nickname = ref();
+    const accountTypeID = ref(1);
+
+    async function test() {
+        try {
+            // signInWithPopup(auth, googleProvider) 函式：用於彈出 Google 登入視窗，並返回一個結果物件 
+            const result = await signInWithPopup(auth, googleProvider);
+            // uid：使用者的唯一識別碼
+            userUid.value = result.user.uid;
+            // displayName：使用者的顯示名稱
+            nickname.value = result.user.displayName;
+
+            console.log(result)
+
+            // 根據需求，可以在登入後的處理中進行相應的操作，例如驗證用戶資訊、儲存登入狀態等。
+            // const response = await axios.post(`${API_URL}googleLogin.php`, {
+            //     userUid: userUid.value,
+            //     nickname: nickname.value,
+            //     accountTypeID: accountTypeID.value
+            // });
+
+            // if (response.data.message === '登入成功') {
+            // // alert(response.data.message);
+            // } else {
+            //     alert(response.data.message);
+            // }
+
+            // 使用 localStorage.setItem 方法將回應中的 id 值存儲到 token 鍵中。
+            // localStorage.setItem("token", response.data.id);
+            localStorage.setItem("token", "memberToken");
+
+
+            //使用 window.location.reload() 重新載入頁面。
+            // window.location.reload();
+            alert("登入成功");
+            router.push("/");
+        } catch (error) {
+            console.log(error.response);
+            alert('發生了一些錯誤，請聯絡管理員!');
+            window.location.reload();
+        }
+    }
 
 
 const login = () => {
