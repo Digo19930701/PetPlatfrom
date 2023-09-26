@@ -12,17 +12,12 @@
 
     <div style="margin-left: 50px;">
       <el-button type="primary" @click="login" style="width: 200px; height: 50px;">登入</el-button>
-      <el-button @click="dialogFormVisible = true" style="width: 200px; height: 50px;">註冊</el-button>
       <el-link @click="verifyEmail = true" style="color: red; margin-left: 20px;">忘記密碼</el-link>
     </div>
-    <div style="margin-top: 50px; ">
-      <img src="../components/config/image/googleLogin.png">
+    <div style="margin-top: 20px; ">
+      <el-button @click="dialogFormVisible = true" style="width: 200px; height: 50px;">會員註冊</el-button>
+      <el-button @click="sellerSignup = true" style="width: 200px; height: 50px;">商家註冊</el-button>
     </div>
-
-
-
-
-
 
 
 
@@ -41,7 +36,6 @@
             placeholder="密碼確認" show-password />
         </el-form-item>
       </el-form>
-      <el-checkbox style="margin-left:70%;">我不是機器人</el-checkbox>
       <template #footer>
         <span class="dialog-footer">
           <el-button type="primary" @click="registerout"> 註冊</el-button>
@@ -66,8 +60,30 @@
       </template>
     </el-dialog>
 
-
+    <el-dialog v-model="sellerSignup" title="註冊商家">
+      <el-form :model="sellersignup">
+        <el-form-item :label-width="formLabelWidth">
+          <el-input v-model="sellersignup.mail" label-width="100px" autocomplete="off" type="sellersignup" placeholder="請輸入信箱" />
+        </el-form-item>
+        <el-form-item :label-width="formLabelWidth">
+          <el-input v-model="sellersignup.Password" label-width="100px" autocomplete="off" type="sellersignup" placeholder="請輸入密碼"
+            show-password />
+        </el-form-item>
+        <el-form-item :label-width="formLabelWidth">
+          <el-input v-model="sellersignup.againPassword" label-width="100px" autocomplete="off" type="sellersignup"
+            placeholder="密碼確認" show-password />
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button type="primary" @click="sellersignupout"> 註冊</el-button>
+          <el-button @click="sellerSignup = false">取消</el-button>
+        </span>
+      </template>
+    </el-dialog>
   </div>
+
+
 </template>
   
 <script lang="ts" setup>
@@ -76,8 +92,8 @@ import { reactive, ref } from 'vue'
 import {useRouter} from 'vue-router'
 
 const dialogFormVisible = ref(false)
+const sellerSignup = ref(false)
 const verifyEmail = ref(false)
-
 const router = useRouter()
 
 const formLabelWidth = '100px'
@@ -114,9 +130,13 @@ const loginForm = reactive({
   password: ''
 })
 
-//   const A = () => {
-//   console.log("register",register)
-//  }
+const sellersignup = reactive({
+  mail: '',
+  Password: '',
+  againPassword: ''
+})
+
+
 const login = () => {
   router.push("/")
   console.log("loginForm", loginForm)
@@ -125,6 +145,12 @@ const registerout = () => {
 
   console.log("register", register)
 }
+
+const sellersignupout = () => {
+
+console.log("sellersignup", sellersignup)
+}
+
 
 </script>
   
