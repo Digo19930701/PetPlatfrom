@@ -66,28 +66,6 @@
       </template>
     </el-dialog>
 
-    <el-dialog v-model="forgetPassword" title="忘記密碼">
-      <el-form :model="forgetPs">
-
-        <el-form-item :label-width="formLabelWidth">
-          <el-input v-model="forgetPs.verifypassword" label-width="100px" autocomplete="off" type="forgetPs"
-            placeholder="請輸入驗證碼" />
-        </el-form-item>
-
-        <el-form-item :label-width="formLabelWidth">
-          <el-input v-model="forgetPs.newpassword" label-width="100px" autocomplete="off" type="forgetPs"
-            placeholder="輸入新密碼" show-password />
-        </el-form-item>
-      </el-form>
-
-      <template #footer>
-        <span class="dialog-footer">
-          <el-button type="primary" @click="registerout"> 送出</el-button>
-          <el-button @click="forgetPassword = false">取消</el-button>
-        </span>
-      </template>
-    </el-dialog>
-
 
   </div>
 </template>
@@ -99,7 +77,7 @@ import {useRouter} from 'vue-router'
 
 const dialogFormVisible = ref(false)
 const verifyEmail = ref(false)
-const forgetPassword = ref(false)
+
 const router = useRouter()
 
 const formLabelWidth = '100px'
