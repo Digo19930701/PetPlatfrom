@@ -1,7 +1,7 @@
 <template>
   <!-- 還沒處理單獨通知點開時字體變已讀顏色 -->
   <main>
-    <div class="alignRight">
+    <div class="alignRight" style="width: 700px;">
       <button id="read" @click="allRead()">全部設為已讀</button>
     </div>
     <div class="list">
@@ -22,7 +22,7 @@
               </router-link>
             </div>
             <div class="alignRight">
-              <p>{{ timeline1 }}</p>
+              <p>{{ sysTime }}</p>
             </div>
           </div>
         </el-collapse-item>
@@ -47,7 +47,7 @@
               </router-link>
             </div>
             <div class="alignRight">
-              <p>{{ timeline1 }}</p>
+              <p>{{ sysTime }}</p>
             </div>
           </div>
         </el-collapse-item>
@@ -72,7 +72,7 @@
               </router-link>
             </div>
             <div class="alignRight">
-              <p>{{ timeline1 }}</p>
+              <p>{{ sysTime }}</p>
             </div>
           </div>
         </el-collapse-item>
@@ -90,9 +90,9 @@
             </span>
           </template>
           <div class="content">
-            <div style="width: 80%">
-              <span class="tag-cloud whisperer">溝通</span>&emsp;
+            <div style="width: 70%">
               <p style="color: #888888">
+                <span class="tag-cloud whisperer">溝通</span>&emsp;
                 {{ orderNum }}&emsp;
                 <router-link to="/sellerRate">
                   <button>查看詳情</button>
@@ -100,7 +100,7 @@
               </p>
             </div>
             <div class="alignRight">
-              <p>{{ timeline1 }}</p>
+              <p>{{ sysTime }}</p>
             </div>
           </div>
         </el-collapse-item>
@@ -149,7 +149,7 @@ const dataState = reactive({
   noticedMaintain: '平台系統維護通知',
   noticedAbnormal: '帳款異常通知',
   orderNum: '訂單編號：AXXXXXX08271345',
-  timeline1: '2018-04-15'
+  sysTime: '2018-04-15 10:00'
 })
 const {
   noticedNewOrder,
@@ -160,10 +160,10 @@ const {
   noticedMaintain,
   noticedAbnormal,
   orderNum,
-  timeline1
+  sysTime
 } = toRefs(dataState)
 </script>
-<style lang="scss">
+<style lang="scss" >
 .list {
   width: 700px;
   height: 100%;
@@ -175,7 +175,7 @@ const {
   margin: 10px;
 }
 .alignRight {
-  width: 20%;
+  width: 30%;
   text-align: right;
   padding-right: 10px;
 }

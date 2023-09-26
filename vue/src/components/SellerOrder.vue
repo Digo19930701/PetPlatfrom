@@ -6,7 +6,7 @@
 
 <script lang="ts" setup>
 // import SellerOrderTitle from './SellerOrderTitle.vue'
-import { ref } from 'vue'
+import { ref, reactive, toRefs} from 'vue'
 const activeNames = ref(['1'])
 const handleChange = (val: string[]) => {
   console.log(val)
@@ -30,7 +30,38 @@ const activities = [
     content: '服務完成',
     timestamp: '2018-04-11',
   },
+  {
+    content: '撥款完成',
+    timestamp: '2018-04-11',
+  }
 ]
+
+const data = reactive({
+  orderstate1:"收到訂單",
+  orderstate2:"接受訂單",
+  orderstate3:"寵物報到",
+  orderstate4:"服務完成",
+  orderstate5:"撥款完成",
+  timeline1: '2018-04-11',//收到
+  timeline2: '2018-04-11',//接受
+  timeline3: '2018-04-13',//報到
+  timeline4: '2018-04-15',//完成
+  timeline5: '2018-04-18',//撥款
+  petName:'',
+  petGender:'',
+  userEmail:'',
+  phoneNumber:'',
+  petClass:'',
+  variety:'',//品種
+  personAlity:'',
+  petAge:'',
+  serviceName:'',
+  OrderMsg:'' //訂單備註
+})
+
+const {
+
+} = toRefs(data)
 </script>
 
 
@@ -57,8 +88,7 @@ const activities = [
         <td class="orderInf">
           <p >飼主: </p>
           <p >電話: </p>
-          <p >支付方式: </p>
-          <p >使用優惠: </p>
+          <!-- <p >使用優惠: </p> -->
           <br>
           <p >類別: </p>
           <p >品種: </p>

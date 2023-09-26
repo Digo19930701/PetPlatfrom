@@ -107,7 +107,7 @@
   </el-container>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .header {
   background-color: rgb(199, 197, 197);
   width: 100%;
