@@ -11,6 +11,15 @@ const router = createRouter({
       component: SellerHome
       // component: Preview
     },
+    // proxyTable: {
+    //   '/data': {                 
+    //     target: 'http://localhost:3300/', 
+    //     changeOrigin: true,
+    //     pathRewrite: {
+    //       '^/data': ''
+    //     }
+    //   }
+    // },
     {
       path: '/servicesExist',
       name: 'servicesExist',

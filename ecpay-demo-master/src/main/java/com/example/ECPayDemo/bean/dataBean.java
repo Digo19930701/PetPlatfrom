@@ -1,4 +1,4 @@
-package com.example.bean;
+package com.example.ECPayDemo.bean;
 
 
 public class dataBean {

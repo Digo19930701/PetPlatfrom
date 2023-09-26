@@ -1,18 +1,20 @@
-package com.example.demo;
+package com.example.ECPayDemo.controller;
 
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.bean.dataBean;
+import com.example.ECPayDemo.bean.dataBean;
+
+
 
 @RestController
 public class MyController {
 
 	private dataBean studentRecords;
 
-	@RequestMapping("/test")
+	@GetMapping("/test")
 	public String test() {
 		System.out.println("test!");
 		return "test";

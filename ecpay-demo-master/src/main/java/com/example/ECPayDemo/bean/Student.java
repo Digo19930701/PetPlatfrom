@@ -1,4 +1,4 @@
-package com.example.demo;
+package com.example.ECPayDemo.bean;
 
 public class Student {
 	Integer id;
