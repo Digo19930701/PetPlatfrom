@@ -44,7 +44,7 @@ import Login from '../views/Login.vue'
           </div>
         </li>
         <li>
-          <a href="Login"><font-awesome-icon icon="fa-solid fa-circle-user" /> 會員登入</a>
+          <a href="Login"><font-awesome-icon icon="fa-solid fa-circle-user" /> 登入</a>
           <a href="/Member"><font-awesome-icon icon="fa-solid fa-circle-user" /> 會員資料</a>
         </li>
         <li>
