@@ -89,6 +89,8 @@
               <span class="sub-menu">通知中心</span>
             </router-link>
           </el-menu-item>
+          <div><router-link to="/shoppingCart">購物車(暫)</router-link></div>
+          <div><router-link to="/studentTest">測學生(暫)</router-link></div>
         </el-menu>
       </el-col>
     </el-row>

@@ -96,6 +96,12 @@ const router = createRouter({
       path: '/shoppingCart',
       name: 'shoppingCart',
       component: () => import('../components/ShoppingCart.vue')
+    },
+    {
+      //測試連接點
+      path: '/studentTest',
+      name: 'studentTest',
+      component: () => import('../views/Student.vue')
     }
   ]
 })

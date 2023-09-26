@@ -6,7 +6,6 @@
     </div>
     <div class="avatar"><el-avatar :size="40" :src="circleUrl" /></div>
     <div class="num-title"><router-link to="/">XXXXXXXXXX</router-link></div>
-    <div><router-link to="/shoppingCart">購物車(暫)</router-link></div>
   </div>
 </template>
 

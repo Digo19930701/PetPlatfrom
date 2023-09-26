@@ -1,8 +1,8 @@
 package com.example.ECPayDemo.controller;
 
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ECPayDemo.bean.dataBean;
@@ -10,6 +10,7 @@ import com.example.ECPayDemo.bean.dataBean;
 
 
 @RestController
+@CrossOrigin("http://localhost:5173/")
 public class MyController {
 
 	private dataBean studentRecords;
@@ -20,11 +21,6 @@ public class MyController {
 		return "test";
 	}
 
-	@GetMapping("/")
-	public String index(Model model) {
-		model.addAttribute("eventName", "FIFA 2018");
-		return "index";
-	}
 
 	@GetMapping("/student/allstudent")
 	public dataBean getAllStudents() {
