@@ -82,6 +82,11 @@
   </el-container>
 </template>
 
+<script lang="ts" setup>
+import { ref } from 'vue'
+const good_title = '小貓小狗洗香香'
+</script>
+
 <style lang="scss" scoped>
 .header {
   background-color: rgb(199, 197, 197);
@@ -147,8 +152,3 @@
   }
 }
 </style>
-
-<script lang="ts" setup>
-import { ref } from 'vue'
-const good_title = '小貓小狗洗香香'
-</script>

@@ -6,7 +6,56 @@
 
 <script lang="ts" setup>
 // import SellerOrderTitle from './SellerOrderTitle.vue'
-import { ref, reactive, toRefs} from 'vue'
+import { ref, reactive, toRefs } from 'vue'
+
+const data = reactive({
+  orderstate1: '收到訂單',
+  orderstate2: '接受訂單',
+  orderstate3: '寵物報到',
+  orderstate4: '服務完成',
+  orderstate5: '撥款完成',
+  timeline1: '2018-04-11', //收到
+  timeline2: '2018-04-11', //接受
+  timeline3: '2018-04-13', //報到
+  timeline4: '2018-04-15', //完成
+  timeline5: '2018-04-18', //撥款
+  petName: '寵物名',
+  petGender: '(性別)',
+  userEmail: '',
+  phoneNumber: '',
+  petClass: '',
+  variety: '', //品種
+  personAlity: '',
+  petAge: '',
+  serviceName: '飼主下單的店家服務名稱(限20字)',
+  OrderMsg: '', //訂單備註
+  price: ''
+})
+
+const {
+  orderstate1,
+  orderstate2,
+  orderstate3,
+  orderstate4,
+  orderstate5,
+  timeline1,
+  timeline2,
+  timeline3,
+  timeline4,
+  timeline5,
+  petName,
+  petGender,
+  userEmail,
+  phoneNumber,
+  petClass,
+  variety,
+  personAlity,
+  petAge,
+  serviceName,
+  OrderMsg,
+  price
+} = toRefs(data)
+
 const activeNames = ref(['1'])
 const handleChange = (val: string[]) => {
   console.log(val)
@@ -14,90 +63,61 @@ const handleChange = (val: string[]) => {
 const taskColor = '#F8D479'
 const activities = [
   {
-    content: '收到訂單',
-    timestamp: '2018-04-15',
-    color: taskColor,
+    content: orderstate1,
+    timestamp: timeline1,
+    color: taskColor
   },
   {
-    content: '接受訂單',
-    timestamp: '2018-04-13',
+    ccontent: orderstate2,
+    timestamp: timeline2
   },
   {
-    content: '寵物報到',
-    timestamp: '2018-04-11',
+    content: orderstate3,
+    timestamp: timeline3
   },
   {
-    content: '服務完成',
-    timestamp: '2018-04-11',
+    content: orderstate4,
+    timestamp: timeline4
   },
   {
-    content: '撥款完成',
-    timestamp: '2018-04-11',
+    content: orderstate5,
+    timestamp: timeline5
   }
 ]
-
-const data = reactive({
-  orderstate1:"收到訂單",
-  orderstate2:"接受訂單",
-  orderstate3:"寵物報到",
-  orderstate4:"服務完成",
-  orderstate5:"撥款完成",
-  timeline1: '2018-04-11',//收到
-  timeline2: '2018-04-11',//接受
-  timeline3: '2018-04-13',//報到
-  timeline4: '2018-04-15',//完成
-  timeline5: '2018-04-18',//撥款
-  petName:'',
-  petGender:'',
-  userEmail:'',
-  phoneNumber:'',
-  petClass:'',
-  variety:'',//品種
-  personAlity:'',
-  petAge:'',
-  serviceName:'',
-  OrderMsg:'' //訂單備註
-})
-
-const {
-
-} = toRefs(data)
 </script>
-
 
 <template>
   <el-row :gutter="0" class="detail">
-
     <table>
       <tr>
         <td rowspan="2" class="side petMain">
-          <img src="public\cat.JPG">
-          <p>寵物名</p>
-          <p>(性別)</p>
-          <br>
+          <img src="public\cat.JPG" />
+          <p>{{ petName }}</p>
+          <p>{{ petGender }}</p>
+          <br />
           <button class="tag-cloud button" id="report">檢舉</button>
         </td>
         <th colspan="2" class="productTitle">
-          <h3>飼主下單的店家服務名稱飼主下單的店家服務名稱(限20字)</h3>
+          <h3>{{ serviceName }}</h3>
         </th>
         <th colspan="1" class="productPrice">
-          <span>單價: </span>
+          <span>單價 NT${{ price }} </span>
         </th>
       </tr>
       <tr>
         <td class="orderInf">
-          <p >飼主: </p>
-          <p >電話: </p>
+          <p>飼主: {{ userEmail }}</p>
+          <p>電話: {{ phoneNumber }}</p>
           <!-- <p >使用優惠: </p> -->
-          <br>
-          <p >類別: </p>
-          <p >品種: </p>
-          <p >個性: </p>
-          <p >年紀: </p>
+          <br />
+          <p>類別: {{ petClass }}</p>
+          <p>品種: {{ variety }}</p>
+          <p>個性: {{ personAlity }}</p>
+          <p>年紀: {{ petAge }}</p>
         </td>
         <td class="end orderInf">
-          <div class="ownerMsg">備註欄:</div>
-            <!-- <table class="orderTask">
+          <div class="ownerMsg">備註欄:{{ OrderMsg }}</div>
+          <!-- <table class="orderTask">
               <tr>
                 <td>收到訂單</td>
                 <td>接受訂單</td>
@@ -120,30 +140,25 @@ const {
         </td>
       </tr>
     </table>
-
   </el-row>
 </template>
-  
-
-  
-
 
 <style>
 .detail {
   width: 100%;
-  border: 2px solid #F8D479;
+  border: 2px solid #f8d479;
   border-radius: 10px;
   align-items: center;
   background-color: white;
 }
 
-table{
+table {
   width: 100%;
 }
-th{
+th {
   text-align: left;
 }
-.orderInf{
+.orderInf {
   vertical-align: top;
 }
 
@@ -182,8 +197,8 @@ th{
   min-height: 60px;
   margin: 2%;
   padding: 1%;
-  background-color: #FFF3BF;
-  border: 1px solid #F8D479;
+  background-color: #fff3bf;
+  border: 1px solid #f8d479;
   border-radius: 10px;
 }
 
@@ -200,6 +215,6 @@ th{
 }
 
 .el-timeline {
-    padding: 0px;
+  padding: 0px;
 }
 </style>
