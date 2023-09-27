@@ -55,7 +55,7 @@ const {
   OrderMsg,
   price
 } = toRefs(data)
-
+/*
 const activeNames = ref(['1'])
 const handleChange = (val: string[]) => {
   console.log(val)
@@ -83,29 +83,30 @@ const activities = [
     content: orderstate5,
     timestamp: timeline5
   }
-]
+]*/
 </script>
 
 <template>
   <el-row :gutter="0" class="detail">
     <table>
       <tr>
-        <td rowspan="2" class="side petMain">
+        <td rowspan="3" class="side petMain">
           <img src="public\cat.JPG" />
           <p>{{ petName }}</p>
           <p>{{ petGender }}</p>
           <br />
           <button class="tag-cloud button" id="report">檢舉</button>
         </td>
-        <th colspan="2" class="productTitle">
-          <h3>{{ serviceName }}</h3>
+        <th colspan="1" class="productTitle">
+          <span>{{ serviceName }}</span>
         </th>
-        <th colspan="1" class="productPrice">
+        <th colspan="3" class="productPrice">
           <span>單價 NT${{ price }} </span>
         </th>
+        
       </tr>
       <tr>
-        <td class="orderInf">
+        <td class="orderInf" rowspan="2">
           <p>飼主: {{ userEmail }}</p>
           <p>電話: {{ phoneNumber }}</p>
           <!-- <p >使用優惠: </p> -->
@@ -117,16 +118,9 @@ const activities = [
         </td>
         <td class="end orderInf">
           <div class="ownerMsg">備註欄:{{ OrderMsg }}</div>
-          <!-- <table class="orderTask">
-              <tr>
-                <td>收到訂單</td>
-                <td>接受訂單</td>
-                <td>寵物報到</td>
-                <td>服務完成</td>
-              </tr>
-            </table> -->
         </td>
-        <td class="end">
+        <!-- <td class="end">
+          <br>
           <el-timeline>
             <el-timeline-item
               v-for="(activity, index) in activities"
@@ -137,29 +131,77 @@ const activities = [
               {{ activity.content }}
             </el-timeline-item>
           </el-timeline>
-        </td>
+        </td> -->
+        
+      </tr >
+      <tr style="height: 220px;">
+        <table id="timeline">
+           <tr class="stateColor">
+              <th class="gap onState"></th>
+              <th class="gap"></th>
+              <th class="gap"></th>
+              <th class="gap"></th>
+              <th class="gap"></th>             
+          </tr>
+          <tr>
+            <td>{{orderstate1}}</td>
+            <td>{{orderstate2}}</td>
+            <td>{{orderstate3}}</td>
+            <td>{{orderstate4}}</td>
+            <td>{{orderstate5}}</td>
+          </tr>
+          <tr>
+            <td>2018-04-11</td>
+            <td>2018-04-11</td>
+            <td>2018-04-13</td>
+            <td>2018-04-15</td>
+            <td>2018-04-18</td>
+          </tr>
+          <tr>
+            <td><el-button type="primary" plain>接受</el-button></td>
+            <td></td>
+            <td><el-button type="primary" plain disabled>已報到</el-button></td>
+            <td><el-button type="primary" plain disabled>已完成</el-button></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td><el-button type="primary" plain>拒絕</el-button></td>
+            <td></td>
+            <td></td>
+            <td></td>
+            <td></td>
+          </tr>
+        </table>
       </tr>
     </table>
   </el-row>
 </template>
 
-<style>
+<style lang="scss" scoped>
 .detail {
   width: 100%;
   border: 2px solid #f8d479;
   border-radius: 10px;
   align-items: center;
   background-color: white;
+
 }
 
 table {
   width: 100%;
+  height: 100%;
+  p{
+    font-size: 1.3rem;
+  }
 }
 th {
   text-align: left;
 }
-.orderInf {
+.orderInf p {
   vertical-align: top;
+  padding-left: 20px;
+  padding-top: 10px;
+  
 }
 
 .side {
@@ -167,8 +209,32 @@ th {
 }
 
 .end {
-  width: 25%;
+  width: 40%;
   vertical-align: top;
+}
+// table table>tr:nth-child(){
+// }
+table table>tr>td{
+  font-size: large;
+}
+
+#timeline{
+width: 95%;
+text-align: center;
+border: 10px solid #FFFFFF;
+
+}
+.gap{
+ border-left:15px solid #FFf;
+ border-right:15px solid #FFF;
+ 
+}
+.onState{
+  background-color: #ffcb46;
+}
+.stateColor{
+  background-color: #d9d9d9;
+  height: 5px;
 }
 
 .petMain {
@@ -183,23 +249,32 @@ th {
   margin-bottom: 5%;
 }
 
-.productTitle h3 {
+.productTitle span {
   color: #666666;
   font-weight: bold;
+  font-size: x-large;
+  height: 40px;
+  padding-left: 20px;
+  
 }
 
 .productPrice {
   color: #666666;
   padding-left: 5%;
+  width: 25%;
+  font-weight: bold;
+  font-size:large
 }
 
 .ownerMsg {
-  min-height: 60px;
+  min-height: 130px;
+  width: 90%;
   margin: 2%;
   padding: 1%;
   background-color: #fff3bf;
   border: 1px solid #f8d479;
   border-radius: 10px;
+  font-size:large
 }
 
 .orderTask {
@@ -214,7 +289,8 @@ th {
   padding-left: 2px;
 }
 
-.el-timeline {
-  padding: 0px;
-}
+// .el-timeline {
+//   padding-right: 5px;
+//   padding-top: 10+px;
+// }
 </style>

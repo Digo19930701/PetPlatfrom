@@ -42,7 +42,7 @@ function handleCollapse() {
         <tr>
           <td class="orderContent">
             <span>{貓}-{短毛}</span><br />
-            <span>{洗澡+基礎美容}</span>
+            <!-- <span>{洗澡+基礎美容}</span> -->
           </td>
           <td style="vertical-align: bottom; text-align: right">
             <button @click="handleCollapse" class="tag-cloud button" id="showDetail">
@@ -59,6 +59,7 @@ function handleCollapse() {
 </template>
 
 <style lang="scss">
+table 
 .collapse {
   transition: height var(--vc-auto-duration) cubic-bezier(0.3, 0, 0.3, 1);
 }
