@@ -93,7 +93,7 @@ const activities = [
     <table>
       <tr>
         <td rowspan="3" class="side petMain">
-          <img :src="petImage" />
+          <img src="public\cat.JPG" />
           <p>{{ petName }}</p>
           <p>{{ petGender }}</p>
           <br />
