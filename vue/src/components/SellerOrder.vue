@@ -3,37 +3,6 @@
 <!-- pet 飼主的寵物 -->
 <!-- order 訂單 -->
 <!-- Inf 資訊 -->
-
-<script lang="ts" setup>
-// import SellerOrderTitle from './SellerOrderTitle.vue'
-import { ref } from 'vue'
-const activeNames = ref(['1'])
-const handleChange = (val: string[]) => {
-  console.log(val)
-}
-const taskColor = '#F8D479'
-const activities = [
-  {
-    content: '收到訂單',
-    timestamp: '2018-04-15',
-    color: taskColor,
-  },
-  {
-    content: '接受訂單',
-    timestamp: '2018-04-13',
-  },
-  {
-    content: '寵物報到',
-    timestamp: '2018-04-11',
-  },
-  {
-    content: '服務完成',
-    timestamp: '2018-04-11',
-  },
-]
-</script>
-
-
 <template>
   <el-row :gutter="0" class="detail">
 
@@ -55,8 +24,8 @@ const activities = [
       </tr>
       <tr>
         <td class="orderInf">
-          <p >飼主: </p>
-          <p >電話: </p>
+          <!-- <p >飼主: </p> <span>{{sellerOrders_test[0].sellerId}}</span> -->
+          <p >電話: </p>{{ test }}
           <p >支付方式: </p>
           <p >使用優惠: </p>
           <br>
@@ -77,7 +46,7 @@ const activities = [
             </table> -->
         </td>
         <td class="end">
-          <el-timeline>
+          <!-- <el-timeline>
             <el-timeline-item
               v-for="(activity, index) in activities"
               :key="index"
@@ -86,17 +55,80 @@ const activities = [
             >
               {{ activity.content }}
             </el-timeline-item>
-          </el-timeline>
+          </el-timeline> -->
         </td>
       </tr>
     </table>
 
   </el-row>
 </template>
-  
 
-  
+<script lang="ts">
+import { ref,reactive } from 'vue'
+import SellerOrderService from '../services/SellerOrderService';
+const activeNames = ref(['1'])
+const handleChange = (val: string[]) => {
+  console.log(val)
+}
+const taskColor = '#F8D479'
+// const activities = [
+//   {
+//     content: '收到訂單',
+//     timestamp: '2018-04-15',
+//     color: taskColor,
+//   },
+//   {
+//     content: '接受訂單',
+//     timestamp: '2018-04-13',
+//   },
+//   {
+//     content: '寵物報到',
+//     timestamp: '2018-04-11',
+//   },
+//   {
+//     content: '服務完成',
+//     timestamp: '2018-04-11',
+//   },
+// ]
 
+export default{
+    name: 'SellerOrder',
+    data(){
+        return {
+            sellerOrders: [],
+            sellerOrders_test: [],
+            first:123,
+
+        }
+    },
+    props:['test'],
+    methods: {
+        getSellerOrder(){
+            console.log('try to get sellerOrder')
+            SellerOrderService.getSellerOrder().then((response) => {
+                let resData = {}
+                if (response.status == 200){
+                    resData = response.data
+                    console.log("resData",response.data)
+                    this.sellerOrders.push(resData)
+                    this.sellerOrders_test = this.sellerOrders;
+                    console.log('sellerId: '+ this.sellerOrders[0].sellerId)
+                }
+                // console.log('try to get sellerOrder response:'+response["sellerId"])
+                console.log('try to get sellerOrder response:'+response.data.sellerId)
+
+                
+            });
+        }
+    },
+    created() {
+        this.getSellerOrder();
+    },
+    onMounted(){
+      this.getSellerOrder();
+    }
+}
+</script>
 
 <style>
 .detail {

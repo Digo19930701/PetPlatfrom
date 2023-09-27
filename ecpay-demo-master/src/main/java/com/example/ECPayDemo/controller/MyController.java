@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.example.ECPayDemo.bean.SellerOrder;
 import com.example.ECPayDemo.bean.dataBean;
 
 
@@ -14,11 +15,18 @@ import com.example.ECPayDemo.bean.dataBean;
 public class MyController {
 
 	private dataBean studentRecords;
+	private SellerOrder sellerOrder1;
 
-	@GetMapping("/test")
-	public String test() {
-		System.out.println("test!");
-		return "test";
+	@GetMapping("/ordertest")
+	public SellerOrder getSellerOrder() {
+//		System.out.println("ordertest!");
+		sellerOrder1 = new SellerOrder();
+		sellerOrder1.setOrderNum("20230927B000001");
+		sellerOrder1.setSellerId("raincatraindog@ispan.com");
+		sellerOrder1.setCategory("美容");
+
+		
+		return sellerOrder1;
 	}
 
 
@@ -26,7 +34,7 @@ public class MyController {
 	public dataBean getAllStudents() {
 		studentRecords = new dataBean();
 		studentRecords.setName("Ray");
-		studentRecords.setAge(30);
+		studentRecords.setAge(20);
 
 		return studentRecords;
 	}

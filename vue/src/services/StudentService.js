@@ -1,7 +1,6 @@
 import axios from 'axios';
-axios.defaults.headers.common['Access-Control-Allow-Header'] = 'Authorization';
 
-const STUDENT_API_BASE_URL = 'http://localhost:3300/student/allstudent';
+const STUDENT_API_BASE_URL = 'http://localhost:3300/4A2Bpet/student/allstudent';
 
 class StudentService{
 
