@@ -4,10 +4,12 @@
       <h1>預約資料</h1>
       <h3>。客戶資料</h3>
       <el-form-item label="姓名">
-        <el-input v-model="form.name" />
+        <!-- <el-input v-model="form.name" /> -->
+        <div>{{cars.userName}}</div>
       </el-form-item>
       <el-form-item label="電話">
-        <el-input v-model="form.phone" />
+        <!-- <el-input v-model="form.phone" /> -->
+        <div>{{cars.phoneNumber}}</div>
       </el-form-item>
       <h3>。寵物資料</h3>
       <div class="pet-cards">
@@ -32,7 +34,20 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive } from 'vue'
+import { ref, reactive, onMounted} from 'vue'
+import CarService from '../services/CarService';
+let cars:any = [];
+
+const getCars = async () => {
+  const response = await CarService.getCars();
+  cars = response.data;
+  console.log(cars)
+};
+
+onMounted(() => {
+  getCars();
+});
+
 const form = reactive({
   name: 'L',
   phone: '0800123456',

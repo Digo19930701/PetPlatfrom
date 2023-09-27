@@ -10,6 +10,13 @@ import org.apache.commons.codec.digest.HmacUtils;
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
+import LinePay.bean.CaptureData;
+import LinePay.bean.CheckoutPaymentRequestForm;
+import LinePay.bean.ConfirmData;
+import LinePay.bean.ProductForm;
+import LinePay.bean.ProductPackageForm;
+import LinePay.bean.RedirectUrls;
+
 public class ConsumerCheck {
 	public static String encrypt(final String keys, final String data) {
 		return toBase64String(HmacUtils.getHmacSha256(keys.getBytes()).doFinal(data.getBytes()));

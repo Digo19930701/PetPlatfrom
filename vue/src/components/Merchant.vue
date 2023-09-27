@@ -10,8 +10,8 @@
             <div class="item_header item_body">
                 <input style="transform: scale(2);" type="checkbox" v-model="item.checked" />&nbsp&nbsp
                 <div class="item_detail">
-                    <img v-bind:src="item.imgUrl" alt="">
-                    <div class="name">{{ item.itemName }}</div>
+                    <img v-bind:src="cars.serviceImg" alt="">
+                    <div class="name">{{cars.serviceName}}</div>
                 </div>
                 <div class="block">
                     <el-date-picker v-model="value2" type="date" placeholder="Pick a day" :disabled-date="disabledDate"
@@ -21,7 +21,7 @@
                     <el-time-select v-model="endTime" :min-time="startTime" placeholder="End time" start="08:00"
                         step="01:00" end="17:00" :size="size" />
                 </div>
-                <div><span>$</span>{{ item.price }}</div>
+                <div><span>$</span>{{cars.payment}}</div>
                 <div>
                     <el-button @click="handledelete(index)">刪除</el-button>
                 </div>
@@ -51,22 +51,19 @@
 
 <script lang="ts" setup>
 import Checkout from './Checkout.vue';
-import { ref, computed , onMounted} from 'vue'
+import CarService from '../services/CarService';
+import { ref, computed ,onMounted} from 'vue'
 
-import axios from 'axios'; // 導入Axios
-const itemList2 = ref([]); // 初始化一个空的項目列表
-// 從API獲取項目資料
-const fetchItemData = async () => {
-  try {
-    const response = await axios.get('http://10.0.101.44:3306/items');
-    itemList2.value = response.data; // 假设您的API返回了一个项目数组
-  } catch (error) {
-    console.error('獲取項目數據時出错：', error);
-  }
+let cars:any = [];
+
+const getCars = async () => {
+  const response = await CarService.getCars();
+  cars = response.data;
+  console.log(cars)
 };
+
 onMounted(() => {
-  // 當组件挂载時獲取項目資料
-  fetchItemData();
+  getCars();
 });
 
 //綠界
@@ -106,7 +103,7 @@ const totalAmount = computed(() => {
     return itemList.value.reduce((total, item) => {
         // 如果商品被選中，才將其價格加入金额
         if (item.checked) {
-            total += parseInt(item.price);
+            total += parseInt(cars.payment);
         }
         return total;
     }, 0);
@@ -117,7 +114,7 @@ const itemList = ref([
         id: '1',
         itemName: '洗澡',
         imgUrl: 'https://images.unsplash.com/photo-1534961880437-ce5ae2033053?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
-        price: '500',
+        // price: '500',
         count: '2023/09/02 12:00',
         checked: false
     },
@@ -125,7 +122,7 @@ const itemList = ref([
         id: '2',
         itemName: '美容',
         imgUrl: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
-        price: '790',
+        // price: '790',
         count: '2023/02/02 12:00',
         checked: false
     },
