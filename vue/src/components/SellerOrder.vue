@@ -4,8 +4,8 @@
 <!-- order 訂單 -->
 <!-- Inf 資訊 -->
 <template>
-  <el-row :gutter="0" class="detail">
-
+  <el-row :gutter="0" class="detail" 
+          v-for="sellerOrder in sellerOrders">
     <table>
       <tr>
         <td rowspan="2" class="side petMain">
@@ -24,10 +24,10 @@
       </tr>
       <tr>
         <td class="orderInf">
-          <!-- <p >飼主: </p> <span>{{sellerOrders_test[0].sellerId}}</span> -->
-          <p >電話: </p>{{ test }}
-          <p >支付方式: </p>
-          <p >使用優惠: </p>
+          <p >飼主: {{sellerOrder.sellerId}}</p> 
+          <p >電話: {{sellerOrder.orderNum}}</p>
+          <!-- <p >支付方式: {{ test }}</p> -->
+          <!-- <p >使用優惠: </p> -->
           <br>
           <p >類別: </p>
           <p >品種: </p>
@@ -98,6 +98,7 @@ export default{
             sellerOrders: [],
             sellerOrders_test: [],
             first:123,
+            // text:"子傳父"
 
         }
     },
@@ -119,7 +120,10 @@ export default{
 
                 
             });
-        }
+        },
+        // returnData(){
+        //   this.$emit("responsedata", this.text);
+        // }
     },
     created() {
         this.getSellerOrder();

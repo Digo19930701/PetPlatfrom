@@ -1,25 +1,3 @@
-<script setup>
-import SellerOrder from './SellerOrder.vue'
-import { ref } from 'vue'
-import { Collapse } from 'vue-collapsed'
-// import styles from '../assets/seller.css'
-
-const orderInf = [
-  {
-    date: '2023-10-19',
-    timeStart: '10:00',
-    timeEnd: '11:00',
-    productClass: '美容',
-    orderNum: '23asd456q8w4f3'
-  }
-]
-const isOpen = ref(false) // Initial value
-
-function handleCollapse() {
-  isOpen.value = !isOpen.value
-}
-</script>
-
 <template>
   <div>
     <el-row :gutter="20" class="board orderTitle" style="margin: 0px 0px 5px 0px">
@@ -43,6 +21,7 @@ function handleCollapse() {
           <td class="orderContent">
             <span>{貓}-{短毛}</span><br />
             <span>{洗澡+基礎美容}</span>
+            <!-- <span @responsedata="getChildMessage"></span> -->
           </td>
           <td style="vertical-align: bottom; text-align: right">
             <button @click="handleCollapse" class="tag-cloud button" id="showDetail">
@@ -53,45 +32,32 @@ function handleCollapse() {
       </table>
     </el-row>
     <Collapse :when="isOpen" class="collapse">
-      <SellerOrder class="sellerOrder" test='first'/>
-    </Collapse>
-  </div>
-  <div>
-    <el-row :gutter="20" class="board orderTitle" style="margin: 0px 0px 5px 0px">
-      <table style="border-collapse: collapse">
-        <tr>
-          <td rowspan="2" class="date" style="width: 60px; font-size: 20px">
-            <p>週四</p>
-            <span>10/19</span>
-          </td>
-          <td rowspan="2" class="orderTime">
-            <div>10:00</div>
-            <div justify="center">❙</div>
-            <div>11:00</div>
-          </td>
-          <td class="orderContent"><span class="tag-cloud beauty">美容</span><br /></td>
-          <td style="text-align: right">
-            <span class="orderNum" style="font-size: 18px">訂單編號:{12asd456q8w4f3}</span>
-          </td>
-        </tr>
-        <tr>
-          <td class="orderContent">
-            <span>{貓}-{短毛}</span><br />
-            <span>{洗澡+基礎美容}</span>
-          </td>
-          <td style="vertical-align: bottom; text-align: right">
-            <button @click="handleCollapse" class="tag-cloud button" id="showDetail">
-              訂單詳情
-            </button>
-          </td>
-        </tr>
-      </table>
-    </el-row>
-    <Collapse :when="isOpen" class="collapse">
-      <SellerOrder class="sellerOrder" />
+      <SellerOrder class="sellerOrder" test="test msg"/>
     </Collapse>
   </div>
 </template>
+
+<script setup>
+import SellerOrder from './SellerOrder.vue'
+import { ref } from 'vue'
+import { Collapse } from 'vue-collapsed'
+// import styles from '../assets/seller.css'
+
+const orderInf = [
+  {
+    date: '2023-10-19',
+    timeStart: '10:00',
+    timeEnd: '11:00',
+    productClass: '美容',
+    orderNum: '23asd456q8w4f3'
+  }
+]
+const isOpen = ref(false) // Initial value
+
+function handleCollapse() {
+  isOpen.value = !isOpen.value
+}
+</script>
 
 <style lang="scss">
 .collapse {
