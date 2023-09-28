@@ -11,7 +11,8 @@
                 <input style="transform: scale(2);" type="checkbox" v-model="item.checked" />&nbsp&nbsp
                 <div class="item_detail">
                     <img v-bind:src="cars.serviceImg" alt="">
-                    <div class="name">{{cars.serviceName}}</div>
+                    <!-- <div class="name">{{cars.serviceName}}</div> -->
+                    <div class="name">{{cars.name}}</div>
                 </div>
                 <div class="block">
                     <el-date-picker v-model="value2" type="date" placeholder="Pick a day" :disabled-date="disabledDate"
