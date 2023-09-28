@@ -1,7 +1,7 @@
 <script setup>
 import HeadBar from './components/HeadBar.vue'
-import Merchant from './components/Merchant.vue'
 import FootBar from './components/FootBar.vue'
+import ShoppingCart from './components/shoppingCart.vue';
 
 </script>
 
@@ -9,7 +9,7 @@ import FootBar from './components/FootBar.vue'
   <div class="index">
     <el-container>
       <el-header><HeadBar /></el-header>
-      <el-main><Merchant /></el-main>
+      <el-main><ShoppingCart /></el-main>
       <el-footer><FootBar /></el-footer>
     </el-container>
       
