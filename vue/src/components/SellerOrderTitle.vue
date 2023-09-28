@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div v-for="sellerOrder in sellerOrders">
     <el-row :gutter="20" class="board orderTitle" style="margin: 0px 0px 5px 0px">
       <table style="border-collapse: collapse">
         <tr>
@@ -14,14 +14,13 @@
           </td>
           <td class="orderContent"><span class="tag-cloud beauty">美容</span><br /></td>
           <td style="text-align: right">
-            <span class="orderNum" style="font-size: 18px">訂單編號:{12asd456q8w4f3}</span>
+            <span class="orderNum" style="font-size: 18px">訂單編號:{{sellerOrder.orderNum }}</span>
           </td>
         </tr>
         <tr>
           <td class="orderContent">
             <span>{貓}-{短毛}</span><br />
-            <span>{洗澡+基礎美容}</span>
-            <!-- <span @responsedata="getChildMessage"></span> -->
+            <!-- <span>{洗澡+基礎美容}</span> -->
           </td>
           <td style="vertical-align: bottom; text-align: right">
             <button @click="handleCollapse" class="tag-cloud button" id="showDetail">
@@ -32,16 +31,18 @@
       </table>
     </el-row>
     <Collapse :when="isOpen" class="collapse">
-      <SellerOrder class="sellerOrder" test="test msg"/>
+      <SellerOrder class="sellerOrder" 
+        v-bind:userEmail="sellerOrder.userEmail"
+        :userName="sellerOrder.userName"/>
     </Collapse>
   </div>
 </template>
 
-<script setup>
+<script>
 import SellerOrder from './SellerOrder.vue'
-import { ref } from 'vue'
+import { ref} from 'vue'
 import { Collapse } from 'vue-collapsed'
-// import styles from '../assets/seller.css'
+import SellerOrderService from '../services/SellerOrderService';
 
 const orderInf = [
   {
@@ -54,8 +55,50 @@ const orderInf = [
 ]
 const isOpen = ref(false) // Initial value
 
-function handleCollapse() {
-  isOpen.value = !isOpen.value
+// function handleCollapse() {
+//   isOpen.value = !isOpen.value
+// }
+
+// const childCtx = (ctx) => {
+//   console.log(ctx)
+// }
+
+export default {
+  name: 'SellerOrderTitle',
+  components: {
+    SellerOrder,
+    Collapse
+  },
+  data() {
+    return {
+      sellerOrders: [],
+      isOpen : false
+    }
+  },
+  methods: {
+    handleCollapse() {
+      // console.log('click order detail' + this.isOpen)
+      this.isOpen = !this.isOpen
+    },
+    getSellerOrder(){
+      console.log('try to get sellerOrder')
+      SellerOrderService.getSellerOrder().then((response) => {
+          let resData = {}
+          if (response.status == 200){
+              resData = response.data
+              console.log("resData",response.data)
+              this.sellerOrders.push(resData)
+              this.sellerOrders_test = this.sellerOrders;
+              console.log('sellerId: '+ this.sellerOrders[0].sellerId)
+          }
+          // console.log('try to get sellerOrder response:'+response["sellerId"])
+          console.log('try to get sellerOrder response:'+response.data.sellerId)
+      });
+    },
+  },
+  created() {
+    this.getSellerOrder();
+  },
 }
 </script>
 

@@ -10,7 +10,7 @@ import SellerOrderTitle from '../components/SellerOrderTitle.vue';
     </header>
     <main>
         <SellerOrderTitle/>
-        <SellerOrderTitle/>
+        <!-- <SellerOrderTitle/> -->
     </main>
 </template>
 

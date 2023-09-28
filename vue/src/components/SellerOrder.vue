@@ -4,8 +4,7 @@
 <!-- order 訂單 -->
 <!-- Inf 資訊 -->
 <template>
-  <el-row :gutter="0" class="detail" 
-          v-for="sellerOrder in sellerOrders">
+  <el-row :gutter="0" class="detail" >
     <table>
       <tr>
         <td rowspan="2" class="side petMain">
@@ -24,9 +23,9 @@
       </tr>
       <tr>
         <td class="orderInf">
-          <p >飼主: {{sellerOrder.sellerId}}</p> 
-          <p >電話: {{sellerOrder.orderNum}}</p>
-          <!-- <p >支付方式: {{ test }}</p> -->
+          <p >飼主: {{ userName }}({{ userEmail }})</p> 
+          <p >電話: </p>
+          <p >支付方式: </p>
           <!-- <p >使用優惠: </p> -->
           <br>
           <p >類別: </p>
@@ -65,7 +64,7 @@
 
 <script lang="ts">
 import { ref,reactive } from 'vue'
-import SellerOrderService from '../services/SellerOrderService';
+// import SellerOrderService from '../services/SellerOrderService';
 const activeNames = ref(['1'])
 const handleChange = (val: string[]) => {
   console.log(val)
@@ -92,45 +91,12 @@ const taskColor = '#F8D479'
 // ]
 
 export default{
-    name: 'SellerOrder',
     data(){
         return {
-            sellerOrders: [],
-            sellerOrders_test: [],
             first:123,
-            // text:"子傳父"
-
         }
     },
-    props:['test'],
-    methods: {
-        getSellerOrder(){
-            console.log('try to get sellerOrder')
-            SellerOrderService.getSellerOrder().then((response) => {
-                let resData = {}
-                if (response.status == 200){
-                    resData = response.data
-                    console.log("resData",response.data)
-                    this.sellerOrders.push(resData)
-                    this.sellerOrders_test = this.sellerOrders;
-                    console.log('sellerId: '+ this.sellerOrders[0].sellerId)
-                }
-                // console.log('try to get sellerOrder response:'+response["sellerId"])
-                console.log('try to get sellerOrder response:'+response.data.sellerId)
-
-                
-            });
-        },
-        // returnData(){
-        //   this.$emit("responsedata", this.text);
-        // }
-    },
-    created() {
-        this.getSellerOrder();
-    },
-    onMounted(){
-      this.getSellerOrder();
-    }
+    props:['userEmail','userName'],
 }
 </script>
 

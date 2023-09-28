@@ -58,8 +58,8 @@ import { ref } from 'vue'
 // });
 
 const sendPostRequest = async () => {
-// window.location.href = 'http://localhost:8080/ecpayCheckout';
-window.location.href = 'http://localhost:3300/ecpayCheckout';
+// window.location.href = 'http://localhost:8080/4A2Bpet/ecpayCheckout';
+window.location.href = 'http://localhost:3300/4A2Bpet/ecpayCheckout';
 // axios.post('http://localhost:8080/ecpayCheckout', {})
 //     .then(response => {
 //         responseHTML.value = response.data
