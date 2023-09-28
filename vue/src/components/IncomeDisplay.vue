@@ -10,7 +10,7 @@
           <br />
           <p class="p-money">
             <span style="font-size: x-large; font-weight: 600">NT$</span>
-            1350
+            {{ monthIncome }}
           </p>
         </div>
         <div class="all">
@@ -24,11 +24,11 @@
               <el-icon style="color: #888"><QuestionFilled /></el-icon>
             </el-tooltip>
           </p>
-          <p class="p-all-m">NT$3050</p>
+          <p class="p-all-m">NT${{totalIncome}}</p>
         </div>
       </div>
       <div class="bank">
-        <p class="p-bank">我的銀行帳號 ****1554</p>
+        <p class="p-bank">我的銀行帳號 {{accountNumber}}</p>
         <span class="change"
           ><router-link to="/bankAccount" class="router">更改預設</router-link></span
         >
@@ -39,6 +39,15 @@
 
 <script lang="ts" setup>
 import { QuestionFilled } from '@element-plus/icons-vue'
+import {reactive, toRefs} from 'vue'
+
+const data = reactive({
+  monthIncome:'1350',//月進帳
+  totalIncome:'3050',//總進帳
+  accountNumber:'********1554'
+})
+
+const {monthIncome, totalIncome, accountNumber} = toRefs(data)
 </script>
 
 <style lang="scss" scoped>

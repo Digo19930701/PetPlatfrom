@@ -3,7 +3,7 @@
     <el-row :gutter="20" class="board orderTitle" style="margin: 0px 0px 5px 0px">
       <table style="border-collapse: collapse">
         <tr>
-          <td rowspan="2" class="date" style="width: 60px; font-size: 20px">
+          <td rowspan="2" class="date" style="width: 60px; font-size: 1.5rem">
             <p>週四</p>
             <span>10/19</span>
           </td>
@@ -55,14 +55,6 @@ const orderInf = [
 ]
 const isOpen = ref(false) // Initial value
 
-// function handleCollapse() {
-//   isOpen.value = !isOpen.value
-// }
-
-// const childCtx = (ctx) => {
-//   console.log(ctx)
-// }
-
 export default {
   name: 'SellerOrderTitle',
   components: {
@@ -103,8 +95,11 @@ export default {
 </script>
 
 <style lang="scss">
-.collapse {
+table .collapse {
   transition: height var(--vc-auto-duration) cubic-bezier(0.3, 0, 0.3, 1);
+}
+table {
+  font-size: 1.3rem;
 }
 
 .board {

@@ -1,3 +1,6 @@
+# 錯誤訊息 [vite] Internal server error: Failed to resolve import "vue-collapsed"
+=> npm i -S vue-collapsed
+
 # member_web
 
 This template should help get you started developing with Vue 3 in Vite.
@@ -33,3 +36,4 @@ npm run build
 ```sh
 npm run lint
 ```
+

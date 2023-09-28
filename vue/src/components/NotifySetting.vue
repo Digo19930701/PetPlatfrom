@@ -4,19 +4,6 @@
   </header>
   <br />
   <main>
-    <div class="base hw" style="display: flex; padding: 10px">
-      <table style="align-items: center">
-        <tr>
-          <td>
-            <span class="title">&nbsp;通知方式</span>
-          </td>
-          <td>email <el-switch v-model="notifyEmail" /></td>
-          <td>推播 <el-switch v-model="notifyPush" /></td>
-        </tr>
-      </table>
-    </div>
-    <br />
-
     <div class="base hw">
       <span class="title">&emsp;通知項目</span>
 
@@ -31,32 +18,32 @@
           <tr>
             <td class="mid_line">
               新訂單通知&emsp;&emsp;&emsp;
-              <el-switch v-model="notifyS_1" />
+              <el-switch v-model="notifyNewOrder" />
             </td>
 
             <td>
               功能增修通知&emsp;&emsp;
-              <el-switch v-model="notifyP_1" />
+              <el-switch v-model="notifyFunction" />
             </td>
           </tr>
           <tr>
             <td class="mid_line">
               訂單取消通知&emsp;&emsp;
-              <el-switch v-model="notifyS_2" />
+              <el-switch v-model="notifyCancelOrder" />
             </td>
-            <td>平台系統維護通知 <el-switch v-model="notifyP_2" /></td>
+            <td>平台系統維護通知 <el-switch v-model="notifyMaintain" /></td>
           </tr>
           <tr>
             <td class="mid_line">
               評價通知&emsp;&emsp;&emsp;&emsp;
-              <el-switch v-model="notifyS_3" />
+              <el-switch v-model="notifyRate" />
             </td>
-            <td>帳款異常通知 &emsp;&emsp;<el-switch v-model="notifyP_3" /></td>
+            <td>帳款異常通知 &emsp;&emsp;<el-switch v-model="notifyAbnormal" /></td>
           </tr>
           <tr>
             <td class="mid_line">
               進帳&退款通知 &emsp;
-              <el-switch v-model="notifyS_4" />
+              <el-switch v-model="notifyAccounting" />
             </td>
             <td></td>
           </tr>
@@ -68,19 +55,15 @@
 </template>
 
 <script lang="ts" setup>
-0
-
 import { ref } from 'vue'
 
-const notifyEmail = ref(true)
-const notifyPush = ref(true)
-const notifyS_1 = ref(true)
-const notifyS_2 = ref(true)
-const notifyS_3 = ref(true)
-const notifyS_4 = ref(true)
-const notifyP_1 = ref(true)
-const notifyP_2 = ref(true)
-const notifyP_3 = ref(true)
+const notifyNewOrder = ref(true)
+const notifyCancelOrder = ref(true)
+const notifyRate = ref(true)
+const notifyAccounting = ref(true)
+const notifyFunction = ref(true)
+const notifyMaintain = ref(true)
+const notifyAbnormal = ref(true)
 </script>
 
 <style lang="scss">

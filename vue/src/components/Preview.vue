@@ -3,17 +3,22 @@
     <el-main>
       <el-row>
         <el-col>
-          <h3>現有服務</h3>
           <el-row>
             <div class="radiusPre">
               <el-text class="text">預覽模式</el-text>
             </div>
           </el-row>
+          <br />
           <el-row>
-            <h3>{{ goodTitle }}</h3>
             <el-button round class="deleteBtn"> 刪除 </el-button>
-            <el-button round class="editBtn"> 編輯 </el-button>
+            <el-button round class="editBtn"> 編輯 </el-button>&emsp;
+            <router-link to="/servicesExist">
+              <el-button type="primary" :icon="Close" link>退出預覽模式</el-button>
+            </router-link>
           </el-row>
+          <div style="width: 100%">
+            <p>{{ goodTitle }}</p>
+          </div>
         </el-col>
       </el-row>
       <div
@@ -26,6 +31,7 @@
           borderRadius: goodRadius.type ? `var(--el-border-radius-${goodRadius.type})` : ''
         }"
       >
+        <br />
         <div class="goodPic">
           <img
             src="https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8="
@@ -101,7 +107,7 @@
   </el-container>
 </template>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .header {
   background-color: rgb(199, 197, 197);
   width: 100%;
@@ -112,13 +118,20 @@
   }
 }
 .el-main {
-  background-color: rgb(248, 244, 218);
+  background-color: #f8f6e9;
+  p {
+    font-size: 2rem;
+    font-weight: 600;
+    color: rgb(96, 98, 102);
+    text-align: center;
+  }
   .radiusPre {
     border-radius: 25px;
     background-color: #ffbc88;
-    width: 80px;
+    width: 100px;
     .text {
-      font-size: small;
+      font-size: large;
+      font-weight: 600;
       padding-left: 15%;
     }
   }
@@ -183,6 +196,7 @@
 // import { ref } from 'vue'
 import { h, ref } from 'vue'
 import { ElMessageBox, ElSwitch } from 'element-plus'
+import { Close } from '@element-plus/icons-vue'
 
 // import { Text, ref } from 'vue'
 

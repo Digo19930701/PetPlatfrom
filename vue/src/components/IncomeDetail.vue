@@ -24,12 +24,12 @@
         </div>
       </div>
       <br />
-      <div class="table">
-        <el-table :data="tableData" border style="width: 600px">
-          <el-table-column prop="orderNum" label="訂單編號" width="200" />
-          <el-table-column prop="remit" label="撥款時間" width="130" />
-          <el-table-column prop="payMethod" label="付款方式" width="130" />
-          <el-table-column prop="payment" label="撥款金額" width="140" />
+      <div class="table" style="width: 700px">
+        <el-table :data="tableData" border style="width: 700px">
+          <el-table-column prop="OrderNum" label="訂單編號" width="210" />
+          <el-table-column prop="Remit" label="撥款時間" width="147" />
+          <el-table-column prop="AccountNumber" label="撥款帳號" width="196" />
+          <el-table-column prop="Payment" label="撥款金額" width="147" />
         </el-table>
       </div>
       <br />
@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, reactive, toRefs} from 'vue'
 
 const value2 = ref('')
 
@@ -72,49 +72,58 @@ const shortcuts = [
   }
 ]
 
-const tableData = [
+const data = reactive({
+
+  orderNum: 'AXXXX08271345',
+  remit: '2023/08/14',
+  accountNumber:'********1554',
+  payment: 'NT$350'
+})
+const {orderNum, remit, accountNumber, payment} = toRefs(data)
+const tableData =[
   {
-    orderNum: 'AXXXX08271345',
-    remit: '2023/08/14',
-    payMethod: '信用卡',
-    payment: 'NT$350'
+    OrderNum: orderNum,
+    Remit: remit,
+    AccountNumber: accountNumber,
+    Payment: payment
   },
   {
-    orderNum: 'AXXXX08566547',
-    remit: '2023/08/20',
-    payMethod: '銀行轉帳',
-    payment: 'NT$850'
+    OrderNum: orderNum,
+    Remit: remit,
+    AccountNumber: accountNumber,
+    Payment: payment
   },
   {
-    orderNum: 'AXXXX08246565',
-    remit: '2023/08/25',
-    payMethod: '銀行轉帳',
-    payment: 'NT$500'
+    OrderNum: orderNum,
+    Remit: remit,
+    AccountNumber: accountNumber,
+    Payment: payment
   },
   {
-    orderNum: 'DXXXX08271349',
-    remit: '2023/09/01',
-    payMethod: '信用卡',
-    payment: 'NT$350'
+    OrderNum: orderNum,
+    Remit: remit,
+    AccountNumber: accountNumber,
+    Payment: payment
   },
   {
-    orderNum: 'BXXX082713433',
-    remit: '2023/09/03',
-    payMethod: '信用卡',
-    payment: 'NT$1000'
+    OrderNum: orderNum,
+    Remit: remit,
+    AccountNumber: accountNumber,
+    Payment: payment
   },
   {
-    orderNum: 'AXXXX08246565',
-    remit: '2023/08/25',
-    payMethod: '銀行轉帳',
-    payment: 'NT$500'
+    OrderNum: orderNum,
+    Remit: remit,
+    AccountNumber: accountNumber,
+    Payment: payment
   },
   {
-    orderNum: 'DXXXX08271349',
-    remit: '2023/09/01',
-    payMethod: '信用卡',
-    payment: 'NT$350'
-  }
+    OrderNum: orderNum,
+    Remit: remit,
+    AccountNumber: accountNumber,
+    Payment: payment
+  },
+  
 ]
 </script>
 
@@ -159,7 +168,7 @@ h2 {
   justify-content: center;
 }
 .table {
-  justify-content: center;
-  padding-left: 50px;
+  margin-left: auto;
+  margin-right: auto;
 }
 </style>

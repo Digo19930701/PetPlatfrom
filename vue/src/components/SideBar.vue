@@ -84,7 +84,7 @@
           </el-sub-menu>
 
           <el-menu-item index="6">
-            <router-link to="/notifyPage">
+            <router-link to="/notifyCenter">
               <el-icon><Bell /></el-icon>
               <span class="sub-menu">通知中心</span>
             </router-link>

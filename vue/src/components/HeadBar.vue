@@ -1,7 +1,7 @@
 <template>
   <div class="header">
     <div class="logo">
-      <img src="../assets/logoicon.png" width="90" />
+      <img src="../images/4a2b_icon.png" width="90" />
       <button class="title">4A2B</button>
     </div>
     <div class="avatar"><el-avatar :size="40" :src="circleUrl" /></div>
