@@ -36,7 +36,7 @@
       <el-form :model="register">
         <el-form-item :label-width="formLabelWidth">
           <el-input
-            v-model="register.mail"
+            v-model="register.userMail"
             label-width="100px"
             autocomplete="off"
             type="register"
@@ -45,7 +45,7 @@
         </el-form-item>
         <el-form-item :label-width="formLabelWidth">
           <el-input
-            v-model="register.Password"
+            v-model="register.userPassword"
             label-width="100px"
             autocomplete="off"
             type="register"
@@ -55,7 +55,7 @@
         </el-form-item>
         <el-form-item :label-width="formLabelWidth">
           <el-input
-            v-model="register.againPassword"
+            v-model="register.userPassword2"
             label-width="100px"
             autocomplete="off"
             type="register"
@@ -157,9 +157,9 @@ const form = reactive({
   desc: ''
 })
 const register = reactive({
-  mail: '',
-  Password: '',
-  againPassword: ''
+  userMail: '',
+  userPassword: '',
+  userPassword2: ''
 })
 
 const forgetPs = reactive({
@@ -263,7 +263,33 @@ const login = () => {
 }
 
 const registerout = () => {
-  console.log('register', register)
+  const Email = register.userMail
+  const userPassword = register.userPassword
+  const userPassword2 = register.userPassword2
+  
+
+  console.log(`Email=${Email}`,`userPassword=${userPassword}`)
+  
+  const user = {
+    UserEmail:Email,
+    userPassword:userPassword,
+    userPassword2:userPassword2
+    // useragainPasswordPassword:useragainPassword
+  }
+  axios
+    .post('http://localhost:8080/SpringBoot/Register', user, {
+      headers: {
+    	 'Content-Type': 'application/x-www-form-urlencoded'
+		}
+    })
+    .then((response) => {
+		alert(response.data);
+      console.log(response.data)
+    })
+    .catch((error) => {
+		alert(error)
+      console.error(error)
+    })
 }
 
 const sellersignupout = () => {
