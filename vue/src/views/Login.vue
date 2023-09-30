@@ -4,7 +4,7 @@
     <el-form :model="loginForm" class="loginForm">
       <el-form-item label="帳號" :label-width="formLabelWidth">
         <el-input
-          v-model="loginForm.account"
+          v-model="loginForm.userEmail"
           autocomplete="off"
           style="height: 50px; width: 500px"
         />
@@ -171,7 +171,7 @@ const verifyemail = reactive({
 })
 
 const loginForm = reactive({
-  account: '',
+  userEmail: '',
   password: ''
 })
 
@@ -184,6 +184,7 @@ const sellersignup = reactive({
 import firebaseConfig from '../firebaseConfig'
 import { API_URL } from '@/config'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
+import axios from 'axios'
 
 firebaseConfig
 
@@ -236,9 +237,31 @@ async function test() {
 }
 
 const login = () => {
-  router.push('/')
-  console.log('loginForm', loginForm)
+  const userEmail = loginForm.userEmail
+  const password = loginForm.password
+
+  console.log(`account=${userEmail}`,`password=${password}`,1,2,3)
+ 
+  const user = {
+    userEmail: userEmail,
+    password: password
+  }
+  axios
+    .post('http://localhost:8080/SpringBoot/Login', user, {
+      headers: {
+    	 'Content-Type': 'application/x-www-form-urlencoded'
+		}
+    })
+    .then((response) => {
+		alert(response.data);
+      console.log(response.data)
+    })
+    .catch((error) => {
+		alert(error)
+      console.error(error)
+    })
 }
+
 const registerout = () => {
   console.log('register', register)
 }
