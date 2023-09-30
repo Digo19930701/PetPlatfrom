@@ -17,7 +17,8 @@
         />
       </el-form-item>
     </el-form>
-
+      <!-- <h1>{{hhhh}}</h1> {{}}是EL-->  
+      
     <div style="margin-left: 50px">
       <el-button type="primary" @click="login" style="width: 200px; height: 50px">登入</el-button>
       <el-link @click="verifyEmail = true" style="color: red; margin-left: 20px">忘記密碼</el-link>
@@ -254,7 +255,37 @@ const login = () => {
     })
     .then((response) => {
 		alert(response.data);
+    
+
+  // export default {
+  //   data() {
+  //   return {
+  //     data: "" // 这里初始化为一个空字符串
+  //   };
+  // },
+  // mounted() {
+  //   // 这里可以使用axios或其他方法从后端获取数据并更新data属性
+  //   this.getDataFromBackend();
+  // },     
+  //   methods: {
+  //   getDataFromBackend() {
+  //     // 使用axios或其他HTTP库从后端获取数据
+  //     axios.get("http://localhost:5173/Member")
+  //       .then(response => {
+  //         hhhh = response.data;
+  //       })
+  //       .catch(error => {
+  //         console.error(error);
+  //       });
+  //     }
+  //   }
+
+  // }
+  
+    window.location.href= response.data; // 替换Spring Boot端口号和路由
+   
       console.log(response.data)
+      console.log(response.data.yyy)
     })
     .catch((error) => {
 		alert(error)
