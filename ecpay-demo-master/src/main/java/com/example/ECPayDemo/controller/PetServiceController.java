@@ -19,41 +19,6 @@ import com.example.ECPayDemo.service.PetServiceService;
 @CrossOrigin("http://localhost:5173/")
 public class PetServiceController {
 	
-//	@GetMapping("/services")
-//	public Service serviceId() {
-//		Service service = new Service();
-//		service.setServiceId(1);
-//		service.setSellerId("raincatraindog@ispan.com");
-//		service.setServiceName("汪汪喵喵基礎沐浴美容");
-//		service.setCategory("beauty");
-//		service.setServiceDesc("很舒服");
-//		service.setServicePeriod(60);
-//		service.setUpperLimit(3);
-//		List<Boolean> availDayList = new ArrayList<Boolean>();
-//		availDayList.add(true);	//sunday
-//		availDayList.add(false); //monday
-//		availDayList.add(true);
-//		availDayList.add(true); //wednesday
-//		availDayList.add(true);
-//		availDayList.add(true); //friday
-//		availDayList.add(true);
-//		service.setAvailDayList(availDayList);
-//		
-//		service.setAvailTime1("08:00");
-//		service.setAvailTime2("20:00");
-//		service.setAcceptDay1(30);
-//		service.setAcceptDay2(3);
-//		List<String> serviceImageList = new ArrayList<>();
-//		serviceImageList.add("image1");
-//		service.setServiceImageList(serviceImageList);
-//		
-//		List<Integer> typeIdList = new ArrayList<>();
-//		typeIdList.add(1);
-//		typeIdList.add(2);
-//		service.setTypeIdList(typeIdList);
-//
-//		return service;
-//	}
 	Logger log = LoggerFactory.getLogger(SellerController.class);
 	
 	PetServiceService serviceService;
@@ -66,7 +31,7 @@ public class PetServiceController {
 	public PetService getServiceById(@PathVariable String serviceId,
 								  	Model model) {
 		PetService petService = serviceService.getServiceById(serviceId);
-		System.out.println("petServiceId: " + serviceId);
+//		System.out.println("petServiceId: " + serviceId);
 		model.addAttribute("previous_service_id", serviceId);
 		log.info("get serviceId: " + serviceId + ".");
 		return petService;

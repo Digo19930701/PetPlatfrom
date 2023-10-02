@@ -2,12 +2,8 @@ package com.example.ECPayDemo.bean;
 
 import java.io.Serializable;
 import java.sql.Time;
-import java.util.ArrayList;
-import java.util.List;
 
 import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
@@ -15,31 +11,31 @@ import jakarta.persistence.Table;
 @Table(name="services")
 public class PetService implements Serializable{
 	private static final long serialVersionUID = 1L;
-	String serviceName;
+	private String serviceName;
 	@Id
 //	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	String serviceId;
-	String sellerId;
-	String category;
-	String serviceDesc;
-	Time servicePeriod;
-	Integer upperLimit;
-	Time availTime1;
-	Time availTime2;
-	Integer acceptDay1;
-	Integer acceptDay2;
-	String serviceImage1;
-	String serviceImage2;
-	String serviceImage3;
-	String serviceImage4; 
-	String serviceImage5;
-	boolean monday;
-	boolean tuesday;
-	boolean wednesday;
-	boolean thursday;
-	boolean friday;
-	boolean saturday;
-	boolean sunday;
+	private String serviceId;
+	private String sellerId;
+	private String category;
+	private String serviceDesc;
+	private Time servicePeriod;
+	private Integer upperLimit;
+	private Time availTime1;
+	private Time availTime2;
+	private Integer acceptDay1;
+	private Integer acceptDay2;
+	private String serviceImage1;
+	private String serviceImage2;
+	private String serviceImage3;
+	private String serviceImage4; 
+	private String serviceImage5;
+	private boolean monday;
+	private boolean tuesday;
+	private boolean wednesday;
+	private boolean thursday;
+	private boolean friday;
+	private boolean saturday;
+	private boolean sunday;
 	
 	public PetService() {
 		super();

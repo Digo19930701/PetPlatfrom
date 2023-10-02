@@ -1,107 +1,136 @@
 package com.example.ECPayDemo.bean;
 
-import java.util.Date;
+import java.io.Serializable;
+import java.sql.Timestamp;
 
-public class SellerOrder {
-	String orderNum;
-	String sellerId;
-	Date orderTimeStart;	//要用sql還是util?
-	Date orderTimeEnd;	//要用sql還是util?
-	String serviceName;
-	String category;
-	String petType;
-	String spec;
-	Integer price;
-	Integer totalPrice;
-	String userEmail;
-	String userName;
-	Integer userPhone;
+import jakarta.persistence.Entity;
+import jakarta.persistence.Id;
+import jakarta.persistence.Table;
+
+@Entity
+@Table(name="ordertable")
+public class SellerOrder implements Serializable{
+	private static final long serialVersionUID = 1L;
+	@Id
+	private String orderId;
+	private String userEmail;
+	private String sellerId;
+	private Timestamp timeline1;
+	private Integer totalPrice;
+	private Integer petNum;
+	private String serviceId;
+	private Integer price;
+	private Timestamp orderDateTime1;
+	private Timestamp orderDateTime2;
+	private String orderMsg;
+
+	public SellerOrder() {
+		super();
+	}
 	
-	String petName;
-	
-	public String getOrderNum() {
-		return orderNum;
-	}
-	public void setOrderNum(String orderNum) {
-		this.orderNum = orderNum;
-	}
-	public String getSellerId() {
-		return sellerId;
-	}
-	public void setSellerId(String sellerId) {
+	public SellerOrder(	String orderId,	String userEmail, String sellerId, 	Timestamp timeline1,
+						Integer totalPrice, Integer petNum, String serviceId, Integer price,
+						Timestamp orderDateTime1, Timestamp orderDateTime2, String orderMsg) {
+		super();
+		this.orderId = orderId;
+		this.userEmail = userEmail;
 		this.sellerId = sellerId;
-	}
-	public Date getOrderTimeStart() {
-		return orderTimeStart;
-	}
-	public void setOrderTimeStart(Date orderTimeStart) {
-		this.orderTimeStart = orderTimeStart;
-	}
-	public Date getOrderTimeEnd() {
-		return orderTimeEnd;
-	}
-	public void setOrderTimeEnd(Date orderTimeEnd) {
-		this.orderTimeEnd = orderTimeEnd;
-	}
-	public String getCategory() {
-		return category;
-	}
-	public void setCategory(String category) {
-		this.category = category;
-	}
-	public String getServiceName() {
-		return serviceName;
-	}
-	public void setServiceName(String serviceName) {
-		this.serviceName = serviceName;
-	}
-	public String getPetType() {
-		return petType;
-	}
-	public void setPetType(String petType) {
-		this.petType = petType;
-	}
-	public String getSpec() {
-		return spec;
-	}
-	public void setSpec(String spec) {
-		this.spec = spec;
-	}
-	public Integer getPrice() {
-		return price;
-	}
-	public void setPrice(Integer price) {
-		this.price = price;
-	}
-	public Integer getTotalPrice() {
-		return totalPrice;
-	}
-	public void setTotalPrice(Integer totalPrice) {
+		this.timeline1 = timeline1;
 		this.totalPrice = totalPrice;
+		this.petNum = petNum;
+		this.serviceId = serviceId;
+		this.price = price;
+		this.orderDateTime1 = orderDateTime1;
+		this.orderDateTime2 = orderDateTime2;
+		this.orderMsg = orderMsg;
 	}
+
+	public String getOrderId() {
+		return orderId;
+	}
+
+	public void setOrderId(String orderId) {
+		this.orderId = orderId;
+	}
+
 	public String getUserEmail() {
 		return userEmail;
 	}
+
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	public String getUserName() {
-		return userName;
+
+	public String getSellerId() {
+		return sellerId;
 	}
-	public void setUserName(String userName) {
-		this.userName = userName;
+
+	public void setSellerId(String sellerId) {
+		this.sellerId = sellerId;
 	}
-	public Integer getUserPhone() {
-		return userPhone;
+
+	public Timestamp getTimeline1() {
+		return timeline1;
 	}
-	public void setUserPhone(Integer userPhone) {
-		this.userPhone = userPhone;
+
+	public void setTimeline1(Timestamp timeline1) {
+		this.timeline1 = timeline1;
 	}
-	public String getPetName() {
-		return petName;
+
+	public Integer getTotalPrice() {
+		return totalPrice;
 	}
-	public void setPetName(String petName) {
-		this.petName = petName;
+
+	public void setTotalPrice(Integer totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+
+	public Integer getPetNum() {
+		return petNum;
+	}
+
+	public void setPetNum(Integer petNum) {
+		this.petNum = petNum;
+	}
+
+	public String getServiceId() {
+		return serviceId;
+	}
+
+	public void setServiceId(String serviceId) {
+		this.serviceId = serviceId;
+	}
+
+	public Integer getPrice() {
+		return price;
+	}
+
+	public void setPrice(Integer price) {
+		this.price = price;
+	}
+
+	public Timestamp getOrderDateTime1() {
+		return orderDateTime1;
+	}
+
+	public void setOrderDateTime1(Timestamp orderDateTime1) {
+		this.orderDateTime1 = orderDateTime1;
+	}
+
+	public Timestamp getOrderDateTime2() {
+		return orderDateTime2;
+	}
+
+	public void setOrderDateTime2(Timestamp orderDateTime2) {
+		this.orderDateTime2 = orderDateTime2;
+	}
+
+	public String getOrderMsg() {
+		return orderMsg;
+	}
+
+	public void setOrderMsg(String orderMsg) {
+		this.orderMsg = orderMsg;
 	}
 	
 	
