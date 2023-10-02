@@ -14,6 +14,7 @@ import com.example.ECPayDemo.CarTest;
 public class CarController {
 	@Autowired
 	private CarRepositery carRepositery;
+	
 	@GetMapping("/cardata")
 	public String insert(@RequestBody CarTest cardata) {
 
