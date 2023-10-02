@@ -1,24 +1,6 @@
-<script setup>
-// import { RouterLink, RouterView } from 'vue-router'
-
-import HeadBar from './components/HeadBar.vue'
-import FootBar from './components/FootBar.vue'
-import SideBar from './components/SideBar.vue'
-
-</script>
-
 <template>
   <div class="index">
-    <header><HeadBar /></header>
-    <el-container>
-      <el-aside width="200px"><SideBar /></el-aside>
-      <el-container>
-        <el-main style="background-color: #f8f6e9">
-          <router-view></router-view>
-        </el-main>
-      </el-container>
-    </el-container>
-    <footer><FootBar /></footer>
+    <router-view></router-view>
   </div>
 </template>
 
@@ -41,6 +23,6 @@ import SideBar from './components/SideBar.vue'
   height: 100%;
   display: flex;
   flex-direction: column;
+  background-color: #f8f4da;
 }
-
 </style>

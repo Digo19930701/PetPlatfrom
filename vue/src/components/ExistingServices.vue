@@ -11,7 +11,7 @@
           <el-text v-model="good_title">
             <p>{{ good_title }}</p>
           </el-text>
-          <router-link to="/preview">
+          <router-link to="/sellerPreview">
             <el-card :body-style="{ padding: '0px' }">
               <img
                 src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
@@ -43,7 +43,7 @@
           <el-text v-model="good_title">
             <p>{{ good_title }}</p>
           </el-text>
-          <router-link to="/preview">
+          <router-link to="/sellerPreview">
             <el-card :body-style="{ padding: '0px' }">
               <img
                 src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
@@ -98,7 +98,7 @@ const good_title = '小貓小狗洗香香'
   }
 }
 .el-main {
-  background-color: #f8f6e9;
+  background-color: #f8f4da;
   .radius {
     border-radius: 25px;
     background-color: #ffbfd6;

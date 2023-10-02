@@ -25,6 +25,7 @@
           <p>年紀: {{ petAge }}</p>
         </td>
         <td class="end orderInf">
+          <br />
           <div class="ownerMsg">備註欄:{{ orderMsg }}</div>
         </td>
       </tr>
@@ -43,13 +44,12 @@
           </el-timeline>
         </td> 
       </tr> -->
-      <tr style="height: 220px">
+      <tr style="height: 200px">
         <table id="timeline">
           <tr class="stateColor">
+            <th class="gap"></th>
+            <th class="gap"></th>
             <th class="gap onState"></th>
-            <th class="gap"></th>
-            <th class="gap"></th>
-            <th class="gap"></th>
             <th class="gap"></th>
           </tr>
           <tr>
@@ -57,27 +57,18 @@
             <td>{{ orderstate2 }}</td>
             <td>{{ orderstate3 }}</td>
             <td>{{ orderstate4 }}</td>
-            <td>{{ orderstate5 }}</td>
           </tr>
           <tr>
             <td>{{ timeline1 }}</td>
             <td>{{ timeline2 }}</td>
             <td>{{ timeline3 }}</td>
             <td>{{ timeline4 }}</td>
-            <td>{{ timeline5 }}</td>
           </tr>
           <tr>
-            <td><el-button type="primary" plain>接受</el-button></td>
             <td></td>
-            <td><el-button type="primary" plain disabled>已報到</el-button></td>
-            <td><el-button type="primary" plain disabled>已完成</el-button></td>
-            <td></td>
-          </tr>
-          <tr>
-            <td><el-button type="primary" plain>拒絕</el-button></td>
-            <td></td>
-            <td></td>
-            <td></td>
+            <td><el-button type="primary" plain disabled>取消訂單</el-button></td>
+            <td><el-button type="primary" plain>已報到</el-button></td>
+            <td><el-button type="primary" plain>已完成</el-button></td>
             <td></td>
           </tr>
         </table>
@@ -92,15 +83,13 @@ import { ref, reactive, toRefs } from 'vue'
 
 const data = reactive({
   orderstate1: '收到訂單',
-  orderstate2: '接受訂單',
+  orderstate2: '訂單成立',
   orderstate3: '寵物報到',
   orderstate4: '服務完成',
-  orderstate5: '撥款完成',
   timeline1: '2018-04-11', //收到
   timeline2: '2018-04-11', //接受
   timeline3: '2018-04-13', //報到
   timeline4: '2018-04-13', //完成
-  timeline5: '2018-04-18', //撥款
   petName: '寵物名',
   petGender: '(性別)',
   userEmail: '',
@@ -120,12 +109,10 @@ const {
   orderstate2,
   orderstate3,
   orderstate4,
-  orderstate5,
   timeline1,
   timeline2,
   timeline3,
   timeline4,
-  timeline5,
   petName,
   petGender,
   userEmail,
@@ -134,9 +121,7 @@ const {
   petVariety,
   petCharacter,
   petAge,
-  serviceName,
   orderMsg,
-  price,
   petImage
 } = toRefs(data)
 /*

@@ -5,10 +5,8 @@
   <br />
   <main>
     <div class="base hw">
-      <span class="title">&emsp;通知項目</span>
-
       <div style="text-align: center">
-        <br />
+        <br /><br />
         <table id="secand">
           <tr>
             <th class="th mid_line">商家相關</th>
@@ -47,10 +45,19 @@
             </td>
             <td></td>
           </tr>
+          <tr style="height: 50px">
+            <td></td>
+            <td></td>
+          </tr>
+          <tr>
+            <td></td>
+            <td><el-button type="primary">儲存修改</el-button></td>
+          </tr>
         </table>
         <br />
       </div>
     </div>
+    <div></div>
   </main>
 </template>
 
@@ -66,7 +73,7 @@ const notifyMaintain = ref(true)
 const notifyAbnormal = ref(true)
 </script>
 
-<style lang="scss">
+<style lang="scss" scoped>
 .hw {
   align-content: center;
   padding: 15px;
@@ -77,12 +84,6 @@ const notifyAbnormal = ref(true)
 #secand {
   width: 100%;
   border-collapse: collapse;
-}
-
-.title {
-  color: #ffcb46;
-  font-weight: bolder;
-  font-size: x-large;
 }
 
 td {

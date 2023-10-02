@@ -25,7 +25,7 @@
       </div>
       <br />
       <div class="table" style="width: 700px">
-        <el-table :data="tableData" border style="width: 700px">
+        <el-table :data="tableData" border style="width: 700px; font-size: 1.2rem">
           <el-table-column prop="OrderNum" label="訂單編號" width="210" />
           <el-table-column prop="Remit" label="撥款時間" width="147" />
           <el-table-column prop="AccountNumber" label="撥款帳號" width="196" />
@@ -38,7 +38,7 @@
 </template>
 
 <script lang="ts" setup>
-import { ref, reactive, toRefs} from 'vue'
+import { ref, reactive, toRefs } from 'vue'
 
 const value2 = ref('')
 
@@ -73,14 +73,13 @@ const shortcuts = [
 ]
 
 const data = reactive({
-
   orderNum: 'AXXXX08271345',
   remit: '2023/08/14',
-  accountNumber:'********1554',
+  accountNumber: '********1554',
   payment: 'NT$350'
 })
-const {orderNum, remit, accountNumber, payment} = toRefs(data)
-const tableData =[
+const { orderNum, remit, accountNumber, payment } = toRefs(data)
+const tableData = [
   {
     OrderNum: orderNum,
     Remit: remit,
@@ -122,8 +121,7 @@ const tableData =[
     Remit: remit,
     AccountNumber: accountNumber,
     Payment: payment
-  },
-  
+  }
 ]
 </script>
 
@@ -159,7 +157,7 @@ h2 {
 }
 .hw {
   width: 70%;
-  height: 100%;
+  height: 55%;
   min-width: 600px;
 }
 .choose {

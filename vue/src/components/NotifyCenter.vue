@@ -1,7 +1,7 @@
 <template>
   <!-- 還沒處理單獨通知點開時字體變已讀顏色 -->
   <main>
-    <div class="alignRight" style="width: 700px;">
+    <div class="alignRight" style="width: 700px">
       <button id="read" @click="allRead()">全部設為已讀</button>
     </div>
     <div class="list">
@@ -92,8 +92,7 @@
           <div class="content">
             <div style="width: 70%">
               <p style="color: #888888">
-                <span class="tag-cloud whisperer">溝通</span>&emsp;
-                {{ orderNum }}&emsp;
+                <span class="tag-cloud whisperer">溝通</span>&emsp; {{ orderNum }}&emsp;
                 <router-link to="/sellerRate">
                   <button>查看詳情</button>
                 </router-link>
@@ -163,7 +162,7 @@ const {
   sysTime
 } = toRefs(dataState)
 </script>
-<style lang="scss" >
+<style lang="scss">
 .list {
   width: 700px;
   height: 100%;

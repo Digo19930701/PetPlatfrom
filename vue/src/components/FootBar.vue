@@ -13,6 +13,7 @@
 </template>
 
 <style scoped>
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 .header {
   background-color: #f8d479;
   width: 100%;
@@ -31,6 +32,7 @@
   justify-content: center;
   font-size: large;
   font-weight: 600;
+  font-family: 'Varela Round', sans-serif;
 }
 #bn-area {
   height: 40px;
@@ -39,8 +41,13 @@
 }
 #bn {
   font-size: large;
+  font-family: 'Varela Round', sans-serif;
 }
 #bn:hover {
+  background: transparent;
+  color: #cd7b00;
+}
+#bn:focus {
   background: transparent;
   color: #cd7b00;
 }

@@ -1,34 +1,46 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import SellerHome from '../views/SellerHomeView.vue'
-import Preview from '../components/Preview.vue'
+//import SellerHome from '../views/SellerHomeView.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
   routes: [
+    //主頁相關
     {
       path: '/',
-      name: 'home',
-      // component: SellerHome
-      component: Preview
+      name: 'myHome',
+      component: () => import('../views/MyHome.vue')
     },
-    // proxyTable: {
-    //   '/data': {                 
-    //     target: 'http://localhost:3300/', 
-    //     changeOrigin: true,
-    //     pathRewrite: {
-    //       '^/data': ''
-    //     }
-    //   }
-    // },
+    {
+      path: '/search',
+      name: 'search',
+      component: () => import('../views/Search.vue')
+    },
+    {
+      path: '/good',
+      name: 'good',
+      component: () => import('../views/MyGood.vue')
+    },
+    {
+      path: '/shoppingCart',
+      name: 'shoppingCart',
+      component: () => import('../views/MyShoppingCart.vue')
+    },
+
+    //商家頁面
+    {
+      path: '/sellerHome',
+      name: 'sellerHome',
+      component: () => import('../views/SellerHomeView.vue')
+    },
     {
       path: '/servicesExist',
       name: 'servicesExist',
       component: () => import('../views/ServicesExistView.vue')
     },
     {
-      path: '/preview',
-      name: 'preview',
-      component: () => import('../components/Preview.vue')
+      path: '/sellerPreview',
+      name: 'sellerPreview',
+      component: () => import('../components/SellerPreview.vue')
     },
     {
       path: '/serviceEdit',
@@ -85,28 +97,51 @@ const router = createRouter({
       name: 'bankAccount',
       component: () => import('../views/BankAccountView.vue')
     },
+
+    //會員頁面
+    {
+      path: '/userHome',
+      name: 'userHome',
+      component: () => import('../views/UserOrderView.vue')
+    },
+    {
+      path: '/userSetting',
+      name: 'userSetting',
+      component: () => import('../views/UserSetting.vue')
+    },
     {
       path: '/login',
       name: 'login',
-      component: () => import('../components/Login.vue')
+      component: () => import('../views/login.vue')
     },
     {
-      //待補連結點
-      path: '/preview',
-      name: 'preview',
-      component: () => import('../components/Preview.vue')
+      path: '/password',
+      name: 'password',
+      // route level code-splitting
+      // this generates a separate chunk (About.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: () => import('../views/Password.vue')
     },
     {
-      //待補正式的連接點
-      path: '/shoppingCart',
-      name: 'shoppingCart',
-      component: () => import('../components/ShoppingCart.vue')
+      path: '/petinformation',
+      name: 'petinformation',
+      component: () => import('../views/Petinformation.vue')
+    },
+
+    {
+      path: '/userOrder',
+      name: 'userOrder',
+      component: () => import('../views/UserOrderView.vue')
     },
     {
-      //測試連接點
-      path: '/studentTest',
-      name: 'studentTest',
-      component: () => import('../views/Student.vue')
+      path: '/userCancelOrder',
+      name: 'userCancelOrder',
+      component: () => import('../views/UserCancelOrderView.vue')
+    },
+    {
+      path: '/userPastOrder',
+      name: 'userPastOrder',
+      component: () => import('../views/UserPastOrderView.vue')
     }
   ]
 })

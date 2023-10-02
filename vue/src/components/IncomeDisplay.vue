@@ -24,11 +24,11 @@
               <el-icon style="color: #888"><QuestionFilled /></el-icon>
             </el-tooltip>
           </p>
-          <p class="p-all-m">NT${{totalIncome}}</p>
+          <p class="p-all-m">NT${{ totalIncome }}</p>
         </div>
       </div>
       <div class="bank">
-        <p class="p-bank">我的銀行帳號 {{accountNumber}}</p>
+        <p class="p-bank">我的銀行帳號 {{ accountNumber }}</p>
         <span class="change"
           ><router-link to="/bankAccount" class="router">更改預設</router-link></span
         >
@@ -39,15 +39,15 @@
 
 <script lang="ts" setup>
 import { QuestionFilled } from '@element-plus/icons-vue'
-import {reactive, toRefs} from 'vue'
+import { reactive, toRefs } from 'vue'
 
 const data = reactive({
-  monthIncome:'1350',//月進帳
-  totalIncome:'3050',//總進帳
-  accountNumber:'********1554'
+  monthIncome: '1350', //月進帳
+  totalIncome: '3050', //總進帳
+  accountNumber: '********1554'
 })
 
-const {monthIncome, totalIncome, accountNumber} = toRefs(data)
+const { monthIncome, totalIncome, accountNumber } = toRefs(data)
 </script>
 
 <style lang="scss" scoped>
@@ -110,10 +110,12 @@ h2 {
 .p-bank {
   color: black;
   font-weight: 600;
+  font-size: 1.1rem;
   padding-left: 5%;
 }
 .change {
   padding-left: 50%;
+  font-size: 1.1rem;
 }
 .router {
   color: #1f8ede;

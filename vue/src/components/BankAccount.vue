@@ -1,5 +1,5 @@
 <template>
-  <div class="base hw">
+  <div class="hw">
     <header>
       <h2>銀行帳號</h2>
     </header>
@@ -138,7 +138,7 @@
 
   <!-- 銀行帳號詳情畫面 -->
   <el-dialog v-model="BankAccoutDetail" title="銀行帳號" :width="minWidth" align-center>
-    <el-form :model="form" label-width="120px" >
+    <el-form :model="form" label-width="120px">
       <el-form-item prop="name" label="真實姓名">XXX</el-form-item>
       <el-form-item prop="id" label="身分證字號">L12345678</el-form-item>
       <el-form-item prop="bank" label="銀行名稱">國泰世華商業銀行</el-form-item>
@@ -213,8 +213,7 @@ h2 {
 }
 
 .hw {
-  width: 55%;
-  height: 100%;
+  height: 80%;
   min-width: 660px;
   min-height: 300px;
 }

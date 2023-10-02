@@ -1,192 +1,338 @@
 <template>
-    <div class="container" v-if="view === 1">
-        <div class="item_header fixed" style="z-index: 1;">
-            <div class="item_detail">服務</div>
-            <div>預約時間</div>
-            <div class="price">單價</div>
-            <div class="operate">操作</div>
-        </div>
-        <div class="item_container" v-for="(item, index) in itemList" :key="item.id">
-            <div class="item_header item_body">
-                <div class="item_detail">
-                    <img v-bind:src="item.imgUrl" alt="">
-                    <div class="name">{{ item.itemName }}</div>
-                </div>
-                <div class="block">
-                    <el-date-picker v-model="value2" type="datetime" placeholder="Pick a Date" format="YYYY/MM/DD hh:00"
-                        value-format="YYYY-MM-DD h:m a" />
-                </div>
-                <div class="price"><span>$</span>{{ item.price }}</div>
-                <!-- <div class="count">
-                    <button @click="handleSub(item)">-</button>
-                    {{ item.count }}
-                    <button @click="handlePlus(item)">+</button>
-                </div>
-                <div class="amount">{{ item.price * item.count }}</div> -->
-                <div class="operate">
-                    <el-button @click="handledelete(index)">刪除</el-button>
-                </div>
-            </div>
-        </div>
-        <br>
-        <div class="item_header checkout">
-
-            <div class="checkout">總計</div>
-            <el-button class="checkout" @click="cview(2)">結帳</el-button>
-        </div>
+  <div id="title">
+    <div style="width: 50px"><ShoppingTrolley /></div>
+    &nbsp;購物車
+  </div>
+  <header>
+    <table id="customer">
+      <tr>
+        <td>客戶資料</td>
+        <td>姓名: {{ cars.userName }}</td>
+        <td>電話: {{ cars.phoneNumber }}</td>
+      </tr>
+    </table>
+    <el-divider />
+    <div style="width: 100%; display: flex; justify-content: center">
+      <table style="width: 97%; text-align: center" id="listTitle">
+        <tr>
+          <th>
+            <input
+              style="transform: scale(2)"
+              type="checkbox"
+              v-model="selectAll"
+              @change="toggleSelectAll"
+            />&nbsp;&nbsp;全選
+          </th>
+          <th>服務</th>
+          <th>預約時間</th>
+          <th>單價</th>
+          <th>操作</th>
+          <th>寵物資訊</th>
+        </tr>
+      </table>
     </div>
-    <div v-if="view === 2">
-        <div class="item_header fixed">
-            <el-button @click="cview(1)">回購物車</el-button>
+  </header>
+  <main>
+    <div v-for="(item, index) in itemList" :key="item.id">
+      <div class="item_header item_body">
+        &emsp;
+        <input style="transform: scale(2)" type="checkbox" v-model="item.checked" />&emsp;
+        <div class="item_detail">
+          <img v-bind:src="cars.serviceImg" alt="" />
+          <div class="name">{{ cars.serviceName }}</div>
         </div>
-        <Checkout />
-        <div class="item_header checkout">
-            <el-button class="checkout" @click="sendPostRequest">付款</el-button>
+        <div class="block">
+          <el-date-picker
+            v-model="value2"
+            type="date"
+            placeholder="選擇預約日期"
+            :size="size"
+          />
+          <el-time-select
+            v-model="startTime"
+            :max-time="endTime"
+            placeholder="開始"
+            start="08:00"
+            step="01:00"
+            end="17:00"
+            :size="size"
+          />
+          <el-time-select
+            v-model="endTime"
+            :min-time="startTime"
+            placeholder="結束"
+            start="08:00"
+            step="01:00"
+            end="17:00"
+            :size="size"
+          />
         </div>
-
+        <div style="width: 50%">
+          <span style="padding-left: 20%">$&emsp;</span>{{ cars.payment }}
+        </div>
+        <div style="width: 1%">
+          <el-button @click="handledelete(index)">刪除</el-button>
+        </div>
+        <div style="width: 50%; text-align: right">
+          <el-select v-model="petInfo" class="m-2" placeholder="選擇寵物" :size="size" width>
+            <el-option
+              v-for="item in options"
+              :key="item.value"
+              :label="item.label"
+              :value="item.value"
+            />
+          </el-select>
+        </div>
+        &emsp;
+      </div>
     </div>
+  </main>
+  <br />
+  <footer>
+    <div class="footer">
+      <table id="checkout">
+        <tr>
+          <th style="width: 30%">
+            <div>總計<span>$</span>{{ totalAmount }}</div>
+          </th>
+          <th style="width: 40%"></th>
+          <th>
+            <el-button @click="sendPostRequest">結帳</el-button>
+          </th>
+        </tr>
+      </table>
+    </div>
+  </footer>
 
+  <div v-if="view === 2">
+    <div class="item_header fixed">
+      <el-button @click="cview(1)">回購物車</el-button>
+    </div>
+    <Checkout />
+    <div class="item_header checkout">
+      <div>總計<span>$</span>{{ totalAmount }}</div>
+      <el-button>付款</el-button>
+    </div>
+  </div>
 </template>
 
+<script lang="ts" setup>
+import CarService from '../services/CarService'
+import { ref, computed, onMounted } from 'vue'
+import { ShoppingTrolley } from '@element-plus/icons-vue'
 
-<script setup>
-import Checkout from './Checkout.vue';
-import { ref } from 'vue'
+let cars: any = []
 
-// const postData = ref({
-//     // 在这里添加你要发送的数据字段
-// });
-
-const sendPostRequest = async () => {
-// window.location.href = 'http://localhost:8080/4A2Bpet/ecpayCheckout';
-window.location.href = 'http://localhost:3300/4A2Bpet/ecpayCheckout';
-// axios.post('http://localhost:8080/ecpayCheckout', {})
-//     .then(response => {
-//         responseHTML.value = response.data
-//         document.getElementById('ECpayt').innerHTML = responseHTML.value;
-//         console.log(responseHTML.value)
-//     })
-//     .catch(error => {
-//         console.log(error)
-//     })
-
-};
-
-
-const value2 = ref('')
-const view = ref(1)
-const cview = (ind) => {
-view.value = ind
+const getCars = async () => {
+  const response = await CarService.getCars()
+  cars = response.data
+  console.log(cars)
 }
 
+onMounted(() => {
+  getCars()
+})
+
+const petInfo = ref('')
+
+const options = [
+  {
+    value: 'Option1',
+    label: '寵物A'
+  },
+  {
+    value: 'Option2',
+    label: '寵物B'
+  },
+  {
+    value: 'Option3',
+    label: '寵物C'
+  }
+]
+
+//綠界
+const sendPostRequest = async () => {
+  window.location.href = 'http://localhost:8080/ecpayCheckout'
+}
+//日期
+const value2 = ref('')
+const size = ref('large')
+// const shortcuts = [
+//   {
+//     text: 'Today',
+//     value: new Date()
+//   }
+// ]
+// const disabledDate = (time: Date) => {
+//   return time.getTime() > Date.now()
+// }
+//時間
+const startTime = ref('')
+const endTime = ref('')
+
+//畫面
+const view = ref(1)
+const cview = (ind) => {
+  view.value = ind
+}
+//全選
+const selectAll = ref(false)
+const toggleSelectAll = () => {
+  const allChecked = itemList.value.every((item) => item.checked)
+  itemList.value.forEach((item) => (item.checked = !allChecked))
+}
+//總計
+const totalAmount = computed(() => {
+  return itemList.value.reduce((total, item) => {
+    // 如果商品被選中，才將其價格加入金额
+    if (item.checked) {
+      total += parseInt(cars.payment)
+    }
+    return total
+  }, 0)
+})
+
 const itemList = ref([
-{
+  {
     id: '1',
     itemName: '洗澡',
-    imgUrl: 'https://images.unsplash.com/photo-1534961880437-ce5ae2033053?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
-    price: '500',
-    count: '2023/09/02 12:00'
-},
-{
+    imgUrl:
+      'https://images.unsplash.com/photo-1534961880437-ce5ae2033053?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+    // price: '500',
+    count: '2023/09/02 12:00',
+    checked: false
+  },
+  {
     id: '2',
     itemName: '美容',
-    imgUrl: 'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
-    price: '790',
-    count: '2023/02/02 12:00'
-},
-{
-    id: '3',
-    itemName: '洗澡',
-    imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
-    price: '1200',
-    count: '2023/09/15 12:00'
-},
-{
-    id: '4',
-    itemName: '美容',
-    imgUrl: 'https://images.unsplash.com/photo-1491998664548-0063bef7856c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
-    price: '1300',
-    count: '2023/09/02 15:00'
-},
-{
-    id: '5',
-    itemName: '梳毛',
-    imgUrl: 'https://images.unsplash.com/photo-1529391409740-59f2cea08bc6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1124&q=80',
-    price: '2000',
-    count: '2023/10/02 12:00'
-},
-]);
+    imgUrl:
+      'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+    // price: '790',
+    count: '2023/02/02 12:00',
+    checked: false
+  }
+])
 
-// const handlePlus = (item) => {
-//     item.count++;
-// };
-
-// const handleSub = (item) => {
-//     if (item.count > 1) {
-//         item.count--;
-//     }
-// };
-
+//刪除
 const handledelete = (index) => {
-console.log(this);
-itemList.value.splice(index, 1);
-};
+  console.log(this)
+  itemList.value.splice(index, 1)
+}
 </script>
 
 <style scoped>
+#title {
+  display: flex;
+  font-size: 2rem;
+  line-height: 1.5;
+  color: #666;
+  font-weight: 600;
+  padding-left: 2%;
+}
+#customer {
+  width: 50%;
+  margin-left: 3%;
+}
+#customer tr > td:nth-child(1) {
+  font-size: 1.5rem;
+  width: 30%;
+}
+#customer tr > td:nth-child(2) {
+  font-size: 1.5rem;
+}
+#customer tr > td:nth-child(3) {
+  font-size: 1.5rem;
+}
+
+#listTitle tr > th:nth-child(1) {
+  padding-left: 10px;
+  width: 8.7%;
+  line-height: 1;
+}
+#listTitle tr > th:nth-child(2) {
+  width: 22%;
+}
+#listTitle tr > th:nth-child(3) {
+  width: 25%;
+}
+#listTitle tr > th:nth-child(4) {
+  width: 15%;
+}
+#listTitle tr > th:nth-child(6) {
+  width: 13%;
+}
+
+div {
+  font-size: 25px;
+}
+
+.footer {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+}
+#checkout {
+  width: 80%;
+  height: 70px;
+}
+.form {
+  font-size: 30px;
+  margin: 10px auto;
+  width: 90%;
+}
+
+div .el-button {
+  font-size: 25px;
+}
+
 .block {
-display: flex;
+  display: flex;
+
+  /* min-width: 500px; */
 }
 
 .fixed {
-z-index: 1;
-position: fixed;
-top: 60px;
-left: 1px;
+  z-index: 1;
+  position: fixed;
+  top: 60px;
+  left: 1px;
 }
 
 .item_header {
-display: flex;
-width: 100%;
-margin: 0 auto;
-height: 33px;
-background-color: #fff;
-border-radius: 3px;
-padding-left: 10px;
-
+  display: flex;
+  width: 100%;
+  margin: 0 auto;
+  height: 33px;
+  background-color: #fff;
+  border-radius: 3px;
+  padding-left: 10px;
 }
 
 .item_header div {
-width: 21%;
-line-height: 30px;
+  width: 45%;
+  line-height: 30px;
 }
 
 .item_header .item_detail {
-width: 35%;
+  width: 60%;
 }
 
 .item_body {
-margin-top: 20px;
-height: 100px;
-align-items: center;
-width: 100%;
+  margin-top: 20px;
+  height: 100px;
+  align-items: center;
+  width: 95%;
 }
 
 .item_detail img {
-width: 80px;
-height: 80px;
-border-radius: 3px;
-float: left;
+  width: 80px;
+  height: 80px;
+  border-radius: 3px;
+  float: left;
 }
 
 .item_detail .name {
-margin-left: 100px;
-margin-top: 20px;
-}
-
-.checkout {
-position: fixed;
-bottom: 60px;
-right: 1px;
+  margin-left: 100px;
+  margin-top: 25px;
 }
 </style>

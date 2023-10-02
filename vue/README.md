@@ -1,5 +1,10 @@
 # 錯誤訊息 [vite] Internal server error: Failed to resolve import "vue-collapsed"
+
 => npm i -S vue-collapsed
+
+# 錯誤訊息 [vite] error while updating dependencies:axios
+
+=> npm install axios
 
 # member_web
 
