@@ -1,15 +1,11 @@
 package com.example.ECPayDemo.controller;
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +13,6 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.example.ECPayDemo.bean.PetService;
-import com.example.ECPayDemo.dao.PetServiceDao;
 import com.example.ECPayDemo.service.PetServiceService;
 
 @RestController
@@ -67,8 +62,8 @@ public class PetServiceController {
 		this.serviceService = serviceService;
 	}
 	
-	@GetMapping("/sellers/services")
-	public PetService getServiceById(@PathVariable Integer serviceId,
+	@GetMapping("/sellers/services/{serviceId}")
+	public PetService getServiceById(@PathVariable String serviceId,
 								  	Model model) {
 		PetService petService = serviceService.getServiceById(serviceId);
 		System.out.println("petServiceId: " + serviceId);
@@ -81,7 +76,7 @@ public class PetServiceController {
 //	(required = false)
 //	(defaultValue = "10", name = "newVarName")
 	@RequestMapping("/getServices")
-	public String getServiceId(@RequestParam Integer serviceId,
+	public String getServiceId(@RequestParam String serviceId,
 								@RequestParam String serviceName) {
 		System.out.println("ServiceId: " + serviceId);
 		System.out.println("serviceName: " + serviceName);

@@ -1,7 +1,5 @@
 package com.example.ECPayDemo.dao.impl;
 
-import java.util.List;
-
 import org.springframework.stereotype.Repository;
 
 import com.example.ECPayDemo.bean.PetService;
@@ -17,7 +15,7 @@ public class PetServiceDaoImpl implements PetServiceDao{
 	EntityManager  entityManager;
 
 	@Override
-	public PetService getServiceById(Integer serviceId) {
+	public PetService getServiceById(String serviceId) {
 		PetService petService = entityManager.find(PetService.class, serviceId);
 		return petService;
 	}

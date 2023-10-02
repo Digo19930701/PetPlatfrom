@@ -2,6 +2,7 @@ package com.example.ECPayDemo.bean;
 
 import java.io.Serializable;
 import java.sql.Time;
+import java.util.ArrayList;
 import java.util.List;
 
 import jakarta.persistence.Entity;
@@ -16,29 +17,40 @@ public class PetService implements Serializable{
 	private static final long serialVersionUID = 1L;
 	String serviceName;
 	@Id
-	@GeneratedValue(strategy = GenerationType.IDENTITY)
-	Integer serviceId;
+//	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	String serviceId;
 	String sellerId;
 	String category;
 	String serviceDesc;
 	Time servicePeriod;
 	Integer upperLimit;
-//	List<Boolean> availDayList;
 	Time availTime1;
 	Time availTime2;
 	Integer acceptDay1;
 	Integer acceptDay2;
-	List<String> serviceImageList;
-//	List<Integer> typeIdList;
+	String serviceImage1;
+	String serviceImage2;
+	String serviceImage3;
+	String serviceImage4; 
+	String serviceImage5;
+	boolean monday;
+	boolean tuesday;
+	boolean wednesday;
+	boolean thursday;
+	boolean friday;
+	boolean saturday;
+	boolean sunday;
 	
 	public PetService() {
 		super();
 	}
 	
-	public PetService(String serviceName, Integer serviceId, String sellerId,
+	public PetService(String serviceName, String serviceId, String sellerId,
 					String category, String serviceDesc, Time servicePeriod, Integer upperLimit, 
-					Time availTime1,Time availTime2,
-					Integer acceptDay1, Integer acceptDay2, List<String> serviceImageList) {
+					Time availTime1,Time availTime2, Integer acceptDay1, Integer acceptDay2,
+					String serviceImage1, String serviceImage2, String serviceImage3, String serviceImage4, String serviceImage5,
+					boolean monday,	boolean tuesday, boolean wednesday, boolean thursday,
+					boolean friday, boolean saturday, boolean sunday) {
 		super();
 		this.serviceName = serviceName;
 		this.serviceId = serviceId;
@@ -47,13 +59,22 @@ public class PetService implements Serializable{
 		this.serviceDesc = serviceDesc;
 		this.servicePeriod = servicePeriod;
 		this.upperLimit = upperLimit;
-//		this.availDayList = availDayList;
 		this.availTime1 = availTime1; 
 		this.availTime2 = availTime2; 
 		this.acceptDay1 = acceptDay1;
 		this.acceptDay2 = acceptDay2;
-		this.serviceImageList = serviceImageList;
-//		this.typeIdList = typeIdList;
+		this.serviceImage1 = serviceImage1;
+		this.serviceImage2 = serviceImage2;
+		this.serviceImage3 = serviceImage3;
+		this.serviceImage4 = serviceImage4; 
+		this.serviceImage5 = serviceImage5;
+		this.monday = monday;
+		this.tuesday = tuesday;
+		this.wednesday = wednesday;
+		this.thursday = thursday;
+		this.friday = friday;
+		this.saturday = saturday;
+		this.sunday = sunday;
 	}
 	
 	public String getServiceName() {
@@ -62,10 +83,10 @@ public class PetService implements Serializable{
 	public void setServiceName(String serviceName) {
 		this.serviceName = serviceName;
 	}
-	public Integer getServiceId() {
+	public String getServiceId() {
 		return serviceId;
 	}
-	public void setServiceId(Integer serviceId) {
+	public void setServiceId(String serviceId) {
 		this.serviceId = serviceId;
 	}
 	public String getSellerId() {
@@ -123,12 +144,103 @@ public class PetService implements Serializable{
 	public void setAcceptDay2(Integer acceptDay2) {
 		this.acceptDay2 = acceptDay2;
 	}
-	public List<String> getServiceImageList() {
-		return serviceImageList;
+
+	public String getServiceImage1() {
+		return serviceImage1;
 	}
-	public void setServiceImageList(List<String> serviceImageList) {
-		this.serviceImageList = serviceImageList;
+
+	public void setServiceImage1(String serviceImage1) {
+		this.serviceImage1 = serviceImage1;
 	}
+
+	public String getServiceImage2() {
+		return serviceImage2;
+	}
+
+	public void setServiceImage2(String serviceImage2) {
+		this.serviceImage2 = serviceImage2;
+	}
+
+	public String getServiceImage3() {
+		return serviceImage3;
+	}
+
+	public void setServiceImage3(String serviceImage3) {
+		this.serviceImage3 = serviceImage3;
+	}
+
+	public String getServiceImage4() {
+		return serviceImage4;
+	}
+
+	public void setServiceImage4(String serviceImage4) {
+		this.serviceImage4 = serviceImage4;
+	}
+
+	public String getServiceImage5() {
+		return serviceImage5;
+	}
+
+	public void setServiceImage5(String serviceImage5) {
+		this.serviceImage5 = serviceImage5;
+	}
+
+	public boolean isMonday() {
+		return monday;
+	}
+
+	public void setMonday(boolean monday) {
+		this.monday = monday;
+	}
+
+	public boolean isTuesday() {
+		return tuesday;
+	}
+
+	public void setTuesday(boolean tuesday) {
+		this.tuesday = tuesday;
+	}
+
+	public boolean isWednesday() {
+		return wednesday;
+	}
+
+	public void setWednesday(boolean wednesday) {
+		this.wednesday = wednesday;
+	}
+
+	public boolean isThursday() {
+		return thursday;
+	}
+
+	public void setThursday(boolean thursday) {
+		this.thursday = thursday;
+	}
+
+	public boolean isFriday() {
+		return friday;
+	}
+
+	public void setFriday(boolean friday) {
+		this.friday = friday;
+	}
+
+	public boolean isSaturday() {
+		return saturday;
+	}
+
+	public void setSaturday(boolean saturday) {
+		this.saturday = saturday;
+	}
+
+	public boolean isSunday() {
+		return sunday;
+	}
+
+	public void setSunday(boolean sunday) {
+		this.sunday = sunday;
+	}
+
 
 	
 }

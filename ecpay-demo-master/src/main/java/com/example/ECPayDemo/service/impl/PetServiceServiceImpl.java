@@ -18,7 +18,7 @@ public class PetServiceServiceImpl implements PetServiceService{
 	}
 	
 	@Override
-	public PetService getServiceById(Integer serviceId) {
+	public PetService getServiceById(String serviceId) {
 		return  petServiceDao.getServiceById(serviceId);
 	}
 

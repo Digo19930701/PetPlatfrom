@@ -1,15 +1,9 @@
 package com.example.ECPayDemo.dao.impl;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-
-import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Repository;
 
 import com.example.ECPayDemo.bean.Seller;
 import com.example.ECPayDemo.dao.SellerDao;
-import com.example.ECPayDemo.rowmapper.SellerRowMapper;
 
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

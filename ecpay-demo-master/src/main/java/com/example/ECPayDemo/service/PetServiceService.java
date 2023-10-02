@@ -4,6 +4,6 @@ import com.example.ECPayDemo.bean.PetService;
 
 public interface PetServiceService {
 
-	PetService getServiceById(Integer serviceId);
+	PetService getServiceById(String serviceId);
 
 }
