@@ -2,7 +2,6 @@
   "name": "member_web",
   "version": "0.0.0",
   "private": true,
-  
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -11,8 +10,16 @@
     "format": "prettier --write src/"
   },
   "dependencies": {
+    "@fortawesome/fontawesome-svg-core": "^6.4.2",
+    "axios": "^1.5.1",
+    "echarts": "^5.4.3",
     "element-plus": "^2.3.12",
+    "firebase": "^10.4.0",
+    "firebase-auth": "^0.1.2",
+    "qalendar": "^3.5.0",
+    "use-element-plus-theme": "^0.0.5",
     "vue": "^3.3.4",
+    "vue-collapsed": "^1.2.8",
     "vue-router": "^4.2.4"
   },
   "devDependencies": {
@@ -22,6 +29,7 @@
     "eslint": "^8.46.0",
     "eslint-plugin-vue": "^9.16.1",
     "prettier": "^3.0.0",
+    "sass": "^1.66.1",
     "vite": "^4.4.9"
   }
 }
