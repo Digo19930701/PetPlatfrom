@@ -152,7 +152,7 @@ const options = [
 
 //綠界
 const sendPostRequest = async () => {
-  window.location.href = 'http://localhost:3300/4A2Bpet/ecpayCheckout'
+  window.location.href = 'http://localhost:8080/4A2Bpet/ecpayCheckout'
 }
 //日期
 const value2 = ref('')
