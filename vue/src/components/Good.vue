@@ -66,12 +66,18 @@
                 <el-divider />
 
                 <h2>規格</h2>
-                <el-button round size="large" class="plan-bn">大型犬</el-button>
-                <el-button round size="large" class="plan-bn">中型犬</el-button>
-                <el-button round size="large" class="plan-bn">小型犬</el-button>
+                <el-button round size="large" class="plan-bn" @click="money(2000)"
+                  >大型犬</el-button
+                >
+                <el-button round size="large" class="plan-bn" @click="money(1800)"
+                  >中型犬</el-button
+                >
+                <el-button round size="large" class="plan-bn" @click="money(1500)"
+                  >小型犬</el-button
+                >
                 <el-divider />
                 <div>
-                  <el-text class="price" v-model="price" style="font-size: 1.5rem"
+                  <el-text class="price" v-model="price" style="font-size: 1.7rem"
                     >NTD:{{ price }}</el-text
                   >
                 </div>
@@ -96,6 +102,10 @@ import { ref } from 'vue'
 import { ElNotification } from 'element-plus'
 //import orderSideBar from '../components/orderSideBar.vue'
 // import { Text, ref } from 'vue'
+const def = ref(2000)
+const money = (ind) => {
+  def.value = ind
+}
 
 const addToCart = () => {
   ElNotification({
@@ -123,7 +133,7 @@ const good_title = '洗澡&SPA'
 const val_day = ref('')
 const value_time = ref('')
 
-const price = '2,000'
+const price = def
 // const size = ref('default')
 </script>
 <style lang="scss">

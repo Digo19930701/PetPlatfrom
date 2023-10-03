@@ -13,7 +13,12 @@
         </header>
         <br />
         <main>
-          <UserCancelOrderTitle />
+          <div v-if="view === 1">
+            <UserCancelOrderTitle />
+          </div>
+          <div v-if="view === 2">
+            <el-empty :image-size="200" description="無相關訂單" />
+          </div>
         </main>
       </main>
     </el-container>
@@ -27,6 +32,8 @@ import UserHeadBar from '../components/UserHeadBar.vue'
 import UserSideBar from '../components/UserSideBar.vue'
 import UserCancelOrderTitle from '../components/UserCancelOrderTitle.vue'
 import FootBar from '../components/FootBar.vue'
+
+const view = ref(2)
 </script>
 
 <style scoped></style>

@@ -8,11 +8,12 @@
     <table id="orderDetail">
       <tr>
         <td rowspan="2" class="side petMain">
-          <img src="../images/cat.JPG" />
+          <!-- <img src="../images/cat.JPG" /> -->
+          <img src="https://images.pexels.com/photos/220938/pexels-photo-220938.jpeg" />
           <p>{{ petName }}</p>
           <p>{{ petGender }}</p>
           <br />
-          <button class="tag-cloud button" id="report">檢舉</button>
+          <!-- <button class="tag-cloud button" id="report">檢舉</button> -->
         </td>
         <td class="orderInf" rowspan="2">
           <p>飼主: {{ userEmail }}</p>
@@ -47,9 +48,9 @@
       <tr style="height: 200px">
         <table id="timeline">
           <tr class="stateColor">
-            <th class="gap"></th>
-            <th class="gap"></th>
             <th class="gap onState"></th>
+            <th class="gap"></th>
+            <th class="gap"></th>
             <th class="gap"></th>
           </tr>
           <tr>
@@ -66,9 +67,9 @@
           </tr>
           <tr>
             <td></td>
-            <td><el-button type="primary" plain disabled>取消訂單</el-button></td>
-            <td><el-button type="primary" plain>已報到</el-button></td>
-            <td><el-button type="primary" plain>已完成</el-button></td>
+            <td><el-button type="primary" plain>取消訂單</el-button></td>
+            <td><el-button type="primary" plain disabled>已報到</el-button></td>
+            <td><el-button type="primary" plain disabled>已完成</el-button></td>
             <td></td>
           </tr>
         </table>
@@ -86,19 +87,20 @@ const data = reactive({
   orderstate2: '訂單成立',
   orderstate3: '寵物報到',
   orderstate4: '服務完成',
-  timeline1: '2018-04-11', //收到
-  timeline2: '2018-04-11', //接受
-  timeline3: '2018-04-13', //報到
-  timeline4: '2018-04-13', //完成
-  petName: '寵物名',
-  petGender: '(性別)',
-  userEmail: '',
-  phoneNumber: '',
-  petClass: '',
-  petVariety: '', //品種
-  petCharacter: '',
-  petAge: '',
-  serviceName: '飼主下單的店家服務名稱(限20字)',
+  timeline1: '2023-10-04', //收到
+  timeline2: '', //接受
+  timeline3: '', //報到
+  timeline4: '', //完成
+  timeline5: '', //撥款
+  petName: 'BoBo',
+  petGender: '男生',
+  userEmail: 'Digo',
+  phoneNumber: '0932075148',
+  petClass: '狗',
+  petVariety: '邊境牧羊犬', //品種
+  petCharacter: '調皮',
+  petAge: '5',
+  serviceName: '',
   orderMsg: '', //訂單備註
   price: '',
   petImage: ''
