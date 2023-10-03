@@ -10,5 +10,6 @@ public interface OrdersService {
 	
 	Order getOrder(String orderId) ;
 
+	List<Order> getOrdersBySellerId(String sellerId);
 
 }

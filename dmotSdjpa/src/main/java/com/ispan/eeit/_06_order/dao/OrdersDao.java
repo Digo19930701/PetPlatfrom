@@ -10,4 +10,5 @@ public interface OrdersDao {
 
 	Order getOrder(String orderId);
 
+	List<Order> getOrdersBySellerId(String sellerId);
 }
