@@ -18,13 +18,13 @@ public class User {
 //	 private Integer id;
 	 
 	 @Id
-	 @Column(name = "userEmail", length = 50)
+
 	 private String userEmail;
 	 
-	 @Column(name = "userPassWord", length = 20)
+
 	 private String userPassword;
 	 
-	 @Column(name = "userPassWord2", length = 20)
+
 	 private String userPassword2;
 
 

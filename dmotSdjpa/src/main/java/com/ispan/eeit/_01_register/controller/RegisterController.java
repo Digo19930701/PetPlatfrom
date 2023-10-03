@@ -26,11 +26,11 @@ public class RegisterController {
 		
 //    	System.out.println("userPassword="+user.getUserPassword());
 //		 return "OK";
-		 String usermail = user.getUserEmail();
+		 String userEmail = user.getUserEmail();
 		 String userPassword = user.getUserPassword();
 		 String userPassword2 = user.getUserPassword2();
 		 
-		 System.out.println(usermail);
+		 System.out.println(userEmail);
 		 System.out.println(userPassword);
 		 System.out.println(userPassword2);
 		 

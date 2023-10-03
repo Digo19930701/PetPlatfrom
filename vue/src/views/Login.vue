@@ -207,8 +207,8 @@ const form = reactive({
 })
 const register = reactive({
   userMail: '',
-  Password: '',
-  Password2: ''
+  userPassword: '',
+  userPassword2: ''
 })
 
 const forgetPs = reactive({
@@ -292,56 +292,43 @@ const login = () => {
 
   const user = {
     userEmail: userEmail,
-    password: password
+    userPassword: password
   }
   axios
-    .post('http://localhost:8080/SpringBoot/Login', user, {
+    .post('http://localhost:3300/4A2Bpet/Login', user, {
       headers: {
-        'Content-Type': 'application/x-www-form-urlencoded'
-      }
+    	 'Content-Type': 'application/json'
+		}
     })
+    
     .then((response) => {
-      alert(response.data)
+      alert('登入成功');
+  
+    window.location.href= response.data; // 替换Spring Boot端口号和路由
+   
       console.log(response.data)
+      console.log(response.data.yyy)
     })
     .catch((error) => {
-      alert(error)
+		alert(error)
       console.error(error)
     })
 }
 
 const registerout = () => {
   const Email = register.userMail
-  const userPassword = register.Password
-  const userPassword2 = register.Password2
+  const userPassword = register.userPassword
+  const userPassword2 = register.userPassword2
   
 
-  console.log(`Email=${Email}`,`userPassword=${userPassword}`)
+  console.log(`Email=${Email}`,`userPassword=${userPassword}`,`userPassword=${userPassword2}`)
   
   const user = {
-    UserEmail:Email,
+    userEmail:Email,
     userPassword:userPassword,
     userPassword2:userPassword2
   }
-//   //branch-SellerBase before merge.
-//   axios
-//     .post('http://localhost:8080/SpringBoot/Register', user, {
-//       headers: {
-//     	 'Content-Type': 'application/x-www-form-urlencoded'
-// 		}
-//     })
-//     .then((response) => {
-// 		alert(response.data);
-//       console.log(response.data)
-//     })
-//     .catch((error) => {
-// 		alert(error)
-//       console.error(error)
-//     })
-// }
 
-
-//from branch-allPage
 axios
     .post('http://localhost:3300/4A2Bpet/Register', user, {
       headers: {
@@ -349,11 +336,11 @@ axios
 		}
     })
     .then((response) => {
-		alert(response.data);
+		  alert(response.data);
       console.log(response.data)
     })
     .catch((error) => {
-		alert(error)
+		  alert(error)
       console.error(error)
     })
 }
