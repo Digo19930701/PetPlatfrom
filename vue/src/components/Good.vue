@@ -1,4 +1,4 @@
-<template>
+ <template>
   <el-container>
     <el-main>
       <div
@@ -66,9 +66,9 @@
                 <el-divider />
 
                 <h2>規格</h2>
-                <el-button round size="large" class="plan-bn">規格A</el-button>
-                <el-button round size="large" class="plan-bn">規格B</el-button>
-                <el-button round size="large" class="plan-bn">規格C</el-button>
+                <el-button round size="large" class="plan-bn">大型犬</el-button>
+                <el-button round size="large" class="plan-bn">中型犬</el-button>
+                <el-button round size="large" class="plan-bn">小型犬</el-button>
                 <el-divider />
                 <div>
                   <el-text class="price" v-model="price" style="font-size: 1.5rem"
@@ -123,7 +123,7 @@ const good_title = '洗澡&SPA'
 const val_day = ref('')
 const value_time = ref('')
 
-const price = '5,000'
+const price = '2,000'
 // const size = ref('default')
 </script>
 <style lang="scss">

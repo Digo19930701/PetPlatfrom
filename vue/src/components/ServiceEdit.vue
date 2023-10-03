@@ -336,6 +336,24 @@ const ruleForm = reactive<RuleForm>({
   acceptDay1:  1,
   acceptDay2:  7,
 })
+const props = defineProps({
+  serviceName: String,
+  serviceId: String,
+  sellerId: String,
+  category: String,
+  serviceDesc: String,
+  servicePeriod: Number,
+  upperLimit: Number, 
+  availTime1: String,
+  availTime2: String,
+  acceptDay1: Number,
+  acceptDay2: Number,
+  serviceImage1: URL,
+  serviceImage2: URL,
+  serviceImage3: URL,
+  serviceImage4: URL ,
+  serviceImage5: URL,
+})
 
 const rules = reactive<FormRules<RuleForm>>({
   name: [

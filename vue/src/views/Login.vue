@@ -80,7 +80,7 @@
         <el-form :model="register">
           <el-form-item :label-width="formLabelWidth">
             <el-input
-              v-model="register.mail"
+              v-model="register.userMail"
               label-width="100px"
               autocomplete="off"
               type="register"
@@ -99,7 +99,7 @@
           </el-form-item>
           <el-form-item :label-width="formLabelWidth">
             <el-input
-              v-model="register.againPassword"
+              v-model="register.Password2"
               label-width="100px"
               autocomplete="off"
               type="register"
@@ -206,9 +206,9 @@ const form = reactive({
   desc: ''
 })
 const register = reactive({
-  mail: '',
+  userMail: '',
   Password: '',
-  againPassword: ''
+  Password2: ''
 })
 
 const forgetPs = reactive({
@@ -311,7 +311,33 @@ const login = () => {
 }
 
 const registerout = () => {
-  console.log('register', register)
+  const Email = register.userMail
+  const userPassword = register.Password
+  const userPassword2 = register.Password2
+  
+
+  console.log(`Email=${Email}`,`userPassword=${userPassword}`)
+  
+  const user = {
+    UserEmail:Email,
+    userPassword:userPassword,
+    userPassword2:userPassword2
+    // useragainPasswordPassword:useragainPassword
+  }
+  axios
+    .post('http://localhost:8080/SpringBoot/Register', user, {
+      headers: {
+    	 'Content-Type': 'application/x-www-form-urlencoded'
+		}
+    })
+    .then((response) => {
+		alert(response.data);
+      console.log(response.data)
+    })
+    .catch((error) => {
+		alert(error)
+      console.error(error)
+    })
 }
 
 const sellersignupout = () => {
@@ -354,11 +380,7 @@ const sellersignupout = () => {
 .dialog-footer button:first-child {
   margin-right: 10px;
 }
-.warp-mask {
-  height: 100%;
-  width: 100%;
-  background: rgba(0, 0, 0, 0);
-}
+
 
 .el-button {
   font-size: 1.5rem;

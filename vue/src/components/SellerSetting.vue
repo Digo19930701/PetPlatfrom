@@ -4,7 +4,7 @@
       <el-form :model="form" label-width="150px">
         <div class="base hw">
           <br />
-          <el-form-item label="上傳頭像">
+          <!-- <el-form-item label="上傳頭像" >
             <el-upload
               action=""
               list-type="picture-card"
@@ -20,7 +20,7 @@
             <el-dialog v-model="dialogVisible" style="text-align: center">
               <img :src="avatarImageUrl" alt="Preview Image" class="imgwd" />
             </el-dialog>
-          </el-form-item>
+          </el-form-item> -->
   
           <el-form-item
             label="商家名稱"
@@ -37,12 +37,12 @@
           </el-form-item>
   
           <el-form-item label="Email(帳號)" prop="account">
-            <p style="color: #888; padding-left: 10px">xxxxxxx@gmail.com</p>
+            <p style="color: #888; padding-left: 10px">{{ props.sellerId }}</p>
           </el-form-item>
   
-          <el-form-item label="統一編號" prop="taxID">
+          <!-- <el-form-item label="統一編號" prop="taxID">
             <p style="color: #888; padding-left: 10px">
-              81****78&emsp;
+              {{ props.taxID }}&emsp;
               <el-tooltip
                 placement="top-start"
                 effect="customized"
@@ -52,8 +52,8 @@
               </el-tooltip>
             </p>
           </el-form-item>
-  
-          <el-form-item
+   -->
+          <!-- <el-form-item
             label="負責人"
             prop="incharge"
             
@@ -70,7 +70,7 @@
             <el-alert class="alertwh" type="info" show-icon :closable="false">
               <p>請上傳公司相關登記證明文件</p>
             </el-alert>
-          </el-form-item>
+          </el-form-item> -->
           <el-form-item
             label="聯絡電話"
             prop="cell"
@@ -126,25 +126,85 @@
 </template>
 
 <style src="../assets/seller.css"></style>
+
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import type { UploadProps, UploadInstance } from 'element-plus'
 import { Plus, Upload, WarningFilled } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
+import axios from 'axios';
 
-// test
-// do not use same name with ref
-const form = reactive({
-  name: '',
-  account: '',
-  taxID: '',
-  incharge: '',
-  cell: '',
-  desc: '',
-  addre: '',
-  park: '',
-  acceptUnit: 30,
+import { useSSRContext} from 'vue'
+
+// const emit = defineEmits(['child-click'])
+// const ctx = useSSRContext()
+const props = defineProps({
+  sellerImg:{
+    type:URL,
+    default:''
+  },
+  sellerId:{
+    type:String,
+    default:'xxxxxxx@gmail.com'
+  },
+  sellerName:{
+    type:String,
+    default:''
+  },
+  sellerPhone:{
+    type:String,
+    default:''
+  },
+  sellerDesc:{
+    type:String,
+    default:''
+  },
+  sellerAdd:{
+    type:String,
+    default:'台中市'
+  },
+  sellerPark:{
+    type:String,
+    default:''
+  },
+  unitTime:{
+    type:String,
+    default:'30'
+  },
+  taxID:{
+    type:String,
+    default:'8181778'
+  },
+
 })
+
+
+const form = reactive({
+  name: props.sellerName,
+  account: props.sellerId,
+  taxID:props.taxID,
+  incharge: '',
+  cell:props.sellerPhone,
+  desc:props.sellerDesc,
+  addre: props.sellerAdd,
+  park:props.sellerPark,
+  acceptUnit: props.unitTime,
+  img:props.sellerImg
+})
+
+// const getAxios = function(){
+//     axios.get(`http://localhost:3300/4A2Bpet/sellers/SELLER1`,
+//     ).then((res)=>{
+//         //獲取伺服器的回傳資料
+//           props = res.data
+//     })
+//     .catch((error)=>{
+//         console.log(error,'失敗');
+//     })
+// }
+// //執行Axios
+// getAxios()
+
 
 const onSubmit = () => {
   console.log('submit!')

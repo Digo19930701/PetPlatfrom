@@ -2,7 +2,7 @@
   <header><HomeHeader /></header>
   <main>
     <el-container>
-      <main>
+      <main style="width: 100%;">
         <Home />
       </main>
     </el-container>

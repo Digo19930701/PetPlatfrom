@@ -37,9 +37,9 @@
           </div>
         </li>
         <li>
-          <a href="#">
+          <router-link to="/studentTest">
             <el-icon><UserFilled /></el-icon>&nbsp;
-          </a>
+          </router-link>
         </li>
         <li>
           <a href="/shoppingCart">

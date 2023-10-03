@@ -142,7 +142,15 @@ const router = createRouter({
       path: '/userPastOrder',
       name: 'userPastOrder',
       component: () => import('../views/UserPastOrderView.vue')
-    }
+    },
+    
+    //測試用連結
+    {
+      path: '/studentTest',
+      name: 'studentTest',
+      component: () => import('../views/Student.vue')
+    },
+    
   ]
 })
 
