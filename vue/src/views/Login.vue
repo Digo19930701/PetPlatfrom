@@ -248,9 +248,9 @@ const login = () => {
     password: password
   }
   axios
-    .post('http://localhost:8080/SpringBoot/Login', user, {
+    .post('http://localhost:8080/4A2Bpet/Login', user, {
       headers: {
-    	 'Content-Type': 'application/x-www-form-urlencoded'
+    	 'Content-Type': 'application/json'
 		}
     })
     .then((response) => {
@@ -299,18 +299,19 @@ const registerout = () => {
   const userPassword2 = register.userPassword2
   
 
-  console.log(`Email=${Email}`,`userPassword=${userPassword}`)
+
+  console.log(`Email=${Email}`,`userPassword=${userPassword}`,`userPassword=${userPassword2}`)
   
-  const user = {
-    UserEmail:Email,
-    userPassword:userPassword,
-    userPassword2:userPassword2
+  const user1 = {
+    userEmail:Email,
+    password:userPassword,
+    password2:userPassword2
     // useragainPasswordPassword:useragainPassword
   }
   axios
-    .post('http://localhost:8080/SpringBoot/Register', user, {
+    .post('http://localhost:8080/4A2Bpet/Register', user1, {
       headers: {
-    	 'Content-Type': 'application/x-www-form-urlencoded'
+    	 'Content-Type': 'application/json'
 		}
     })
     .then((response) => {

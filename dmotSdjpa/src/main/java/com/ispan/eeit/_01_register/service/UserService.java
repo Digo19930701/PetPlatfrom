@@ -17,8 +17,8 @@ public class UserService {
 	
 	public boolean LoginService(User user) {
 
-     System.out.println("userEmail="+user.getUserEmail());
-     System.out.println("password="+user.getPassword()); 
+    System.out.println("我是Sever userEmail="+user.getUserEmail());
+    System.out.println("我是Sever password="+user.getPassword()); 
      
      //判斷資料庫帳密是否正確
      //撈資料庫的list 資料
@@ -34,7 +34,7 @@ public class UserService {
 	return true;
 	
   }
-     System.out.println("登入不成功!!"); 
+     System.out.println("登入成功!!"); 
 	return false;
      
      

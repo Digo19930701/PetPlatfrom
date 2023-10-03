@@ -45,18 +45,18 @@ public class LoginController {
 	    @ResponseBody
 		public String Login(@RequestBody User user ) {
 		
-	    	System.out.println(user.getUserEmail());
-	    	System.out.println(user.getPassword());
+	    	
 	    	
 //	     //裝前端的帳號密碼並組合一個Bean
 //	     User user = new User();
-//	     user.setUserEmail(userEmail);
-//	     user.setPassword(password);
-	     
+	    	String userEmial = user.getUserEmail();
+	    	String Password = user.getPassword();
+	    	
+	    	System.out.println("我是登入"+user.getPassword());
 	     
 //	     System.out.println("userService="+userService.LoginService(user));
 //	     
-//	     if(userService.LoginService(user)==true) {
+	     if(userService.LoginService(user)==true) {
 	    	 
 //	    	 String yyy = userEmail;
 //	    	 String vueAppUrl = "http://localhost:5173/Member"; // 替换成您的Vue.js应用程序的URL
@@ -65,12 +65,12 @@ public class LoginController {
 //	         model.addAttribute("data", yyy);
 //	         emailService.sendForgotPasswordEmail(userEmail);
 	        
-//	         return "http://localhost:5173/Member";
-//	    	 
-//	    	 
-//	     }
+	         return "http://localhost:5173/Member";
+	    	 
+	    	 
+	     }
 	     
-	     return "登入失敗請在確認帳號密碼";
+	     return "http://localhost:5173";
 	   
 	     
 	    }   
