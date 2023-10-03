@@ -20,6 +20,7 @@
           <el-form-item label="密碼" :label-width="formLabelWidth">
             <el-input
               v-model="loginForm.password"
+              type="password"
               autocomplete="off"
               style="height: 50px; width: 500px"
             />
@@ -55,6 +56,7 @@
           <el-form-item label="密碼" :label-width="formLabelWidth">
             <el-input
               v-model="loginForm.password"
+              type="password"
               autocomplete="off"
               style="height: 50px; width: 500px"
             />
