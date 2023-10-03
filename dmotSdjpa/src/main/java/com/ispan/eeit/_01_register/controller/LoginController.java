@@ -43,34 +43,34 @@ public class LoginController {
 	   
 	    @PostMapping("/Login")
 	    @ResponseBody
-		public String Login(@RequestBody User user ) {
+		public String Login(@RequestBody User user,Model model ) {
 		
 	    	
 	    	
 //	     //裝前端的帳號密碼並組合一個Bean
 //	     User user = new User();
 	    	String userEmial = user.getUserEmail();
-	    	String Password = user.getPassword();
+	    	String Password = user.getUserPassword();
 	    	
-	    	System.out.println("我是登入"+user.getPassword());
-	     
+	    	System.out.println("我是登入帳號"+user.getUserEmail());
+	    	System.out.println("我是登入密碼"+user.getUserPassword());
 //	     System.out.println("userService="+userService.LoginService(user));
-//	     
+	     System.out.println(userService.LoginService(user));
 	     if(userService.LoginService(user)==true) {
 	    	 
-//	    	 String yyy = userEmail;
+//	    	 String yyy = user;
 //	    	 String vueAppUrl = "http://localhost:5173/Member"; // 替换成您的Vue.js应用程序的URL
 //	         String responseData = restTemplate.getForObject(vueAppUrl, yyy);      
 //	          //将数据添加到Model中
 //	         model.addAttribute("data", yyy);
-//	         emailService.sendForgotPasswordEmail(userEmail);
-	        
-	         return "http://localhost:5173/Member";
+//	         emailService.sendForgotPasswordEmail(user);
+	    	 
+	         return "http://localhost:5173";
 	    	 
 	    	 
 	     }
 	     
-	     return "http://localhost:5173";
+	     return "登入失敗";
 	   
 	     
 	    }   

@@ -245,7 +245,7 @@ const login = () => {
  
   const user = {
     userEmail: userEmail,
-    password: password
+    userPassword: password
   }
   axios
     .post('http://localhost:8080/4A2Bpet/Login', user, {
@@ -253,8 +253,9 @@ const login = () => {
     	 'Content-Type': 'application/json'
 		}
     })
+    
     .then((response) => {
-		alert(response.data);
+      alert('登入成功');
     
 
   // export default {
@@ -304,9 +305,8 @@ const registerout = () => {
   
   const user1 = {
     userEmail:Email,
-    password:userPassword,
-    password2:userPassword2
-    // useragainPasswordPassword:useragainPassword
+    userPassword:userPassword,
+    userPassword2:userPassword2
   }
   axios
     .post('http://localhost:8080/4A2Bpet/Register', user1, {

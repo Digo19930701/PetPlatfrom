@@ -24,25 +24,31 @@ public class RegisterController {
 	@ResponseBody
 	public String Register(@RequestBody User user) {
 		
-		System.out.println("userEmail="+user.getUserEmail());
-    	System.out.println("userPassword="+user.getPassword());
-    	System.out.println("userPassword2="+user.getPassword2());
-		 return "OK";
-	     
+//    	System.out.println("userPassword="+user.getUserPassword());
+//		 return "OK";
+		 String usermail = user.getUserEmail();
+		 String userPassword = user.getUserPassword();
+		 String userPassword2 = user.getUserPassword2();
+		 
+		 System.out.println(usermail);
+		 System.out.println(userPassword);
+		 System.out.println(userPassword2);
+		 
 	     //密碼驗證
-//	   if(userPassword.equals(userPassword2)) {
+	   if(userPassword.equals(userPassword2)) {
 //	     User user = new User();
 //	     user.setUserEmail(userEmail);
 //	     user.setPassword(userPassword);
-//	     
+	     
 //	     System.out.println("user="+user); 
-//	     userDao.save(user);
-//	     
-//	     return "註冊成功";
-//	   }
-//	   else {
-//	   return "密碼確認不一致";
-//	   }
+		 
+	     userDao.save(user);
+	     
+	     return "註冊成功";
+	   }
+	   else {
+	   return "密碼確認不一致";
+	   }
 	}
 	
 	
