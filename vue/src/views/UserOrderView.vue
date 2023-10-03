@@ -14,7 +14,7 @@
         <br />
         <main>
           <UserOrderTitle />
-          <UserOrderTitle />
+          <!-- <UserOrderTitle /> -->
           <br /><br />
         </main>
       </main>

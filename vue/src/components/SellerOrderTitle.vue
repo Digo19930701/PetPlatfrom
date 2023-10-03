@@ -18,7 +18,7 @@
             <!-- <span>{{ serviceName }}</span> -->
           </td>
           <td style="text-align: right; width: 25%">
-            <span class="orderNum" style="font-size: 18px">訂單編號:{12asd456q8w4f3}</span>
+            <span class="orderNum" style="font-size: 18px">訂單編號:12asd456q8w4f3</span>
           </td>
         </tr>
         <tr>

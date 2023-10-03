@@ -102,15 +102,15 @@ const data = reactive({
   timeline3: '', //報到
   timeline4: '', //完成
   timeline5: '', //撥款
-  petName: '寵物名',
-  petGender: '(性別)',
-  userEmail: '',
-  phoneNumber: '',
-  petClass: '',
-  petVariety: '', //品種
-  petCharacter: '',
-  petAge: '',
-  serviceName: '飼主下單的店家服務名稱(限20字)',
+  petName: 'BoBo',
+  petGender: '男生',
+  userEmail: 'Digo',
+  phoneNumber: '0932075148',
+  petClass: '狗',
+  petVariety: '邊境牧羊犬', //品種
+  petCharacter: '調皮',
+  petAge: '5',
+  serviceName: '',
   orderMsg: '', //訂單備註
   price: '',
   petImage: ''
