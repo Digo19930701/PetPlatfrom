@@ -1,0 +1,28 @@
+Hibernate: 
+	alter table Book_Table drop foreign key FK_Publisher_Id
+Hibernate: 
+	alter table OrderItems drop foreign key FK_OrderBean_orderNo
+Hibernate: 
+	drop table if exists Book_Table
+Hibernate: 
+	drop table if exists Member_Table
+Hibernate: 
+	drop table if exists OrderItems
+Hibernate: 
+	drop table if exists Orders
+Hibernate: 
+	drop table if exists Publisher_Table
+Hibernate: 
+	create table Book_Table (id bigint not null auto_increment, author varchar(255), bookNo varchar(255), category varchar(255), coverImage longtext, discount double precision, fileName varchar(255), listPrice double precision, mimeType varchar(255), stock integer, title varchar(255), FK_Publisher_Id bigint, primary key (id)) engine=InnoDB
+Hibernate: 
+	create table Member_Table (seqNo bigint not null auto_increment, address varchar(255), comment longtext, email varchar(255), fileName varchar(255), memberId varchar(255), memberImage longblob, mimeType varchar(255), name varchar(255), password varchar(255), phone varchar(255), registerTime datetime(6), totalAmt double precision, unpaid_amount double precision, userType varchar(255), primary key (seqNo)) engine=InnoDB
+Hibernate: 
+	create table OrderItems (id bigint not null auto_increment, author varchar(255), bookId bigint, description varchar(255), discount double precision, orderNo integer, publisherName varchar(255), quantity integer, title varchar(255), unitPrice double precision, FK_OrderBean_orderNo bigint, primary key (id)) engine=InnoDB
+Hibernate: 
+	create table Orders (orderNo bigint not null auto_increment, bno varchar(255), cancelTag varchar(255), invoiceTitle varchar(255), memberId varchar(255), orderDate datetime(6), shippingAddress varchar(255), shippingDate datetime(6), totalAmount double precision, primary key (orderNo)) engine=InnoDB
+Hibernate: 
+	create table Publisher_Table (id bigint not null auto_increment, address varchar(255), name varchar(255), url varchar(255), primary key (id)) engine=InnoDB
+Hibernate: 
+	alter table Book_Table add constraint FK_Publisher_Id foreign key (FK_Publisher_Id) references Publisher_Table (id)
+Hibernate: 
+		alter table OrderItems add constraint FK_OrderBean_orderNo foreign key (FK_OrderBean_orderNo) references Orders (orderNo)

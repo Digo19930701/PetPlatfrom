@@ -7,7 +7,7 @@
     <table id="customer">
       <tr>
         <td>客戶資料</td>
-        <td>姓名: {{ cars.userName }}</td>
+        <td>姓名: {{cars.userName}}</td>
         <td>電話: {{ cars.phoneNumber }}</td>
       </tr>
     </table>
@@ -152,7 +152,7 @@ const options = [
 
 //綠界
 const sendPostRequest = async () => {
-  window.location.href = 'http://localhost:8080/ecpayCheckout'
+  window.location.href = 'http://localhost:8080/4a2b/ecpayCheckout'
 }
 //日期
 const value2 = ref('')
