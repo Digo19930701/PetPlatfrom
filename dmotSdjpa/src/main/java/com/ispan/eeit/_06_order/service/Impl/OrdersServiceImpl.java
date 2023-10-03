@@ -6,10 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-import com.ispan.eeit._04_ShoppingCart.service.impl.OrderServiceImpl;
 import com.ispan.eeit._06_order.dao.OrdersDao;
-import com.ispan.eeit._06_order.dao.impl.OrdersRepository;
 import com.ispan.eeit._06_order.model.Order;
 import com.ispan.eeit._06_order.service.OrdersService;
 
