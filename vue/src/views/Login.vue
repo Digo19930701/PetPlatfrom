@@ -322,12 +322,30 @@ const registerout = () => {
     UserEmail:Email,
     userPassword:userPassword,
     userPassword2:userPassword2
-    // useragainPasswordPassword:useragainPassword
   }
-  axios
-    .post('http://localhost:8080/SpringBoot/Register', user, {
+//   //branch-SellerBase before merge.
+//   axios
+//     .post('http://localhost:8080/SpringBoot/Register', user, {
+//       headers: {
+//     	 'Content-Type': 'application/x-www-form-urlencoded'
+// 		}
+//     })
+//     .then((response) => {
+// 		alert(response.data);
+//       console.log(response.data)
+//     })
+//     .catch((error) => {
+// 		alert(error)
+//       console.error(error)
+//     })
+// }
+
+
+//from branch-allPage
+axios
+    .post('http://localhost:3300/4A2Bpet/Register', user, {
       headers: {
-    	 'Content-Type': 'application/x-www-form-urlencoded'
+    	 'Content-Type': 'application/json'
 		}
     })
     .then((response) => {
@@ -339,6 +357,7 @@ const registerout = () => {
       console.error(error)
     })
 }
+
 
 const sellersignupout = () => {
   console.log('sellersignup', sellersignup)

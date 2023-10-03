@@ -27,9 +27,9 @@ import com.ispan.eeit._02_login.validator.LoginBeanValidator;
 @Controller
 @RequestMapping("/_02_login")
 @SessionAttributes({"LoginOK"}) 
-public class LoginController {
+public class LoginController02 {
 	
-	private static Logger log = LoggerFactory.getLogger(LoginController.class);
+	private static Logger log = LoggerFactory.getLogger(LoginController02.class);
 	
 	String loginForm = "_02_login\\loginForm";
 	String loginOut = "_02_login\\logout";
@@ -37,7 +37,7 @@ public class LoginController {
 	MemberService memberService;
 	
 	@Autowired
-	public LoginController(MemberService memberService) {
+	public LoginController02(MemberService memberService) {
 		this.memberService = memberService;
 	}
 
