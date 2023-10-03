@@ -336,6 +336,7 @@ const ruleForm = reactive<RuleForm>({
   acceptDay1:  1,
   acceptDay2:  7,
 })
+<<<<<<< HEAD
 const props = defineProps({
   serviceName: String,
   serviceId: String,
@@ -354,6 +355,8 @@ const props = defineProps({
   serviceImage4: URL ,
   serviceImage5: URL,
 })
+=======
+>>>>>>> origin/L
 
 const rules = reactive<FormRules<RuleForm>>({
   name: [

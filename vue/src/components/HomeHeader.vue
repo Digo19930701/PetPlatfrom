@@ -37,9 +37,15 @@
           </div>
         </li>
         <li>
+<<<<<<< HEAD
           <router-link to="/studentTest">
             <el-icon><UserFilled /></el-icon>&nbsp;
           </router-link>
+=======
+          <a href="#">
+            <el-icon><UserFilled /></el-icon>&nbsp;
+          </a>
+>>>>>>> origin/L
         </li>
         <li>
           <a href="/shoppingCart">

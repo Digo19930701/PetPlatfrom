@@ -6,6 +6,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,6 +19,7 @@ import com.ispan.eeit._01_register.model.Member;
 import com.ispan.eeit._04_ShoppingCart.model.ShoppingCart;
 
 @Controller
+@CrossOrigin("http://localhost:5173")
 @RequestMapping("/_04_ShoppingCart")
 @SessionAttributes({ "LoginOK", "ShoppingCart"})
 public class ShoppingCartController {

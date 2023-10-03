@@ -9,6 +9,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -26,6 +27,7 @@ import com.ispan.eeit._04_ShoppingCart.service.OrderService;
 // OrderConfirm.jsp 呼叫本程式。
 
 @Controller
+@CrossOrigin("http://localhost:5173")
 @RequestMapping("/_04_ShoppingCart")
 @SessionAttributes({ "LoginOK", "ShoppingCart", "OrderErrorMessage"})
 public class ProcessOrderController {

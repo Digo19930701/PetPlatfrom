@@ -142,6 +142,7 @@ const router = createRouter({
       path: '/userPastOrder',
       name: 'userPastOrder',
       component: () => import('../views/UserPastOrderView.vue')
+<<<<<<< HEAD
     },
     
     //測試用連結
@@ -151,6 +152,9 @@ const router = createRouter({
       component: () => import('../views/Student.vue')
     },
     
+=======
+    }
+>>>>>>> origin/L
   ]
 })
 

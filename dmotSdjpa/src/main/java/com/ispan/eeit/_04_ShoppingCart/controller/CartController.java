@@ -1,4 +1,4 @@
-package com.example.ECPayDemo.controller;
+package com.ispan.eeit._04_ShoppingCart.controller;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -8,29 +8,30 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.example.ECPayDemo.bean.Seller;
-import com.example.ECPayDemo.service.SellerService;
+import com.ispan.eeit._04_ShoppingCart.model.Cart;
+import com.ispan.eeit._04_ShoppingCart.service.CartService;
+
 
 @RestController
-@CrossOrigin("http://localhost:5173/")
-public class SellerController {
+@CrossOrigin("http://localhost:5173")
+public class CartController {
 	
 	
-	Logger log = LoggerFactory.getLogger(SellerController.class);
+	Logger log = LoggerFactory.getLogger(CartController.class);
 
-	SellerService sellerService;
+	CartService shoppingCartService;
 	
 //	@Autowired
-	public SellerController(SellerService sellerService) {
-		this.sellerService = sellerService;
+	public CartController(CartService shoppingCartService) {
+		this.shoppingCartService = shoppingCartService;
 	}
 	
-	@GetMapping("/sellers/{sellerId}")
-	public Seller getSellerById(@PathVariable String sellerId, Model model) {
-		Seller seller = sellerService.getSellerById(sellerId);
-		model.addAttribute("previous_seller_id",seller.getSellerId());
-		log.info("get " + sellerId + " info.");
-		return seller;
+	@GetMapping("/shoppingCart/{shoppingCartId}")
+	public Cart getUserName(@PathVariable String shoppingCartId, Model model) {
+		Cart shoppingCart = shoppingCartService.getUserName(shoppingCartId);
+		model.addAttribute("previous_userName",shoppingCart.getUserName());
+		log.info("get " + shoppingCartId + " info.");
+		return shoppingCart;
 	}
 	
 //	@GetMapping("/sellers/{sellerId}")

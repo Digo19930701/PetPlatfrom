@@ -80,7 +80,11 @@
         <el-form :model="register">
           <el-form-item :label-width="formLabelWidth">
             <el-input
+<<<<<<< HEAD
               v-model="register.userMail"
+=======
+              v-model="register.mail"
+>>>>>>> origin/L
               label-width="100px"
               autocomplete="off"
               type="register"
@@ -99,7 +103,11 @@
           </el-form-item>
           <el-form-item :label-width="formLabelWidth">
             <el-input
+<<<<<<< HEAD
               v-model="register.Password2"
+=======
+              v-model="register.againPassword"
+>>>>>>> origin/L
               label-width="100px"
               autocomplete="off"
               type="register"
@@ -206,9 +214,15 @@ const form = reactive({
   desc: ''
 })
 const register = reactive({
+<<<<<<< HEAD
   userMail: '',
   Password: '',
   Password2: ''
+=======
+  mail: '',
+  Password: '',
+  againPassword: ''
+>>>>>>> origin/L
 })
 
 const forgetPs = reactive({
@@ -311,6 +325,7 @@ const login = () => {
 }
 
 const registerout = () => {
+<<<<<<< HEAD
   const Email = register.userMail
   const userPassword = register.Password
   const userPassword2 = register.Password2
@@ -338,6 +353,9 @@ const registerout = () => {
 		alert(error)
       console.error(error)
     })
+=======
+  console.log('register', register)
+>>>>>>> origin/L
 }
 
 const sellersignupout = () => {
@@ -380,7 +398,15 @@ const sellersignupout = () => {
 .dialog-footer button:first-child {
   margin-right: 10px;
 }
+<<<<<<< HEAD
 
+=======
+.warp-mask {
+  height: 100%;
+  width: 100%;
+  background: rgba(0, 0, 0, 0);
+}
+>>>>>>> origin/L
 
 .el-button {
   font-size: 1.5rem;

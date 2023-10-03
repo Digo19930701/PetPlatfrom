@@ -2,7 +2,11 @@
   <el-container>
     <OrderSideBar />
     <el-main>
+<<<<<<< HEAD
       <el-carousel :interval="5000" arrow="always" style="width: 1700px;">
+=======
+      <el-carousel :interval="5000" arrow="always">
+>>>>>>> origin/L
         <router-link to="/good">
           <el-carousel-item v-for="item in 4" :key="item">
             <el-image class="adImg" :src="adUrl[item - 1]" fit="cover"> </el-image>
@@ -15,7 +19,11 @@
       <br />
       <h2>推薦商家&服務</h2>
       <br />
+<<<<<<< HEAD
       <el-row style="width: 100%;min-width: 1024px; ">
+=======
+      <el-row>
+>>>>>>> origin/L
         <el-col v-for="(seller, index) in 3" :key="seller" :span="7" :offset="index > 0 ? 1 : 0">
           <el-card :body-style="{ padding: '0px' }">
             <el-image class="sellerImg" :src="sellers[seller - 1].sellerImg" fit="cover">
@@ -113,9 +121,15 @@ const sellers = [
   {
     sellerImg:
       'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+<<<<<<< HEAD
     sellerName: '洗澡&SPA',
     sellerDescription:
       'NT$2000 ',
+=======
+    sellerName: '商家1',
+    sellerDescription:
+      '描述商家一的地方，Cute fluffy friends a cat and a dog catch a flying butterfly in a sunnysummer',
+>>>>>>> origin/L
     serviceName: '服務名稱1',
     serviceDescription: '服務描述1'
   },
@@ -156,15 +170,19 @@ $themeColor: #f7ddba;
     height: 100%;
   }
 }
+<<<<<<< HEAD
 .el-card{
   width:480px;
   height:400px;
 }
+=======
+>>>>>>> origin/L
 
 .sellerImg {
   width: 100%;
   height: 250px;
 }
+<<<<<<< HEAD
 div > h3{
   font-size:1.5rem;
   font-weight: 600;
@@ -172,6 +190,8 @@ div > h3{
 div > span{
   font-size:1.5rem;
 }
+=======
+>>>>>>> origin/L
 
 // .el-carousel__item:nth-child(2n + 1) {
 //   background-color: #d3dce6;
@@ -199,8 +219,12 @@ div > span{
 .button {
   padding: 0;
   min-height: auto;
+<<<<<<< HEAD
   color: #666;
   font-size: 1.2rem;
+=======
+  color: #000;
+>>>>>>> origin/L
 }
 
 h2 {

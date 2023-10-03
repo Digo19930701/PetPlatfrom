@@ -2,7 +2,11 @@
   <header><HomeHeader /></header>
   <main>
     <el-container>
+<<<<<<< HEAD
       <main style="width: 100%;">
+=======
+      <main>
+>>>>>>> origin/L
         <Home />
       </main>
     </el-container>

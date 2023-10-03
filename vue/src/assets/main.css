@@ -23,7 +23,11 @@ a,
   body {
     /* display: flex; */
     place-items: center;
+<<<<<<< HEAD
   } 
+=======
+  }
+>>>>>>> origin/L
 
   #app {
     /* display: grid; */

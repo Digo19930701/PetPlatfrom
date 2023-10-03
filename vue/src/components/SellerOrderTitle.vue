@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/L
 <template>
   <div>
     <el-row :gutter="20" class="board orderTitle" style="margin: 0px 0px 5px 0px">
@@ -127,6 +130,7 @@ table {
   margin-bottom: 5px;
 }
 </style>
+<<<<<<< HEAD
 <!--
 
 <template>
@@ -228,3 +232,5 @@ export default {
 </script> 
 -->
 
+=======
+>>>>>>> origin/L

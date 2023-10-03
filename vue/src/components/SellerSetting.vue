@@ -4,7 +4,11 @@
       <el-form :model="form" label-width="150px">
         <div class="base hw">
           <br />
+<<<<<<< HEAD
           <!-- <el-form-item label="上傳頭像" >
+=======
+          <el-form-item label="上傳頭像">
+>>>>>>> origin/L
             <el-upload
               action=""
               list-type="picture-card"
@@ -20,7 +24,11 @@
             <el-dialog v-model="dialogVisible" style="text-align: center">
               <img :src="avatarImageUrl" alt="Preview Image" class="imgwd" />
             </el-dialog>
+<<<<<<< HEAD
           </el-form-item> -->
+=======
+          </el-form-item>
+>>>>>>> origin/L
   
           <el-form-item
             label="商家名稱"
@@ -37,12 +45,21 @@
           </el-form-item>
   
           <el-form-item label="Email(帳號)" prop="account">
+<<<<<<< HEAD
             <p style="color: #888; padding-left: 10px">{{ props.sellerId }}</p>
           </el-form-item>
   
           <!-- <el-form-item label="統一編號" prop="taxID">
             <p style="color: #888; padding-left: 10px">
               {{ props.taxID }}&emsp;
+=======
+            <p style="color: #888; padding-left: 10px">xxxxxxx@gmail.com</p>
+          </el-form-item>
+  
+          <el-form-item label="統一編號" prop="taxID">
+            <p style="color: #888; padding-left: 10px">
+              81****78&emsp;
+>>>>>>> origin/L
               <el-tooltip
                 placement="top-start"
                 effect="customized"
@@ -52,8 +69,13 @@
               </el-tooltip>
             </p>
           </el-form-item>
+<<<<<<< HEAD
    -->
           <!-- <el-form-item
+=======
+  
+          <el-form-item
+>>>>>>> origin/L
             label="負責人"
             prop="incharge"
             
@@ -70,7 +92,11 @@
             <el-alert class="alertwh" type="info" show-icon :closable="false">
               <p>請上傳公司相關登記證明文件</p>
             </el-alert>
+<<<<<<< HEAD
           </el-form-item> -->
+=======
+          </el-form-item>
+>>>>>>> origin/L
           <el-form-item
             label="聯絡電話"
             prop="cell"
@@ -126,12 +152,16 @@
 </template>
 
 <style src="../assets/seller.css"></style>
+<<<<<<< HEAD
 
+=======
+>>>>>>> origin/L
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import type { UploadProps, UploadInstance } from 'element-plus'
 import { Plus, Upload, WarningFilled } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
+<<<<<<< HEAD
 import axios from 'axios';
 
 import { useSSRContext} from 'vue'
@@ -206,6 +236,23 @@ const form = reactive({
 // getAxios()
 
 
+=======
+
+// test
+// do not use same name with ref
+const form = reactive({
+  name: '',
+  account: '',
+  taxID: '',
+  incharge: '',
+  cell: '',
+  desc: '',
+  addre: '',
+  park: '',
+  acceptUnit: 30,
+})
+
+>>>>>>> origin/L
 const onSubmit = () => {
   console.log('submit!')
 }
@@ -261,4 +308,8 @@ function HandleAvatar() {
     width: 80%;
   }
 }
+<<<<<<< HEAD
 </style>
+=======
+</style>
+>>>>>>> origin/L

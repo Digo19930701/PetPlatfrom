@@ -9,6 +9,7 @@
           <h2 style="color: #888888; font-weight: bolder">商家基本資料</h2>
         </header>
         <br />
+<<<<<<< HEAD
         <SellerSetting
         :seller-id="'ahfdjfl@gmail.com'"
         :seller-name="'狗狗的旅宿'"
@@ -16,6 +17,9 @@
         :seller-add="'台中市中區民族路223號'"
         :seller-phone="'0915876824'"
         :unit-time="60" />
+=======
+        <SellerSetting />
+>>>>>>> origin/L
       </main>
     </el-container>
   </main>

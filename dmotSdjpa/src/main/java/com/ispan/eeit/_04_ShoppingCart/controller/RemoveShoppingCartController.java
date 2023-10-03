@@ -4,6 +4,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+<<<<<<< HEAD
+=======
+import org.springframework.web.bind.annotation.CrossOrigin;
+>>>>>>> origin/L
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -13,6 +17,7 @@ import org.springframework.web.context.request.WebRequest;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 @Controller
+@CrossOrigin("http://localhost:5173")
 @RequestMapping("/_04_ShoppingCart")
 // 由於要執行status.setComplete();來移除Session範圍的ShoppingCart物件，所以
 // @SessionAttributes({ "ShoppingCart" }) 只能單讀編寫該物件的識別字串。
