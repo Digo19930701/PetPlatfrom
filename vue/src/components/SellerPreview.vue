@@ -14,7 +14,7 @@
             <br />
             <el-row>
               <el-button round class="deleteBtn"> 刪除 </el-button>
-              <el-button round class="editBtn"> 編輯 </el-button>&emsp;
+              <el-button round class="editBtn"> <a href="/serviceEdit">編輯</a> </el-button>&emsp;
               <router-link to="/servicesExist">
                 <el-button type="primary" :icon="Close" link>退出預覽模式</el-button>
               </router-link>
@@ -78,16 +78,16 @@
                   <el-time-select
                     v-model="value_time"
                     start="08:30"
-                    step="00:15"
+                    step="00:30"
                     end="18:30"
                     placeholder="Select time"
                   />
                   <el-divider />
 
                   <h2>規格</h2>
-                  <el-button round size="large" class="plan-bn">規格A</el-button>
-                  <el-button round size="large" class="plan-bn">規格B</el-button>
-                  <el-button round size="large" class="plan-bn">規格C</el-button>
+                  <el-button round size="large" class="plan-bn">大型犬</el-button>
+                  <el-button round size="large" class="plan-bn">中型犬</el-button>
+                  <el-button round size="large" class="plan-bn">小型犬</el-button>
                   <el-divider />
                   <div>
                     <el-text class="price" v-model="price" style="font-size: 1.5rem">
@@ -226,10 +226,10 @@ const radiusGroup = ref([
     type: 'base'
   }
 ])
-const goodTitle = '小貓小狗洗香香'
+const goodTitle = '洗澡&SPA'
 const valDay = ref('')
 const value_time = ref('')
-const price = '5,000'
+const price = '2,000'
 
 const open = () => {
   ElMessageBox({

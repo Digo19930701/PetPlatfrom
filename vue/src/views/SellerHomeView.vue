@@ -29,8 +29,8 @@
         <div class="title board">
           <h2 style="color: #888888; font-weight: bolder">近期訂單</h2>
           <div class="comingOrder"><SellerOrderTitle /></div>
-          <div class="comingOrder"><SellerOrderTitle /></div>
-          <div class="comingOrder"><SellerOrderTitle /></div>
+          <!-- <div class="comingOrder"><SellerOrderTitle /></div>
+          <div class="comingOrder"><SellerOrderTitle /></div> -->
         </div>
         <br />
         <div class="title board">

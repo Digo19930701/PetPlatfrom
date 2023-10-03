@@ -14,10 +14,10 @@
             <div class="search">
               <el-row>
                 <!-- <el-col> -->
-                <input
+                <el-input
                   class="search-bar"
                   type="search"
-                  v-model.lazy.trim="search"
+                  v-model="data.search"
                   name="search"
                   id="search"
                   placeholder="  搜尋"
@@ -26,7 +26,9 @@
                 <!-- </el-col> -->
                 <!-- <el-col :span="2"> -->
                 <a href="/search">
-                  <el-icon size="25" style="padding-top: 5px"><Search /></el-icon>
+                  <el-icon size="25" style="padding-top: 5px">
+                    <Search />
+                  </el-icon>
                 </a>
                 <!-- </el-col> -->
               </el-row>
@@ -76,11 +78,13 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { onUpdated, reactive, ref } from 'vue'
 import { HomeFilled, Search, UserFilled, ShoppingTrolley } from '@element-plus/icons-vue'
 const activeIndex = ref('1')
 // import { reactive, toRefs } from 'vue'
-// import { Search } from '@element-plus/icons-vue'
+const data = reactive({
+  search: ''
+})
 </script>
 
 <style lang="scss">
@@ -139,7 +143,7 @@ $themeColor: #f7ddba;
         height: 32px;
         font-size: 20px;
         font-weight: 600;
-        border: 1px solid #888;
+        // border: 1px solid black;
         background-color: #fff;
         border-radius: 10px;
       }

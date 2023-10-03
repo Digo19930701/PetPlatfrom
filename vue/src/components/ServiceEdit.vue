@@ -7,11 +7,12 @@
     label-width="120px"
     class="demo-ruleForm"
     :size="formSize"
-    scroll-to-error= true
+    scroll-to-error="true"
   >
     <div class="tag-cloud subtitle">基本資訊</div>
     <el-form-item label="服務封面">
       <el-upload
+        v-model:file-list="fileList"
         action=""
         list-type="picture-card"
         :on-preview="handlePictureCardPreview"
@@ -27,7 +28,7 @@
       </el-dialog>
     </el-form-item>
 
-    <el-form-item label="服務圖片">
+    <!-- <el-form-item label="服務圖片">
       <el-upload
         action=""
         list-type="picture-card"
@@ -42,7 +43,7 @@
       <el-dialog v-model="dialogVisible" style="text-align: center">
         <img :src="serviceImageUrl" alt="Preview Image" class="imgwd" />
       </el-dialog>
-    </el-form-item>
+    </el-form-item> -->
 
     <el-form-item label="服務名稱" prop="name">
       <el-input
@@ -62,48 +63,38 @@
         <el-option label="保母/訓練" value="nannyTraining" />
       </el-select>
       <el-alert class="alertInf" type="info" show-icon :closable="false">
-        <!-- 還沒寫這個邏輯 -->
-        <p>一旦建立服務，類別將無法再透過編輯更改。(要寫編輯時disable)</p>
-        </el-alert>
+        <!-- 還沒寫這個邏輯(要寫編輯時disable) -->
+        <p>一旦建立服務，類別將無法再透過編輯更改。</p>
+      </el-alert>
     </el-form-item>
 
     <el-form-item label="服務描述" prop="desc">
-      <el-input v-model="ruleForm.desc"
-                type="textarea"
-                placeholder="服務內容詳細描述"
-                autosize
-       />
+      <el-input v-model="ruleForm.desc" type="textarea" placeholder="服務內容詳細描述" autosize />
     </el-form-item>
 
     <div class="tag-cloud subtitle">銷售資訊</div>
     <el-form-item label="服務對象與規格" required>
-              <el-button
-                color="#666666"
-                @click="addDomain"
-                plain round 
-                :disabled="specCounter===4">+ 規格</el-button>
+      <el-button color="#666666" @click="addDomain" plain round :disabled="specCounter === 4"
+        >+ 規格</el-button
+      >
     </el-form-item>
-
+    <!-- 
     <el-form-item
       v-for="(domain, index) in ruleForm.domains"
       :key="domain.key"
-      :label="'規格' + (index+1)"
+      :label="'規格' + (index + 1)"
     >
-      <el-form-item >
+      <el-form-item>
         <el-col :span="5">
-          <el-form-item 
+          <el-form-item
             :prop="'domains.' + index + '.petType'"
-            :rules="
-            {
+            :rules="{
               required: true,
               message: '請選擇對象',
-              trigger: 'change',
+              trigger: 'change'
             }"
           >
-            <el-select 
-              v-model="domain.petType"
-              placeholder="請選擇"
-            >
+            <el-select v-model="domain.petType" placeholder="請選擇">
               <el-option label="貓" value="cat" />
               <el-option label="狗" value="dog" />
             </el-select>
@@ -116,19 +107,16 @@
             :rules="{
               required: true,
               message: '請命名此規格',
-              trigger: 'blur',
+              trigger: 'blur'
             }"
           >
-            <el-input v-model="domain.spec" 
-              placeholder="例:大型犬"
-              maxlength="5"
-            />
+            <el-input v-model="domain.spec" placeholder="例:大型犬" maxlength="5" />
           </el-form-item>
         </el-col>
-        <el-col :span="2" style="text-align: end;">&nbspNT$</el-col>
+        <el-col :span="2" style="text-align: end">&nbspNT$</el-col>
         <el-col :span="7">
           <el-form-item
-            status-icon= false
+            status-icon="false"
             :prop="'domains.' + index + '.price'"
             :rules="{
               required: true,
@@ -136,41 +124,150 @@
               message: '請輸入價格'
             }"
           >
-            <el-input-number style="min-width: 130px"
-              v-model="domain.price"
-              placeholder="價格"
-            />
+            <el-input-number style="min-width: 130px" v-model="domain.price" placeholder="價格" />
           </el-form-item>
         </el-col>
         <el-col :span="1"></el-col>
       </el-form-item>
       <el-button
-        class="mt-2" 
+        class="mt-2"
         @click.prevent="removeDomain(domain)"
-        color="#666666" 
-        plain round
-        :disabled="specCounter===0"
-        style="margin: 16px 0px;"
+        color="#666666"
+        plain
+        round
+        :disabled="specCounter === 0"
+        style="margin: 16px 0px"
+      >
+        刪除
+      </el-button>
+    </el-form-item> -->
+    <!--   --------------DEMO-------------   -->
+    <el-form-item label="規格1">
+      <el-col :span="5">
+        <el-form-item>
+          <el-select v-model="data.type" placeholder="請選擇">
+            <el-option label="貓" value="cat" />
+            <el-option label="狗" value="dog" />
+          </el-select>
+        </el-form-item>
+      </el-col>
+      <el-col :span="1"></el-col>
+      <el-col class="text-center" :span="6">
+        <el-form-item>
+          <el-input v-model="data.dog1" placeholder="例:大型犬" maxlength="5" />
+        </el-form-item>
+      </el-col>
+      <el-col :span="2" style="text-align: end">&nbspNT$&emsp;</el-col>
+      <el-col :span="7">
+        <el-form-item>
+          <el-input-number style="min-width: 130px" v-model="data.price1" placeholder="價格" />
+        </el-form-item>
+      </el-col>
+      <el-col :span="1"></el-col>
+      <el-button
+        class="mt-2"
+        @click.prevent="removeDomain(domain)"
+        color="#666666"
+        plain
+        round
+        :disabled="specCounter === 0"
+        style="margin: 16px 0px"
+      >
+        刪除
+      </el-button>
+    </el-form-item>
+    <el-form-item label="規格2">
+      <el-col :span="5">
+        <el-form-item>
+          <el-select v-model="data.type" placeholder="請選擇">
+            <el-option label="貓" value="cat" />
+            <el-option label="狗" value="dog" />
+          </el-select>
+        </el-form-item>
+      </el-col>
+      <el-col :span="1"></el-col>
+      <el-col class="text-center" :span="6">
+        <el-form-item>
+          <el-input v-model="data.dog2" placeholder="例:大型犬" maxlength="5" />
+        </el-form-item>
+      </el-col>
+      <el-col :span="2" style="text-align: end">&nbspNT$&emsp;</el-col>
+      <el-col :span="7">
+        <el-form-item>
+          <el-input-number style="min-width: 130px" v-model="data.price2" placeholder="價格" />
+        </el-form-item>
+      </el-col>
+      <el-col :span="1"></el-col>
+      <el-button
+        class="mt-2"
+        @click.prevent="removeDomain(domain)"
+        color="#666666"
+        plain
+        round
+        :disabled="specCounter === 0"
+        style="margin: 16px 0px"
       >
         刪除
       </el-button>
     </el-form-item>
 
-    <el-form-item label="服務所需時間長" prop= "servicePeriod" class="serviceTime">
-      <el-input-number v-model="ruleForm.servicePeriod" :step="30" :min="30" :max="300" step-strictly />
-      <p>分鐘</p>
+    <el-form-item label="規格3">
+      <el-col :span="5">
+        <el-form-item>
+          <el-select v-model="data.type" placeholder="請選擇">
+            <el-option label="貓" value="cat" />
+            <el-option label="狗" value="dog" />
+          </el-select>
+        </el-form-item>
+      </el-col>
+      <el-col :span="1"></el-col>
+      <el-col class="text-center" :span="6">
+        <el-form-item>
+          <el-input v-model="data.dog3" placeholder="例:大型犬" maxlength="5" />
+        </el-form-item>
+      </el-col>
+      <el-col :span="2" style="text-align: end">&nbspNT$&emsp;</el-col>
+      <el-col :span="7">
+        <el-form-item>
+          <el-input-number style="min-width: 130px" v-model="data.price3" placeholder="價格" />
+        </el-form-item>
+      </el-col>
+      <el-col :span="1"></el-col>
+      <el-button
+        class="mt-2"
+        @click.prevent="removeDomain(domain)"
+        color="#666666"
+        plain
+        round
+        :disabled="specCounter === 0"
+        style="margin: 16px 0px"
+      >
+        刪除
+      </el-button>
     </el-form-item>
 
+    <el-form-item label="服務所需時間長" prop="servicePeriod" class="serviceTime">
+      <el-input-number
+        v-model="ruleForm.servicePeriod"
+        :step="30"
+        :min="30"
+        :max="300"
+        step-strictly
+      />
+      <p>分鐘</p>
+    </el-form-item>
+    <!--   --------------------------------------   -->
     <el-form-item label="同時段組數上限" prop="upperLimit">
       <el-input-number v-model="ruleForm.upperLimit" :min="1" :max="99" @change="handleChange1" />
       <el-alert class="alertInf" type="info" show-icon :closable="false">
-        <p>此服務在同時段內可提供的數量。(不知道需不需要的說明，總之我先加了!)</p>
+        <p>此服務在同時段內可提供的數量。</p>
       </el-alert>
     </el-form-item>
 
     <div class="tag-cloud subtitle">預約資訊</div>
     <el-form-item label="可預約日" prop="availDay">
-      <el-checkbox-group v-model="ruleForm.availDay">
+      <!-- <el-checkbox-group v-model="ruleForm.availDay"> -->
+      <el-checkbox-group v-model="checkList">
         <el-checkbox label="星期一" name="availDay" />
         <el-checkbox label="星期二" name="availDay" />
         <el-checkbox label="星期三" name="availDay" />
@@ -183,51 +280,68 @@
 
     <el-form-item label="可預約時段" required>
       <!-- required 可以檢查有沒有填但沒辦法檢查開始時間早於結束時間 -->
-      <el-col :span="5" class="timeRange">
+
+      <!-- <el-col :span="5" class="timeRange">
         <el-form-item prop="availTime1">
-          <el-time-picker
-            v-model="ruleForm.availTime1"
-            placeholder="開始時間"
-            format="HH:mm"
-          />
+          <el-time-picker v-model="ruleForm.availTime1" placeholder="開始時間" format="HH:mm" />
         </el-form-item>
       </el-col>
-      <el-col :span="1" style="text-align: center;">
+      <el-col :span="1" style="text-align: center">
         <p>~</p>
       </el-col>
       <el-col :span="5" class="timeRange">
-        <el-form-item prop="availTime2">
-          <el-time-picker 
-            v-model="ruleForm.availTime2" 
-            placeholder="結束時間"
-            format="HH:mm"
-          />
+          <el-form-item prop="availTime2">
+          <el-time-picker v-model="ruleForm.availTime2" placeholder="結束時間" format="HH:mm" />
         </el-form-item>
+      </el-col>-->
+      <el-time-select
+        v-model="startTime"
+        :max-time="endTime"
+        placeholder="開始時間"
+        start="08:00"
+        step="00:30"
+        end="17:00"
+      />
+      <el-col :span="1" style="text-align: center">
+        <p>~</p>
       </el-col>
+      <el-time-select
+        v-model="endTime"
+        :min-time="startTime"
+        placeholder="結束時間"
+        start="08:00"
+        step="00:30"
+        end="17:00"
+      />
     </el-form-item>
 
     <el-form-item label="接受預約時間" class="serviceTime" required>
-      <el-form-item prop= "acceptDay1">
+      <el-form-item prop="acceptDay1">
         <span>服務開始前&nbsp</span>
-        <el-input-number v-model="ruleForm.acceptDay1" :min="1" :max="ruleForm.acceptDay2-1" @change="handleChange1" />
+        <el-input-number
+          v-model="ruleForm.acceptDay1"
+          :min="1"
+          :max="ruleForm.acceptDay2 - 1"
+          @change="handleChange1"
+        />
         <span>&nbsp~&nbsp</span>
       </el-form-item>
       <el-form-item prop="acceptDay2">
-        <el-input-number v-model="ruleForm.acceptDay2" :min="ruleForm.acceptDay1+1" :max="90" @change="handleChange2" />
+        <el-input-number
+          v-model="ruleForm.acceptDay2"
+          :min="ruleForm.acceptDay1 + 1"
+          :max="90"
+          @change="handleChange2"
+        />
         <p>日</p>
       </el-form-item>
       <el-alert class="alertInf" type="info" show-icon :closable="false">
-        <p>
-          接受預約時間必須至少相差1天。
-        </p>
+        <p>接受預約時間必須至少相差1天。</p>
       </el-alert>
     </el-form-item>
-
-
-
-
-
+    <br />
     <el-form-item>
+      <div style="width: 200px"></div>
       <el-button color="#F8D479" round @click="submitForm(ruleFormRef)">新增</el-button>
       <el-button round @click="resetForm(ruleFormRef)">重置</el-button>
     </el-form-item>
@@ -236,7 +350,13 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
-import { ElMessage, type FormInstance, type FormRules, type UploadProps } from 'element-plus'
+import {
+  ElMessage,
+  type FormInstance,
+  type FormRules,
+  type UploadProps,
+  type UploadUserFile
+} from 'element-plus'
 import { Plus } from '@element-plus/icons-vue'
 
 const coverImageUrl = ref('') //封面圖
@@ -268,14 +388,13 @@ const removeDomain = (item: DomainItem) => {
   }
 }
 
-
 const addDomain = () => {
-  if (specCounter.value <4) {
+  if (specCounter.value < 4) {
     ruleForm.domains.push({
       key: Date.now(),
       spec: '',
-      petType: '',
-      price: 100,
+      petType: 'dig',
+      price: 100
     })
     specCounter.value++
   }
@@ -293,18 +412,18 @@ const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
 }
 
 interface RuleForm {
-  name: string,
-  category: string,
-  desc: string,
-  domains: DomainItem[],
-  servicePeriod: number,
-  upperLimit: number,
-  availDay: string[],
-  availTime1: string,
-  availTime2: string,
-  acceptUnit: number,
-  acceptDay1: number,
-  acceptDay2: number,
+  name: string
+  category: string
+  desc: string
+  domains: DomainItem[]
+  servicePeriod: number
+  upperLimit: number
+  availDay: string[]
+  availTime1: string
+  availTime2: string
+  acceptUnit: number
+  acceptDay1: number
+  acceptDay2: number
 }
 
 interface DomainItem {
@@ -317,24 +436,18 @@ interface DomainItem {
 const formSize = ref('default')
 const ruleFormRef = ref<FormInstance>()
 const ruleForm = reactive<RuleForm>({
-  name: '',
-  category: '',
-  desc: '',
+  name: '洗澡&SPA',
+  category: 'beauty',
+  desc: '寵曖貓狗生活館位於民族路上，鄰近日新影城。店內同時有 4-5 位美容師作業，會讓剛到達的毛孩們先在地上到處走走適應環境，也可以和其他個性穩定的狗狗彼此認識熟悉。雖然這家台中寵物美容沒有開放家長現場陪同與等待，但是作業區為全玻璃開放式的環境，因此所有過程皆是公開透明。',
   servicePeriod: 60,
   upperLimit: 1,
-  domains:[
-    { key: 1,
-      spec: '',
-      petType: '',
-      price: 100,
-    }
-  ],
+  domains: [{ key: 1, spec: '', petType: '', price: 100 }],
   availDay: [],
-  availTime1: '',
-  availTime2: '',
+  availTime1: '08:30',
+  availTime2: '18:30',
   acceptUnit: 30,
-  acceptDay1:  1,
-  acceptDay2:  7,
+  acceptDay1: 1,
+  acceptDay2: 7
 })
 const props = defineProps({
   serviceName: String,
@@ -343,16 +456,26 @@ const props = defineProps({
   category: String,
   serviceDesc: String,
   servicePeriod: Number,
-  upperLimit: Number, 
-  availTime1: String,
-  availTime2: String,
+  upperLimit: Number,
+  availTime1: {
+    type: String,
+    default: '08:30'
+  },
+  availTime2: {
+    type: String,
+    default: '18:30'
+  },
   acceptDay1: Number,
   acceptDay2: Number,
-  serviceImage1: URL,
+  serviceImage1: {
+    type: URL,
+    default:
+      'https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8='
+  },
   serviceImage2: URL,
   serviceImage3: URL,
-  serviceImage4: URL ,
-  serviceImage5: URL,
+  serviceImage4: URL,
+  serviceImage5: URL
 })
 
 const rules = reactive<FormRules<RuleForm>>({
@@ -367,25 +490,20 @@ const rules = reactive<FormRules<RuleForm>>({
       trigger: 'change'
     }
   ],
-  desc: [
-    { required: true,
-       message: '請輸入服務描述',
-     trigger: 'blur' 
+  desc: [{ required: true, message: '請輸入服務描述', trigger: 'blur' }],
+  servicePeriod: [
+    {
+      required: true,
+      type: 'number',
+      message: '必填項目'
     }
   ],
-  servicePeriod:[
+  upperLimit: [
     {
       required: true,
       type: 'number',
       message: '必填項目'
-    },
-  ],
-  upperLimit:[
-    {
-      required: true,
-      type: 'number',
-      message: '必填項目'
-    },
+    }
   ],
   availTime1: [
     {
@@ -416,15 +534,15 @@ const rules = reactive<FormRules<RuleForm>>({
       required: true,
       type: 'number',
       message: '必填項目'
-    },
+    }
   ],
   acceptDay2: [
     {
       required: true,
       type: 'number',
       message: '必填項目'
-    },
-  ],
+    }
+  ]
 })
 
 const submitForm = async (formEl: FormInstance | undefined) => {
@@ -459,7 +577,27 @@ const options = Array.from({ length: 10000 }).map((_, idx) => ({
   label: `${idx + 1}`
 }))
 
+//DEMO
+const fileList = ref<UploadUserFile[]>([
+  {
+    name: 'DEMO',
+    url: 'https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8='
+  }
+])
 
+const checkList = ref(['星期二', '星期三', '星期四', '星期五', '星期六', '星期日', '星期一'])
+
+const startTime = ref('08:30')
+const endTime = ref('18:30')
+const data = reactive({
+  dog1: '大型犬',
+  dog2: '中型犬',
+  dog3: '小型犬',
+  type: 'dog',
+  price1: '2000',
+  price2: '1800',
+  price3: '1500'
+})
 </script>
 
 <style lang="scss">

@@ -1,7 +1,7 @@
 <template>
-  <main>
-    <el-scrollbar style="height: 750px;">
-      <el-form :model="form" label-width="150px">
+  <main style="width: 1000px; display: flex; justify-content: center">
+    <el-scrollbar style="height: 850px">
+      <el-form :model="form" label-width="160px">
         <div class="base hw">
           <br />
           <!-- <el-form-item label="上傳頭像" >
@@ -21,7 +21,7 @@
               <img :src="avatarImageUrl" alt="Preview Image" class="imgwd" />
             </el-dialog>
           </el-form-item> -->
-  
+
           <el-form-item
             label="商家名稱"
             prop="name"
@@ -35,11 +35,11 @@
               show-word-limit
             />
           </el-form-item>
-  
+
           <el-form-item label="Email(帳號)" prop="account">
-            <p style="color: #888; padding-left: 10px">{{ props.sellerId }}</p>
+            <p style="color: #888; padding-left: 10px; font-size: large">{{ props.sellerId }}</p>
           </el-form-item>
-  
+
           <!-- <el-form-item label="統一編號" prop="taxID">
             <p style="color: #888; padding-left: 10px">
               {{ props.taxID }}&emsp;
@@ -84,11 +84,17 @@
               show-word-limit
             />
           </el-form-item>
-  
+
           <el-form-item label="商家簡述">
-            <el-input v-model="form.desc" type="textarea" class="--el-input-width" autosize />
+            <el-input
+              v-model="form.desc"
+              type="textarea"
+              class="--el-input-width"
+              autosize
+              style="font-size: 1rem"
+            />
           </el-form-item>
-  
+
           <el-form-item
             label="商家地址"
             prop="addre"
@@ -96,28 +102,32 @@
           >
             <el-input v-model="form.addre" type="text" autocomplete="off" />
           </el-form-item>
-  
+
           <el-form-item label="交通/停車資訊">
             <el-input v-model="form.park" type="textarea" class="--el-input-width" />
           </el-form-item>
         </div>
         <br />
         <div class="base hw">
-          <br>
+          <br />
           <el-form-item label="接受預約單位時間" class="serviceTime">
             <span>每&nbsp</span>
-            <el-input-number v-model="form.acceptUnit" :step="30" :min="30" :max="servicePeriod" step-strictly />
+            <el-input-number
+              v-model="form.acceptUnit"
+              :step="30"
+              :min="30"
+              :max="servicePeriod"
+              step-strictly
+            />
             <p>分鐘為單位接受預約</p>
             <el-alert class="alertwh" type="info" show-icon :closable="false">
-              <p>
-                上限值由「服務所需時間長」決定。(感覺這邊有一個Q&A解釋會更好)
-              </p>
+              <p>上限值由「服務所需時間長」決定。</p>
             </el-alert>
           </el-form-item>
         </div>
-        <br>
-        <el-form-item label-width="17%">
-          <el-button F8D479 round>編輯</el-button>
+        <br />
+        <el-form-item label-width="35%">
+          <el-button round>編輯</el-button>
           <el-button type="primary" round @click="onSubmit">儲存</el-button>
         </el-form-item>
       </el-form>
@@ -132,64 +142,62 @@ import { reactive, ref } from 'vue'
 import type { UploadProps, UploadInstance } from 'element-plus'
 import { Plus, Upload, WarningFilled } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
-import axios from 'axios';
+import axios from 'axios'
 
-import { useSSRContext} from 'vue'
+import { useSSRContext } from 'vue'
 
 // const emit = defineEmits(['child-click'])
 // const ctx = useSSRContext()
 const props = defineProps({
-  sellerImg:{
-    type:URL,
-    default:''
+  sellerImg: {
+    type: URL,
+    default: ''
   },
-  sellerId:{
-    type:String,
-    default:'xxxxxxx@gmail.com'
+  sellerId: {
+    type: String,
+    default: 'xxxxxxx@gmail.com'
   },
-  sellerName:{
-    type:String,
-    default:''
+  sellerName: {
+    type: String,
+    default: ''
   },
-  sellerPhone:{
-    type:String,
-    default:''
+  sellerPhone: {
+    type: String,
+    default: ''
   },
-  sellerDesc:{
-    type:String,
-    default:''
+  sellerDesc: {
+    type: String,
+    default: ''
   },
-  sellerAdd:{
-    type:String,
-    default:'台中市'
+  sellerAdd: {
+    type: String,
+    default: ''
   },
-  sellerPark:{
-    type:String,
-    default:''
+  sellerPark: {
+    type: String,
+    default: ''
   },
-  unitTime:{
-    type:String,
-    default:'30'
+  unitTime: {
+    type: String,
+    default: '30'
   },
-  taxID:{
-    type:String,
-    default:'8181778'
-  },
-
+  taxID: {
+    type: String,
+    default: '8181778'
+  }
 })
-
 
 const form = reactive({
   name: props.sellerName,
   account: props.sellerId,
-  taxID:props.taxID,
+  taxID: props.taxID,
   incharge: '',
-  cell:props.sellerPhone,
-  desc:props.sellerDesc,
+  cell: props.sellerPhone,
+  desc: props.sellerDesc,
   addre: props.sellerAdd,
-  park:props.sellerPark,
+  park: props.sellerPark,
   acceptUnit: props.unitTime,
-  img:props.sellerImg
+  img: props.sellerImg
 })
 
 // const getAxios = function(){
@@ -204,7 +212,6 @@ const form = reactive({
 // }
 // //執行Axios
 // getAxios()
-
 
 const onSubmit = () => {
   console.log('submit!')
@@ -240,9 +247,20 @@ function HandleAvatar() {
   height: 100%;
   padding: 10px;
 }
+.el-button {
+  font-size: 1.5rem;
+}
+
+.el-form-item__label {
+  font-size: 1.1rem;
+}
+p {
+  font-size: 0.9rem;
+}
 
 .el-input {
   width: 80%;
+  font-size: 1rem;
 }
 .imgwd {
   max-width: 600px;
