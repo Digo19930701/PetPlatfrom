@@ -1,4 +1,4 @@
- <template>
+<template>
   <el-container>
     <el-main>
       <div
@@ -58,7 +58,7 @@
                 <el-time-select
                   v-model="value_time"
                   start="08:30"
-                  step="00:15"
+                  step="00:30"
                   end="18:30"
                   placeholder="Select time"
                   size="large"

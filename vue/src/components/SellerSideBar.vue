@@ -25,9 +25,9 @@
               <el-menu-item index="1-1">
                 <router-link to="/sellerSetting" class="inner">基本資料</router-link>
               </el-menu-item>
-              <el-menu-item index="1-2">
+              <!-- <el-menu-item index="1-2">
                 <router-link to="/notifySetting" class="inner">通知設定</router-link>
-              </el-menu-item>
+              </el-menu-item> -->
             </el-sub-menu>
 
             <el-sub-menu index="2">
@@ -74,7 +74,7 @@
               </el-menu-item>
             </el-sub-menu>
 
-            <el-sub-menu index="5">
+            <!-- <el-sub-menu index="5">
               <template #title>
                 <el-icon><CreditCard /></el-icon>
                 <span class="sub-menu">帳務管理</span>
@@ -92,7 +92,7 @@
                 <el-icon><Bell /></el-icon>
                 <span class="sub-menu">通知中心</span>
               </router-link>
-            </el-menu-item>
+            </el-menu-item> -->
           </el-menu>
         </el-col>
       </el-row>

@@ -7,8 +7,10 @@
     <table id="customer">
       <tr>
         <td>客戶資料</td>
-        <td>姓名: {{ cars.userName }}</td>
-        <td>電話: {{ cars.phoneNumber }}</td>
+        <!-- <td>姓名: {{ cars.userName }}</td>
+        <td>電話: {{ cars.phoneNumber }}</td> -->
+        <td>姓名:</td>
+        <td>電話:</td>
       </tr>
     </table>
     <el-divider />
@@ -38,16 +40,18 @@
         &emsp;
         <input style="transform: scale(2)" type="checkbox" v-model="item.checked" />&emsp;
         <div class="item_detail">
-          <img v-bind:src="cars.serviceImg" alt="" />
-          <div class="name">{{ cars.serviceName }}</div>
+          <!-- <img v-bind:src="cars.serviceImg" alt="" />
+          <div class="name">{{ cars.serviceName }}</div> -->
+          <ElImage
+            src="https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8="
+            alt=""
+            cover
+            style="width: 100px; height: 70px"
+          />
+          <div class="name">洗澡&SPA</div>
         </div>
         <div class="block">
-          <el-date-picker
-            v-model="value2"
-            type="date"
-            placeholder="選擇預約日期"
-            :size="size"
-          />
+          <el-date-picker v-model="date" type="date" placeholder="選擇預約日期" :size="size" />
           <el-time-select
             v-model="startTime"
             :max-time="endTime"
@@ -68,13 +72,14 @@
           />
         </div>
         <div style="width: 50%">
-          <span style="padding-left: 20%">$&emsp;</span>{{ cars.payment }}
+          <!-- <span style="padding-left: 20%">$&emsp;</span>{{ cars.payment }} -->
+          <span style="padding-left: 20%">NT$&emsp;</span>2000
         </div>
         <div style="width: 1%">
           <el-button @click="handledelete(index)">刪除</el-button>
         </div>
         <div style="width: 50%; text-align: right">
-          <el-select v-model="petInfo" class="m-2" placeholder="選擇寵物" :size="size" width>
+          <el-select v-model="petInfo" class="m-2" placeholder="選擇寵物" :size="size">
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -118,8 +123,9 @@
 
 <script lang="ts" setup>
 import CarService from '../services/CarService'
-import { ref, computed, onMounted } from 'vue'
+import { ref, computed, onMounted, reactive } from 'vue'
 import { ShoppingTrolley } from '@element-plus/icons-vue'
+import { ElImage } from 'element-plus'
 
 let cars: any = []
 
@@ -139,15 +145,15 @@ const options = [
   {
     value: 'Option1',
     label: '寵物A'
-  },
-  {
-    value: 'Option2',
-    label: '寵物B'
-  },
-  {
-    value: 'Option3',
-    label: '寵物C'
   }
+  // {
+  //   value: 'Option2',
+  //   label: '寵物B'
+  // },
+  // {
+  //   value: 'Option3',
+  //   label: '寵物C'
+  // }
 ]
 
 //綠界
@@ -155,7 +161,7 @@ const sendPostRequest = async () => {
   window.location.href = 'http://localhost:3300/4A2Bpet/ecpayCheckout'
 }
 //日期
-const value2 = ref('')
+const date = ref('2023-10-19')
 const size = ref('large')
 // const shortcuts = [
 //   {
@@ -167,8 +173,8 @@ const size = ref('large')
 //   return time.getTime() > Date.now()
 // }
 //時間
-const startTime = ref('')
-const endTime = ref('')
+const startTime = ref('10:00')
+const endTime = ref('11:00')
 
 //畫面
 const view = ref(1)
@@ -186,7 +192,8 @@ const totalAmount = computed(() => {
   return itemList.value.reduce((total, item) => {
     // 如果商品被選中，才將其價格加入金额
     if (item.checked) {
-      total += parseInt(cars.payment)
+      // total += parseInt(cars.payment)
+      total += parseInt('2000')
     }
     return total
   }, 0)
@@ -197,19 +204,19 @@ const itemList = ref([
     id: '1',
     itemName: '洗澡',
     imgUrl:
-      'https://images.unsplash.com/photo-1534961880437-ce5ae2033053?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80',
+      'https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8=',
     // price: '500',
     count: '2023/09/02 12:00',
     checked: false
-  },
-  {
-    id: '2',
-    itemName: '美容',
-    imgUrl:
-      'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
-    // price: '790',
-    count: '2023/02/02 12:00',
-    checked: false
+    // },
+    // {
+    //   id: '2',
+    //   itemName: '美容',
+    //   imgUrl:
+    //     'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
+    //   // price: '790',
+    //   count: '2023/02/02 12:00',
+    //   checked: false
   }
 ])
 
@@ -330,9 +337,13 @@ div .el-button {
   border-radius: 3px;
   float: left;
 }
+.item_detail {
+  display: flex;
+}
 
 .item_detail .name {
-  margin-left: 100px;
+  /* margin-left: 100px; */
+  margin-left: 50px;
   margin-top: 25px;
 }
 </style>

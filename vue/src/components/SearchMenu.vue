@@ -43,8 +43,8 @@
     </el-aside>
     <el-space direction="vertical" class="demo">
       <br />
-      <el-row v-for="i in 3" :key="i">
-        <el-col v-for="(o, index) in 4" :key="o" :span="5" :offset="index > 0 ? 1 : 0">
+      <el-row v-for="i in 1" :key="i">
+        <el-col v-for="(o, index) in 1" :key="o" :span="5" :offset="index > 0 ? 1 : 0">
           <!-- 都先帶0 不知道為什麼跑不出來QAQ -->
           <el-card :body-style="{ padding: '0px' }">
             <!-- <img
@@ -115,12 +115,12 @@ function confirmClick() {
 const sellers = [
   {
     sellerImg:
-      'https://images.pexels.com/photos/1560424/pexels-photo-1560424.jpeg?auto=compress&cs=tinysrgb&w=1600',
+      'https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8=',
     sellerName: '商家一',
     sellerDescription:
       '描述商家一的地方，Cute fluffy friends a cat and a dog catch a flying butterfly in a sunnysummer',
-    serviceName: '服務名稱一',
-    serviceDescription: '服務描述一'
+    serviceName: '洗澡&SPA',
+    serviceDescription: 'NT$2000'
   },
   {
     // Second seller's data here
@@ -147,6 +147,11 @@ const sellers = [
 
 <style lang="scss" scoped>
 $themeColor: #f7ddba;
+
+.el-card {
+  width: 400px;
+  height: 400px;
+}
 
 .bn {
   font-size: large;

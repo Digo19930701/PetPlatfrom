@@ -7,28 +7,26 @@
         </div>
       </el-row>
       <el-row>
-        <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
+        <el-col v-for="(o, index) in 1" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
           <el-text v-model="good_title">
             <p>{{ good_title }}</p>
           </el-text>
           <router-link to="/sellerPreview">
             <el-card :body-style="{ padding: '0px' }">
               <img
-                src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
+                src="https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8="
                 class="image"
               />
               <div style="padding: 14px">
-                <h3>商家</h3>
-                <span>
-                  Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny summer
-                </span>
+                <h3>洗澡&SPA</h3>
+                <span> NT$2000 </span>
               </div>
             </el-card>
           </router-link>
 
           <el-row class="btns">
             <el-button round class="deleteBtn"> 刪除 </el-button>
-            <el-button round class="editBtn"> 編輯 </el-button>
+            <el-button round class="editBtn"> <a href="/serviceEdit">編輯</a> </el-button>
           </el-row>
         </el-col>
       </el-row>
@@ -38,8 +36,8 @@
           <el-text class="text">保母/訓練</el-text>
         </div>
       </el-row>
-      <el-row>
-        <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
+      <el-row style="display: flex; justify-content: center">
+        <!-- <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
           <el-text v-model="good_title">
             <p>{{ good_title }}</p>
           </el-text>
@@ -62,7 +60,9 @@
             <el-button round class="deleteBtn"> 刪除 </el-button>
             <el-button round class="editBtn"> 編輯 </el-button>
           </el-row>
-        </el-col>
+        </el-col> -->
+
+        <el-empty description="暫無項目" />
       </el-row>
       <br />
       <el-row>
@@ -84,7 +84,7 @@
 
 <script lang="ts" setup>
 import { ref } from 'vue'
-const good_title = '小貓小狗洗香香'
+const good_title = '洗澡&SPA'
 </script>
 
 <style lang="scss" scoped>

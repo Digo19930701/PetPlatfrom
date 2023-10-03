@@ -9,7 +9,7 @@
     <div style="width: 50%"></div>
     <div class="num-title">
       <router-link to="/sellerHome">
-        <el-icon :size="20"><UserFilled /></el-icon>&nbsp;xxx會員&nbsp;你好~
+        <el-icon :size="20"><UserFilled /></el-icon>&nbsp;4a2bSeller賣家&nbsp;你好~
       </router-link>
     </div>
     <div class="logout">
@@ -70,7 +70,7 @@ section.logo {
 .logout {
   margin-top: 25px;
   margin-left: 10px;
-  padding-right: 10%;
+  padding-right: 5%;
   color: #cd7b00;
   font-size: 1.35rem;
 }

@@ -8,7 +8,8 @@
     <table id="orderDetail">
       <tr>
         <td rowspan="2" class="side petMain">
-          <img src="../images/cat.JPG" />
+          <!-- <img src="../images/cat.JPG" /> -->
+          <img src="https://images.pexels.com/photos/220938/pexels-photo-220938.jpeg" />
           <p>{{ petName }}</p>
           <p>{{ petGender }}</p>
           <br />
@@ -96,11 +97,11 @@ const data = reactive({
   orderstate3: '寵物報到',
   orderstate4: '服務完成',
   orderstate5: '撥款完成',
-  timeline1: '2018-04-11', //收到
-  timeline2: '2018-04-11', //接受
-  timeline3: '2018-04-13', //報到
-  timeline4: '2018-04-13', //完成
-  timeline5: '2018-04-18', //撥款
+  timeline1: '2023-10-04', //收到
+  timeline2: '', //接受
+  timeline3: '', //報到
+  timeline4: '', //完成
+  timeline5: '', //撥款
   petName: '寵物名',
   petGender: '(性別)',
   userEmail: '',
