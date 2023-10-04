@@ -1,9 +1,6 @@
 package com.ispan.eeit._01_register.model;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import javax.persistence.UniqueConstraint;
@@ -18,15 +15,12 @@ public class User {
 //	 private Integer id;
 	 
 	 @Id
-
 	 private String userEmail;
-	 
-
 	 private String userPassword;
-	 
-
 	 private String userPassword2;
-
+	 private String userName;
+	 private String userId;
+	 private String userPhone;
 
 	public String getUserEmail() {
 		return userEmail;
@@ -57,7 +51,32 @@ public class User {
 		this.userPassword2 = userPassword2;
 	}
 	 
+	public String getUserName() {
+		return userName;
+	}
 
+
+	public void setUserName(String userName) {
+		this.userName = userName;
+	}
+	public String getUserId() {
+		return userId;
+	}
+
+
+	public void setUserId(String userId) {
+		this.userId = userId;
+	}
+
+
+	public String getUserPhone() {
+		return userPhone;
+	}
+
+
+	public void setUserPhone(String userPhone) {
+		this.userPhone = userPhone;
+	}
 	
 	 
 

@@ -10,14 +10,14 @@
       <br />
       <div v-if="loginView === 1">
         <el-form :model="loginForm" class="loginForm">
-          <el-form-item label="帳號" :label-width="formLabelWidth">
+          <el-form-item label="Email" :label-width="formLabelWidth2">
             <el-input
               v-model="loginForm.userEmail"
               autocomplete="off"
               style="height: 50px; width: 500px"
             />
           </el-form-item>
-          <el-form-item label="密碼" :label-width="formLabelWidth">
+          <el-form-item label="密碼" :label-width="formLabelWidth2">
             <el-input
               v-model="loginForm.password"
               autocomplete="off"
@@ -78,7 +78,7 @@
 
       <el-dialog v-model="dialogFormVisible" title="註冊會員">
         <el-form :model="register">
-          <el-form-item :label-width="formLabelWidth">
+          <el-form-item label="信箱" :label-width="formLabelWidth2">
             <el-input
               v-model="register.userMail"
               label-width="100px"
@@ -87,7 +87,7 @@
               placeholder="請輸入信箱"
             />
           </el-form-item>
-          <el-form-item :label-width="formLabelWidth">
+          <el-form-item label="密碼" :label-width="formLabelWidth2">
             <el-input
               v-model="register.userPassword"
               label-width="100px"
@@ -97,7 +97,7 @@
               show-password
             />
           </el-form-item>
-          <el-form-item :label-width="formLabelWidth">
+          <el-form-item label="密碼確認" :label-width="formLabelWidth2">
             <el-input
               v-model="register.userPassword2"
               label-width="100px"
@@ -105,6 +105,33 @@
               type="register"
               placeholder="密碼確認"
               show-password
+            />
+          </el-form-item>
+          <el-form-item label="姓名" :label-width="formLabelWidth2">
+            <el-input
+              v-model="register.userName"
+              label-width="100px"
+              autocomplete="off"
+              type="register"
+              placeholder="姓名"
+            />
+          </el-form-item>
+          <el-form-item  label="電話" :label-width="formLabelWidth2">
+            <el-input
+              v-model="register.userPhone"
+              label-width="100px"
+              autocomplete="off"
+              type="register"
+              placeholder="電話"
+            />
+          </el-form-item>
+          <el-form-item  label="身分證" :label-width="formLabelWidth2">
+            <el-input
+              v-model="register.userId"
+              label-width="100px"
+              autocomplete="off"
+              type="register"
+              placeholder="身分證"
             />
           </el-form-item>
         </el-form>
@@ -194,6 +221,7 @@ const choiceView = (ind) => {
 }
 
 const formLabelWidth = '100px'
+const formLabelWidth2 = '120px'
 
 const form = reactive({
   name: '',
@@ -208,7 +236,11 @@ const form = reactive({
 const register = reactive({
   userMail: '',
   userPassword: '',
-  userPassword2: ''
+  userPassword2: '',
+  userName:'',
+  userPhone:'',
+  userAdd:'',
+  userId:''
 })
 
 const forgetPs = reactive({
@@ -319,14 +351,20 @@ const registerout = () => {
   const Email = register.userMail
   const userPassword = register.userPassword
   const userPassword2 = register.userPassword2
+  const userName = register.userName
+  const userPhone = register.userPhone
+  const userId = register.userId
   
 
-  console.log(`Email=${Email}`,`userPassword=${userPassword}`,`userPassword=${userPassword2}`)
+  console.log(`Email=${Email}`,`userPassword=${userPassword}`,`userPassword=${userPassword2}`,`userName=${userName}`)
   
   const user = {
     userEmail:Email,
     userPassword:userPassword,
-    userPassword2:userPassword2
+    userPassword2:userPassword2,
+    userName:userName,
+    userPhone:userPhone,
+    userId:userId
   }
 
 axios

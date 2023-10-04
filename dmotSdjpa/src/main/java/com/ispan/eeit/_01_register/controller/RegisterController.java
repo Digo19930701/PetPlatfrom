@@ -29,21 +29,16 @@ public class RegisterController {
 		 String userEmail = user.getUserEmail();
 		 String userPassword = user.getUserPassword();
 		 String userPassword2 = user.getUserPassword2();
+		 String userName = user.getUserName();
 		 
-		 System.out.println(userEmail);
-		 System.out.println(userPassword);
-		 System.out.println(userPassword2);
+		 System.out.println("我是使用者姓名"+user.getUserName());
+		 System.out.println("我是使用者ID"+user.getUserId());
+		 System.out.println("我是使用者電話"+user.getUserPhone());
+		 
 		 
 	     //密碼驗證
 	   if(userPassword.equals(userPassword2)) {
-//	     User user = new User();
-//	     user.setUserEmail(userEmail);
-//	     user.setPassword(userPassword);
-	     
-//	     System.out.println("user="+user); 
-		 
 	     userDao.save(user);
-	     
 	     return "註冊成功";
 	   }
 	   else {
