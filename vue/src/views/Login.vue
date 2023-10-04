@@ -89,7 +89,7 @@
           </el-form-item>
           <el-form-item :label-width="formLabelWidth">
             <el-input
-              v-model="register.Password"
+              v-model="register.userPassword"
               label-width="100px"
               autocomplete="off"
               type="register"
@@ -99,7 +99,7 @@
           </el-form-item>
           <el-form-item :label-width="formLabelWidth">
             <el-input
-              v-model="register.Password2"
+              v-model="register.userPassword2"
               label-width="100px"
               autocomplete="off"
               type="register"
