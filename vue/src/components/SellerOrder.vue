@@ -15,7 +15,7 @@
           <button class="tag-cloud button" id="report">檢舉</button>
         </td>
         <td class="orderInf" rowspan="2">
-          <p>飼主: {{ userEmail }}</p>
+          <p>飼主: {{ userName }}({{ userEmail }})</p>
           <p>電話: {{ phoneNumber }}</p>
           <!-- <p >使用優惠: </p> -->
           <br />
