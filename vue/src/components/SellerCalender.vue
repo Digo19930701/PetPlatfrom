@@ -59,8 +59,8 @@ export default {
         },
         {
           id: "9f1b209982f1",
-          title: "寵物美容",
-          time: { start: "2023-09-21 20:30", end: "2023-09-21 21:00" },
+          title: "洗澡&SPA",
+          time: { start: "2023-10-19 10:00", end: "2023-10-19 11:00" },
           colorScheme: "beauty",       
         },
 

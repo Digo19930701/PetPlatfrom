@@ -102,7 +102,7 @@ const router = createRouter({
     {
       path: '/userHome',
       name: 'userHome',
-      component: () => import('../views/UserOrderView.vue')
+      component: () => import('../views/UserSetting.vue')
     },
     {
       path: '/userSetting',

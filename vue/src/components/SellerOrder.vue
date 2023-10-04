@@ -105,7 +105,7 @@ const data = reactive({
   petName: 'BoBo',
   petGender: '男生',
   userEmail: 'Digo',
-  phoneNumber: '0932075148',
+  phoneNumber: '0912345678',
   petClass: '狗',
   petVariety: '邊境牧羊犬', //品種
   petCharacter: '調皮',
