@@ -139,6 +139,7 @@ import { ref, watch } from 'vue'
 import UserHeadBar from '../components/UserHeadBar.vue'
 import UserSideBar from '../components/UserSideBar.vue'
 import FootBar from '../components/FootBar.vue'
+import { ElNotification } from 'element-plus'
 
 let tabIndex = 2
 const editableTabsValue = ref('1')
@@ -167,6 +168,13 @@ const petform = ref({
 
 const confirm = () => {
   console.log('petform', petform)
+  ElNotification({
+    title: 'Success',
+    message: '儲存成功',
+    type: 'success',
+    duration: 3000,
+    offset: 100
+  })
 }
 
 const addTab = (targetName: string) => {

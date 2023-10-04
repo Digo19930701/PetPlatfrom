@@ -9,8 +9,8 @@
         <td>客戶資料</td>
         <!-- <td>姓名: {{ cars.userName }}</td>
         <td>電話: {{ cars.phoneNumber }}</td> -->
-        <td>姓名:</td>
-        <td>電話:</td>
+        <td>姓名: Digo</td>
+        <td>電話: 0912345678</td>
       </tr>
     </table>
     <el-divider />

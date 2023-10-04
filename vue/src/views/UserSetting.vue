@@ -104,7 +104,7 @@
           <br />
           <el-row class="footbn">
             <span class="dialog-footer">
-              <el-button type="primary" @click="confirm()">儲存</el-button>
+              <el-button type="primary" @click="confirm()"><a href="/petinformation">儲存</a></el-button>
               <el-button type="primary" plain>取消</el-button>
             </span>
           </el-row>

@@ -28,9 +28,9 @@ public class EcPayService {
 		AioCheckOutALL obj = new AioCheckOutALL();
 		obj.setMerchantTradeNo(uuId);
 		obj.setMerchantTradeDate(formattedTime);
-		obj.setTotalAmount("1000");
+		obj.setTotalAmount("2000");
 		obj.setTradeDesc("舒舒服服");
-		obj.setItemName("美容");
+		obj.setItemName("洗澡&SPA");
 		obj.setReturnURL("http://211.23.128.214:5000");
 		obj.setNeedExtraPaidInfo("N");
 		obj.setClientBackURL("http:/localhost:5173");
