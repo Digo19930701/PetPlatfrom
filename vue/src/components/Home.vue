@@ -2,7 +2,7 @@
   <el-container>
     <OrderSideBar />
     <el-main>
-      <el-carousel :interval="5000" arrow="always" style="width: 1700px;">
+      <el-carousel :interval="5000" arrow="always" style="width: 1700px">
         <router-link to="/good">
           <el-carousel-item v-for="item in 4" :key="item">
             <el-image class="adImg" :src="adUrl[item - 1]" fit="cover"> </el-image>
@@ -15,7 +15,7 @@
       <br />
       <h2>推薦商家&服務</h2>
       <br />
-      <el-row style="width: 100%;min-width: 1024px; ">
+      <el-row style="width: 100%; min-width: 1024px">
         <el-col v-for="(seller, index) in 3" :key="seller" :span="7" :offset="index > 0 ? 1 : 0">
           <el-card :body-style="{ padding: '0px' }">
             <el-image class="sellerImg" :src="sellers[seller - 1].sellerImg" fit="cover">
@@ -102,7 +102,24 @@
 
 <script setup>
 import OrderSideBar from '../components/OrderSideBar.vue'
-import { ref } from 'vue'
+import HomeService from '../services/HomeService'
+
+import { ref, onMounted } from 'vue'
+// getHome()
+const tableData = ref([])
+// const a = 'SERVICE2'
+
+onMounted(async () => {
+  try {
+    // 调用 HomeService 的 getHome 方法来获取数据
+    const response = await HomeService.getHome('SERVICE1')
+
+    // 将获取到的数据赋值给 tableData
+    tableData.value = response.data
+  } catch (error) {
+    console.error('获取数据时出错：', error)
+  }
+})
 const adUrl = [
   'https://images.pexels.com/photos/384555/pexels-photo-384555.jpeg?auto=compress&cs=tinysrgb&w=1600',
   'https://images.pexels.com/photos/1741235/pexels-photo-1741235.jpeg?auto=compress&cs=tinysrgb&w=1600',
@@ -114,8 +131,7 @@ const sellers = [
     sellerImg:
       'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     sellerName: '洗澡&SPA',
-    sellerDescription:
-      'NT$2000 ',
+    sellerDescription: 'NT$2000 ',
     serviceName: '服務名稱1',
     serviceDescription: '服務描述1'
   },
@@ -156,21 +172,21 @@ $themeColor: #f7ddba;
     height: 100%;
   }
 }
-.el-card{
-  width:480px;
-  height:400px;
+.el-card {
+  width: 480px;
+  height: 400px;
 }
 
 .sellerImg {
   width: 100%;
   height: 250px;
 }
-div > h3{
-  font-size:1.5rem;
+div > h3 {
+  font-size: 1.5rem;
   font-weight: 600;
 }
-div > span{
-  font-size:1.5rem;
+div > span {
+  font-size: 1.5rem;
 }
 
 // .el-carousel__item:nth-child(2n + 1) {
