@@ -19,6 +19,18 @@ public class HomeServiceDaoImpl implements HomeServiceDao{
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 	
 	@Override
+	public List<HomeService> getHomeService() {
+		// TODO Auto-generated method stub
+		String sql = "SELECT serviceName, serviceId, sellerId, category, serviceDesc, servicePeriod, upperLimit, availTime1, availTime2, acceptDay1, acceptDay2, serviceImage1, serviceImage2, serviceImage3, serviceImage4, serviceImage5, monday, tuesday, wednesday, thursday, friday, saturday, sunday FROM services";
+		
+		Map<String, Object> map = new HashMap<>();
+		
+		List<HomeService> homeServiceList = namedParameterJdbcTemplate.query(sql, map, new HomeServiceRowMapper());
+		
+		return homeServiceList;
+	}
+
+	@Override
 	public HomeService getHomeServiceById(String serviceId) {
 		// TODO Auto-generated method stub
 		String sql = "SELECT serviceName, serviceId, sellerId, category, serviceDesc, servicePeriod, upperLimit, availTime1, availTime2, acceptDay1, acceptDay2, serviceImage1, serviceImage2, serviceImage3, serviceImage4, serviceImage5, monday, tuesday, wednesday, thursday, friday, saturday, sunday FROM services WHERE serviceId = :serviceId";

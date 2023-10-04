@@ -1,5 +1,7 @@
 package com.ispan.eeit._30_HomeService.controller;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -17,6 +19,14 @@ public class HomeServiceController {
 	
 	@Autowired
 	private HomeServiceService homeServiceService;
+	
+	@GetMapping("/Home/services")
+	public ResponseEntity<List<HomeService>> getHomeService(){
+		List<HomeService> HomeServiceList = homeServiceService.getHomeService();
+		
+		return ResponseEntity.status(HttpStatus.OK).body(HomeServiceList);
+	}
+	
 	
 	@GetMapping("/Home/services/{serviceId}")
 	public ResponseEntity<HomeService> getHomeService(@PathVariable String serviceId){

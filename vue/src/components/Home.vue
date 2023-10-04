@@ -112,7 +112,8 @@ const tableData = ref([])
 onMounted(async () => {
   try {
     // 调用 HomeService 的 getHome 方法来获取数据
-    const response = await HomeService.getHome('SERVICE1')
+    // const response = await HomeService.getHome('SERVICE1')
+    const response = await HomeService.getHome()
 
     // 将获取到的数据赋值给 tableData
     tableData.value = response.data
