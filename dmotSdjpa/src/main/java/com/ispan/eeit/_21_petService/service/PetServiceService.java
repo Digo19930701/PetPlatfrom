@@ -6,4 +6,6 @@ public interface PetServiceService {
 
 	PetService getServiceById(String serviceId);
 
+	void save(PetService petService);
+
 }
