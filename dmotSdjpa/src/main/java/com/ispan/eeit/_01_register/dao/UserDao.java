@@ -11,12 +11,12 @@ import com.ispan.eeit._01_register.model.User;
 public interface UserDao extends JpaRepository<User, Integer>{
 	
 	//SQL語法
-	@Query(value = "SELECT COUNT(*) FROM user WHERE userEmail = :userEmail", nativeQuery = true)
+	@Query(value = "SELECT COUNT(*) FROM useraccount WHERE userEmail = :userEmail", nativeQuery = true)
 	int countByUserEmail(@Param("userEmail") String userEmail);
 	  
 	//SQL語法
-	@Query(value = "SELECT COUNT(*) FROM user WHERE password = :password", nativeQuery = true)
-	int countByPassword(@Param("password") String password);
+	@Query(value = "SELECT COUNT(*) FROM useraccount WHERE userPassword = :userPassword", nativeQuery = true)
+	int countByPassword(@Param("userPassword") String userPassword);
 	
 	
 	// 1.SQL語法 在資料庫的指令
