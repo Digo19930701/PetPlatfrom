@@ -19,7 +19,7 @@ public class Seller implements Serializable{
 	private String sellerDesc;
 	private Integer sellerPhone;
 	private String sellerAdd;
-	private String sellerClass;
+//	private String sellerClass;
 	private Integer unitTime;
 	private String sellerImg;
 	private String sellerPark;
@@ -39,7 +39,7 @@ public class Seller implements Serializable{
 		this.sellerDesc = sellerDesc;
 		this.sellerPhone = sellerPhone;
 		this.sellerAdd = sellerAdd;
-		this.sellerClass = sellerClass;
+//		this.sellerClass = sellerClass;
 		this.unitTime = unitTime;
 		this.sellerImg = sellerImg;
 		this.sellerPark = sellerPark;
@@ -77,12 +77,12 @@ public class Seller implements Serializable{
 	public void setSellerAdd(String sellerAdd) {
 		this.sellerAdd = sellerAdd;
 	}
-	public String getSellerClass() {
-		return sellerClass;
-	}
-	public void setSellerClass(String sellerClass) {
-		this.sellerClass = sellerClass;
-	}
+//	public String getSellerClass() {
+//		return sellerClass;
+//	}
+//	public void setSellerClass(String sellerClass) {
+//		this.sellerClass = sellerClass;
+//	}
 	public Integer getUnitTime() {
 		return unitTime;
 	}
