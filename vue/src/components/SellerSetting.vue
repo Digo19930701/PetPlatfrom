@@ -37,7 +37,7 @@
           </el-form-item>
 
           <el-form-item label="Email(帳號)" prop="account">
-            <p style="color: #888; padding-left: 10px; font-size: large">{{ props.sellerId }}</p>
+            <p style="color: #888; padding-left: 10px; font-size: large">{{ form.account }}</p>
           </el-form-item>
 
           <!-- <el-form-item label="統一編號" prop="taxID">
@@ -202,9 +202,7 @@ const sellerData = ref(null)
 
 const getSellerInfo = async () => {
   try {
-    const response = await axios.get(
-      'https://raw.githubusercontent.com/Cissto/practise/main/vue/test.json'
-    )
+    const response = await axios.get('http://localhost:3300/4A2Bpet/sellers/SELLER3')
     const responseData = response.data
 
     form.name = responseData.sellerName
@@ -213,13 +211,13 @@ const getSellerInfo = async () => {
     form.addre = responseData.sellerAdd
     form.park = responseData.sellerPark
     form.acceptUnit = responseData.unitTime
-
+    form.desc = responseData.sellerDesc
     sellerData.value = responseData
   } catch (error) {
     console.error('錯誤訊息：', error)
   }
 }
-//執行
+
 onMounted(() => {
   getSellerInfo()
 })
