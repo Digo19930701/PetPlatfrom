@@ -8,4 +8,8 @@ public interface PetServiceService {
 
 	void save(PetService petService);
 
+	void update(PetService petService);
+
+	void deleteById(String serviceId);
+
 }

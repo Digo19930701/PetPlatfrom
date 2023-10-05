@@ -33,4 +33,15 @@ public class PetServiceServiceImpl implements PetServiceService{
 		petServiceRepository.save(petService);
 	}
 
+	@Override
+	public void update(PetService petService) {
+		petServiceRepository.save(petService);
+		
+	}
+
+	@Override
+	public void deleteById(String serviceId) {
+		petServiceRepository.deleteById(serviceId);	
+	}
+
 }
