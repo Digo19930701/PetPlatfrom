@@ -24,14 +24,17 @@ public class HomeServiceController {
 	@Autowired
 	private HomeServiceService homeServiceService;
 	
+	
 	@GetMapping("/Home/services")
 	public ResponseEntity<List<HomeService>> getHomeService(
 			@RequestParam(required = false) HomeServiceCategory category,
-			@RequestParam(required = false) String search
+			@RequestParam(required = false) String search,
+			@RequestParam(required = false) Integer dayofweek
 	){
 		HomeServiceQueryParams homeServiceQueryParams = new HomeServiceQueryParams();
 		homeServiceQueryParams.setCategory(category);
 		homeServiceQueryParams.setSearch(search);
+		homeServiceQueryParams.setDayofweek(dayofweek);
 		
 		List<HomeService> HomeServiceList = homeServiceService.getHomeService(homeServiceQueryParams);
 		

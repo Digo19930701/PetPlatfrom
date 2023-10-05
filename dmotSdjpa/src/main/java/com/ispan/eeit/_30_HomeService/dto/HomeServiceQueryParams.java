@@ -5,6 +5,13 @@ import com.ispan.eeit._30_HomeService.constant.HomeServiceCategory;
 public class HomeServiceQueryParams {
 	private HomeServiceCategory category;
 	private String search;
+	private Integer dayofweek;
+	public Integer getDayofweek() {
+		return dayofweek;
+	}
+	public void setDayofweek(Integer dayofweek) {
+		this.dayofweek = dayofweek;
+	}
 	public HomeServiceCategory getCategory() {
 		return category;
 	}
