@@ -12,6 +12,7 @@
     <div class="tag-cloud subtitle">基本資訊</div>
     <el-form-item label="服務封面">
       <el-upload
+        v-model:file-list="ruleForm.file"
         action=""
         list-type="picture-card"
         :on-preview="handlePictureCardPreview"
@@ -29,6 +30,7 @@
 
     <el-form-item label="服務圖片">
       <el-upload
+        v-model:file-list="ruleForm.fileList"
         action=""
         list-type="picture-card"
         :on-preview="handlePictureCardPreview"
@@ -61,10 +63,10 @@
         <el-option label="攝影" value="graphy" />
         <el-option label="保母/訓練" value="nannyTraining" />
       </el-select>
-      <el-alert class="alertInf" type="info" show-icon :closable="false">
-        <!-- 還沒寫這個邏輯(要寫編輯時disable) -->
+      <!-- 還沒寫這個邏輯(要寫編輯時disable) -->
+      <!-- <el-alert class="alertInf" type="info" show-icon :closable="false">
         <p>一旦建立服務，類別將無法再透過編輯更改。</p>
-      </el-alert>
+      </el-alert> -->
     </el-form-item>
 
     <el-form-item label="服務描述" prop="desc">
@@ -178,6 +180,14 @@
       <el-col :span="5" class="timeRange">
         <el-form-item prop="availTime1">
           <el-time-picker v-model="ruleForm.availTime1" placeholder="開始時間" format="HH:mm" />
+          <!-- <el-time-select
+            v-model="ruleForm.availTime1"
+            :max-time="endTime"
+            placeholder="開始時間"
+            start="08:00"
+            step="00:30"
+            end="17:00"
+          /> -->
         </el-form-item>
       </el-col>
       <el-col :span="1" style="text-align: center">
@@ -186,8 +196,17 @@
       <el-col :span="5" class="timeRange">
         <el-form-item prop="availTime2">
           <el-time-picker v-model="ruleForm.availTime2" placeholder="結束時間" format="HH:mm" />
+          <!-- <el-time-select
+            v-model="ruleForm.availTime2"
+            :min-time="startTime"
+            placeholder="結束時間"
+            start="08:00"
+            step="00:30"
+            end="17:00"
+          /> -->
         </el-form-item>
       </el-col>
+
     </el-form-item>
     <el-form-item label="接受預約時間" class="serviceTime" required>
       <el-form-item prop="acceptDay1">
@@ -224,7 +243,8 @@
 
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
-import { ElMessage, type FormInstance, type FormRules, type UploadProps } from 'element-plus'
+import { ElMessage } from 'element-plus'
+import type { FormInstance, FormRules, UploadProps, UploadUserFile } from 'element-plus'
 import { Plus } from '@element-plus/icons-vue'
 
 const coverImageUrl = ref('') //封面圖
@@ -272,6 +292,7 @@ const handleRemove: UploadProps['onRemove'] = (uploadFile, uploadFiles) => {
   console.log(uploadFile, uploadFiles)
 }
 
+
 const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
   coverImageUrl.value = uploadFile.url!
   serviceImageUrl.value = uploadFile.url!
@@ -280,6 +301,8 @@ const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
 }
 
 interface RuleForm {
+  file: FileList[]
+  fileList: FileList[]
   name: string
   category: string
   desc: string
@@ -300,51 +323,80 @@ interface DomainItem {
   petType: string
   price: number
 }
-
-const formSize = ref('default')
-const ruleFormRef = ref<FormInstance>()
-const ruleForm = reactive<RuleForm>({
-  name: '',
-  category: '',
-  desc: '',
-  servicePeriod: 60,
-  upperLimit: 1,
-  domains: [{ key: 1, spec: '', petType: '', price: 100 }],
-  availDay: [],
-  availTime1: '',
-  availTime2: '',
-  acceptUnit: 30,
-  acceptDay1: 1,
-  acceptDay2: 7
-})
+interface FileList {
+  key: number
+  url: string
+}
 const props = defineProps({
-  serviceName: String,
+  serviceName: {
+    type:String,
+    default: ''
+  },
   serviceId: String,
   sellerId: String,
-  category: String,
-  serviceDesc: String,
-  servicePeriod: Number,
-  upperLimit: Number,
+  category:{
+    type:String,
+    default: ''
+  },
+  serviceDesc: {
+    type:String,
+    default: ''
+  },
+  servicePeriod: {
+    type: Number,
+    default: 60
+  },
+  upperLimit: {
+    type: Number,
+    default: 1
+  },
   availTime1: {
     type: String,
-    default: '08:30'
+    default: 'Thu Oct 05 2023 09:00:00 GMT+0800 (台北標準時間)'
   },
   availTime2: {
     type: String,
-    default: '18:30'
+    default: 'Thu Oct 05 2023 20:00:00 GMT+0800 (台北標準時間)'
   },
-  acceptDay1: Number,
-  acceptDay2: Number,
-  serviceImage1: {
-    type: URL,
-    default:
-      'https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8='
+  acceptDay1: {
+    type: Number,
+    default: 1
   },
-  serviceImage2: URL,
-  serviceImage3: URL,
-  serviceImage4: URL,
-  serviceImage5: URL
+  acceptDay2: {
+    type: Number,
+    default: 30
+  },
+  serviceCover: {
+    type: Array<FileList>,
+    default: []
+  },
+  serviceImage: {
+    type: Array<FileList>,
+    default: []
+  }
 })
+// const startTime = ref('')
+// const endTime = ref('')
+const formSize = ref('default')
+const ruleFormRef = ref<FormInstance>()
+const ruleForm = reactive<RuleForm>({
+  file: props.serviceCover,
+  // {key:1, url:'https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8='}
+  fileList: props.serviceImage,
+  name: props.serviceName,
+  category: props.category,
+  desc: props.serviceDesc,
+  servicePeriod: props.servicePeriod,
+  upperLimit: props.upperLimit,
+  domains: [{ key: 1, spec: '', petType: '', price: 100 }],
+  availDay: [],
+  availTime1: props.availTime1,
+  availTime2: props.availTime2,
+  acceptUnit: 30,
+  acceptDay1: props.acceptDay1,
+  acceptDay2: props.acceptDay2
+})
+
 
 const rules = reactive<FormRules<RuleForm>>({
   name: [
@@ -418,6 +470,36 @@ const submitForm = async (formEl: FormInstance | undefined) => {
   await formEl.validate((valid, fields) => {
     if (valid) {
       console.log('submit!')
+      console.log(`ruleForm.domains.length= ${ruleForm.domains.length}`)
+      console.log(`
+        serviceName= ${ruleForm.name},
+        category= ${ruleForm.category},
+        serviceDesc= ${ruleForm.desc},
+        servicePeriod= ${ruleForm.servicePeriod},
+        upperLimit= ${ruleForm.upperLimit},
+        availDay= ${ruleForm.availDay},
+        availTime1= ${ruleForm.availTime1},
+        availTime2= ${ruleForm.availTime2},
+        acceptUnit= ${ruleForm.acceptUnit},
+        acceptDay1= ${ruleForm.acceptDay1},
+        acceptDay2= ${ruleForm.acceptDay2},
+        serviceCover.key= ${ruleForm.file[0].key},
+        serviceCover.url= ${ruleForm.file[0].url}
+        `)
+      for(var i = 0; i< ruleForm.domains.length; i++){
+        console.log(`
+          domains.petType= ${ruleForm.domains[i].petType},
+          domains.spec= ${ruleForm.domains[i].spec},
+          domains.price= ${ruleForm.domains[i].price},
+        `)
+      }
+      for(var i = 0; i< ruleForm.fileList.length; i++){
+        console.log(`
+          serviceImage.key= ${ruleForm.fileList[i].key},
+          serviceImage.url= ${ruleForm.fileList[i].url}
+        `)
+          
+      }
     } else {
       console.log('error submit!', fields)
     }
