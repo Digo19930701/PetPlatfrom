@@ -135,10 +135,8 @@
   </main>
 </template>
 
-<style src="../assets/seller.css"></style>
-
 <script lang="ts" setup>
-import { reactive, ref } from 'vue'
+import { reactive, ref, onMounted } from 'vue'
 import type { UploadProps, UploadInstance } from 'element-plus'
 import { Plus, Upload, WarningFilled } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
@@ -200,18 +198,31 @@ const form = reactive({
   img: props.sellerImg
 })
 
-// const getAxios = function(){
-//     axios.get(`http://localhost:3300/4A2Bpet/sellers/SELLER1`,
-//     ).then((res)=>{
-//         //獲取伺服器的回傳資料
-//           props = res.data
-//     })
-//     .catch((error)=>{
-//         console.log(error,'失敗');
-//     })
-// }
-// //執行Axios
-// getAxios()
+const sellerData = ref(null)
+
+const getSellerInfo = async () => {
+  try {
+    const response = await axios.get(
+      'https://raw.githubusercontent.com/Cissto/practise/main/vue/test.json'
+    )
+    const responseData = response.data
+
+    form.name = responseData.sellerName
+    form.account = responseData.sellerId
+    form.cell = responseData.sellerPhone
+    form.addre = responseData.sellerAdd
+    form.park = responseData.sellerPark
+    form.acceptUnit = responseData.unitTime
+
+    sellerData.value = responseData
+  } catch (error) {
+    console.error('錯誤訊息：', error)
+  }
+}
+//執行
+onMounted(() => {
+  getSellerInfo()
+})
 
 const onSubmit = () => {
   console.log('submit!')
@@ -240,7 +251,7 @@ function HandleAvatar() {
   })
 }
 </script>
-
+<style src="../assets/seller.css"></style>
 <style lang="scss" scoped>
 .hw {
   width: 580px;

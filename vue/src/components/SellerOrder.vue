@@ -105,6 +105,7 @@ const data = reactive({
   petName: '寵物名',
   petGender: '(性別)',
   userEmail: '',
+  userName: '',
   phoneNumber: '',
   petClass: '',
   petVariety: '', //品種
@@ -130,6 +131,7 @@ const {
   petName,
   petGender,
   userEmail,
+  userName,
   phoneNumber,
   petClass,
   petVariety,
