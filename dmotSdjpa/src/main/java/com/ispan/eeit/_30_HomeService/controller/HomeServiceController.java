@@ -8,8 +8,10 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.ispan.eeit._30_HomeService.constant.HomeServiceCategory;
 import com.ispan.eeit._30_HomeService.model.HomeService;
 import com.ispan.eeit._30_HomeService.service.HomeServiceService;
 
@@ -21,11 +23,21 @@ public class HomeServiceController {
 	private HomeServiceService homeServiceService;
 	
 	@GetMapping("/Home/services")
-	public ResponseEntity<List<HomeService>> getHomeService(){
-		List<HomeService> HomeServiceList = homeServiceService.getHomeService();
+	public ResponseEntity<List<HomeService>> getHomeService(
+			@RequestParam(required = false) HomeServiceCategory category,
+			@RequestParam(required = false) String search
+	){
+		List<HomeService> HomeServiceList = homeServiceService.getHomeService(category, search);
 		
 		return ResponseEntity.status(HttpStatus.OK).body(HomeServiceList);
 	}
+	
+//	@GetMapping("/Home/services")
+//	public ResponseEntity<List<HomeService>> getHomeServic(){
+//		List<HomeService> HomeServiceList = homeServiceService.getHomeService();
+//		
+//		return ResponseEntity.status(HttpStatus.OK).body(HomeServiceList);
+//	}
 	
 	
 	@GetMapping("/Home/services/{serviceId}")
