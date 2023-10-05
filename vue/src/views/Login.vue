@@ -301,7 +301,7 @@ const login = () => {
     userPassword: password
   }
   axios
-    .post('http://localhost:8080/4A2Bpet/Login', user, {
+    .post('http://localhost:3300/4A2Bpet/Login', user, {
       headers: {
         'Content-Type': 'application/json'
       }
@@ -309,31 +309,6 @@ const login = () => {
 
     .then((response) => {
       alert('登入成功')
-
-      // export default {
-      //   data() {
-      //   return {
-      //     data: "" // 这里初始化为一个空字符串
-      //   };
-      // },
-      // mounted() {
-      //   // 这里可以使用axios或其他方法从后端获取数据并更新data属性
-      //   this.getDataFromBackend();
-      // },
-      //   methods: {
-      //   getDataFromBackend() {
-      //     // 使用axios或其他HTTP库从后端获取数据
-      //     axios.get("http://localhost:5173/Member")
-      //       .then(response => {
-      //         hhhh = response.data;
-      //       })
-      //       .catch(error => {
-      //         console.error(error);
-      //       });
-      //     }
-      //   }
-
-      // }
 
       window.location.href = response.data // 替换Spring Boot端口号和路由
 
@@ -353,13 +328,14 @@ const registerout = () => {
 
   console.log(`Email=${Email}`, `userPassword=${userPassword}`, `userPassword=${userPassword2}`)
 
-  const user1 = {
+  const user = {
     userEmail: Email,
     userPassword: userPassword,
     userPassword2: userPassword2
   }
+
   axios
-    .post('http://localhost:8080/4A2Bpet/Register', user1, {
+    .post('http://localhost:3300/4A2Bpet/Register', user, {
       headers: {
         'Content-Type': 'application/json'
       }

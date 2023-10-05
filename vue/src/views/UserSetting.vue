@@ -169,6 +169,7 @@ const options = Array.from({ length: 22 }).map((_, idx) => ({
   value: `Option ${idx + 1}`,
   label: `${initials[idx % 10]}`
 }))
+
 </script>
 <style src="../assets/default.css"></style>
 <style lang="scss">

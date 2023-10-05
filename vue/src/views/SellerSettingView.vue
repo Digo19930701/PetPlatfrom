@@ -16,6 +16,7 @@
           :seller-add="'台中市中區民族路223號'"
           :seller-phone="'0915876824'"
           :unit-time="60"
+          :seller-park="''"
         />
       </main>
     </el-container>
