@@ -37,7 +37,7 @@
         </div>
       </el-row>
       <el-row style="display: flex; justify-content: center">
-        <!-- <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
+        <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
           <el-text v-model="good_title">
             <p>{{ good_title }}</p>
           </el-text>
@@ -60,9 +60,9 @@
             <el-button round class="deleteBtn"> 刪除 </el-button>
             <el-button round class="editBtn"> 編輯 </el-button>
           </el-row>
-        </el-col> -->
+        </el-col>
 
-        <el-empty description="暫無項目" />
+        <!-- <el-empty description="暫無項目" /> -->
       </el-row>
       <br />
       <el-row>

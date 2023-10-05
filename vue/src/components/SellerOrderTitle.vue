@@ -14,8 +14,7 @@
           </td>
           <td class="orderContent"><span class="tag-cloud beauty">美容</span><br /></td>
           <td>
-            <span>洗澡&SPA</span>
-            <!-- <span>{{ serviceName }}</span> -->
+            <span>{{ serviceName }}</span>
           </td>
           <td style="text-align: right; width: 25%">
             <span class="orderNum" style="font-size: 18px">訂單編號:{12asd456q8w4f3}</span>
@@ -23,12 +22,10 @@
         </tr>
         <tr>
           <td class="orderContent">
-            <span>狗-大型犬</span><br />
-            <!-- <span>{洗澡+基礎美容}</span> -->
+            <span>{洗澡+基礎美容}</span>
           </td>
           <td>
-            <span>單價 NT$ 2000 </span>
-            <!-- <span>單價 NT$ {{ price }} </span> -->
+            <span>單價 NT$ {{ price }} </span>
           </td>
           <td style="vertical-align: bottom; text-align: right">
             <button @click="handleCollapse" class="tag-cloud button" id="showDetail">

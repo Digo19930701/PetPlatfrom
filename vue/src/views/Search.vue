@@ -2,9 +2,9 @@
   <header><HomeHeader /></header>
   <main>
     <el-container>
-      <main style="width: 2000px">
+      <main>
         <el-container>
-          <el-main style="width: 80%"><SearchMenu /></el-main>
+          <el-main><SearchMenu /></el-main>
         </el-container>
       </main>
     </el-container>

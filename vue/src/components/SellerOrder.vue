@@ -8,8 +8,7 @@
     <table id="orderDetail">
       <tr>
         <td rowspan="2" class="side petMain">
-          <!-- <img src="../images/cat.JPG" /> -->
-          <img src="https://images.pexels.com/photos/220938/pexels-photo-220938.jpeg" />
+          <img src="../images/cat.JPG" />
           <p>{{ petName }}</p>
           <p>{{ petGender }}</p>
           <br />
