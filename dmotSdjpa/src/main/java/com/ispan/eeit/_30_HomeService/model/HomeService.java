@@ -3,6 +3,8 @@ package com.ispan.eeit._30_HomeService.model;
 import java.sql.Time;
 
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
@@ -178,3 +180,4 @@ public class HomeService {
 	}
 
 }
+

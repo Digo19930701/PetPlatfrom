@@ -66,6 +66,10 @@ public class HomeServiceDaoImpl implements HomeServiceDao {
 //			sql = sql + " AND serviceName LIKE :Dayofweek";	//一定要留空白	// LIKE 模糊查詢
 			map.put("dayofweek", "%" + homeServiceQueryParams.getDayofweek() + "%");
 		}
+		if (homeServiceQueryParams.getAvailTime() != null) {
+			sql = sql + " AND availTime1 <= :availTime AND availTime2 >= :availTime"; // 一定要留空白
+			map.put("availTime", "%" + homeServiceQueryParams.getAvailTime() + "%" );
+		}
 
 		List<HomeService> homeServiceList = namedParameterJdbcTemplate.query(sql, map, new HomeServiceRowMapper());
 

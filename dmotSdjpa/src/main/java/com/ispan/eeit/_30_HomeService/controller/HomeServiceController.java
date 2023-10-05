@@ -1,5 +1,6 @@
 package com.ispan.eeit._30_HomeService.controller;
 
+import java.sql.Time;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,12 +30,14 @@ public class HomeServiceController {
 	public ResponseEntity<List<HomeService>> getHomeService(
 			@RequestParam(required = false) HomeServiceCategory category,
 			@RequestParam(required = false) String search,
-			@RequestParam(required = false) Integer dayofweek
+			@RequestParam(required = false) Integer dayofweek,
+			@RequestParam(required = false) Time availTime
 	){
 		HomeServiceQueryParams homeServiceQueryParams = new HomeServiceQueryParams();
 		homeServiceQueryParams.setCategory(category);
 		homeServiceQueryParams.setSearch(search);
 		homeServiceQueryParams.setDayofweek(dayofweek);
+		homeServiceQueryParams.setAvailTime(availTime);
 		
 		List<HomeService> HomeServiceList = homeServiceService.getHomeService(homeServiceQueryParams);
 		
