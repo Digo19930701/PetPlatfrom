@@ -23,7 +23,8 @@ public class Seller implements Serializable{
 	private Integer unitTime;
 	private String sellerImg;
 	private String sellerPark;
-	
+	private String sellerPassword;
+	private String sellerPassword2;
 	public Seller() {
 		super();
 	}
@@ -31,7 +32,7 @@ public class Seller implements Serializable{
 	public Seller(String sellerId, String sellerName,
 				  String sellerDesc,Integer sellerPhone,String sellerAdd,
 				  String sellerClass,Integer unitTime,String sellerImg,
-				  String sellerPark) {
+				  String sellerPark,String sellerPassword,String sellerPassword2) {
 		super();
 //		this.serial = serial;
 		this.sellerId = sellerId;
@@ -43,7 +44,8 @@ public class Seller implements Serializable{
 		this.unitTime = unitTime;
 		this.sellerImg = sellerImg;
 		this.sellerPark = sellerPark;
-		
+		this.sellerPassword = sellerPassword;
+		this.sellerPassword2 = sellerPassword2;
 	}
 	
 	
@@ -101,6 +103,10 @@ public class Seller implements Serializable{
 	public void setSellerPark(String sellerPark) {
 		this.sellerPark = sellerPark;
 	}
-	
-	
+	public String getSellerPassword() {
+		return sellerPassword;
+	}
+	public String getSellerPassword2() {
+		return sellerPassword2;
+	}
 }

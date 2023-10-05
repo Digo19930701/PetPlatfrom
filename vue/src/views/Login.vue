@@ -187,12 +187,21 @@
           </el-form-item>
           <el-form-item :label-width="formLabelWidth">
             <el-input
-              v-model="sellersignup.againPassword"
+              v-model="sellersignup.Password2"
               label-width="100px"
               autocomplete="off"
               type="sellersignup"
               placeholder="密碼確認"
               show-password
+            />
+          </el-form-item>
+          <el-form-item :label-width="formLabelWidth">
+            <el-input
+              v-model="sellersignup.sellerName"
+              label-width="100px"
+              autocomplete="off"
+              type="sellersignup"
+              placeholder="商店名稱"
             />
           </el-form-item>
         </el-form>
@@ -259,7 +268,8 @@ const loginForm = reactive({
 const sellersignup = reactive({
   mail: '',
   Password: '',
-  againPassword: ''
+  Password2: '',
+  sellerName:''
 })
 
 import firebaseConfig from '../firebaseConfig'
@@ -385,7 +395,33 @@ axios
 
 
 const sellersignupout = () => {
-  console.log('sellersignup', sellersignup)
+  const Email = sellersignup.mail
+  const sellerPassword = sellersignup.Password
+  const sellerPassword2 = sellersignup.Password2
+  const sellerName = sellersignup.sellerName
+  
+  const user = {
+    sellerId:Email,
+    sellerPassword:sellerPassword,
+    sellerPassword2:sellerPassword2,
+    sellerName:sellerName,
+    
+  }
+
+axios
+    .post('http://localhost:3300/4A2Bpet/SellerRegister', user, {
+      headers: {
+    	 'Content-Type': 'application/json'
+		}
+    })
+    .then((response) => {
+		  alert(response.data);
+      console.log(response.data)
+    })
+    .catch((error) => {
+		  alert(error)
+      console.error(error)
+    })
 }
 </script>
 

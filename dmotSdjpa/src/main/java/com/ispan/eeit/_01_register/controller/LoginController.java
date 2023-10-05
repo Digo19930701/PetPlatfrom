@@ -30,31 +30,20 @@ public class LoginController {
 	   @Autowired
 	   EmailService emailService;
 	   
+	   
+	   
 //	   @Autowired
 //	   private RestTemplate restTemplate;
 	    
 	   
-//	   @PostMapping("/Login1")
-//	   @ResponseBody
-//	   public String Login1(@RequestBody test id) {
-//		   System.out.println(id.getId());
-//		   return "test 測試成功"+id.getId() ;
-//	   }
 	   
 	    @PostMapping("/Login")
 	    @ResponseBody
 		public String Login(@RequestBody User user,Model model ) {
 		
-	    	
-	    	
-//	     //裝前端的帳號密碼並組合一個Bean
-//	     User user = new User();
-	    	String userEmial = user.getUserEmail();
-	    	String Password = user.getUserPassword();
-	    	
 	    	System.out.println("我是登入帳號"+user.getUserEmail());
 	    	System.out.println("我是登入密碼"+user.getUserPassword());
-//	     System.out.println("userService="+userService.LoginService(user));
+
 	     System.out.println(userService.LoginService(user));
 	     if(userService.LoginService(user)==true) {
 	    	 
