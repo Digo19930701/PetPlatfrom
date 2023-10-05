@@ -261,7 +261,7 @@ const addDomain = () => {
     ruleForm.domains.push({
       key: Date.now(),
       spec: '',
-      petType: 'dig',
+      petType: '',
       price: 100
     })
     specCounter.value++

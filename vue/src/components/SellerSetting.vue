@@ -223,7 +223,20 @@ onMounted(() => {
 })
 
 const onSubmit = () => {
-  console.log('submit!')
+  axios
+    .post('http://localhost:3300/4A2Bpet/sellers/SELLER3', props, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      alert('儲存成功')
+      console.log(response.data)
+    })
+    .catch((error) => {
+      alert(error)
+      console.log(error)
+    })
 }
 const avatarImageUrl = ref('')
 const dialogVisible = ref(false)
