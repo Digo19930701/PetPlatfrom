@@ -8,8 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
 
-import com.ispan.eeit._30_HomeService.constant.HomeServiceCategory;
 import com.ispan.eeit._30_HomeService.dao.HomeServiceDao;
+import com.ispan.eeit._30_HomeService.dto.HomeServiceQueryParams;
 import com.ispan.eeit._30_HomeService.model.HomeService;
 import com.ispan.eeit._30_HomeService.rowmapper.HomeServiceRowMapper;
 
@@ -20,7 +20,7 @@ public class HomeServiceDaoImpl implements HomeServiceDao {
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
 	@Override
-	public List<HomeService> getHomeService(HomeServiceCategory category, String search) {
+	public List<HomeService> getHomeService(HomeServiceQueryParams homeServiceQueryParams) {
 		// TODO Auto-generated method stub
 		String sql = "SELECT serviceName, serviceId, sellerId, category, "
 				+ "serviceDesc, servicePeriod, upperLimit, availTime1, availTime2, "
@@ -31,14 +31,14 @@ public class HomeServiceDaoImpl implements HomeServiceDao {
 
 		Map<String, Object> map = new HashMap<>();
 		
-		if(category != null) {
+		if(homeServiceQueryParams.getCategory() != null) {
 			sql = sql + " AND category = :category";	//一定要留空白
-			map.put("category", category.name());
+			map.put("category", homeServiceQueryParams.getCategory().name());
 		}
 		
-		if(search != null) {
+		if(homeServiceQueryParams.getSearch() != null) {
 			sql = sql + " AND serviceName LIKE :search";	//一定要留空白	// LIKE 模糊查詢
-			map.put("search", "%" + search + "%");	
+			map.put("search", "%" + homeServiceQueryParams.getSearch() + "%");	
 		}
 
 		List<HomeService> homeServiceList = namedParameterJdbcTemplate.query(sql, map, new HomeServiceRowMapper());

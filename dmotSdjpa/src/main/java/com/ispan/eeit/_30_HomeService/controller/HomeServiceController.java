@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.ispan.eeit._30_HomeService.constant.HomeServiceCategory;
+import com.ispan.eeit._30_HomeService.dto.HomeServiceQueryParams;
 import com.ispan.eeit._30_HomeService.model.HomeService;
+import com.ispan.eeit._30_HomeService.rowmapper.HomeServiceRowMapper;
 import com.ispan.eeit._30_HomeService.service.HomeServiceService;
 
 @RestController
@@ -27,7 +29,11 @@ public class HomeServiceController {
 			@RequestParam(required = false) HomeServiceCategory category,
 			@RequestParam(required = false) String search
 	){
-		List<HomeService> HomeServiceList = homeServiceService.getHomeService(category, search);
+		HomeServiceQueryParams homeServiceQueryParams = new HomeServiceQueryParams();
+		homeServiceQueryParams.setCategory(category);
+		homeServiceQueryParams.setSearch(search);
+		
+		List<HomeService> HomeServiceList = homeServiceService.getHomeService(homeServiceQueryParams);
 		
 		return ResponseEntity.status(HttpStatus.OK).body(HomeServiceList);
 	}

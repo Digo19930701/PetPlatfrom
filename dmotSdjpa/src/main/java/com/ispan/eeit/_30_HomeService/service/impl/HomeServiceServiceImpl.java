@@ -5,8 +5,8 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
-import com.ispan.eeit._30_HomeService.constant.HomeServiceCategory;
 import com.ispan.eeit._30_HomeService.dao.HomeServiceDao;
+import com.ispan.eeit._30_HomeService.dto.HomeServiceQueryParams;
 import com.ispan.eeit._30_HomeService.model.HomeService;
 import com.ispan.eeit._30_HomeService.service.HomeServiceService;
 
@@ -18,9 +18,9 @@ public class HomeServiceServiceImpl implements HomeServiceService{
 	
 	
 	@Override
-	public List<HomeService> getHomeService(HomeServiceCategory category, String search) {
+	public List<HomeService> getHomeService(HomeServiceQueryParams homeServiceQueryParams) {
 		// TODO Auto-generated method stub
-		return homeServiceDao.getHomeService(category, search);
+		return homeServiceDao.getHomeService(homeServiceQueryParams);
 	}
 
 
