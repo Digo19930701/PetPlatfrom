@@ -16,6 +16,15 @@ class SellerOrderService{
         console.log(res)
         return res;
     }
+
+    getSellerInfo(seller) {
+
+        return axios.get(`http://localhost:3300/4A2Bpet/sellers/${seller}`)
+      }
+      // putSellerInfo(seller ,props){
+      //   return axios.put(`http://localhost:3300/4A2Bpet/sellers/${seller}`,${props})
+      // }
+    
 }
 
 export default new SellerOrderService();

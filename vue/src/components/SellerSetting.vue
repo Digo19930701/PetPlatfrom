@@ -53,14 +53,18 @@
             </p>
           </el-form-item>
    -->
-          <!-- <el-form-item
-            label="負責人"
-            prop="incharge"
+           <el-form-item
+            label="密碼"
+            prop="password"
             
             :rules="[{ required: true, message: '此為必填欄位' }]"
           >
-            <el-input v-model="form.incharge" type="text" autocomplete="off" placeholder="負責人姓名" />
+            <el-input v-model="form.password" type="password" autocomplete="off" disabled />
           </el-form-item>
+          <el-form-item>
+            <a href="/sellerPassword">修改密碼</a>
+          </el-form-item>
+          <!--
           <el-form-item label="公司證明文件">
             <el-upload ref="uploadRef" class="upload-demo" action="" :auto-upload="false">
               <el-button type="primary" class="uploadbn" plain>
@@ -127,7 +131,7 @@
         </div>
         <br />
         <el-form-item label-width="35%">
-          <el-button round>編輯</el-button>
+          <el-button round >編輯</el-button>
           <el-button type="primary" round @click="onSubmit">儲存</el-button>
         </el-form-item>
       </el-form>
@@ -141,7 +145,7 @@ import type { UploadProps, UploadInstance } from 'element-plus'
 import { Plus, Upload, WarningFilled } from '@element-plus/icons-vue'
 import { ElMessage } from 'element-plus'
 import axios from 'axios'
-
+import SellerService from '../services/Service'
 import { useSSRContext } from 'vue'
 
 // const emit = defineEmits(['child-click'])
@@ -186,23 +190,30 @@ const props = defineProps({
 })
 
 const form = reactive({
-  name: props.sellerName,
-  account: props.sellerId,
-  taxID: props.taxID,
-  incharge: '',
-  cell: props.sellerPhone,
-  desc: props.sellerDesc,
-  addre: props.sellerAdd,
-  park: props.sellerPark,
-  acceptUnit: props.unitTime,
-  img: props.sellerImg
+  name: '',
+  account: '',
+  taxID: '',
+  password: '',
+  cell: '',
+  desc: '',
+  addre: '',
+  park: '',
+  acceptUnit: '',
+  img:''
 })
 
 const sellerData = ref(null)
+var seller = 'SELLER1'
 
-const getSellerInfo = async () => {
+
+const print =()=>{
+  console.log(SellerService.getSellerInfo(seller))
+}
+const getSeller = async () => {
+
   try {
-    const response = await axios.get('http://localhost:3300/4A2Bpet/sellers/SELLER3')
+    const response = await SellerService.getSellerInfo(seller)
+    
     const responseData = response.data
 
     form.name = responseData.sellerName
@@ -212,31 +223,43 @@ const getSellerInfo = async () => {
     form.park = responseData.sellerPark
     form.acceptUnit = responseData.unitTime
     form.desc = responseData.sellerDesc
+    form.password = responseData.sellerPassword
     sellerData.value = responseData
+    console.log('賣家的帳號:'+`${responseData.sellerId}`)
   } catch (error) {
     console.error('錯誤訊息：', error)
   }
 }
 
 onMounted(() => {
-  getSellerInfo()
+  getSeller()
 })
 
-const onSubmit = () => {
-  axios
-    .post('http://localhost:3300/4A2Bpet/sellers/SELLER3', props, {
-      headers: {
+const onSubmit = async () => {
+  const data = {
+    sellerName: form.name,
+    sellerId:form.account,
+    sellerPhone:form.cell,
+    sellerAdd:form.addre,
+    sellerPark:form.park,
+    unitTime:form.acceptUnit,
+    sellerDesc:form.desc,
+    sellerPassword:form.password
+  }
+  
+  console.log(data)
+    try{
+       await axios.put('http://localhost:3300/4A2Bpet/sellers/SEllER1',data,{
+        headers: {
         'Content-Type': 'application/json'
-      }
-    })
-    .then((response) => {
-      alert('儲存成功')
-      console.log(response.data)
-    })
-    .catch((error) => {
+          }
+       })
+       alert('儲存成功!') 
+    }
+    catch(error) {
       alert(error)
       console.log(error)
-    })
+    }
 }
 const avatarImageUrl = ref('')
 const dialogVisible = ref(false)

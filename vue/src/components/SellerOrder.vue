@@ -110,7 +110,7 @@ const data = reactive({
   petVariety: '', //品種
   petCharacter: '',
   petAge: '',
-  serviceName: '飼主下單的店家服務名稱(限20字)',
+  serviceName: '',
   orderMsg: '', //訂單備註
   price: '',
   petImage: ''

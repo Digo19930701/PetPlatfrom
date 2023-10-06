@@ -97,6 +97,11 @@ const router = createRouter({
       name: 'bankAccount',
       component: () => import('../views/BankAccountView.vue')
     },
+    {
+      path: '/sellerPassword',
+      name: 'sellerPassword',
+      component: () => import('../views/SellerPassword.vue')
+    },
 
     //會員頁面
     {
