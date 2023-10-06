@@ -17,21 +17,21 @@ public class Seller implements Serializable{
 	private String sellerId;
 	private String sellerName;
 	private String sellerDesc;
-	private Integer sellerPhone;
+	private String sellerPhone;
 	private String sellerAdd;
-	private String sellerClass;
 	private Integer unitTime;
 	private String sellerImg;
 	private String sellerPark;
+	private String sellerPassword;
 	
 	public Seller() {
 		super();
 	}
 	
 	public Seller(String sellerId, String sellerName,
-				  String sellerDesc,Integer sellerPhone,String sellerAdd,
-				  String sellerClass,Integer unitTime,String sellerImg,
-				  String sellerPark) {
+				  String sellerDesc,String sellerPhone,String sellerAdd,
+				  Integer unitTime,String sellerImg,
+				  String sellerPark, String sellerPassword) {
 		super();
 //		this.serial = serial;
 		this.sellerId = sellerId;
@@ -39,11 +39,11 @@ public class Seller implements Serializable{
 		this.sellerDesc = sellerDesc;
 		this.sellerPhone = sellerPhone;
 		this.sellerAdd = sellerAdd;
-		this.sellerClass = sellerClass;
+//		this.sellerClass = sellerClass;
 		this.unitTime = unitTime;
 		this.sellerImg = sellerImg;
 		this.sellerPark = sellerPark;
-		
+		this.sellerPassword = sellerPassword;
 	}
 	
 	
@@ -65,10 +65,10 @@ public class Seller implements Serializable{
 	public void setSellerDesc(String sellerDesc) {
 		this.sellerDesc = sellerDesc;
 	}
-	public Integer getSellerPhone() {
+	public String getSellerPhone() {
 		return sellerPhone;
 	}
-	public void setSellerPhone(Integer sellerPhone) {
+	public void setSellerPhone(String sellerPhone) {
 		this.sellerPhone = sellerPhone;
 	}
 	public String getSellerAdd() {
@@ -77,12 +77,7 @@ public class Seller implements Serializable{
 	public void setSellerAdd(String sellerAdd) {
 		this.sellerAdd = sellerAdd;
 	}
-	public String getSellerClass() {
-		return sellerClass;
-	}
-	public void setSellerClass(String sellerClass) {
-		this.sellerClass = sellerClass;
-	}
+
 	public Integer getUnitTime() {
 		return unitTime;
 	}
@@ -102,5 +97,11 @@ public class Seller implements Serializable{
 		this.sellerPark = sellerPark;
 	}
 	
-	
+	public String getSellerPassword() {
+		return sellerPassword;
+	}
+
+	public void setSellerPassword(String sellerPassword) {
+		this.sellerPassword = sellerPassword;
+	}
 }
