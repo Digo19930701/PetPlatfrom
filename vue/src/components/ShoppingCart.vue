@@ -204,11 +204,9 @@ const itemList = ref([
     imgUrl:
       'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
     price: '790',
-    count: '2023/02/02 12:00',
     checked: false
   }
 ])
-
 //刪除
 const handledelete = (index) => {
   console.log(this)

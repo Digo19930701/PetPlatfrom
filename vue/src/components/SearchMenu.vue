@@ -98,6 +98,10 @@ const value1 = ref('')
 const size = ref('large')
 const val_price_range = ref([500, 5000])
 const value_time = ref('')
+const date = new Date(value1.value)
+const dayOfWeek = date.getDay()
+console.log(dayOfWeek)
+
 function cancelClick() {
   drawer.value = false
 }

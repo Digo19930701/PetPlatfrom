@@ -102,7 +102,25 @@
 
 <script setup>
 import OrderSideBar from '../components/OrderSideBar.vue'
-import { ref } from 'vue'
+import HomeService from '../services/HomeService'
+
+import { ref, onMounted } from 'vue'
+// getHome()
+const serviceData = ref([])
+// const a = 'SERVICE2'
+
+onMounted(async () => {
+  try {
+    // 调用 HomeService 的 getHome 方法来获取数据
+    // const response = await HomeService.getHome('SERVICE1')
+    const response = await HomeService.getHome()
+
+    // 将获取到的数据赋值给 tableData
+    serviceData.value = response.data
+  } catch (error) {
+    console.error('获取数据时出错：', error)
+  }
+})
 const adUrl = [
   'https://images.pexels.com/photos/384555/pexels-photo-384555.jpeg?auto=compress&cs=tinysrgb&w=1600',
   'https://images.pexels.com/photos/1741235/pexels-photo-1741235.jpeg?auto=compress&cs=tinysrgb&w=1600',
@@ -155,10 +173,10 @@ $themeColor: #f7ddba;
     height: 100%;
   }
 }
-// .el-card{
-//   width:480px;
-//   height:400px;
-// }
+.el-card {
+  width: 480px;
+  height: 400px;
+}
 
 .sellerImg {
   width: 100%;

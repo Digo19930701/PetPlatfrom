@@ -63,15 +63,9 @@ public class PetServiceController {
 	
 	@DeleteMapping("/sellers/services/{serviceId}")
 	public ResponseEntity<PetService> deletePetServiceById(@PathVariable String serviceId, Model model){
-//		PetService Service = pss.getServiceById(serviceId);
-//		if (Service == null) {
-//        	log.info("petServiceController---deletePetServiceById: 'NOT FOUND' serviceId=" + serviceId + ".");
-//        	return  ResponseEntity.status(HttpStatus.NOT_FOUND).build();        	
-//        } else {
-        	pss.deleteById(serviceId);
-        	log.info("petServiceController---deletePetService: serviceId=" + serviceId + ".");
-        	return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
-//        }
+    	pss.deleteById(serviceId);
+    	log.info("petServiceController---deletePetService: serviceId=" + serviceId + ".");
+    	return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }	
 	
 	
