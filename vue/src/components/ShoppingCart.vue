@@ -1,31 +1,29 @@
 <template>
   <div id="title">
-    <div style="width: 50px"><ShoppingTrolley /></div>
+    <div style="width: 50px">
+      <ShoppingTrolley />
+    </div>
     &nbsp;購物車
   </div>
   <header>
     <table id="customer">
       <tr>
         <td>客戶資料</td>
-        <td>姓名: {{ cars.userName }}</td>
-        <td>電話: {{ cars.phoneNumber }}</td>
+
+        <td>姓名: {{ CarService.unsr["userName"] }}</td>
+        <td>電話: {{ CarService.unsr["phoneNumber"] }}</td>
       </tr>
     </table>
     <el-divider />
-    <div style="width: 100%; display: flex; justify-content: center">
-      <table style="width: 97%; text-align: center" id="listTitle">
+    <div style="width: 96%; display: flex; justify-content: center">
+      <table style="width: 100%; text-align: center" id="listTitle">
         <tr>
           <th>
-            <input
-              style="transform: scale(2)"
-              type="checkbox"
-              v-model="selectAll"
-              @change="toggleSelectAll"
-            />&nbsp;&nbsp;全選
+            <input style="transform: scale(2)" type="checkbox" v-model="selectAll" @change="toggleAll" />&nbsp;全選
           </th>
-          <th>服務</th>
+          <th>服務項目</th>
           <th>預約時間</th>
-          <th>單價</th>
+          <th>&emsp;&emsp;單價</th>
           <th>操作</th>
           <th>寵物資訊</th>
         </tr>
@@ -33,49 +31,32 @@
     </div>
   </header>
   <main>
-    <div v-for="(item, index) in itemList" :key="item.id">
+    <div v-for="(item, index) in cars" :key="item.id">
       <div class="item_header item_body">
         &emsp;
         <input style="transform: scale(2)" type="checkbox" v-model="item.checked" />&emsp;
         <div class="item_detail">
-          <img v-bind:src="cars.serviceImg" alt="" />
-          <div class="name">{{ cars.serviceName }}</div>
+
+          <img v-bind:src="item.serviceImg" alt="" />
+          <div class="name">&emsp;{{ item.serviceName }}</div>
         </div>
         <div class="block">
           <el-date-picker v-model="date" type="date" placeholder="選擇預約日期" :size="size" />
-          <el-time-select
-            v-model="startTime"
-            :max-time="endTime"
-            placeholder="開始"
-            start="08:00"
-            step="01:00"
-            end="17:00"
-            :size="size"
-          />
-          <el-time-select
-            v-model="endTime"
-            :min-time="startTime"
-            placeholder="結束"
-            start="08:00"
-            step="01:00"
-            end="17:00"
-            :size="size"
-          />
+          <el-time-select v-model="startTime" :max-time="endTime" placeholder="開始" start="08:00" step="01:00" end="17:00"
+            :size="size" />
+          <el-time-select v-model="endTime" :min-time="startTime" placeholder="結束" start="08:00" step="01:00" end="17:00"
+            :size="size" />
         </div>
-        <div style="width: 50%">
-          <span style="padding-left: 20%">NT$&emsp;</span>{{ cars.payment }}
+        <div style="width: 45%">
+
+          <span style="padding-left: 20%">NT$&emsp;</span>{{ item.price }}
         </div>
-        <div style="width: 1%">
-          <el-button @click="handledelete(index)">刪除</el-button>
+        <div>
+          <el-button @click="handledelete(item)">刪除</el-button>
         </div>
         <div style="width: 50%; text-align: right">
           <el-select v-model="petInfo" class="m-2" placeholder="選擇寵物" :size="size">
-            <el-option
-              v-for="item in options"
-              :key="item.value"
-              :label="item.label"
-              :value="item.value"
-            />
+            <el-option v-for="item in cars" :key="item.value" :label="item.variety" :value="item.variety" />
           </el-select>
         </div>
         &emsp;
@@ -88,7 +69,7 @@
       <table id="checkout">
         <tr>
           <th style="width: 30%">
-            <div>總計<span>$</span>{{ totalAmount }}</div>
+            <div>總計<span>$&emsp;</span>{{ totalAmount }}</div>
           </th>
           <th style="width: 40%"></th>
           <th>
@@ -98,57 +79,36 @@
       </table>
     </div>
   </footer>
-
-  <div v-if="view === 2">
-    <div class="item_header fixed">
-      <el-button @click="cview(1)">回購物車</el-button>
-    </div>
-    <Checkout />
-    <div class="item_header checkout">
-      <div>總計<span>$</span>{{ totalAmount }}</div>
-      <el-button>付款</el-button>
-    </div>
-  </div>
 </template>
 
-<script lang="ts" setup>
+<script  setup>
 import CarService from '../services/CarService'
 import { ref, computed, onMounted, reactive } from 'vue'
 import { ShoppingTrolley } from '@element-plus/icons-vue'
 import { ElImage } from 'element-plus'
+// import Login from '../views'
 
-let cars: any = []
-
-const getCars = async () => {
-  const response = await CarService.getCars()
-  cars = response.data
+const cars = ref([])
+onMounted(async () => {
+  const response = await CarService.getCars(CarService.unsr['userEmail'])
+  cars.value = response.data
   console.log(cars)
-}
 
-onMounted(() => {
-  getCars()
 })
+
+
 
 const petInfo = ref('')
 
-const options = [
-  {
-    value: 'Option1',
-    label: '寵物A'
-  },
-  {
-    value: 'Option2',
-    label: '寵物B'
-  },
-  {
-    value: 'Option3',
-    label: '寵物C'
-  }
-]
+
 
 //綠界
 const sendPostRequest = async () => {
-  window.location.href = 'http://localhost:3300/4A2Bpet/ecpayCheckout'
+  if (totalAmount.value == '0') {
+    alert("請選擇商品")
+  } else {
+    window.location.href = `http://localhost:3300/4A2Bpet/ecpayCheckout_by_cars?price=${totalAmount.value}`
+  }
 }
 //日期
 const date = ref('')
@@ -171,46 +131,32 @@ const view = ref(1)
 const cview = (ind) => {
   view.value = ind
 }
-//全選
+
 const selectAll = ref(false)
-const toggleSelectAll = () => {
-  const allChecked = itemList.value.every((item) => item.checked)
-  itemList.value.forEach((item) => (item.checked = !allChecked))
+const allChecked = ref(false)
+//全選
+const toggleAll = () => {
+  allChecked.value = !allChecked.value
+  cars.value.forEach((item) => (item.checked = allChecked.value))
 }
 //總計
 const totalAmount = computed(() => {
-  return itemList.value.reduce((total, item) => {
+  return cars.value.reduce((total, item) => {
     // 如果商品被選中，才將其價格加入金额
     if (item.checked) {
-      total += parseInt(cars.payment)
+
+      total += parseInt(item.price)
     }
     return total
+
   }, 0)
 })
 
-const itemList = ref([
-  {
-    id: '1',
-    itemName: '洗澡',
-    imgUrl:
-      'https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8=',
-    price: '500',
-    count: '2023/09/02 12:00',
-    checked: false
-  },
-  {
-    id: '2',
-    itemName: '美容',
-    imgUrl:
-      'https://images.unsplash.com/photo-1503342217505-b0a15ec3261c?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1500&q=80',
-    price: '790',
-    checked: false
-  }
-])
+
 //刪除
-const handledelete = (index) => {
-  console.log(this)
-  itemList.value.splice(index, 1)
+const handledelete = (item) => {
+
+  cars.value.splice(item, 1)
 }
 </script>
 
@@ -223,36 +169,44 @@ const handledelete = (index) => {
   font-weight: 600;
   padding-left: 2%;
 }
+
 #customer {
   width: 50%;
   margin-left: 3%;
 }
-#customer tr > td:nth-child(1) {
+
+#customer tr>td:nth-child(1) {
   font-size: 1.5rem;
   width: 30%;
 }
-#customer tr > td:nth-child(2) {
-  font-size: 1.5rem;
-}
-#customer tr > td:nth-child(3) {
+
+#customer tr>td:nth-child(2) {
   font-size: 1.5rem;
 }
 
-#listTitle tr > th:nth-child(1) {
+#customer tr>td:nth-child(3) {
+  font-size: 1.5rem;
+}
+
+#listTitle tr>th:nth-child(1) {
   padding-left: 10px;
   width: 8.7%;
   line-height: 1;
 }
-#listTitle tr > th:nth-child(2) {
+
+#listTitle tr>th:nth-child(2) {
   width: 22%;
 }
-#listTitle tr > th:nth-child(3) {
+
+#listTitle tr>th:nth-child(3) {
   width: 25%;
 }
-#listTitle tr > th:nth-child(4) {
+
+#listTitle tr>th:nth-child(4) {
   width: 15%;
 }
-#listTitle tr > th:nth-child(6) {
+
+#listTitle tr>th:nth-child(6) {
   width: 13%;
 }
 
@@ -265,10 +219,12 @@ div {
   text-align: center;
   justify-content: center;
 }
+
 #checkout {
   width: 80%;
   height: 70px;
 }
+
 .form {
   font-size: 30px;
   margin: 10px auto;
@@ -282,7 +238,7 @@ div .el-button {
 .block {
   display: flex;
 
-  /* min-width: 500px; */
+  min-width: 400px;
 }
 
 .fixed {
@@ -303,7 +259,7 @@ div .el-button {
 }
 
 .item_header div {
-  width: 45%;
+  /* width: 45%; */
   line-height: 30px;
 }
 
@@ -315,7 +271,7 @@ div .el-button {
   margin-top: 20px;
   height: 100px;
   align-items: center;
-  width: 95%;
+  /* width: 100%; */
 }
 
 .item_detail img {
@@ -324,6 +280,7 @@ div .el-button {
   border-radius: 3px;
   float: left;
 }
+
 .item_detail {
   display: flex;
 }

@@ -1,7 +1,5 @@
 package com.ispan.eeit._04_ShoppingCart.model;
 
-import java.io.Serializable;
-import java.sql.Blob;
 import java.sql.Date;
 
 import javax.persistence.Entity;
@@ -9,116 +7,77 @@ import javax.persistence.Id;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="shoppingCart")
-public class Cart implements Serializable{
-	private static final long serialVersionUID = 1L;
+@Table(name = "shoppingCart")
+public class Cart {
+	// private static final long serialVersionUID = 1L;
+
+	// @GeneratedValue(strategy = GenerationType.IDENTITY)
+	// private Integer serial;
 	@Id
-//	@GeneratedValue(strategy = GenerationType.IDENTITY)
-//	private Integer serial;
 	private String shoppingCarId;
-	private String userName;
+	private String userEmail;
 	private String phoneNumber;
-	private Blob serviceImg;
+	private String serviceImg;
 	private String serviceName;
 	private Date servicePeriod;
 	private Integer price;
 	private String variety;
 	private Integer payment;
-	
-	public Cart() {
-		super();
-	}
-
-	public Cart(String shoppingCarId, String userName, String phoneNumber, Blob serviceImg, String serviceName,
-			Date servicePeriod, Integer price, String variety, Integer payment) {
-		super();
-		this.shoppingCarId = shoppingCarId;
-		this.userName = userName;
-		this.phoneNumber = phoneNumber;
-		this.serviceImg = serviceImg;
-		this.serviceName = serviceName;
-		this.servicePeriod = servicePeriod;
-		this.price = price;
-		this.variety = variety;
-		this.payment = payment;
-	}
-
 	public String getShoppingCarId() {
 		return shoppingCarId;
 	}
-
 	public void setShoppingCarId(String shoppingCarId) {
 		this.shoppingCarId = shoppingCarId;
 	}
-
-	public String getUserName() {
-		return userName;
+	public String getUserEmail() {
+		return userEmail;
 	}
-
-	public void setUserName(String userName) {
-		this.userName = userName;
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
 	}
-
 	public String getPhoneNumber() {
 		return phoneNumber;
 	}
-
 	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
-
-	public Blob getServiceImg() {
+	public String getServiceImg() {
 		return serviceImg;
 	}
-
-	public void setServiceImg(Blob serviceImg) {
+	public void setServiceImg(String serviceImg) {
 		this.serviceImg = serviceImg;
 	}
-
 	public String getServiceName() {
 		return serviceName;
 	}
-
 	public void setServiceName(String serviceName) {
 		this.serviceName = serviceName;
 	}
-
 	public Date getServicePeriod() {
 		return servicePeriod;
 	}
-
 	public void setServicePeriod(Date servicePeriod) {
 		this.servicePeriod = servicePeriod;
 	}
-
 	public Integer getPrice() {
 		return price;
 	}
-
 	public void setPrice(Integer price) {
 		this.price = price;
 	}
-
 	public String getVariety() {
 		return variety;
 	}
-
 	public void setVariety(String variety) {
 		this.variety = variety;
 	}
-
 	public Integer getPayment() {
 		return payment;
 	}
-
 	public void setPayment(Integer payment) {
 		this.payment = payment;
 	}
 
-	public static long getSerialversionuid() {
-		return serialVersionUID;
-	}
 	
 
-	
-} 
+}
