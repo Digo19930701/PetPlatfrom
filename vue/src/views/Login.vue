@@ -276,6 +276,22 @@ import firebaseConfig from '../firebaseConfig'
 import { API_URL } from '@/config'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import axios from 'axios'
+import VueRouter from 'vue-router'
+
+
+
+// const routes = [
+//   // 動態段以冒號開始
+//   { path: 'success', name: "success", component: SuccessVue },
+// ]
+// const routes = [
+//   {
+//     path: '/success',
+//     component: SuccessVue,
+//     props: "TEST"
+//   }
+// ]
+
 
 firebaseConfig
 
@@ -344,10 +360,25 @@ const login = () => {
     })
     
     .then((response) => {
-      alert('登入成功');
+      alert(response.data);
+
   
-    window.location.href= response.data; // 替换Spring Boot端口号和路由
-   
+      if (response.data.status === 'success') {
+      
+        console.log(response.data)
+      // router.push({ name: 'user', params: { userId }})
+      // router.push({ path: `/user/${userId}` }) ;
+      
+        }
+    // window.location.href= response.data; // 替换Spring Boot端口号和路由
+    //把資料帶著跳轉新頁面
+    // if (response.data.status === 'success') {
+    //       this.$router.push({ name: 'Success' });      
+    // const router = new VueRouter({
+    //   routes: [ { path: '/vue', component: YourVueComponent, 
+    //   beforeEnter: (to, from, next) => { console.log(to.query.param); next(); } } ] });
+
+
       console.log(response.data)
       console.log(response.data.yyy)
     })

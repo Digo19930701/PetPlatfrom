@@ -1,5 +1,21 @@
 import { createRouter, createWebHistory } from 'vue-router'
 //import SellerHome from '../views/SellerHomeView.vue'
+// import VueRouter from 'vue-router';
+// import Vue from 'vue-router';
+
+// VueRouter.use(VueRouter);
+
+// const routes2 = [
+//   { path: '/login', name: 'Login', component: Login },
+//   { path: '/success', name: 'Success', component: Success, props: true }
+// ];
+
+// const router3 = new VueRouter({
+//   routes
+// });
+
+// export default router;
+
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),

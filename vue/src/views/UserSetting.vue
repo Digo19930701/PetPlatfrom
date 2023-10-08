@@ -124,6 +124,9 @@ import { reactive } from 'vue'
 import UserHeadBar from '../components/UserHeadBar.vue'
 import UserSideBar from '../components/UserSideBar.vue'
 import FootBar from '../components/FootBar.vue'
+import { onMounted } from 'vue';
+import axios from 'axios';
+
 const formLabelWidth = '100px'
 
 const settingForm = reactive({
@@ -169,6 +172,31 @@ const options = Array.from({ length: 22 }).map((_, idx) => ({
   value: `Option ${idx + 1}`,
   label: `${initials[idx % 10]}`
 }))
+
+onMounted(async () => {
+  try {
+    const response = await axios.get('http://localhost:3300/4A2Bpet/Login', {
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
+    // 注意這邊你原先設定錯誤，應該用 response.data 來取得後端傳來的 JSON 數據
+    const data = response.data;
+    if (data && typeof data === 'object') {
+      // 將後端傳來的數據賦值到 settingForm
+      settingForm.account = data.userEmail;
+      settingForm.phone = data.userPhone;
+      settingForm.name = data.userName;
+      settingForm.gender = data.userGender;
+      settingForm.birthday = data.userBirthday;
+      settingForm.id = data.userId;
+      settingForm.addre = data.userAddre;
+    }
+  } catch (error) {
+    console.error('發生錯誤:', error);
+  }
+});
+
 </script>
 <style src="../assets/default.css"></style>
 <style lang="scss">

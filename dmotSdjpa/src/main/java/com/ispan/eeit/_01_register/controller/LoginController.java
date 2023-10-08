@@ -1,5 +1,10 @@
 package com.ispan.eeit._01_register.controller;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -30,8 +35,6 @@ public class LoginController {
 	   @Autowired
 	   EmailService emailService;
 	   
-	   
-	   
 //	   @Autowired
 //	   private RestTemplate restTemplate;
 	    
@@ -39,13 +42,12 @@ public class LoginController {
 	   
 	    @PostMapping("/Login")
 	    @ResponseBody
-		public String Login(@RequestBody User user,Model model ) {
+		public ResponseEntity<User> Login(@RequestBody User user1,Model model) {
 		
-	    	System.out.println("我是登入帳號"+user.getUserEmail());
-	    	System.out.println("我是登入密碼"+user.getUserPassword());
+//	    	System.out.println("我是登入帳號"+user.getUserEmail());
+//	    	System.out.println("我是登入密碼"+user.getUserPassword());
 
-	     System.out.println(userService.LoginService(user));
-	     if(userService.LoginService(user)==true) {
+	     if(userService.LoginService(user1)==true) {
 	    	 
 //	    	 String yyy = user;
 //	    	 String vueAppUrl = "http://localhost:5173/Member"; // 替换成您的Vue.js应用程序的URL
@@ -53,16 +55,18 @@ public class LoginController {
 //	          //将数据添加到Model中
 //	         model.addAttribute("data", yyy);
 //	         emailService.sendForgotPasswordEmail(user);
-	    	 
-	         return "http://localhost:5173";
-	    	 
-	    	 
+	    	 User user = userDao.findUser(user1.getUserEmail());
+//	    	 model.addAttribute("user", user);
+//	    	 return "redirect:/vueIndex";
+	    	 return new ResponseEntity<>(user, HttpStatus.OK); 
 	     }
-	     
-	     return "登入失敗";
+//	     return "null";
+	     return new ResponseEntity<>(user1, HttpStatus.BAD_REQUEST); 
 	   
 	     
-	    }   
+	    }  
+	    
+	    
 }
 	
 	

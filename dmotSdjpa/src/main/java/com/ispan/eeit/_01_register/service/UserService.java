@@ -1,5 +1,7 @@
 package com.ispan.eeit._01_register.service;
 
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,17 +19,17 @@ public class UserService {
 	
 	public boolean LoginService(User user) {
 
-    System.out.println("我是Sever userEmail="+user.getUserEmail());
-    System.out.println("我是Sever password="+user.getUserPassword()); 
-     
      //判斷資料庫帳密是否正確
      //撈資料庫的list 資料
 //     List<User> uerSQLDate = userDao.findAll();
      
      int userBySQLAccount = userDao.countByUserEmail(user.getUserEmail());
      int userBySQLPassword = userDao.countByPassword(user.getUserPassword());
+     
+     
      System.out.println("userBySQLAccount="+userBySQLAccount);
      System.out.println("userBySQLPassword="+userBySQLPassword);
+     
      if(userBySQLAccount>0 && userBySQLPassword>0) {
     	 System.out.println("登入成功!!"); 
     	
@@ -39,8 +41,6 @@ public class UserService {
      
      
  }
-	
-	
 	
 	
 	
