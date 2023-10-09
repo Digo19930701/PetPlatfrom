@@ -16,6 +16,7 @@
 <script setup>
 import HomeHeader from '../components/HomeHeader.vue'
 import Good from '../components/Good.vue'
+// import Good from '../components/goods/Good_05.vue'
 import FootBar from '../components/FootBar.vue'
 import OrderSideBar from '../components/OrderSideBar.vue'
 </script>
