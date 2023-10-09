@@ -17,9 +17,11 @@
         list-type="picture-card"
         :on-preview="handlePictureCardPreview"
         :on-remove="handleRemove"
-        :auto-upload="false"
+        :auto-upload="true"
         :limit="1"
-        :on-exceed="HandleCover"
+        :on-exceed="handleCover"
+        :http-request="uploadFile"
+        accept=".jpg, .jpge, .png"
       >
         <el-icon><Plus /></el-icon>
       </el-upload>
@@ -28,23 +30,25 @@
       </el-dialog>
     </el-form-item>
 
-    <el-form-item label="服務圖片">
+    <!-- <el-form-item label="服務圖片">
       <el-upload
         v-model:file-list="ruleForm.fileList"
         action=""
         list-type="picture-card"
         :on-preview="handlePictureCardPreview"
         :on-remove="handleRemove"
-        :auto-upload="false"
+        :auto-upload="true"
         :limit="4"
-        :on-exceed="HandleService"
+        :on-exceed="handleService"
+        :http-request="uploadFile"
+        accept=".jpg, .jpge, .png"
       >
         <el-icon><Plus /></el-icon>
       </el-upload>
       <el-dialog v-model="dialogVisible" style="text-align: center">
         <img :src="serviceImageUrl" alt="Preview Image" class="imgwd" />
       </el-dialog>
-    </el-form-item>
+    </el-form-item> -->
 
     <el-form-item label="服務名稱" prop="name">
       <el-input
@@ -58,10 +62,10 @@
 
     <el-form-item label="服務類別" prop="category">
       <el-select v-model="ruleForm.category" placeholder="請選擇">
-        <el-option label="美容" value="beauty" />
-        <el-option label="溝通" value="whisperer" />
-        <el-option label="攝影" value="graphy" />
-        <el-option label="保母/訓練" value="nannyTraining" />
+        <el-option label="美容" value="BEAUTY" />
+        <el-option label="溝通" value="WHISPERER" />
+        <el-option label="攝影" value="GRAPHY" />
+        <el-option label="保母/訓練" value="NANNYTRAINING" />
       </el-select>
       <!-- 還沒寫這個邏輯(要寫編輯時disable) -->
       <!-- <el-alert class="alertInf" type="info" show-icon :closable="false">
@@ -136,7 +140,7 @@
         color="#666666"
         plain
         round
-        :disabled="specCounter === 0"
+        :disabled="specCounter === 1"
         style="margin: 16px 0px"
       >
         刪除
@@ -148,7 +152,7 @@
         v-model="ruleForm.servicePeriod"
         :step="30"
         :min="30"
-        :max="300"
+        :max="180"
         step-strictly
       />
       <p>分鐘</p>
@@ -246,12 +250,13 @@ import { reactive, ref } from 'vue'
 import { ElMessage } from 'element-plus'
 import type { FormInstance, FormRules, UploadProps, UploadUserFile } from 'element-plus'
 import { Plus } from '@element-plus/icons-vue'
+import axios from 'axios';
 
 const coverImageUrl = ref('') //封面圖
-const serviceImageUrl = ref('') //服務圖片
+// const serviceImageUrl = ref('') //服務圖片
 const dialogVisible = ref(false)
 
-function HandleCover() {
+function handleCover() {
   ElMessage({
     message: '最多只能上傳1張封面圖！',
     type: 'error',
@@ -259,20 +264,44 @@ function HandleCover() {
     // 偏離上面多少距離，有被其他元件擋住時可以調整顯示的位置
   })
 }
-function HandleService() {
-  ElMessage({
-    message: '最多只能上傳4張服務圖片！',
-    type: 'error',
-    offset: 100
-  })
+// function handleService() {
+//   ElMessage({
+//     message: '最多只能上傳4張服務圖片！',
+//     type: 'error',
+//     offset: 100
+//   })
+// }
+
+const uploadFile = () => {
+  console.log('uploadFile process')
+  var data = new FormData();
+  data.append('image', 'R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
+  
+  console.log('uploadFile start axios')
+  axios
+    .post('https://api.imgur.com/3/image', {
+      headers: { 
+        Authorization: 'Client-ID 3d2b27dec985e0d', 
+      },
+      data : data
+    })
+    .then(function (response) {
+      console.log(JSON.stringify(response.data));
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
 }
+
 
 let specCounter = ref(0)
 const removeDomain = (item: DomainItem) => {
   const index = ruleForm.domains.indexOf(item)
-  if (index !== -1 && specCounter.value > 0) {
+  if (index !== -1 && specCounter.value > 1) {
     ruleForm.domains.splice(index, 1)
-    specCounter.value--
+    specCounter.value = ruleForm.domains.length
+    console.log(specCounter.value)
+    console.log("index.length", ruleForm.domains.length)
   }
 }
 
@@ -284,25 +313,28 @@ const addDomain = () => {
       petType: '',
       price: 100
     })
-    specCounter.value++
+    specCounter.value = ruleForm.domains.length
+    console.log(specCounter.value)
   }
 }
 
 const handleRemove: UploadProps['onRemove'] = (uploadFile, uploadFiles) => {
+  console.log('uploadFile= ', uploadFile)
+  console.log('uploadFiles= ', uploadFiles)
   console.log(uploadFile, uploadFiles)
 }
 
 
 const handlePictureCardPreview: UploadProps['onPreview'] = (uploadFile) => {
   coverImageUrl.value = uploadFile.url!
-  serviceImageUrl.value = uploadFile.url!
+  // serviceImageUrl.value = uploadFile.url!
   dialogVisible.value = true
   console.log('onPreview')
 }
 
 interface RuleForm {
   file: FileList[]
-  fileList: FileList[]
+  // fileList: FileList[]
   name: string
   category: string
   desc: string
@@ -312,7 +344,6 @@ interface RuleForm {
   availDay: string[]
   availTime1: string
   availTime2: string
-  acceptUnit: number
   acceptDay1: number
   acceptDay2: number
 }
@@ -352,7 +383,7 @@ const props = defineProps({
   },
   availTime1: {
     type: String,
-    default: 'Thu Oct 05 2023 09:00:00 GMT+0800 (台北標準時間)'
+    default: 'Thu Oct 05 2023 08:00:00 GMT+0800 (台北標準時間)'
   },
   availTime2: {
     type: String,
@@ -370,9 +401,17 @@ const props = defineProps({
     type: Array<FileList>,
     default: []
   },
-  serviceImage: {
-    type: Array<FileList>,
-    default: []
+  // serviceImage: {
+  //   type: Array<FileList>,
+  //   default: []
+  // },
+  domains: {
+    type: Array<DomainItem>,
+    default:[{key: 1, spec: '所有貓', petType: 'cat', price: 600},{key: 2, spec: '所有狗', petType: 'dog', price: 600},]
+  },
+  availDay:{
+    type: Array<String>,
+    default:['星期五', '星期六', '星期日']
   }
 })
 // const startTime = ref('')
@@ -382,17 +421,16 @@ const ruleFormRef = ref<FormInstance>()
 const ruleForm = reactive<RuleForm>({
   file: props.serviceCover,
   // {key:1, url:'https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8='}
-  fileList: props.serviceImage,
+  // fileList: props.serviceImage,
   name: props.serviceName,
   category: props.category,
   desc: props.serviceDesc,
   servicePeriod: props.servicePeriod,
   upperLimit: props.upperLimit,
-  domains: [{ key: 1, spec: '', petType: '', price: 100 }],
-  availDay: [],
+  domains: props.domains,
+  availDay: props.availDay,
   availTime1: props.availTime1,
   availTime2: props.availTime2,
-  acceptUnit: 30,
   acceptDay1: props.acceptDay1,
   acceptDay2: props.acceptDay2
 })
@@ -471,35 +509,39 @@ const submitForm = async (formEl: FormInstance | undefined) => {
     if (valid) {
       console.log('submit!')
       console.log(`ruleForm.domains.length= ${ruleForm.domains.length}`)
+      var hst = "[";
+      for(var i = 0; i< ruleForm.domains.length; i++){
+        hst+= `{typeId: ${i+1}, `;
+        hst+= `petType: ${ruleForm.domains[i].petType}, `;
+        hst+= `spec: ${ruleForm.domains[i].spec}, `;
+        hst+= `price: ${ruleForm.domains[i].price} }`;
+        if(i< ruleForm.domains.length-1 ){
+          hst+=","
+        }
+      }
+      hst+="]"
+      // console.log(hst);
       console.log(`
         serviceName= ${ruleForm.name},
         category= ${ruleForm.category},
         serviceDesc= ${ruleForm.desc},
         servicePeriod= ${ruleForm.servicePeriod},
         upperLimit= ${ruleForm.upperLimit},
-        availDay= ${ruleForm.availDay},
         availTime1= ${ruleForm.availTime1},
         availTime2= ${ruleForm.availTime2},
-        acceptUnit= ${ruleForm.acceptUnit},
         acceptDay1= ${ruleForm.acceptDay1},
         acceptDay2= ${ruleForm.acceptDay2},
-        serviceCover.key= ${ruleForm.file[0].key},
-        serviceCover.url= ${ruleForm.file[0].url}
+        serviceImage1= ${ruleForm.file[0].url},
+        availDay= ${ruleForm.availDay},
+        hst= ${hst}
         `)
-      for(var i = 0; i< ruleForm.domains.length; i++){
-        console.log(`
-          domains.petType= ${ruleForm.domains[i].petType},
-          domains.spec= ${ruleForm.domains[i].spec},
-          domains.price= ${ruleForm.domains[i].price},
-        `)
-      }
-      for(var i = 0; i< ruleForm.fileList.length; i++){
-        console.log(`
-          serviceImage.key= ${ruleForm.fileList[i].key},
-          serviceImage.url= ${ruleForm.fileList[i].url}
-        `)
-          
-      }
+
+      // for(var i = 0; i< ruleForm.fileList.length; i++){
+      //   console.log(`
+      //     serviceImage.key= ${ruleForm.fileList[i].key},
+      //     serviceImage.url= ${ruleForm.fileList[i].url}
+      //   `)
+      // }
     } else {
       console.log('error submit!', fields)
     }

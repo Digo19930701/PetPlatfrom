@@ -7,7 +7,7 @@
         <header class="title">
           <h2 style="color: #888888; font-weight: bolder">新增/編輯服務</h2>
         </header>
-        <ServiceEdit v-for="service in petServices"
+        <ServiceEdit v-for="service in petServices" 
           :service-name="service.serviceName"
           :category="service.category"
           :service-desc="service.serviceDesc"
@@ -17,13 +17,12 @@
           :service-cover="[{key:1,
                url:service.serviceImage1
               }]"
-          :service-image="[{key:1,
-               url:'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSz8i72PjaXsPYw9qIxwrxxcX8pz4FGLL4eS4SPoyPyOGoQJ-Fd5mclg5hKPNdX8udmbdk&usqp=CAU'
-              }]"
-            
+          v-bind:domain="domainInput"
+          v-bind:avail-time1="availTime1Input"
+          v-bind:avail-time2="availTime2Input"
+          v-bind:service-period="servicePeriod"
+          v-bind:avail-day="availDayInput"
          />
-         <!-- servicePeriod等時間類的、availDay因為型態差異還沒辦法寫進去 -->
-         <!-- 子規格還沒塞進去(用array的方式應該可以成功) -->
       </main>
     </el-container>
   </main>
@@ -38,17 +37,70 @@ import FootBar from '../components/FootBar.vue'
 import { onMounted, ref } from 'vue'
 import Serviece from '../services/Service.js'
 
-const petServices = ref([]);
+const ImgInput = ref([]);
+const domainInput = ref("");
+const availTime1Input = ref("");
+const availTime2Input = ref("");
+const servicePeriod = ref(0);
+const availDayInput = ref([]);
 
+const petServices = ref([]);
 const getServiceById = async () => {
-  console.log('try to get petServices');
+  // console.log('try to get petServices');
   try {
     const response = await Serviece.getServiceById();
     if (response.status === 200) {
       petServices.value.push(response.data);
-      console.log('servicePeriod: ' + petServices.value[0].servicePeriod);
-      console.log('availTime1: ' + petServices.value[0].availTime1);
-      console.log('availTime2: ' + petServices.value[0].availTime2);
+      // console.log('response.data.serviceName: ' + response.data.serviceName);
+      // console.log('petServices.value[0].servicePeriod: ' + petServices.value[0].servicePeriod);
+
+      // if(petServices.value[0].serviceImage2 != null){
+      //   ImgInput.value.push(`{key: 1, url:'${petServices.value[0].serviceImage2}'}`)
+      // }else if(petServices.value[0].serviceImage3 != null){
+      //   ImgInput.value.push(`{key: 1, url:'${petServices.value[0].serviceImage3}'}`)
+      // }else if(petServices.value[0].serviceImage4 != null){
+      //   ImgInput.value.push(`{key: 1, url:'${petServices.value[0].serviceImage4}'}`)
+      // }else if(petServices.value[0].serviceImage5 != null){
+      //   ImgInput.value.push(`{key: 1, url:'${petServices.value[0].serviceImage5}'}`)
+      // }
+      // console.log("ImgInput.value", ImgInput.value)
+
+      var petServicesDomain = "[";
+      for(var i = 0; i< petServices.value[0].hst.length; i++){
+        petServicesDomain += `{key: ${i+1}, spec: '${petServices.value[0].hst[i].spec}', petType: '${petServices.value[0].hst[i].petType}', price: ${petServices.value[0].hst[i].price}},`
+      }
+      petServicesDomain +="]"
+      domainInput.value = petServicesDomain;
+      // console.log("domainInput", domainInput)
+
+      availTime1Input.value = 'Thu Oct 05 2023 '+ petServices.value[0].availTime1 +' GMT+0800 (台北標準時間)';
+      availTime2Input.value = 'Thu Oct 05 2023 '+ petServices.value[0].availTime2 +' GMT+0800 (台北標準時間)';
+      
+      if(petServices.value[0].servicePeriod == "00:30:00"){
+        servicePeriod.value = 30; 
+      }else if(petServices.value[0].servicePeriod == "01:00:00"){
+        servicePeriod.value = 60;
+      }else if(petServices.value[0].servicePeriod == "01:30:00"){
+        servicePeriod.value = 90;
+      }else if(petServices.value[0].servicePeriod == "02:00:00"){
+        servicePeriod.value = 120;
+      }else if(petServices.value[0].servicePeriod == "02:30:00"){
+        servicePeriod.value = 150;
+      }else if(petServices.value[0].servicePeriod == "03:00:00"){
+        servicePeriod.value = 180;
+      }else{
+        servicePeriod.value = 60;
+      }
+      // console.log("servicePeriod.value", servicePeriod.value);
+
+      if(petServices.value[0].monday == true){ availDayInput.value.push('星期一')}
+      if(petServices.value[0].tuesday == true){ availDayInput.value.push('星期二')}
+      if(petServices.value[0].wednesday == true){ availDayInput.value.push('星期三')}
+      if(petServices.value[0].thursday == true){ availDayInput.value.push('星期四')}
+      if(petServices.value[0].friday == true){ availDayInput.value.push('星期五')}
+      if(petServices.value[0].saturday == true){ availDayInput.value.push('星期六')}
+      if(petServices.value[0].sunday == true) {availDayInput.value.push('星期日')}
+      // console.log("availDayInput",availDayInput);
     }
   } catch (error) {
     console.error('Error getting petServices:', error);

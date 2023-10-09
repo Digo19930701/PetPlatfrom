@@ -1,7 +1,7 @@
 import axios from 'axios';
 
 const SO_API_BASE_URL = 'http://localhost:3300/4A2Bpet/ordertest';
-const PETSERVICE_EDIT_RUL = "http://localhost:3300/4A2Bpet/sellers/services/SERVICE1" //先測試SERVICE1
+const PETSERVICE_EDIT_RUL = "http://localhost:3300/4A2Bpet/sellers/serviceTypes/SERVICE" //先測試SERVICE
 
 class SellerOrderService{
 
