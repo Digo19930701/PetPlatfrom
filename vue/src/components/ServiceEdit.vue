@@ -245,6 +245,7 @@
         刪除
       </el-button>
     </el-form-item>
+    <!--   --------------------------------------   -->
 
     <el-form-item label="服務所需時間長" prop="servicePeriod" class="serviceTime">
       <el-input-number
@@ -256,7 +257,6 @@
       />
       <p>分鐘</p>
     </el-form-item>
-    <!--   --------------------------------------   -->
     <el-form-item label="同時段組數上限" prop="upperLimit">
       <el-input-number v-model="ruleForm.upperLimit" :min="1" :max="99" @change="handleChange1" />
       <el-alert class="alertInf" type="info" show-icon :closable="false">

@@ -9,8 +9,8 @@
         <td>客戶資料</td>
         <!-- <td>姓名: {{ cars.userName }}</td>
         <td>電話: {{ cars.phoneNumber }}</td> -->
-        <td>姓名: Digo</td>
-        <td>電話: 0912345678</td>
+        <td>姓名:</td>
+        <td>電話:</td>
       </tr>
     </table>
     <el-divider />
@@ -79,7 +79,7 @@
           <el-button @click="handledelete(index)">刪除</el-button>
         </div>
         <div style="width: 50%; text-align: right">
-          <el-select v-model="petInfo" class="m-2" placeholder="選擇寵物" :size="size">
+          <el-select v-model="petInfo" class="m-2" placeholder="選擇寵物" :size="size" disabled>
             <el-option
               v-for="item in options"
               :key="item.value"
@@ -102,7 +102,7 @@
           </th>
           <th style="width: 40%"></th>
           <th>
-            <el-button @click="sendPostRequest">結帳</el-button>
+            <el-button @click="open">結帳</el-button>
           </th>
         </tr>
       </table>
@@ -125,7 +125,23 @@
 import CarService from '../services/CarService'
 import { ref, computed, onMounted, reactive } from 'vue'
 import { ShoppingTrolley } from '@element-plus/icons-vue'
-import { ElImage } from 'element-plus'
+import { ElImage, ElMessageBox } from 'element-plus'
+import { useRouter } from 'vue-router'
+
+const router = useRouter()
+const open = () => {
+  ElMessageBox.confirm(
+    '註冊成為我們的會員，就可以預約想要的服務~ 按下確認我們將為您跳轉至註冊頁面！',
+    '提醒',
+    {
+      cancelButtonText: '取消',
+      confirmButtonText: '確認',
+      type: 'warning'
+    }
+  ).then(() => {
+    router.push('/login')
+  })
+}
 
 let cars: any = []
 
@@ -145,11 +161,11 @@ const options = [
   {
     value: 'Option1',
     label: '寵物A'
+  },
+  {
+    value: 'Option2',
+    label: '寵物B'
   }
-  // {
-  //   value: 'Option2',
-  //   label: '寵物B'
-  // }
   // {
   //   value: 'Option3',
   //   label: '寵物C'
@@ -227,7 +243,15 @@ const handledelete = (index) => {
 }
 </script>
 
-<style scoped>
+<style>
+.el-message-box__message p {
+  margin: 0;
+  line-height: 30px;
+  font-size: 1rem;
+}
+</style>
+
+<style lang="scss" scoped>
 #title {
   display: flex;
   font-size: 2rem;

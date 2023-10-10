@@ -21,9 +21,19 @@ const router = createRouter({
       component: () => import('../views/MyGood.vue')
     },
     {
+      path: '/good09',
+      name: 'good09',
+      component: () => import('../views/MyGood09.vue')
+    },
+    {
       path: '/shoppingCart',
       name: 'shoppingCart',
       component: () => import('../views/MyShoppingCart.vue')
+    },
+    {
+      path: '/shoppingCartX',
+      name: 'shoppingCartX',
+      component: () => import('../views/MyShoppingCartX.vue')
     },
 
     //商家頁面

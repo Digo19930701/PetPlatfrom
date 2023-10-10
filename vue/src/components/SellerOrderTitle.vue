@@ -4,31 +4,33 @@
       <table style="border-collapse: collapse">
         <tr>
           <td rowspan="2" class="date" style="width: 60px; font-size: 1.5rem">
-            <p>週四</p>
-            <span>10/19</span>
+            <p>{{ week }}</p>
+            <span>{{ date }}</span>
           </td>
           <td rowspan="2" class="orderTime">
-            <div>10:00</div>
+            <div>{{ timeStart }}</div>
             <div justify="center">❙</div>
-            <div>11:00</div>
+            <div>{{ timeEnd }}</div>
           </td>
-          <td class="orderContent"><span class="tag-cloud beauty">美容</span><br /></td>
+          <td class="orderContent">
+            <span class="tag-cloud beauty">{{ productClass }}</span
+            ><br />
+          </td>
           <td>
-            <span>洗澡&SPA</span>
+            <span>{{ serviceName }}</span>
             <!-- <span>{{ serviceName }}</span> -->
           </td>
           <td style="text-align: right; width: 25%">
-            <span class="orderNum" style="font-size: 18px">訂單編號:12asd456q8w4f3</span>
+            <span class="orderNum" style="font-size: 18px">訂單編號: {{ orderNum }}</span>
           </td>
         </tr>
         <tr>
           <td class="orderContent">
-            <span>狗-大型犬</span><br />
-            <!-- <span>{洗澡+基礎美容}</span> -->
+            <span>{{ detail }}</span
+            ><br />
           </td>
           <td>
-            <span>單價 NT$ 2000 </span>
-            <!-- <span>單價 NT$ {{ price }} </span> -->
+            <span>單價 NT$ {{ price }} </span>
           </td>
           <td style="vertical-align: bottom; text-align: right">
             <button @click="handleCollapse" class="tag-cloud button" id="showDetail">
@@ -39,7 +41,18 @@
       </table>
     </el-row>
     <Collapse :when="isOpen" class="collapse">
-      <SellerOrder class="sellerOrder" />
+      <SellerOrder
+        :petName="'Oli'"
+        :pet-gender="'男生'"
+        :user-name="'Digo'"
+        :user-email="'4A2Beeit69@gmail.com'"
+        :phone-number="'0946523571'"
+        :pet-class="'狗'"
+        :pet-variety="'柴犬'"
+        :pet-character="'熱情'"
+        :pet-age="'3'"
+        :timeline1="'2023-10-12'"
+      />
     </Collapse>
   </div>
 </template>
@@ -50,20 +63,30 @@ import { ref, reactive, toRefs } from 'vue'
 import { Collapse } from 'vue-collapsed'
 // import styles from '../assets/seller.css'
 
-const data = reactive({
-  serviceName: '飼主下單的店家服務名稱(限20字)',
-  price: 'xxxx'
+//23asd456q8w4f3
+const props = defineProps({
+  price: String,
+  date: String,
+  timeStart: String,
+  timeEnd: String,
+  productClass: String,
+  orderNum: String,
+  week: String,
+  serviceName: String,
+  detail: String
 })
-
-const { serviceName, price } = toRefs(data)
 
 const orderInf = [
   {
-    date: '2023-10-19',
-    timeStart: '10:00',
-    timeEnd: '11:00',
-    productClass: '美容',
-    orderNum: '23asd456q8w4f3'
+    date: props.date,
+    timeStart: props.timeStart,
+    timeEnd: props.timeEnd,
+    productClass: props.productClass,
+    orderNum: props.orderNum,
+    week: props.week,
+    price: props.price,
+    detail: props.detail,
+    serviceName: props.serviceName
   }
 ]
 const isOpen = ref(false) // Initial value

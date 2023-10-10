@@ -121,20 +121,18 @@ const sellers = [
   {
     // Second seller's data here
     sellerImg:
-      'https://images.pexels.com/photos/2248516/pexels-photo-2248516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    sellerName: '商家2',
-    sellerDescription:
-      '描述商家二的地方，Cute fluffy friends a cat and a dog catch a flying butterfly in a sunnysummer',
+      'https://images.pexels.com/photos/5264088/pexels-photo-5264088.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    sellerName: '遛狗服務',
+    sellerDescription: 'NT$600',
     serviceName: '服務名稱2',
     serviceDescription: '服務描述2'
   },
   {
     // Third seller's data here
     sellerImg:
-      'https://images.pexels.com/photos/1560424/pexels-photo-1560424.jpeg?auto=compress&cs=tinysrgb&w=1600',
-    sellerName: '商家3',
-    sellerDescription:
-      '描述商家3的地方，Cute fluffy friends a cat and a dog catch a flying butterfly in a sunnysummer',
+      'https://images.pexels.com/photos/2194261/pexels-photo-2194261.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    sellerName: '寵物家庭攝影',
+    sellerDescription: 'NT$5999',
     serviceName: '服務名稱3',
     serviceDescription: '服務描述3'
   }

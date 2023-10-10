@@ -29,7 +29,7 @@
               :label="item.title"
               :name="item.name"
             >
-              <el-form label-width="150px">
+              <el-form label-width="150px" v-model="petform">
                 <el-form-item label="上傳寵物頭像">
                   <el-upload
                     action=""
@@ -47,17 +47,12 @@
                     <img :src="petImageUrl" alt="Preview Image" class="imgwd" />
                   </el-dialog>
                 </el-form-item>
-                <el-form-item
-                  label="寵物名"
-                  prop="petName"
-                  :rules="[{ required: true, message: '此為必填欄位' }]"
-                >
+                <el-form-item label="寵物名" :rules="[{ required: true, message: '此為必填欄位' }]">
                   <el-input size="small" v-model="petform.petName"></el-input>
                 </el-form-item>
                 <el-form-item
                   label="性別"
-                  prop="petGender"
-                  :rules="[{ required: true, message: '此為必選欄位', trigger: 'change' }]"
+                  :rules="[{ required: true, message: '此為必選欄位', trigger: 'blur' }]"
                 >
                   <el-select class="m-3" placeholder="Select" v-model="petform.petGender">
                     <el-option
@@ -70,8 +65,7 @@
                 </el-form-item>
                 <el-form-item
                   label="類別"
-                  prop="petClass"
-                  :rules="[{ required: true, message: '此為必選欄位', trigger: 'change' }]"
+                  :rules="[{ required: true, message: '此為必選欄位', trigger: 'blur' }]"
                 >
                   <el-select class="m-2" placeholder="Select" v-model="petform.petClass">
                     <el-option
@@ -82,18 +76,13 @@
                     />
                   </el-select>
                 </el-form-item>
-                <el-form-item
-                  label="品種"
-                  prop="variety"
-                  :rules="[{ required: true, message: '此為必填欄位' }]"
-                >
+                <el-form-item label="品種" :rules="[{ required: true, message: '此為必填欄位' }]">
                   <el-input size="small" v-model="petform.variety"></el-input>
                 </el-form-item>
 
                 <el-form-item
                   label="個性"
-                  prop="personAlity"
-                  :rules="[{ required: true, message: '此為必選欄位', trigger: 'change' }]"
+                  :rules="[{ required: true, message: '此為必選欄位', trigger: 'blur' }]"
                 >
                   <el-select class="m-1" placeholder="Select" v-model="petform.personAlity">
                     <el-option
@@ -106,15 +95,13 @@
                 </el-form-item>
                 <el-form-item
                   label="年紀"
-                  prop="petAge"
-                  :rules="[{ required: true, message: '此為必填欄位' }]"
+                  :rules="[{ required: true, message: '此為必填欄位', trigger: 'blur' }]"
                 >
                   <el-input size="small" v-model="petform.petAge"></el-input>
                 </el-form-item>
                 <el-form-item
                   label="晶片號碼"
-                  prop="petId"
-                  :rules="[{ required: true, message: '此為必填欄位' }]"
+                  :rules="[{ required: true, message: '此為必填欄位', trigger: 'blur' }]"
                 >
                   <el-input size="small" v-model="petform.petId"></el-input>
                 </el-form-item>
@@ -135,11 +122,11 @@
 </template>
 <style src="../assets/default.css"></style>
 <script lang="ts" setup>
-import { ref, watch } from 'vue'
+import { reactive, ref, triggerRef, watch } from 'vue'
 import UserHeadBar from '../components/UserHeadBar.vue'
 import UserSideBar from '../components/UserSideBar.vue'
 import FootBar from '../components/FootBar.vue'
-import { ElNotification } from 'element-plus'
+import { ElNotification, type UploadUserFile } from 'element-plus'
 
 let tabIndex = 2
 const editableTabsValue = ref('1')
@@ -148,15 +135,17 @@ const editableTabs = ref([
     title: '寵物 A',
     name: '1',
     content: 'Tab 1 content'
-  },
-  {
-    title: '寵物 B',
-    name: '2',
-    content: 'Tab 2 content'
   }
 ])
 
-const petform = ref({
+const fileList = ref<UploadUserFile[]>([
+  {
+    name: 'DEMO',
+    url: 'https://images.pexels.com/photos/220938/pexels-photo-220938.jpeg'
+  }
+])
+
+const petform = reactive({
   petName: '',
   variety: '',
   petId: '',
@@ -180,7 +169,7 @@ const confirm = () => {
 const addTab = (targetName: string) => {
   const newTabName = `${++tabIndex}`
   editableTabs.value.push({
-    title: 'New Tab',
+    title: '寵物B',
     name: newTabName,
     content: 'New Tab content'
   })
@@ -206,13 +195,14 @@ const removeTab = (targetName: string) => {
 
 watch(editableTabsValue, async (newQuestion, oldQuestion) => {
   if (newQuestion != oldQuestion) {
-    petform.value.petName = ''
-    petform.value.variety = ''
-    petform.value.petId = ''
-    petform.value.petAge = ''
-    petform.value.personAlity = ''
-    petform.value.petClass = ''
-    petImageUrl.value = ''
+    petform.petName = ''
+    petform.variety = ''
+    petform.petId = ''
+    petform.petAge = ''
+    petform.personAlity = ''
+    petform.petClass = ''
+    petform.petGender = ''
+    fileList.value = []
   }
 })
 

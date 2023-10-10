@@ -2,9 +2,9 @@
   <header><HomeHeader /></header>
   <main>
     <el-container>
-      <main style="width: 2000px">
-        <el-container>
-          <el-main style="width: 100%"><SearchMenu /></el-main>
+      <main style="width: 100%">
+        <el-container class="bodyHeight">
+          <el-main><ShoppingCartX /></el-main>
         </el-container>
       </main>
     </el-container>
@@ -14,8 +14,9 @@
 
 <script setup>
 import HomeHeader from '../components/HomeHeader.vue'
-import SearchMenu from '../components/SearchMenu.vue'
+// import Home from '../components/Home.vue'
 import FootBar from '../components/FootBar.vue'
+import ShoppingCartX from '../components/ShoppingCartX.vue'
 </script>
 
 <style lang="scss" scoped>
@@ -23,6 +24,6 @@ import FootBar from '../components/FootBar.vue'
   background-color: #f8f4da;
 }
 .bodyHeight {
-  height: 100vh;
+  height: 90vh;
 }
 </style>

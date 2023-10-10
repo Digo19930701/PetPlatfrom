@@ -47,10 +47,6 @@
         <el-col v-for="(o, index) in 1" :key="o" :span="5" :offset="index > 0 ? 1 : 0">
           <!-- 都先帶0 不知道為什麼跑不出來QAQ -->
           <el-card :body-style="{ padding: '0px' }">
-            <!-- <img
-                src="https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8="
-                class="image"
-              /> -->
             <el-image class="sellerImg" :src="sellers[0].sellerImg" fit="cover"> </el-image>
             <!-- (i - 1) * 4 + o - 1 -->
             <div style="padding: 14px">
@@ -67,24 +63,127 @@
             </div>
           </el-card>
         </el-col>
-        <!-- <el-col v-for="(seller, index) in 4" :key="seller" :span="5" :offset="index > 0 ? 1 : 0">
-            <el-card :body-style="{ padding: '0px' }">
-              <el-image class="sellerImg" :src="sellers[(i - 1) * 4 + seller - 1].sellerImg">
-              </el-image>
-
-              <div style="padding: 14px">
-                <h3>{{ sellers[(i - 1) * 4 + seller - 1].serviceName }}</h3>
-                <span>
-                  {{ sellers[0].serviceDescription }}
-                </span>
-                <div class="bottom">
-                  <router-link to="/good">
-                    <el-button text class="button">了解更多</el-button>
-                  </router-link>
-                </div>
+        <el-col v-for="(o, index) in 1" :key="o" :span="5" :offset="index > 0 ? 1 : 0">
+          <el-card :body-style="{ padding: '0px' }">
+            <el-image class="sellerImg" :src="sellers[1].sellerImg" fit="cover"> </el-image>
+            <div style="padding: 14px">
+              <h3>{{ sellers[1].serviceName }}</h3>
+              <span>
+                {{ sellers[1].serviceDescription }}
+              </span>
+              <div class="bottom">
+                <router-link to="/good">
+                  <el-button text class="button">了解更多</el-button>
+                </router-link>
               </div>
-            </el-card>
-          </el-col> -->
+            </div>
+          </el-card>
+        </el-col>
+        <el-col v-for="(o, index) in 1" :key="o" :span="5" :offset="index > 0 ? 1 : 0">
+          <el-card :body-style="{ padding: '0px' }">
+            <el-image class="sellerImg" :src="sellers[2].sellerImg" fit="cover"> </el-image>
+            <div style="padding: 14px">
+              <h3>{{ sellers[2].serviceName }}</h3>
+              <span>
+                {{ sellers[2].serviceDescription }}
+              </span>
+              <div class="bottom">
+                <router-link to="/good">
+                  <el-button text class="button">了解更多</el-button>
+                </router-link>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col v-for="(o, index) in 1" :key="o" :span="5" :offset="index > 0 ? 1 : 0">
+          <!-- 都先帶0 不知道為什麼跑不出來QAQ -->
+          <el-card :body-style="{ padding: '0px' }">
+            <el-image class="sellerImg" :src="sellers[3].sellerImg" fit="cover"> </el-image>
+            <!-- (i - 1) * 4 + o - 1 -->
+            <div style="padding: 14px">
+              <!-- <h3>各種選項</h3> -->
+              <h3>{{ sellers[3].serviceName }}</h3>
+              <span>
+                {{ sellers[3].serviceDescription }}
+              </span>
+              <div class="bottom">
+                <router-link to="/good">
+                  <el-button text class="button">了解更多</el-button>
+                </router-link>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+      </el-row>
+
+      <el-row v-for="i in 1" :key="i">
+        <el-col v-for="(o, index) in 1" :key="o" :span="5" :offset="index > 0 ? 1 : 0">
+          <el-card :body-style="{ padding: '0px' }">
+            <el-image class="sellerImg" :src="sellers[5].sellerImg" fit="cover"> </el-image>
+            <div style="padding: 14px">
+              <h3>{{ sellers[5].serviceName }}</h3>
+              <span>
+                {{ sellers[5].serviceDescription }}
+              </span>
+              <div class="bottom">
+                <router-link to="/good">
+                  <el-button text class="button">了解更多</el-button>
+                </router-link>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col v-for="(o, index) in 1" :key="o" :span="5" :offset="index > 0 ? 1 : 0">
+          <!-- 都先帶0 不知道為什麼跑不出來QAQ -->
+          <el-card :body-style="{ padding: '0px' }">
+            <el-image class="sellerImg" :src="sellers[6].sellerImg" fit="cover"> </el-image>
+            <!-- (i - 1) * 4 + o - 1 -->
+            <div style="padding: 14px">
+              <!-- <h3>各種選項</h3> -->
+              <h3>{{ sellers[6].serviceName }}</h3>
+              <span>
+                {{ sellers[6].serviceDescription }}
+              </span>
+              <div class="bottom">
+                <router-link to="/good">
+                  <el-button text class="button">了解更多</el-button>
+                </router-link>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col v-for="(o, index) in 1" :key="o" :span="5" :offset="index > 0 ? 1 : 0">
+          <el-card :body-style="{ padding: '0px' }">
+            <el-image class="sellerImg" :src="sellers[7].sellerImg" fit="cover"> </el-image>
+            <div style="padding: 14px">
+              <h3>{{ sellers[7].serviceName }}</h3>
+              <span>
+                {{ sellers[7].serviceDescription }}
+              </span>
+              <div class="bottom">
+                <router-link to="/good09">
+                  <el-button text class="button">了解更多</el-button>
+                </router-link>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
+        <el-col v-for="(o, index) in 1" :key="o" :span="5" :offset="index > 0 ? 1 : 0">
+          <el-card :body-style="{ padding: '0px' }">
+            <el-image class="sellerImg" :src="sellers[8].sellerImg" fit="cover"> </el-image>
+            <div style="padding: 14px">
+              <h3>{{ sellers[8].serviceName }}</h3>
+              <span>
+                {{ sellers[8].serviceDescription }}
+              </span>
+              <div class="bottom">
+                <router-link to="/good">
+                  <el-button text class="button">了解更多</el-button>
+                </router-link>
+              </div>
+            </div>
+          </el-card>
+        </el-col>
       </el-row>
     </el-space>
   </el-main>
@@ -116,31 +215,64 @@ const sellers = [
   {
     sellerImg:
       'https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8=',
-    sellerName: '商家一',
-    sellerDescription:
-      '描述商家一的地方，Cute fluffy friends a cat and a dog catch a flying butterfly in a sunnysummer',
     serviceName: '洗澡&SPA',
     serviceDescription: 'NT$2000'
   },
   {
-    // Second seller's data here
+    // 02
     sellerImg:
-      'https://images.pexels.com/photos/2248516/pexels-photo-2248516.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    sellerName: '商家2',
-    sellerDescription:
-      '描述商家二的地方，Cute fluffy friends a cat and a dog catch a flying butterfly in a sunnysummer',
-    serviceName: '服務名稱2',
-    serviceDescription: '服務描述2'
+      'https://images.pexels.com/photos/1436139/pexels-photo-1436139.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    serviceName: '寵物洗澡和美容',
+    serviceDescription: 'NT$1000'
   },
   {
-    // Third seller's data here
+    //28
     sellerImg:
-      'https://images.pexels.com/photos/3196887/pexels-photo-3196887.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    sellerName: '商家3',
-    sellerDescription:
-      '描述商家3的地方，Cute fluffy friends a cat and a dog catch a flying butterfly in a sunnysummer',
-    serviceName: '服務名稱3',
-    serviceDescription: '服務描述3'
+      'https://images.pexels.com/photos/2194261/pexels-photo-2194261.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    serviceName: '寵物家庭攝影',
+    serviceDescription: 'NT$5999'
+  },
+  {
+    //29
+    sellerImg:
+      'https://images.pexels.com/photos/1198802/pexels-photo-1198802.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    serviceName: '活動攝影',
+    serviceDescription: 'NT$5999'
+  },
+  {
+    //17
+    sellerImg:
+      'https://images.pexels.com/photos/923360/pexels-photo-923360.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    serviceName: '[Tsugeru]寵物溝通',
+    serviceDescription: 'NT$1500/時'
+  },
+  {
+    //06
+    sellerImg:
+      'https://images.pexels.com/photos/14084426/pexels-photo-14084426.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    serviceName: '特殊護理',
+    serviceDescription: 'NT$2200'
+  },
+  {
+    //33
+    sellerImg:
+      'https://images.pexels.com/photos/18461393/pexels-photo-18461393.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    serviceName: '寵物照顧',
+    serviceDescription: 'NT$1800'
+  },
+  {
+    //09
+    sellerImg:
+      'https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    serviceName: '洗澡/SPA護膚',
+    serviceDescription: 'NT$1500'
+  },
+  {
+    //30
+    sellerImg:
+      'https://images.pexels.com/photos/5264088/pexels-photo-5264088.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    serviceName: '遛狗服務',
+    serviceDescription: 'NT$600'
   }
 ]
 </script>
@@ -148,9 +280,12 @@ const sellers = [
 <style lang="scss" scoped>
 $themeColor: #f7ddba;
 
+.el-row {
+  justify-content: center;
+}
+
 .el-card {
-  width: 400px;
-  height: 400px;
+  margin-right: 20px;
 }
 
 .bn {

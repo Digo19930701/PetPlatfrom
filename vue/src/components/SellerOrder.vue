@@ -9,14 +9,17 @@
       <tr>
         <td rowspan="2" class="side petMain">
           <!-- <img src="../images/cat.JPG" /> -->
-          <img src="https://images.pexels.com/photos/220938/pexels-photo-220938.jpeg" />
+          <img
+            src="https://images.pexels.com/photos/5998708/pexels-photo-5998708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          />
           <p>{{ petName }}</p>
           <p>{{ petGender }}</p>
           <br />
           <button class="tag-cloud button" id="report">檢舉</button>
         </td>
         <td class="orderInf" rowspan="2">
-          <p>飼主: {{ userEmail }}</p>
+          <p>飼主:&nbsp;{{ userName }}</p>
+          <p>帳號:&nbsp;{{ userEmail }}</p>
           <p>電話: {{ phoneNumber }}</p>
           <!-- <p >使用優惠: </p> -->
           <br />
@@ -47,8 +50,8 @@
       <tr style="height: 220px">
         <table id="timeline">
           <tr class="stateColor">
-            <th class="gap onState"></th>
-            <th class="gap"></th>
+            <th class="gap" :style="{ background: State1 }"></th>
+            <th class="gap" :style="{ background: State2 }"></th>
             <th class="gap"></th>
             <th class="gap"></th>
             <th class="gap"></th>
@@ -68,7 +71,7 @@
             <td>{{ timeline5 }}</td>
           </tr>
           <tr>
-            <td><el-button type="primary" plain>接受</el-button></td>
+            <td><el-button type="primary" plain @click="onState">接受</el-button></td>
             <td></td>
             <td><el-button type="primary" plain disabled>已報到</el-button></td>
             <td><el-button type="primary" plain disabled>已完成</el-button></td>
@@ -90,6 +93,34 @@
 <script lang="ts" setup>
 // import SellerOrderTitle from './SellerOrderTitle.vue'
 import { ref, reactive, toRefs } from 'vue'
+const State1 = ref('#ffcb46')
+const State2 = ref('#d9d9d9')
+
+const onState = () => {
+  State1.value = '#d9d9d9'
+  State2.value = '#ffcb46'
+  data.timeline2 = '2023-10-12'
+}
+
+const props = defineProps({
+  timeline1: String, //收到
+  timeline2: String, //接受
+  timeline3: String, //報到
+  timeline4: String, //完成
+  timeline5: String, //撥款
+  petName: String,
+  petGender: String,
+  userEmail: String,
+  phoneNumber: String,
+  petClass: String,
+  petVariety: String, //品種
+  petCharacter: String,
+  petAge: String,
+  serviceName: String,
+  orderMsg: String, //訂單備註
+  price: String,
+  userName: String
+})
 
 const data = reactive({
   orderstate1: '收到訂單',
@@ -97,23 +128,22 @@ const data = reactive({
   orderstate3: '寵物報到',
   orderstate4: '服務完成',
   orderstate5: '撥款完成',
-  timeline1: '2023-10-04', //收到
-  timeline2: '', //接受
-  timeline3: '', //報到
-  timeline4: '', //完成
-  timeline5: '', //撥款
-  petName: 'BoBo',
-  petGender: '男生',
-  userEmail: 'Digo',
-  phoneNumber: '0912345678',
-  petClass: '狗',
-  petVariety: '邊境牧羊犬', //品種
-  petCharacter: '調皮',
-  petAge: '5',
-  serviceName: '',
-  orderMsg: '', //訂單備註
-  price: '',
-  petImage: ''
+  timeline1: props.timeline1, //收到
+  timeline2: props.timeline2, //接受
+  timeline3: props.timeline3, //報到
+  timeline4: props.timeline4, //完成
+  timeline5: props.timeline5, //撥款
+  petName: props.petName,
+  petGender: props.petGender,
+  userEmail: props.userEmail,
+  phoneNumber: props.phoneNumber,
+  petClass: props.petClass,
+  petVariety: props.petVariety, //品種
+  petCharacter: props.petCharacter,
+  petAge: props.petAge,
+  serviceName: props.serviceName,
+  orderMsg: props.orderMsg, //訂單備註
+  userName: props.userName
 })
 
 const {
@@ -135,10 +165,8 @@ const {
   petVariety,
   petCharacter,
   petAge,
-  serviceName,
-  orderMsg,
-  price,
-  petImage
+  userName,
+  orderMsg
 } = toRefs(data)
 /*
 const activeNames = ref(['1'])
@@ -221,9 +249,7 @@ table table > tr:nth-child(2) {
   border-left: 15px solid #fff;
   border-right: 15px solid #fff;
 }
-.onState {
-  background-color: #ffcb46;
-}
+
 .stateColor {
   background-color: #d9d9d9;
   height: 7px;

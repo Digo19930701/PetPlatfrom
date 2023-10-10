@@ -9,7 +9,9 @@
       <tr>
         <td rowspan="2" class="side petMain">
           <!-- <img src="../images/cat.JPG" /> -->
-          <img src="https://images.pexels.com/photos/220938/pexels-photo-220938.jpeg" />
+          <img
+            src="https://images.pexels.com/photos/5998708/pexels-photo-5998708.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
+          />
           <p>{{ petName }}</p>
           <p>{{ petGender }}</p>
           <br />
@@ -83,23 +85,23 @@
 import { ref, reactive, toRefs } from 'vue'
 
 const data = reactive({
-  orderstate1: '收到訂單',
+  orderstate1: '送出訂單',
   orderstate2: '訂單成立',
   orderstate3: '寵物報到',
   orderstate4: '服務完成',
-  timeline1: '2023-10-04', //收到
+  timeline1: '2023-10-12', //收到
   timeline2: '', //接受
   timeline3: '', //報到
   timeline4: '', //完成
   timeline5: '', //撥款
-  petName: 'BoBo',
+  petName: 'Oli',
   petGender: '男生',
   userEmail: 'Digo',
   phoneNumber: '0932075148',
   petClass: '狗',
-  petVariety: '邊境牧羊犬', //品種
-  petCharacter: '調皮',
-  petAge: '5',
+  petVariety: '柴犬', //品種
+  petCharacter: '熱情',
+  petAge: '3',
   serviceName: '',
   orderMsg: '', //訂單備註
   price: '',

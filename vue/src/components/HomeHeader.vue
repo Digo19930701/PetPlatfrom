@@ -38,13 +38,13 @@
             </div>
           </div>
         </li>
-        <li>
+        <!-- <li>
           <router-link to="/studentTest">
             <el-icon><UserFilled /></el-icon>&nbsp;
           </router-link>
-        </li>
+        </li> -->
         <li>
-          <a href="/shoppingCart">
+          <a href="/shoppingCartX">
             <el-icon><ShoppingTrolley /></el-icon>&nbsp;購物車
           </a>
         </li>

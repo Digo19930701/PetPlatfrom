@@ -23,11 +23,11 @@
         </tr>
         <tr>
           <td class="orderContent">
-            <span>狗-大型犬</span><br />
+            <span>狗-中型犬</span><br />
             <!-- <span>{洗澡+基礎美容}</span> -->
           </td>
           <td>
-            <span>單價 NT$ 2000 </span>
+            <span>單價 NT$ 1800 </span>
             <!-- <span>單價 NT$ {{ price }} </span> -->
           </td>
           <td style="vertical-align: bottom; text-align: right">

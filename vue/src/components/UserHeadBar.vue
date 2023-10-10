@@ -6,7 +6,12 @@
         <p>4A2B</p>
       </section>
     </a>
-    <div style="width: 50%"></div>
+    <div style="width: 40%"></div>
+    <div class="logout">
+      <a href="/shoppingCart">
+        <el-icon><ShoppingTrolley /></el-icon>&nbsp;購物車
+      </a>
+    </div>
     <div class="num-title">
       <router-link to="/userHome">
         <el-icon :size="20"><UserFilled /></el-icon>&nbsp;4A2Beeit69會員&nbsp;你好~
@@ -22,7 +27,7 @@
 
 <script lang="ts" setup>
 import { reactive, toRefs } from 'vue'
-import { UserFilled, TurnOff } from '@element-plus/icons-vue'
+import { UserFilled, TurnOff, ShoppingTrolley } from '@element-plus/icons-vue'
 const state = reactive({
   circleUrl: 'https://cube.elemecdn.com/3/7c/3ea6beec64369c2642b92c6726f1epng.png',
   squareUrl: 'https://cube.elemecdn.com/9/c2/f0ee8a3c7c9638a54940382568c9dpng.png',

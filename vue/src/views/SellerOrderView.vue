@@ -11,7 +11,17 @@
         <br />
         <main>
           <div v-if="view === 1">
-            <SellerOrderTitle />
+            <SellerOrderTitle
+              :week="'週四'"
+              :date="'10/19'"
+              :time-start="'10:00'"
+              :time-end="'11:00'"
+              :service-name="'洗澡&SPA'"
+              :price="'1800'"
+              :product-class="'美容'"
+              :order-num="'23asd456q8w4f3'"
+              :detail="'狗 中型犬'"
+            />
             <!-- <SellerOrderTitle /> -->
           </div>
           <div v-if="view === 2">
@@ -25,8 +35,8 @@
   <footer><FootBar /></footer>
 </template>
 
-<script lang="ts" setup>
-// import SellerOrderTitle from  './SellerOrderTitle.vue';
+<script setup>
+//import SellerOrder from './SellerOrder.vue'
 import SellerOrderTitle from '../components/SellerOrderTitle.vue'
 import SellerHeadBar from '../components/SellerHeadBar.vue'
 import SellerSideBar from '../components/SellerSideBar.vue'

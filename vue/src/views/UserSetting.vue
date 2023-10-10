@@ -104,7 +104,7 @@
           <br />
           <el-row class="footbn">
             <span class="dialog-footer">
-              <el-button type="primary" @click="confirm()"><a href="/petinformation">儲存</a></el-button>
+              <el-button type="primary" @click="confirm()">儲存</el-button>
               <el-button type="primary" plain>取消</el-button>
             </span>
           </el-row>
@@ -124,7 +124,9 @@ import { reactive } from 'vue'
 import UserHeadBar from '../components/UserHeadBar.vue'
 import UserSideBar from '../components/UserSideBar.vue'
 import FootBar from '../components/FootBar.vue'
-const formLabelWidth = '100px'
+import { ElMessageBox } from 'element-plus'
+import { useRouter } from 'vue-router'
+const formLabelWidth = '130px'
 
 const settingForm = reactive({
   account: '',
@@ -136,8 +138,16 @@ const settingForm = reactive({
   addre: ''
 })
 
+const router = useRouter()
 const confirm = () => {
   console.log('settingForm', settingForm)
+  ElMessageBox.confirm('儲存成功~ 接著來新增寵物資訊吧！', '提示', {
+    cancelButtonText: '取消',
+    confirmButtonText: '前往新增',
+    type: 'success'
+  }).then(() => {
+    router.push('/petinformation')
+  })
 }
 
 const initials = [
@@ -171,7 +181,7 @@ const options = Array.from({ length: 22 }).map((_, idx) => ({
 }))
 </script>
 <style src="../assets/default.css"></style>
-<style lang="scss">
+<style lang="scss" scoped>
 .setting {
   margin: auto;
   height: 80vh;

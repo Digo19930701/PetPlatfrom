@@ -9,9 +9,9 @@
         <el-row style="justify-content: center">
           <SellerRateTitle
             :rateItem="['本月待辦訂單', '本月取消訂單', '本月過去訂單']"
-            :rate="[0, 0, 0]"
+            :rate="[1, 0, 9]"
             :note="['今日待辦數', '', '']"
-            :rateSub="[0, ,]"
+            :rateSub="[1, ,]"
           />
 
           <!-- <SellerRateTitle
@@ -28,9 +28,45 @@
         <br />
         <div class="title board">
           <h2 style="color: #888888; font-weight: bolder">近期訂單</h2>
-          <div class="comingOrder"><SellerOrderTitle /></div>
-          <!-- <div class="comingOrder"><SellerOrderTitle /></div>
-          <div class="comingOrder"><SellerOrderTitle /></div> -->
+          <div class="comingOrder">
+            <SellerOrderTitle
+              :week="'週四'"
+              :date="'10/19'"
+              :time-start="'10:00'"
+              :time-end="'11:00'"
+              :service-name="'洗澡&SPA'"
+              :price="'2000'"
+              :product-class="'美容'"
+              :order-num="'23asd456q8w4f3'"
+              :detail="'狗 大型犬'"
+            />
+          </div>
+          <div class="comingOrder">
+            <SellerOrderTitle
+              :week="'週三'"
+              :date="'10/18'"
+              :time-start="'15:00'"
+              :time-end="'16:00'"
+              :service-name="'剪毛'"
+              :price="'1500'"
+              :product-class="'美容'"
+              :order-num="'45sakrfjr2371H4'"
+              :detail="'貓 短毛'"
+            />
+          </div>
+          <div class="comingOrder">
+            <SellerOrderTitle
+              :week="'週二'"
+              :date="'10/17'"
+              :time-start="'13:00'"
+              :time-end="'14:00'"
+              :service-name="'剪指甲'"
+              :price="'800'"
+              :product-class="'美容'"
+              :order-num="'52asd746qdfkD9'"
+              :detail="'狗 小型犬'"
+            />
+          </div>
         </div>
         <br />
         <div class="title board">

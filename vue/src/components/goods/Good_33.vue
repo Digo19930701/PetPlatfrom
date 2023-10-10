@@ -68,10 +68,10 @@
                 <el-divider />
 
                 <h2>規格</h2>
-                <el-button round size="large" class="plan-bn" @click="money(1000)"
+                <el-button round size="large" class="plan-bn" @click="money(1800)"
                   >寵物照顧</el-button
                 >
-                <el-button round size="large" class="plan-bn" @click="money(1800)"
+                <el-button round size="large" class="plan-bn" @click="money(1000)"
                   >寵物娛樂</el-button
                 >
 
