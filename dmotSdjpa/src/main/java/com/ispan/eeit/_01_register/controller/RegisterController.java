@@ -1,5 +1,7 @@
 package com.ispan.eeit._01_register.controller;
 
+import java.util.Base64;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -31,17 +33,21 @@ public class RegisterController {
 		
 
 		 String userEmail = user.getUserEmail();
-		 String userPassword = user.getUserPassword();
+		 String userPassword = user.getUserPassword();//123
+		 String encodedData = Base64.getEncoder().encodeToString(userPassword.getBytes());
+		 user.setUserPassword(encodedData);//FSDFDF取代123
 		 String userPassword2 = user.getUserPassword2();
+		 String encodedData2 = Base64.getEncoder().encodeToString(userPassword2.getBytes());
+		 user.setUserPassword2(encodedData);
 		 String userName = user.getUserName();
-		 
+
 		 System.out.println("我是使用者姓名"+user.getUserName());
 		 System.out.println("我是使用者ID"+user.getUserId());
 		 System.out.println("我是使用者電話"+user.getUserPhone());
 		 
-		 
+		
 	     //密碼驗證
-	   if(userPassword.equals(userPassword2)) {
+	   if(encodedData.equals(encodedData2)) {
 	     userDao.save(user);
 	     return "註冊成功";
 	   							}

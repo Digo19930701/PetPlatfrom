@@ -52,10 +52,11 @@ public class LoginController {
 //	    	 String yyy = user;
 //	    	 String vueAppUrl = "http://localhost:5173/Member"; // 替换成您的Vue.js应用程序的URL
 //	         String responseData = restTemplate.getForObject(vueAppUrl, yyy);      
-//	          //将数据添加到Model中
+	          //将数据添加到Model中
 //	         model.addAttribute("data", yyy);
 //	         emailService.sendForgotPasswordEmail(user);
 	    	 User user = userDao.findUser(user1.getUserEmail());
+	    	
 //	    	 model.addAttribute("user", user);
 //	    	 return "redirect:/vueIndex";
 	    	 return new ResponseEntity<>(user, HttpStatus.OK); 

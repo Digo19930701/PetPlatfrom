@@ -132,6 +132,7 @@
               autocomplete="off"
               type="register"
               placeholder="身分證"
+              show-password
             />
           </el-form-item>
         </el-form>
@@ -140,7 +141,12 @@
             <el-button type="primary" @click="registerout"> 註冊</el-button>
             <el-button @click="dialogFormVisible = false">取消</el-button>
           </span>
+         
         </template>
+        <GoogleReCaptchaV2/>
+        <el-button @click="test" style="width: 178px; height: 60px">
+            <img src="../images/googleLogin.png" />
+          </el-button>
       </el-dialog>
 
       <el-dialog v-model="verifyEmail" title="輸入信箱">
@@ -277,7 +283,7 @@ import { API_URL } from '@/config'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import axios from 'axios'
 import VueRouter from 'vue-router'
-
+import GoogleReCaptchaV2 from '../components/GoogleReCaptchaV2.vue'
 
 
 // const routes = [
@@ -333,20 +339,21 @@ async function test() {
 
     //使用 window.location.reload() 重新載入頁面。
     // window.location.reload();
-    alert('登入成功')
-    router.push('/')
+    alert('註冊成功')
+    router.push('/userSetting')
   } catch (error) {
     console.log(error.response)
     alert('發生了一些錯誤，請聯絡管理員!')
     window.location.reload()
   }
 }
+const petServices = ref([]);
 
 const login = () => {
   const userEmail = loginForm.userEmail
   const password = loginForm.password
 
-  console.log(`account=${userEmail}`, `password=${password}`, 1, 2, 3)
+  console.log(`account=${userEmail}`, `password=${password}`)
 
   const user = {
     userEmail: userEmail,
@@ -360,17 +367,39 @@ const login = () => {
     })
     
     .then((response) => {
-      alert(response.data);
+      alert("登入成功!!");
 
-  
-      if (response.data.status === 'success') {
+      console.log(response.data)
+      // router.push({ 
+      //   name: 'userSetting', 
+      //   // params: { dataList: response.data ? response.data : {} }
+      //   // name: 'userSetting', 
+        // params: {dataList: response.data}
+      // });
+
       
-        console.log(response.data)
+
+
+    })
+    .catch((error) => {
+		alert(error)
+      console.error(error)
+    })
+}
+
+
+
+
+
+
+        // this.user = response.data;
+        // this.$router.replace({ path: "/Index" });
       // router.push({ name: 'user', params: { userId }})
       // router.push({ path: `/user/${userId}` }) ;
-      
-        }
-    // window.location.href= response.data; // 替换Spring Boot端口号和路由
+
+      // window.location.href= response.data; // 替换Spring Boot端口号和路由
+
+    
     //把資料帶著跳轉新頁面
     // if (response.data.status === 'success') {
     //       this.$router.push({ name: 'Success' });      
@@ -378,15 +407,6 @@ const login = () => {
     //   routes: [ { path: '/vue', component: YourVueComponent, 
     //   beforeEnter: (to, from, next) => { console.log(to.query.param); next(); } } ] });
 
-
-      console.log(response.data)
-      console.log(response.data.yyy)
-    })
-    .catch((error) => {
-		alert(error)
-      console.error(error)
-    })
-}
 
 const registerout = () => {
   const Email = register.userMail
@@ -454,6 +474,8 @@ axios
       console.error(error)
     })
 }
+
+
 </script>
 
 <style lang="scss">
@@ -511,3 +533,5 @@ axios
 }
 
 </style>
+
+

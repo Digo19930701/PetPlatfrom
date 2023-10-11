@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
+import UserSetting from '@/views/UserSetting.vue'; 
 //import SellerHome from '../views/SellerHomeView.vue'
 // import VueRouter from 'vue-router';
 // import Vue from 'vue-router';
@@ -121,6 +122,7 @@ const router = createRouter({
       component: () => import('../views/UserOrderView.vue')
     },
     {
+      // path: '/userSetting/:dataList',
       path: '/userSetting',
       name: 'userSetting',
       component: () => import('../views/UserSetting.vue')
