@@ -1,12 +1,12 @@
 import axios from 'axios';
 
-const SO_API_BASE_URL = 'http://localhost:3300/4A2Bpet/ordertest';
-const PETSERVICE_EDIT_RUL = "http://localhost:3300/4A2Bpet/sellers/serviceTypes/SERVICE" //先測試SERVICE
+const SELLER_ORDERLIST_URL = 'http://localhost:3300/4A2Bpet/sellers/SELLER1/orderList';  //先測試SELLER1
+const PETSERVICE_EDIT_RUL = `http://localhost:3300/4A2Bpet/sellers/serviceTypes/SERVICE` //先測試SERVICE
 
 class SellerOrderService{
 
     async getSellerOrder(){
-        const res = await axios.get(SO_API_BASE_URL);
+        const res = await axios.get(SELLER_ORDERLIST_URL);
         console.log(res)
         return res;
     }

@@ -12,7 +12,6 @@
         <main>
           <div v-if="view === 1">
             <SellerOrderTitle />
-            <SellerOrderTitle />
           </div>
           <div v-if="view === 2">
             <el-empty :image-size="200" description="無相關訂單" />

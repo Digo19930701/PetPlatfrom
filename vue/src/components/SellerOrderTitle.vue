@@ -1,31 +1,36 @@
 <template>
-  <div>
+  <div v-for="order in orderList[0]">
     <el-row :gutter="20" class="board orderTitle" style="margin: 0px 0px 5px 0px">
       <table style="border-collapse: collapse">
         <tr>
           <td rowspan="2" class="date" style="width: 60px; font-size: 1.5rem">
-            <p>週四</p>
-            <span>10/19</span>
+            <p>{{ week }}</p>
+            <span>{{ date }}</span>
           </td>
           <td rowspan="2" class="orderTime">
-            <div>10:00</div>
+            <div>{{ timeStart }}</div>
             <div justify="center">❙</div>
-            <div>11:00</div>
+            <div>{{ timeEnd }}</div>
           </td>
-          <td class="orderContent"><span class="tag-cloud beauty">美容</span><br /></td>
+          <td class="orderContent">
+            <span class="tag-cloud beauty">{{ productClass }}</span
+            ><br />
+          </td>
           <td>
             <span>{{ serviceName }}</span>
+            <!-- <span>{{ serviceName }}</span> -->
           </td>
           <td style="text-align: right; width: 25%">
-            <span class="orderNum" style="font-size: 18px">訂單編號:{12asd456q8w4f3}</span>
+            <span class="orderNum" style="font-size: 18px">訂單編號: {{ order.orderId }}</span>
           </td>
         </tr>
         <tr>
           <td class="orderContent">
-            <span>{洗澡+基礎美容}</span>
+            <span>{{ detail }}</span
+            ><br />
           </td>
           <td>
-            <span>單價 NT$ {{ price }} </span>
+            <span>單價 NT$ {{ order.price }} </span>
           </td>
           <td style="vertical-align: bottom; text-align: right">
             <button @click="handleCollapse" class="tag-cloud button" id="showDetail">
@@ -36,38 +41,136 @@
       </table>
     </el-row>
     <Collapse :when="isOpen" class="collapse">
-      <SellerOrder class="sellerOrder" />
+      <SellerOrder 
+        :petName="'Oli'"
+        :pet-gender="'男生'"
+        :user-name="order.userName"
+        :user-email="'4A2Beeit69@gmail.com'"
+        :phone-number="'0946523571'"
+        :pet-class="'狗'"
+        :pet-variety="'柴犬'"
+        :pet-character="'熱情'"
+        :pet-age="'3'"
+        :timeline1="'2023-10-12'"
+        :order-msg="'討厭剪指甲'"
+      />
     </Collapse>
   </div>
 </template>
 
 <script setup>
 import SellerOrder from './SellerOrder.vue'
-import { ref, reactive, toRefs } from 'vue'
+import { ref, reactive, toRefs, onMounted } from 'vue'
 import { Collapse } from 'vue-collapsed'
-// import styles from '../assets/seller.css'
+import Serviece from '../services/Service.js'
 
-const data = reactive({
-  serviceName: '飼主下單的店家服務名稱(限20字)',
-  price: 'xxxx'
+const props = defineProps({
+  price: {
+    type:String,
+    default:'589'
+  },
+  date: {
+    type:String,
+    default:'10/19'
+  },
+  timeStart: {
+    type:String,
+    default:'10:00'
+  },
+  timeEnd: {
+    type:String,
+    default:'11:00'
+  },
+  productClass: {
+    type:String,
+    default:'美容'
+  },
+  orderNum: {
+    type:String,
+    default:'sldkghwoeihg'
+  },
+  week: {
+    type:String,
+    default:'週四'
+  },
+  serviceName: {
+    type:String,
+    default:'寵物洗澡與基礎美容'
+  },
+  detail: {
+    type:String,
+    default:'狗 大型犬'
+  }
 })
 
-const { serviceName, price } = toRefs(data)
-
-const orderInf = [
-  {
-    date: '2023-10-19',
-    timeStart: '10:00',
-    timeEnd: '11:00',
-    productClass: '美容',
-    orderNum: '23asd456q8w4f3'
-  }
-]
+// const orderInf = [
+//   {
+//     date: props.date,
+//     timeStart: props.timeStart,
+//     timeEnd: props.timeEnd,
+//     productClass: props.productClass,
+//     orderNum: props.orderNum,
+//     week: props.week,
+//     price: props.price,
+//     detail: props.detail,
+//     serviceName: props.serviceName
+//   }
+// ]
 const isOpen = ref(false) // Initial value
 
 function handleCollapse() {
   isOpen.value = !isOpen.value
 }
+
+const orderList = ref([]);
+const getSellerOrder = async () => {
+  // console.log('try to get orderList');
+  try {
+    const response = await Serviece.getSellerOrder();
+    if (response.status === 200) {
+      orderList.value.push(response.data);
+      console.log('response.data', response.data);
+      console.log('orderList.value[0]', orderList.value[0]);
+      console.log('orderList.value[0].orderId', orderList.value[0][0].orderId);
+
+
+      // availTime1Input.value = 'Thu Oct 05 2023 '+ orderList.value[0].availTime1 +' GMT+0800 (台北標準時間)';
+      // availTime2Input.value = 'Thu Oct 05 2023 '+ orderList.value[0].availTime2 +' GMT+0800 (台北標準時間)';
+      
+      // if(orderList.value[0].servicePeriod == "00:30:00"){
+      //   servicePeriod.value = 30; 
+      // }else if(orderList.value[0].servicePeriod == "01:00:00"){
+      //   servicePeriod.value = 60;
+      // }else if(orderList.value[0].servicePeriod == "01:30:00"){
+      //   servicePeriod.value = 90;
+      // }else if(orderList.value[0].servicePeriod == "02:00:00"){
+      //   servicePeriod.value = 120;
+      // }else if(orderList.value[0].servicePeriod == "02:30:00"){
+      //   servicePeriod.value = 150;
+      // }else if(orderList.value[0].servicePeriod == "03:00:00"){
+      //   servicePeriod.value = 180;
+      // }else{
+      //   servicePeriod.value = 60;
+      // }
+      // console.log("servicePeriod.value", servicePeriod.value);
+
+      // if(orderList.value[0].monday == true){ availDayInput.value.push('星期一')}
+      // if(orderList.value[0].tuesday == true){ availDayInput.value.push('星期二')}
+      // if(orderList.value[0].wednesday == true){ availDayInput.value.push('星期三')}
+      // if(orderList.value[0].thursday == true){ availDayInput.value.push('星期四')}
+      // if(orderList.value[0].friday == true){ availDayInput.value.push('星期五')}
+      // if(orderList.value[0].saturday == true){ availDayInput.value.push('星期六')}
+      // if(orderList.value[0].sunday == true) {availDayInput.value.push('星期日')}
+      // console.log("availDayInput",availDayInput);
+    }
+  } catch (error) {
+    console.error('Error getting orderList:', error);
+  }
+};
+
+onMounted(() => {
+  getSellerOrder();
+});
 </script>
 
 <style lang="scss" scoped>
