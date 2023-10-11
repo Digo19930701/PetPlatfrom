@@ -19,8 +19,20 @@
               :service-name="'洗澡&SPA'"
               :price="'1800'"
               :product-class="'美容'"
-              :order-num="'23asd456q8w4f3'"
+              :order-num="'2310031713bt0001'"
               :detail="'狗 中型犬'"
+              
+            />
+            <SellerOrderTitle
+              :week="'週四'"
+              :date="'10/19'"
+              :time-start="'10:30'"
+              :time-end="'11:00'"
+              :service-name="'洗澡&SPA'"
+              :price="'2000'"
+              :product-class="'美容'"
+              :order-num="'2310051813bt0001'"
+              :detail="'狗 大型犬'"
             />
             <!-- <SellerOrderTitle /> -->
           </div>

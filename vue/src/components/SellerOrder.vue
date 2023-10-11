@@ -29,7 +29,8 @@
           <p>年紀: {{ petAge }}</p>
         </td>
         <td class="end orderInf">
-          <div class="ownerMsg">備註欄:{{ orderMsg }}</div>
+          <div class="ownerMsg">備註欄:
+            <br>{{ orderMsg }}</div>
         </td>
       </tr>
       <!-- <tr>
@@ -261,6 +262,7 @@ table table > tr:nth-child(2) {
 .petMain img {
   width: 80%;
   margin-top: 5%;
+  max-height: 300px;
 }
 
 #report {
@@ -284,7 +286,7 @@ table table > tr:nth-child(2) {
 }
 
 .ownerMsg {
-  min-height: 130px;
+  min-height: 200px;
   width: 90%;
   margin: 2%;
   padding: 1%;

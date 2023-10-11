@@ -126,7 +126,7 @@
       <div style="display: flex; justify-content: center;">
         <GoogleReCaptchaV2/>
       </div>
-      
+      <br>
         <el-button @click="test" style="width: 178px; height: 60px">
             <img src="../images/googleLogin.png" />
           </el-button>

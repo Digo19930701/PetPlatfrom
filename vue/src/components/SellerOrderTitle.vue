@@ -52,6 +52,7 @@
         :pet-character="'熱情'"
         :pet-age="'3'"
         :timeline1="'2023-10-12'"
+        :order-msg="'討厭剪指甲'"
       />
     </Collapse>
   </div>

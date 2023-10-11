@@ -9,9 +9,9 @@
         <el-row style="justify-content: center">
           <SellerRateTitle
             :rateItem="['本月待辦訂單', '本月取消訂單', '本月過去訂單']"
-            :rate="[1, 0, 9]"
+            :rate="[2, 0, 2]"
             :note="['今日待辦數', '', '']"
-            :rateSub="[1, ,]"
+            :rateSub="[2, ,]"
           />
 
           <!-- <SellerRateTitle
@@ -26,7 +26,7 @@
           <SellerCalender />
         </el-row>
         <br />
-        <div class="title board">
+        <!-- <div class="title board">
           <h2 style="color: #888888; font-weight: bolder">近期訂單</h2>
           <div class="comingOrder">
             <SellerOrderTitle
@@ -67,7 +67,7 @@
               :detail="'狗 小型犬'"
             />
           </div>
-        </div>
+        </div> -->
         <br />
         <div class="title board">
           <h2 style="color: #888888; font-weight: bolder">數據中心</h2>
