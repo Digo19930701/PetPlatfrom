@@ -10,7 +10,7 @@
     <br />
     <div v-if="loginView === 1">
       <el-form :model="loginForm" class="loginForm" label-width="180px">
-        <el-form-item label="帳號" :label-width="formLabelWidth">
+        <el-form-item label="Email" :label-width="formLabelWidth">
           <el-input
             v-model="loginForm.userEmail"
             autocomplete="off"
@@ -116,13 +116,22 @@
           />
         </el-form-item>
       </el-form>
+      
       <template #footer>
         <span class="dialog-footer">
           <el-button type="primary" @click="registerout"> 註冊</el-button>
           <el-button @click="dialogFormVisible = false">取消</el-button>
         </span>
       </template>
-    </el-dialog>
+      <div style="display: flex; justify-content: center;">
+        <GoogleReCaptchaV2/>
+      </div>
+      
+        <el-button @click="test" style="width: 178px; height: 60px">
+            <img src="../images/googleLogin.png" />
+          </el-button>
+      </el-dialog>
+    
 
     <el-dialog v-model="verifyEmail" title="輸入信箱">
       <el-form :model="verifyemail">
@@ -190,6 +199,7 @@
 <script lang="ts" setup>
 import { reactive, ref } from 'vue'
 import { useRouter } from 'vue-router'
+import GoogleReCaptchaV2 from '../components/GoogleReCaptchaV2.vue'
 
 const dialogFormVisible = ref(false)
 const sellerSignup = ref(false)
