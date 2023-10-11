@@ -344,6 +344,7 @@ const registerout = () => {
     })
     .then((response) => {
       alert(response.data)
+      router.push('/userSetting')
       console.log(response.data)
     })
     .catch((error) => {

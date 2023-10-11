@@ -41,12 +41,12 @@
         </el-col>
       </el-row>
       <br />
-      <h2>貓奴看這邊</h2>
+      <h2></h2>
       <br />
       <el-row>
         <el-col v-for="(seller, index) in 3" :key="seller" :span="7" :offset="index > 0 ? 1 : 0">
           <el-card :body-style="{ padding: '0px' }">
-            <el-image class="sellerImg" :src="sellers[seller - 1].sellerImg" fit="cover">
+            <el-image class="sellerImg" :src="seller2[seller-1].sellerImg" fit="cover">
             </el-image>
             <!-- <img
               src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
@@ -54,10 +54,10 @@
             /> -->
             <div style="padding: 14px">
               <!-- <h3>商家</h3> -->
-              <h3>{{ sellers[seller - 1].serviceName }}</h3>
+              <h3>{{ seller2[seller-1].sellerName }}</h3>
               <span>
                 <!-- Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny summer -->
-                {{ sellers[seller - 1].serviceDescription }}
+                {{ seller2[seller-1].sellerDescription }}
               </span>
               <div class="bottom">
                 <router-link to="/good">
@@ -82,10 +82,10 @@
             /> -->
             <div style="padding: 14px">
               <!-- <h3>商家</h3> -->
-              <h3>{{ sellers[seller - 1].serviceName }}</h3>
+              <h3>{{ seller2[seller - 1].serviceName }}</h3>
               <span>
                 <!-- Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny summer -->
-                {{ sellers[seller - 1].serviceDescription }}
+                {{ seller2[seller - 1].serviceDescription }}
               </span>
               <div class="bottom">
                 <router-link to="/good">
@@ -113,8 +113,8 @@ const sellers = [
   {
     sellerImg:
       'https://images.pexels.com/photos/1108099/pexels-photo-1108099.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    sellerName: '洗澡&SPA',
-    sellerDescription: 'NT$2000 ',
+    sellerName: '遛狗服務',
+    sellerDescription: 'NT$600 ',
     serviceName: '服務名稱1',
     serviceDescription: '服務描述1'
   },
@@ -122,8 +122,8 @@ const sellers = [
     // Second seller's data here
     sellerImg:
       'https://images.pexels.com/photos/5264088/pexels-photo-5264088.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
-    sellerName: '遛狗服務',
-    sellerDescription: 'NT$600',
+    sellerName: '寵物照顧',
+    sellerDescription: 'NT$2000',
     serviceName: '服務名稱2',
     serviceDescription: '服務描述2'
   },
@@ -133,6 +133,34 @@ const sellers = [
       'https://images.pexels.com/photos/2194261/pexels-photo-2194261.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
     sellerName: '寵物家庭攝影',
     sellerDescription: 'NT$5999',
+    serviceName: '服務名稱3',
+    serviceDescription: '服務描述3'
+  }
+]
+const seller2 = [
+  {
+    sellerImg:
+      'https://media.istockphoto.com/id/1331301152/photo/photo-in-motion-running-beautiful-golden-retriever-dog-have-a-walk-outdoors-in-the-park.jpg?s=1024x1024&w=is&k=20&c=JZ6x5NMk_sTZwQAs2iR3MUr6JfEmjqszXIBrv2HAOB8=',
+    sellerName: '洗澡&SPA',
+    sellerDescription: 'NT$2000 ',
+    serviceName: '',
+    serviceDescription: ''
+  },
+  {
+    // Second seller's data here
+    sellerImg:
+      'https://images.pexels.com/photos/1436139/pexels-photo-1436139.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    sellerName: '寵物洗澡和美容',
+    sellerDescription: 'NT$1000',
+    serviceName: '服務名稱2',
+    serviceDescription: '服務描述2'
+  },
+  {
+    // Third seller's data here
+    sellerImg:
+      'https://images.pexels.com/photos/20787/pexels-photo.jpg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1',
+    sellerName: '洗澡/SPA護膚',
+    sellerDescription: 'NT$1500',
     serviceName: '服務名稱3',
     serviceDescription: '服務描述3'
   }

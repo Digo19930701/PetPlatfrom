@@ -4,7 +4,7 @@
     <el-container>
       <main style="width: 2000px">
         <el-container>
-          <el-main style="width: 100%"><SearchMenu /></el-main>
+          <el-main style="width: 100%;height: 930px;"><SearchMenu /></el-main>
         </el-container>
       </main>
     </el-container>
@@ -23,6 +23,6 @@ import FootBar from '../components/FootBar.vue'
   background-color: #f8f4da;
 }
 .bodyHeight {
-  height: 100vh;
+  height: 120vh;
 }
 </style>

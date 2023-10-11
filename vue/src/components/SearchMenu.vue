@@ -43,6 +43,7 @@
     </el-aside>
     <el-space direction="vertical" class="demo">
       <br />
+    
       <el-row v-for="i in 1" :key="i">
         <el-col v-for="(o, index) in 1" :key="o" :span="5" :offset="index > 0 ? 1 : 0">
           <!-- 都先帶0 不知道為什麼跑不出來QAQ -->

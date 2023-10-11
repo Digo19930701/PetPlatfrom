@@ -26,7 +26,7 @@
             <el-tab-pane
               v-for="item in editableTabs"
               :key="item.name"
-              :label="item.title"
+              :label="petform.petName"
               :name="item.name"
             >
               <el-form label-width="150px" v-model="petform">
@@ -132,7 +132,7 @@ let tabIndex = 2
 const editableTabsValue = ref('1')
 const editableTabs = ref([
   {
-    title: '寵物 A',
+    title:'petform.petName' ,
     name: '1',
     content: 'Tab 1 content'
   }

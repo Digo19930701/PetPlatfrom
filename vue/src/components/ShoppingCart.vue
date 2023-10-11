@@ -143,8 +143,8 @@ const petInfo = ref('')
 
 const options = [
   {
-    value: 'Option1',
-    label: '寵物A'
+    value: 'Oli',
+    label: 'Oli'
   }
   // {
   //   value: 'Option2',
