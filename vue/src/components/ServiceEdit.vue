@@ -86,7 +86,7 @@
 
     <el-form-item
       v-for="(domain, index) in ruleForm.domains"
-      :key="domain.key"
+      :typeId="domain.typeId"
       :label="'規格' + (index + 1)"
     >
       <el-form-item>
@@ -308,7 +308,8 @@ const removeDomain = (item: DomainItem) => {
 const addDomain = () => {
   if (specCounter.value < 4) {
     ruleForm.domains.push({
-      key: Date.now(),
+      typeId: specCounter.value,
+      serviceId: 'SERVICE', //待處理
       spec: '',
       petType: '',
       price: 100
@@ -411,7 +412,7 @@ const props = defineProps({
     default:[{typeId: 1, serviceId: "SERVICE1", spec: '大型犬', petType: 'dog', price: 2000},{typeId: 2, serviceId: "SERVICE1", spec: '中型犬', petType: 'dog', price: 1800},{typeId: 3, serviceId: "SERVICE1", spec: '小型犬', petType: 'dog', price: 1600}]
   },
   availDay:{
-    type: Array<String>,
+    type: Array<string>,
     default:['星期五', '星期六', '星期日']
   }
 })

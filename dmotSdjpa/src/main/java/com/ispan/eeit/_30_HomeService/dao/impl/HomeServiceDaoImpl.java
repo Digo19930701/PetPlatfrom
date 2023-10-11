@@ -1,5 +1,6 @@
 package com.ispan.eeit._30_HomeService.dao.impl;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -75,8 +76,11 @@ public class HomeServiceDaoImpl implements HomeServiceDao {
 		}
 		log.info("sql= " +sql);
 		List<HomeService> homeServiceList = namedParameterJdbcTemplate.query(sql, map, new HomeServiceRowMapper());
-
-		return homeServiceList;
+		List<HomeService> homeServiceList2 =new ArrayList<>();
+		homeServiceList2.add(homeServiceList.get(0));
+		homeServiceList2.add(homeServiceList.get(1));
+		homeServiceList2.add(homeServiceList.get(2));
+		return homeServiceList2;
 	}
 
 //	@Override

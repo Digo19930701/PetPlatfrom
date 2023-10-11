@@ -16,9 +16,9 @@
       <h2>推薦商家&服務</h2>
       <br />
       <el-row style="width: 100%; min-width: 1024px">
-        <el-col v-for="(seller, index) in 3" :key="seller" :span="7" :offset="index > 0 ? 1 : 0">
+        <el-col v-for="service in serviceData" :span="8" >
           <el-card :body-style="{ padding: '0px' }">
-            <el-image class="sellerImg" :src="sellers[seller - 1].sellerImg" fit="cover">
+            <el-image class="sellerImg" :src="service.serviceImage1" fit="cover">
             </el-image>
             <!-- <img
               src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
@@ -26,10 +26,11 @@
             /> -->
             <div style="padding: 14px">
               <!-- <h3>商家</h3> -->
-              <h3>{{ sellers[seller - 1].sellerName }}</h3>
+              <h3>{{ service.serviceName }}</h3>
               <span>
                 <!-- Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny summer -->
-                {{ sellers[seller - 1].sellerDescription }}
+                {{ service.availTime1 }} ~ {{ service.availTime2 }}
+                <!-- {{ service.category }} -->
               </span>
               <div class="bottom">
                 <router-link to="/good">
@@ -117,6 +118,10 @@ onMounted(async () => {
 
     // 将获取到的数据赋值给 tableData
     serviceData.value = response.data
+    console.log('response.data', response.data)
+    console.log('serviceData', serviceData)
+    console.log('serviceData.value', serviceData.value)
+    console.log('serviceData.value[0]', serviceData.value[0])
   } catch (error) {
     console.error('获取数据时出错：', error)
   }
