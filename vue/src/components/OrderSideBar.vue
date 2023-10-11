@@ -3,6 +3,7 @@
     <br />
     <div style="padding: 14px">
       <p>我們有的服務</p>
+
       <router-link to="/search"><a>洗澡&SPA</a></router-link>
 
       <br />
@@ -12,9 +13,9 @@
       <router-link to="/search"><a>預約寵物攝影</a></router-link>
 
       <br />
-      <router-link to="/search"><a>寵物旅館</a></router-link>
+      <router-link to="/search"><a>寵物照顧</a></router-link>
       <el-divider />
-
+      <router-link to="/search"><a>查看所有服務</a></router-link>
       <!-- <p>我需要保母</p>
       <router-link to="/search"><a>寵物安親</a></router-link>
 
