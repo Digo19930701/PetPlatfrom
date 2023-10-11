@@ -44,7 +44,7 @@ public class OrdersController {
 		}
 	}
 	
-	@GetMapping("/sellers/orderList/{sellerId}")
+	@GetMapping("/sellers/{sellerId}/orderList")
 	public  ResponseEntity<List<Order>> getOrdersBySellerId(@PathVariable String sellerId){	
 		List<Order> orderList = orderService.getOrdersBySellerId(sellerId);
 		if(orderList != null) {

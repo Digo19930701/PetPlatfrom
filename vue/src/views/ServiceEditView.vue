@@ -17,7 +17,7 @@
           :service-cover="[{key:1,
                url:service.serviceImage1
               }]"
-          v-bind:domain="domainInput"
+          :domains="service.hst"
           v-bind:avail-time1="availTime1Input"
           v-bind:avail-time2="availTime2Input"
           v-bind:service-period="servicePeriod"
@@ -37,8 +37,7 @@ import FootBar from '../components/FootBar.vue'
 import { onMounted, ref } from 'vue'
 import Serviece from '../services/Service.js'
 
-const ImgInput = ref([]);
-const domainInput = ref("");
+// const ImgInput = ref([]);
 const availTime1Input = ref("");
 const availTime2Input = ref("");
 const servicePeriod = ref(0);
@@ -51,27 +50,6 @@ const getServiceById = async () => {
     const response = await Serviece.getServiceById();
     if (response.status === 200) {
       petServices.value.push(response.data);
-      // console.log('response.data.serviceName: ' + response.data.serviceName);
-      // console.log('petServices.value[0].servicePeriod: ' + petServices.value[0].servicePeriod);
-
-      // if(petServices.value[0].serviceImage2 != null){
-      //   ImgInput.value.push(`{key: 1, url:'${petServices.value[0].serviceImage2}'}`)
-      // }else if(petServices.value[0].serviceImage3 != null){
-      //   ImgInput.value.push(`{key: 1, url:'${petServices.value[0].serviceImage3}'}`)
-      // }else if(petServices.value[0].serviceImage4 != null){
-      //   ImgInput.value.push(`{key: 1, url:'${petServices.value[0].serviceImage4}'}`)
-      // }else if(petServices.value[0].serviceImage5 != null){
-      //   ImgInput.value.push(`{key: 1, url:'${petServices.value[0].serviceImage5}'}`)
-      // }
-      // console.log("ImgInput.value", ImgInput.value)
-
-      var petServicesDomain = "[";
-      for(var i = 0; i< petServices.value[0].hst.length; i++){
-        petServicesDomain += `{key: ${i+1}, spec: '${petServices.value[0].hst[i].spec}', petType: '${petServices.value[0].hst[i].petType}', price: ${petServices.value[0].hst[i].price}},`
-      }
-      petServicesDomain +="]"
-      domainInput.value = petServicesDomain;
-      // console.log("domainInput", domainInput)
 
       availTime1Input.value = 'Thu Oct 05 2023 '+ petServices.value[0].availTime1 +' GMT+0800 (台北標準時間)';
       availTime2Input.value = 'Thu Oct 05 2023 '+ petServices.value[0].availTime2 +' GMT+0800 (台北標準時間)';
@@ -100,7 +78,7 @@ const getServiceById = async () => {
       if(petServices.value[0].friday == true){ availDayInput.value.push('星期五')}
       if(petServices.value[0].saturday == true){ availDayInput.value.push('星期六')}
       if(petServices.value[0].sunday == true) {availDayInput.value.push('星期日')}
-      // console.log("availDayInput",availDayInput);
+      console.log("availDayInput",availDayInput);
     }
   } catch (error) {
     console.error('Error getting petServices:', error);

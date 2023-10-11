@@ -48,8 +48,10 @@ public class PetServiceDaoImpl implements PetServiceDao{
 
 		log.info("read all PSD of " + serviceId + ": Dao (done).");
 		if(PSD.size() > 0){
+			log.info("read all PSD of " + serviceId + ": Dao (PSD.size() > 0).");
             return PSD.get(0);
         }else{
+        	log.info("read all PSD of " + serviceId + ": Dao (PSD.size() = 0).");
             return null;
         }
 	}

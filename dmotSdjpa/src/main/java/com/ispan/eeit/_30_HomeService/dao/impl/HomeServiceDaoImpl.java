@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate;
 import org.springframework.stereotype.Component;
@@ -15,7 +17,7 @@ import com.ispan.eeit._30_HomeService.rowmapper.HomeServiceRowMapper;
 
 @Component
 public class HomeServiceDaoImpl implements HomeServiceDao {
-
+	Logger log = LoggerFactory.getLogger(HomeServiceDaoImpl.class);
 	@Autowired
 	private NamedParameterJdbcTemplate namedParameterJdbcTemplate;
 
@@ -67,10 +69,11 @@ public class HomeServiceDaoImpl implements HomeServiceDao {
 			map.put("dayofweek", "%" + homeServiceQueryParams.getDayofweek() + "%");
 		}
 		if (homeServiceQueryParams.getAvailTime() != null) {
+			log.info("homeServiceQueryParams.getAvailTime()  " + homeServiceQueryParams.getAvailTime()  + "(start).");
 			sql = sql + " AND availTime1 <= :availTime AND availTime2 >= :availTime"; // 一定要留空白
-			map.put("availTime", "%" + homeServiceQueryParams.getAvailTime() + "%" );
+			map.put("availTime", homeServiceQueryParams.getAvailTime());
 		}
-
+		log.info("sql= " +sql);
 		List<HomeService> homeServiceList = namedParameterJdbcTemplate.query(sql, map, new HomeServiceRowMapper());
 
 		return homeServiceList;

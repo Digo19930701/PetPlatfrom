@@ -349,7 +349,8 @@ interface RuleForm {
 }
 
 interface DomainItem {
-  key: number
+  typeId: number
+  serviceId: string,
   spec: string
   petType: string
   price: number
@@ -407,7 +408,7 @@ const props = defineProps({
   // },
   domains: {
     type: Array<DomainItem>,
-    default:[{key: 1, spec: '所有貓', petType: 'cat', price: 600},{key: 2, spec: '所有狗', petType: 'dog', price: 600},]
+    default:[{typeId: 1, serviceId: "SERVICE1", spec: '大型犬', petType: 'dog', price: 2000},{typeId: 2, serviceId: "SERVICE1", spec: '中型犬', petType: 'dog', price: 1800},{typeId: 3, serviceId: "SERVICE1", spec: '小型犬', petType: 'dog', price: 1600}]
   },
   availDay:{
     type: Array<String>,
