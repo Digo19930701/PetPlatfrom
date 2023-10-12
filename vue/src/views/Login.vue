@@ -1,16 +1,22 @@
 <template>
   <div class="login">
     <div class="title">
-      <img src="../images/login.png" />
+      <img src="../images/logoiconCut.png" style="max-width: 200px; padding-top: 50px" />
+      <p><a class="T4a2b" href="/">4A2B</a></p>
       <div>
-        <el-button text plain size="large" id="chose" @click="choiceView(1)">會員</el-button>
-        <el-button text plain size="large" id="chose" @click="choiceView(2)">商家</el-button>
+        <button class="tag-cloud" id="chose2" style="font-size: large" @click="choiceView(1)">
+          會員
+        </button>
+        <span>&nbsp; &nbsp;</span>
+        <button class="tag-cloud" id="chose" style="font-size: large" @click="choiceView(2)">
+          商家
+        </button>
       </div>
     </div>
     <br />
     <div v-if="loginView === 1">
-      <el-form :model="loginForm" class="loginForm" label-width="180px">
-        <el-form-item label="Email" :label-width="formLabelWidth">
+      <el-form :model="loginForm" class="loginForm">
+        <el-form-item label="帳號" :label-width="formLabelWidth">
           <el-input
             v-model="loginForm.userEmail"
             autocomplete="off"
@@ -20,28 +26,34 @@
         <el-form-item label="密碼" :label-width="formLabelWidth">
           <el-input
             v-model="loginForm.password"
-            type="password"
             autocomplete="off"
             style="height: 50px; width: 500px"
           />
           <el-link
             @click="verifyEmail = true"
-            style="color: red; margin-left: 15px; font-size: 1.3rem"
+            style="color: #cd7b00; margin-left: 15px; font-size: 1.3rem"
           >
             忘記密碼
           </el-link>
         </el-form-item>
       </el-form>
 
-      <div style="width: 98%">
-        <el-button type="primary" @click="login" style="width: 178px; height: 50px">
+      <div style="margin: 10px; width: 98%">
+        <el-button type="warning" @click="login" style="width: 178px; height: 60px">
           會員登入
         </el-button>
       </div>
-      <div style="margin-top: 20px; width: 98%">
-        <el-button @click="dialogFormVisible = true" style="width: 178px; height: 60px"
-          >會員註冊</el-button
+      <div style="margin: 10px; width: 98%">
+        <el-button
+          type="warning"
+          @click="dialogFormVisible = true"
+          style="width: 178px; height: 60px"
         >
+          會員註冊</el-button
+        >
+      </div>
+      <div>OR</div>
+      <div style="margin: 10px; width: 98%">
         <el-button @click="test" style="width: 178px; height: 60px">
           <img src="../images/googleLogin.png" />
         </el-button>
@@ -49,17 +61,16 @@
     </div>
     <div v-if="loginView === 2">
       <el-form :model="loginForm" class="loginForm">
-        <el-form-item label="帳號" :label-width="formLabelWidth" class="item">
+        <el-form-item label="帳號" :label-width="formLabelWidth">
           <el-input
             v-model="loginForm.userEmail"
             autocomplete="off"
             style="height: 50px; width: 500px"
           />
         </el-form-item>
-        <el-form-item label="密碼" :label-width="formLabelWidth" class="item">
+        <el-form-item label="密碼" :label-width="formLabelWidth">
           <el-input
             v-model="loginForm.password"
-            type="password"
             autocomplete="off"
             style="height: 50px; width: 500px"
           />
@@ -72,13 +83,18 @@
         </el-form-item>
       </el-form>
 
-      <div style="width: 98%">
-        <el-button type="primary" @click="login" style="width: 178px; height: 60px">
+      <div style="margin: 10px; width: 98%">
+        <el-button type="warning" plain @click="login" style="width: 178px; height: 60px">
           商家登入
         </el-button>
       </div>
-      <div style="margin-top: 20px; width: 98%">
-        <el-button @click="sellerSignup = true" style="width: 178px; height: 60px">
+      <div style="margin: 10px; width: 98%">
+        <el-button
+          type="warning"
+          plain
+          @click="sellerSignup = true"
+          style="width: 178px; height: 60px"
+        >
           商家註冊
         </el-button>
       </div>
@@ -116,22 +132,16 @@
           />
         </el-form-item>
       </el-form>
-      
       <template #footer>
         <span class="dialog-footer">
           <el-button type="primary" @click="registerout"> 註冊</el-button>
           <el-button @click="dialogFormVisible = false">取消</el-button>
         </span>
       </template>
-      <div style="display: flex; justify-content: center;">
-        <GoogleReCaptchaV2/>
+      <div style="display: flex; justify-content: center">
+        <GoogleReCaptchaV2 />
       </div>
-      <br>
-        <el-button @click="test" style="width: 178px; height: 60px">
-            <img src="../images/googleLogin.png" />
-          </el-button>
-      </el-dialog>
-    
+    </el-dialog>
 
     <el-dialog v-model="verifyEmail" title="輸入信箱">
       <el-form :model="verifyemail">
@@ -249,7 +259,7 @@ const sellersignup = reactive({
 })
 
 import firebaseConfig from '../firebaseConfig'
-//import { API_URL } from '@/config'
+// import { API_URL } from '@/config'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import axios from 'axios'
 
@@ -294,7 +304,7 @@ async function test() {
     //使用 window.location.reload() 重新載入頁面。
     // window.location.reload();
     alert('登入成功')
-    router.push('/userSetting')
+    router.push('/')
   } catch (error) {
     console.log(error.response)
     alert('發生了一些錯誤，請聯絡管理員!')
@@ -354,7 +364,6 @@ const registerout = () => {
     })
     .then((response) => {
       alert(response.data)
-      router.push('/userSetting')
       console.log(response.data)
     })
     .catch((error) => {
@@ -368,13 +377,19 @@ const sellersignupout = () => {
 }
 </script>
 
+<!-- <style src="../assets/seller.css"></style> -->
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 #chose:hover {
-  background: transparent;
+  background: #cd7b00;
   color: white;
 }
 #chose:focus {
-  background: transparent;
+  background: #cd7b00;
+  color: white;
+}
+#chose2 {
+  background: #cd7b00;
   color: white;
 }
 .login {
@@ -385,7 +400,7 @@ const sellersignupout = () => {
   /*顯示  彈性盒子佈局  */
   align-items: center;
   justify-content: center;
-  background-image: url('../images/4a2b_icon.png');
+  // background-image: url('../images/4a2b_icon.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -403,6 +418,7 @@ const sellersignupout = () => {
 .dialog-footer button:first-child {
   margin-right: 10px;
 }
+
 .el-button {
   font-size: 1.5rem;
   font-weight: bold;
@@ -412,11 +428,29 @@ const sellersignupout = () => {
   justify-content: flex-end;
   align-items: flex-start;
   flex: 0 0 auto;
-  font-size: 1.3rem;
+  font-size: 1.5rem;
   color: var(--el-text-color-regular);
   height: 32px;
   line-height: 32px;
   padding: 0 12px 0 0;
   box-sizing: border-box;
+}
+.T4a2b:hover {
+  color: #cd7b00;
+}
+.T4a2b {
+  font-family: 'Varela Round', sans-serif;
+  font-weight: bold;
+  font-size: 4rem;
+  color: black;
+}
+.tag-cloud {
+  display: inline-block;
+  color: #666666;
+  width: 80px;
+  border-radius: 25px;
+  margin-top: 2px;
+  text-align: center;
+  font-size: medium;
 }
 </style>

@@ -30,5 +30,5 @@ import UserSideBar from '../components/UserSideBar.vue'
 import FootBar from '../components/FootBar.vue'
 import UserOrderTitle from '../components/UserOrderTitle.vue'
 </script>
-
+<style src="../assets/seller.css"></style>
 <style lang="scss"></style>
