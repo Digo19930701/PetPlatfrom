@@ -1,10 +1,12 @@
 <template>
   <div class="login">
     <div class="title">
-      <img src="../images/login.png" />
+      <img src="../images/logoiconCut.png" style="max-width: 200px; padding-top: 50px;"/>
+      <a href="/"><p class="T4a2b">4A2B</p></a>
       <div>
-        <el-button text plain size="large" id="chose" @click="choiceView(1)">會員</el-button>
-        <el-button text plain size="large" id="chose" @click="choiceView(2)">商家</el-button>
+          <button class="tag-cloud" id="chose2" style="font-size: large;" @click="choiceView(1)">會員</button>
+          <span>&nbsp; &nbsp;</span>
+          <button class="tag-cloud" id="chose" style="font-size: large;" @click="choiceView(2)">商家</button>
       </div>
     </div>
     <br />
@@ -25,26 +27,30 @@
           />
           <el-link
             @click="verifyEmail = true"
-            style="color: red; margin-left: 15px; font-size: 1.3rem"
+            style="color: #cd7b00; margin-left: 15px; font-size: 1.3rem"
           >
             忘記密碼
           </el-link>
         </el-form-item>
       </el-form>
 
-      <div style="width: 98%">
-        <el-button type="primary" @click="login" style="width: 178px; height: 50px">
+      <div style="margin: 10px; width: 98%">
+        <el-button type="warning" @click="login"
+          style="width: 178px; height: 60px;">
           會員登入
         </el-button>
       </div>
-      <div style="margin-top: 20px; width: 98%">
-        <el-button @click="dialogFormVisible = true" style="width: 178px; height: 60px"
-          >會員註冊</el-button
-        >
+      <div style="margin: 10px; width: 98%">
+        <el-button type="warning" @click="dialogFormVisible = true" style="width: 178px; height: 60px">
+          會員註冊</el-button>
+      </div>
+      <div>OR</div>
+      <div style="margin: 10px; width: 98%">
         <el-button @click="test" style="width: 178px; height: 60px">
           <img src="../images/googleLogin.png" />
         </el-button>
       </div>
+
     </div>
     <div v-if="loginView === 2">
       <el-form :model="loginForm" class="loginForm">
@@ -70,13 +76,14 @@
         </el-form-item>
       </el-form>
 
-      <div style="width: 98%">
-        <el-button type="primary" @click="login" style="width: 178px; height: 60px">
+      <div style="margin: 10px; width: 98%">
+        <el-button type="warning" plain @click="login"
+         style="width: 178px; height: 60px;">
           商家登入
         </el-button>
       </div>
-      <div style="margin-top: 20px; width: 98%">
-        <el-button @click="sellerSignup = true" style="width: 178px; height: 60px">
+      <div style="margin: 10px; width: 98%">
+        <el-button type="warning" plain @click="sellerSignup = true" style="width: 178px; height: 60px">
           商家註冊
         </el-button>
       </div>
@@ -355,13 +362,19 @@ const sellersignupout = () => {
 }
 </script>
 
+<!-- <style src="../assets/seller.css"></style> -->
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 #chose:hover {
-  background: transparent;
+  background: #cd7b00;
   color: white;
 }
 #chose:focus {
-  background: transparent;
+  background: #cd7b00;
+  color: white;
+}
+#chose2{
+  background: #cd7b00;
   color: white;
 }
 .login {
@@ -372,7 +385,7 @@ const sellersignupout = () => {
   /*顯示  彈性盒子佈局  */
   align-items: center;
   justify-content: center;
-  background-image: url('../images/4a2b_icon.png');
+  // background-image: url('../images/4a2b_icon.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -406,5 +419,23 @@ const sellersignupout = () => {
   line-height: 32px;
   padding: 0 12px 0 0;
   box-sizing: border-box;
+}
+.T4a2b:hover {
+  color: #cd7b00;
+}
+.T4a2b{
+  font-family: 'Varela Round', sans-serif;
+  font-weight: bold;
+  font-size: 4rem; 
+  color: black;
+}
+.tag-cloud {
+  display: inline-block;
+  color: #666666;
+  width: 80px;
+  border-radius: 25px;
+  margin-top: 2px;
+  text-align: center;
+  font-size: medium;
 }
 </style>
