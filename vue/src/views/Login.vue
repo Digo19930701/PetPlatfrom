@@ -107,34 +107,7 @@
               show-password
             />
           </el-form-item>
-          <el-form-item label="姓名" :label-width="formLabelWidth2">
-            <el-input
-              v-model="register.userName"
-              label-width="100px"
-              autocomplete="off"
-              type="register"
-              placeholder="姓名"
-            />
-          </el-form-item>
-          <el-form-item  label="電話" :label-width="formLabelWidth2">
-            <el-input
-              v-model="register.userPhone"
-              label-width="100px"
-              autocomplete="off"
-              type="register"
-              placeholder="電話"
-            />
-          </el-form-item>
-          <el-form-item  label="身分證" :label-width="formLabelWidth2">
-            <el-input
-              v-model="register.userId"
-              label-width="100px"
-              autocomplete="off"
-              type="register"
-              placeholder="身分證"
-              show-password
-            />
-          </el-form-item>
+          
         </el-form>
         <template #footer>
           <span class="dialog-footer">
@@ -143,7 +116,10 @@
           </span>
          
         </template>
-        <GoogleReCaptchaV2/>
+        <div style="margin: display: center;">
+          <GoogleReCaptchaV2/>
+        </div>
+        
         <el-button @click="test" style="width: 178px; height: 60px">
             <img src="../images/googleLogin.png" />
           </el-button>

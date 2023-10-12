@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -32,14 +31,15 @@ public class RegisterController {
 	public String Register(@RequestBody User user) {
 		
 
-		 String userEmail = user.getUserEmail();
+//		 String userEmail = user.getUserEmail();
 		 String userPassword = user.getUserPassword();//123
 		 String encodedData = Base64.getEncoder().encodeToString(userPassword.getBytes());
+		 System.out.println("-----------"+userPassword.getBytes());
 		 user.setUserPassword(encodedData);//FSDFDF取代123
 		 String userPassword2 = user.getUserPassword2();
 		 String encodedData2 = Base64.getEncoder().encodeToString(userPassword2.getBytes());
-		 user.setUserPassword2(encodedData);
-		 String userName = user.getUserName();
+		 user.setUserPassword2(encodedData2);
+//		 String userName = user.getUserName();
 
 		 System.out.println("我是使用者姓名"+user.getUserName());
 		 System.out.println("我是使用者ID"+user.getUserId());
@@ -62,10 +62,10 @@ public class RegisterController {
 			public String SellerRegister(@RequestBody Seller seller) {
 			
 		
-			 String sellerEmail = seller.getSellerId();
+//			 String sellerEmail = seller.getSellerId();
 			 String sellerPassword = seller.getSellerPassword();
 			 String sellerPassword2 = seller.getSellerPassword2();
-			 String sellerName = seller.getSellerName();
+//			 String sellerName = seller.getSellerName();
 			 
 			 System.out.println("我是商家Email"+seller.getSellerId());
 			 System.out.println("我是商家密碼"+seller.getSellerPassword());
