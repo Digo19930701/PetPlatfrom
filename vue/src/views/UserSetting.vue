@@ -17,7 +17,7 @@
               <p class="rowtitle">我的帳號</p>
               <br />
               <el-form-item label="帳號" :label-width="formLabelWidth">
-                <p style="color: #888; padding-left: 10px">yoyo820701@gmail.com</p>
+                <p style="color: #888; padding-left: 10px">4A2Beeit69@gmail.com</p>
               </el-form-item>
               <el-form-item label="密碼" :label-width="formLabelWidth">
                 <p style="padding-left: 10px">
