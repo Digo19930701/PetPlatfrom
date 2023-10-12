@@ -157,7 +157,7 @@ const props = defineProps({
   },
   sellerId: {
     type: String,
-    default: 'xxxxxxx@gmail.com'
+    default: ''
   },
   sellerName: {
     type: String,

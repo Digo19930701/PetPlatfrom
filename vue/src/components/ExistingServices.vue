@@ -9,7 +9,7 @@
       <el-row>
         <el-col v-for="(o, index) in 1" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
           <el-text v-model="good_title">
-            <p>{{ good_title }}</p>
+            <!-- <p>{{ good_title }}</p> -->
           </el-text>
           <router-link to="/sellerPreview">
             <el-card :body-style="{ padding: '0px' }">
@@ -19,7 +19,7 @@
               />
               <div style="padding: 14px">
                 <h3>洗澡&SPA</h3>
-                <span> NT$2000 </span>
+                <span> 09:00:00~19:00:00 </span>
               </div>
             </el-card>
           </router-link>
@@ -36,29 +36,24 @@
           <el-text class="text">保母/訓練</el-text>
         </div>
       </el-row>
-      <el-row style="display: flex; justify-content: center">
-        <el-col v-for="(o, index) in 3" :key="o" :span="7" :offset="index > 0 ? 1 : 0">
+      <el-row style="display: flex;">
+        <el-col v-for="service in serviceData" :span="7" >
           <el-text v-model="good_title">
-            <p>{{ good_title }}</p>
+            <p></p>
           </el-text>
           <router-link to="/sellerPreview">
-            <el-card :body-style="{ padding: '0px' }">
-              <img
-                src="https://media.istockphoto.com/id/1349349263/photo/cute-fluffy-friends-a-cat-and-a-dog-catch-a-flying-butterfly-in-a-sunny-summer.jpg?s=1024x1024&w=is&k=20&c=I3tWgnvB2pI4e7Y7TPESjfwsrhWccci8-AzbJvq0kA4="
-                class="image"
-              />
+            <el-card :body-style="{ padding: '0px' }" style="margin: 2%;">
+              <img class="image" :src="service.serviceImage1" style="max-height: 210px;"/>
               <div style="padding: 14px">
-                <h3>商家</h3>
-                <span>
-                  Cute fluffy friends a cat and a dog catch a flying butterfly in a sunny summer
-                </span>
+                <h3>{{ service.serviceName }}</h3>
+                <span>{{ service.availTime1 }}~{{ service.availTime2 }}</span>
               </div>
             </el-card>
           </router-link>
 
           <el-row class="btns">
             <el-button round class="deleteBtn"> 刪除 </el-button>
-            <el-button round class="editBtn"> 編輯 </el-button>
+            <el-button round class="editBtn"> <a href="/serviceEdit">編輯</a>  </el-button>
           </el-row>
         </el-col>
 
@@ -83,8 +78,25 @@
 </template>
 
 <script lang="ts" setup>
-import { ref } from 'vue'
+import { ref, onMounted } from 'vue'
+import Service from '../services/Service';
 const good_title = '洗澡&SPA'
+
+
+const serviceData = ref([])
+onMounted(async () => {
+  try {
+    const response = await Service.getHome()
+
+    serviceData.value = response.data
+    console.log('response.data', response.data)
+    console.log('serviceData', serviceData)
+    console.log('serviceData.value', serviceData.value)
+    console.log('serviceData.value[0]', serviceData.value[0])
+  } catch (error) {
+    console.error('获取数据时出错：', error)
+  }
+})
 </script>
 
 <style lang="scss" scoped>

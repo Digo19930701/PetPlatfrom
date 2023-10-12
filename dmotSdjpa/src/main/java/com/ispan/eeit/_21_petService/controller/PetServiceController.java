@@ -38,8 +38,12 @@ public class PetServiceController {
 	public ResponseEntity<PetServiceDetail> getServicesById(@PathVariable String serviceId) {
 		PetServiceDetail sellerPSD = pss.getPSDByServiceId(serviceId);
 		List<HomeServiceType> hstList = pss.getHstListByServiceId(serviceId);
-		sellerPSD.setHst(hstList);
-		return ResponseEntity.status(HttpStatus.OK).body(sellerPSD);
+		if(sellerPSD != null) {
+			sellerPSD.setHst(hstList);
+			return ResponseEntity.status(HttpStatus.OK).body(sellerPSD);
+		} else {
+			return ResponseEntity.status(HttpStatus.OK).build();			
+		}
 	}
 	
 //	測試需求,實際上不太會用到

@@ -9,29 +9,27 @@
         <el-row style="justify-content: center">
           <SellerRateTitle
             :rateItem="['本月待辦訂單', '本月取消訂單', '本月過去訂單']"
-            :rate="[13, 1, 3]"
+            :rate="[2, 0, 3]"
             :note="['今日待辦數', '', '']"
-            :rateSub="[3, ,]"
+            :rateSub="[0, ,]"
           />
 
-          <SellerRateTitle
+          <!-- <SellerRateTitle
             :rateItem="['平均評價', '總評價數', '本月未回覆評價']"
             :rate="[4.2, 11, 2]"
             :note="['與前月相差', '本月增加', '筆']"
             :rateSub="[0.5, 1, 2]"
-          />
+          /> -->
         </el-row>
         <br />
         <el-row class="calenderBoard board">
           <SellerCalender />
         </el-row>
-        <br />
+        <!-- <br />
         <div class="title board">
           <h2 style="color: #888888; font-weight: bolder">近期訂單</h2>
           <div class="comingOrder"><SellerOrderTitle /></div>
-          <div class="comingOrder"><SellerOrderTitle /></div>
-          <div class="comingOrder"><SellerOrderTitle /></div>
-        </div>
+        </div> -->
         <br />
         <div class="title board">
           <h2 style="color: #888888; font-weight: bolder">數據中心</h2>

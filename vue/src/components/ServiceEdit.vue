@@ -79,7 +79,7 @@
 
     <div class="tag-cloud subtitle">銷售資訊</div>
     <el-form-item label="服務對象與規格" required>
-      <el-button color="#666666" @click="addDomain" plain round :disabled="specCounter === 4"
+      <el-button color="#666666" @click="addDomain" plain round :disabled="specCounter === 5"
         >+ 規格</el-button
       >
     </el-form-item>
@@ -272,8 +272,11 @@ function handleCover() {
 //   })
 // }
 
+
 const uploadFile = () => {
   console.log('uploadFile process')
+  const config = require('config')
+  const IMGUR_API_KEY = config.get('Imgur_API_Key')
   var data = new FormData();
   data.append('image', 'R0lGODlhAQABAIAAAAAAAP///yH5BAEAAAAALAAAAAABAAEAAAIBRAA7');
   
@@ -282,6 +285,7 @@ const uploadFile = () => {
     .post('https://api.imgur.com/3/image', {
       headers: { 
         Authorization: 'Client-ID 3d2b27dec985e0d', 
+        // Authorization: IMGUR_API_KEY, 
       },
       data : data
     })
@@ -306,7 +310,7 @@ const removeDomain = (item: DomainItem) => {
 }
 
 const addDomain = () => {
-  if (specCounter.value < 4) {
+  if (specCounter.value < 5) {
     ruleForm.domains.push({
       typeId: specCounter.value,
       serviceId: 'SERVICE', //待處理
@@ -409,11 +413,13 @@ const props = defineProps({
   // },
   domains: {
     type: Array<DomainItem>,
-    default:[{typeId: 1, serviceId: "SERVICE1", spec: '大型犬', petType: 'dog', price: 2000},{typeId: 2, serviceId: "SERVICE1", spec: '中型犬', petType: 'dog', price: 1800},{typeId: 3, serviceId: "SERVICE1", spec: '小型犬', petType: 'dog', price: 1600}]
+    default: [{typeId: 1, serviceId: "", spec: '', petType: '', price: 100}]
+    // default:[{typeId: 1, serviceId: "SERVICE1", spec: '大型犬', petType: 'dog', price: 2000},{typeId: 2, serviceId: "SERVICE1", spec: '中型犬', petType: 'dog', price: 1800},{typeId: 3, serviceId: "SERVICE1", spec: '小型犬', petType: 'dog', price: 1600}]
   },
   availDay:{
     type: Array<string>,
-    default:['星期五', '星期六', '星期日']
+    default: []
+    // default:['星期五', '星期六', '星期日']
   }
 })
 // const startTime = ref('')

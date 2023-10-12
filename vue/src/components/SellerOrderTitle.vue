@@ -8,9 +8,9 @@
             <span>{{ date }}</span>
           </td>
           <td rowspan="2" class="orderTime">
-            <div>{{ timeStart }}</div>
+            <div>{{ order.orderDateTime1 }}</div>
             <div justify="center">❙</div>
-            <div>{{ timeEnd }}</div>
+            <div>{{ order.orderDateTime2 }}</div>
           </td>
           <td class="orderContent">
             <span class="tag-cloud beauty">{{ productClass }}</span
@@ -26,8 +26,9 @@
         </tr>
         <tr>
           <td class="orderContent">
-            <span>{{ detail }}</span
-            ><br />
+            <span>{{ detail }}</span>
+            <!-- <span>{{ order.userEmail }}</span> -->
+            <br />
           </td>
           <td>
             <span>單價 NT$ {{ order.price }} </span>
@@ -44,15 +45,15 @@
       <SellerOrder 
         :petName="'Oli'"
         :pet-gender="'男生'"
-        :user-name="order.userName"
-        :user-email="'4A2Beeit69@gmail.com'"
+        :user-name="'Digo'"
+        :user-email="order.userEmail"
         :phone-number="'0946523571'"
         :pet-class="'狗'"
         :pet-variety="'柴犬'"
         :pet-character="'熱情'"
         :pet-age="'3'"
-        :timeline1="'2023-10-12'"
-        :order-msg="'討厭剪指甲'"
+        :timeline1="order.timeline1"
+        :order-msg="order.orderMsg"
       />
     </Collapse>
   </div>

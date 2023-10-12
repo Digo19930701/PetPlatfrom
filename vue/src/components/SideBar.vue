@@ -37,7 +37,7 @@
               <router-link to="/servicesExist" class="inner">現有服務</router-link>
             </el-menu-item>
             <el-menu-item index="2-2">
-              <router-link to="/serviceEdit" class="inner">新增/編輯服務</router-link>
+              <router-link to="/serviceEdit" class="inner">新增服務</router-link>
             </el-menu-item>
           </el-sub-menu>
 

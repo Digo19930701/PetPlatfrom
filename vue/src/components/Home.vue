@@ -103,18 +103,15 @@
 
 <script setup>
 import OrderSideBar from '../components/OrderSideBar.vue'
-import HomeService from '../services/HomeService'
-
+import Service from '../services/Service';
 import { ref, onMounted } from 'vue'
-// getHome()
-const serviceData = ref([])
-// const a = 'SERVICE2'
 
+const serviceData = ref([])
 onMounted(async () => {
   try {
     // 调用 HomeService 的 getHome 方法来获取数据
     // const response = await HomeService.getHome('SERVICE1')
-    const response = await HomeService.getHome()
+    const response = await Service.getHome()
 
     // 将获取到的数据赋值给 tableData
     serviceData.value = response.data
