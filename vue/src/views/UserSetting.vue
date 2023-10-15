@@ -164,11 +164,11 @@ const formLabelWidth = '100px'
 
 const settingForm = reactive({
   account: '',
-  phone: '',
-  userName: '',
+  phone: '0932111111',
+  userName: 'Digo',
   gender: '',
-  birthday: '',
-  id: '',
+  birthday: '19930701',
+  id: 'A123456789',
   addre: ''
 })
 

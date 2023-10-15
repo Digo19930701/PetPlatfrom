@@ -3,6 +3,7 @@ package com.ispan.eeit._01_register.controller;
 import java.util.Base64;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.util.DigestUtils;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -29,25 +30,27 @@ public class RegisterController {
 	@PostMapping("/Register")
 	@ResponseBody
 	public String Register(@RequestBody User user) {
-		
-
+		String hash = DigestUtils.md5DigestAsHex(user.getUserPassword().getBytes());
+		String hash2 = DigestUtils.md5DigestAsHex(user.getUserPassword2().getBytes());
+			System.out.println("hash="+hash);
+			System.out.println("hash2="+hash2);
 //		 String userEmail = user.getUserEmail();
-		 String userPassword = user.getUserPassword();//123
-		 String encodedData = Base64.getEncoder().encodeToString(userPassword.getBytes());
-		 System.out.println("-----------"+userPassword.getBytes());
-		 user.setUserPassword(encodedData);//FSDFDF取代123
-		 String userPassword2 = user.getUserPassword2();
-		 String encodedData2 = Base64.getEncoder().encodeToString(userPassword2.getBytes());
-		 user.setUserPassword2(encodedData2);
+//		 String userPassword = user.getUserPassword();//123
+//		 String encodedData = Base64.getEncoder().encodeToString(userPassword.getBytes());
+//		 System.out.println("-----------"+userPassword.getBytes());
+		 user.setUserPassword(hash);//FSDFDF取代123
+//		 String userPassword2 = user.getUserPassword2();
+//		 String encodedData2 = Base64.getEncoder().encodeToString(userPassword2.getBytes());
+		 user.setUserPassword2(hash2);
 //		 String userName = user.getUserName();
 
-		 System.out.println("我是使用者姓名"+user.getUserName());
-		 System.out.println("我是使用者ID"+user.getUserId());
-		 System.out.println("我是使用者電話"+user.getUserPhone());
+//		 System.out.println("我是使用者姓名"+user.getUserName());
+//		 System.out.println("我是使用者ID"+user.getUserId());
+//		 System.out.println("我是使用者電話"+user.getUserPhone());
 		 
 		
 	     //密碼驗證
-	   if(encodedData.equals(encodedData2)) {
+	   if(hash.equals(hash2)) {
 	     userDao.save(user);
 	     return "註冊成功";
 	   							}

@@ -1,199 +1,202 @@
 <template>
   <div class="login">
-      <div class="title">
-        <img src="../images/login.png" />
-        <div>
-          <el-button text plain size="large" id="chose" @click="choiceView(1)">會員</el-button>
-          <el-button text plain size="large" id="chose" @click="choiceView(2)">商家</el-button>
-        </div>
+    <div class="title">
+      <img src="../images/logoiconCut.png" style="max-width: 200px; padding-top: 50px;"/>
+      <a href="/"><p class="T4a2b">4A2B</p></a>
+      <div>
+          <button class="tag-cloud" id="chose2" style="font-size: large;" @click="choiceView(1)">會員</button>
+          <span>&nbsp; &nbsp;</span>
+          <button class="tag-cloud" id="chose" style="font-size: large;" @click="choiceView(2)">商家</button>
       </div>
-      <br />
-      <div v-if="loginView === 1">
-        <el-form :model="loginForm" class="loginForm">
-          <el-form-item label="Email" :label-width="formLabelWidth2">
-            <el-input
-              v-model="loginForm.userEmail"
-              autocomplete="off"
-              style="height: 50px; width: 500px"
-            />
-          </el-form-item>
-          <el-form-item label="密碼" :label-width="formLabelWidth2">
-            <el-input
-              v-model="loginForm.password"
-              autocomplete="off"
-              style="height: 50px; width: 500px"
-            />
-            <el-link @click="verifyEmail = true" style="color: red; margin-left: 15px;font-size: 1.3rem;">
-              忘記密碼
-            </el-link>
-          </el-form-item>
-        </el-form>
-
-        <div style="width: 98%">
-          <el-button type="primary" @click="login" style="width: 178px; height: 50px">
-            會員登入
-          </el-button>
-        </div>
-        <div style="margin-top: 20px; width: 98%">
-          <el-button @click="dialogFormVisible = true" style="width: 178px; height: 60px"
-            >會員註冊</el-button
+    </div>
+    <br />
+    <div v-if="loginView === 1">
+      <el-form :model="loginForm" class="loginForm">
+        <el-form-item label="帳號" :label-width="formLabelWidth">
+          <el-input
+            v-model="loginForm.userEmail"
+            autocomplete="off"
+            style="height: 50px; width: 500px"
+          />
+        </el-form-item>
+        <el-form-item label="密碼" :label-width="formLabelWidth">
+          <el-input
+            v-model="loginForm.password"
+            autocomplete="off"
+            style="height: 50px; width: 500px"
+          />
+          <el-link
+            @click="verifyEmail = true"
+            style="color: #cd7b00; margin-left: 15px; font-size: 1.3rem"
           >
-          <el-button @click="test" style="width: 178px; height: 60px">
-            <img src="../images/googleLogin.png" />
-          </el-button>
-        </div>
-      </div>
-      <div v-if="loginView === 2">
-        <el-form :model="loginForm" class="loginForm">
-          <el-form-item label="帳號" :label-width="formLabelWidth">
-            <el-input
-              v-model="loginForm.userEmail"
-              autocomplete="off"
-              style="height: 50px; width: 500px"
-            />
-          </el-form-item>
-          <el-form-item label="密碼" :label-width="formLabelWidth">
-            <el-input
-              v-model="loginForm.password"
-              autocomplete="off"
-              style="height: 50px; width: 500px"
-            />
-            <el-link @click="verifyEmail = true" style="color: red; margin-left: 15px; font-size: 1.3rem;">
-              忘記密碼
-            </el-link>
-          </el-form-item>
-        </el-form>
+            忘記密碼
+          </el-link>
+        </el-form-item>
+      </el-form>
 
-        <div style="width: 98%">
-          <el-button type="primary" @click="login" style="width: 178px; height: 60px">
-            商家登入
-          </el-button>
-        </div>
-        <div style="margin-top: 20px; width: 98%">
-          <el-button @click="sellerSignup = true" style="width: 178px; height: 60px">
-            商家註冊
-          </el-button>
-        </div>
+      <div style="margin: 10px; width: 98%">
+        <el-button type="warning" @click="login"
+          style="width: 178px; height: 60px;">
+          會員登入
+        </el-button>
+      </div>
+      <div style="margin: 10px; width: 98%">
+        <el-button type="warning" @click="dialogFormVisible = true" style="width: 178px; height: 60px">
+          會員註冊</el-button>
+      </div>
+      <div>OR</div>
+      <div style="margin: 10px; width: 98%">
+        <el-button @click="test" style="width: 178px; height: 60px">
+          <img src="../images/googleLogin.png" />
+        </el-button>
       </div>
 
-      <el-dialog v-model="dialogFormVisible" title="註冊會員">
-        <el-form :model="register">
-          <el-form-item label="信箱" :label-width="formLabelWidth2">
-            <el-input
-              v-model="register.userMail"
-              label-width="100px"
-              autocomplete="off"
-              type="register"
-              placeholder="請輸入信箱"
-            />
-          </el-form-item>
-          <el-form-item label="密碼" :label-width="formLabelWidth2">
-            <el-input
-              v-model="register.userPassword"
-              label-width="100px"
-              autocomplete="off"
-              type="register"
-              placeholder="請輸入密碼"
-              show-password
-            />
-          </el-form-item>
-          <el-form-item label="密碼確認" :label-width="formLabelWidth2">
-            <el-input
-              v-model="register.userPassword2"
-              label-width="100px"
-              autocomplete="off"
-              type="register"
-              placeholder="密碼確認"
-              show-password
-            />
-          </el-form-item>
-          
-        </el-form>
-        <template #footer>
-          <span class="dialog-footer">
-            <el-button type="primary" @click="registerout"> 註冊</el-button>
-            <el-button @click="dialogFormVisible = false">取消</el-button>
-          </span>
-         
-        </template>
-        <div style="margin: display: center;">
+    </div>
+    <div v-if="loginView === 2">
+      <el-form :model="loginForm" class="loginForm">
+        <el-form-item label="帳號" :label-width="formLabelWidth">
+          <el-input
+            v-model="loginForm.userEmail"
+            autocomplete="off"
+            style="height: 50px; width: 500px"
+          />
+        </el-form-item>
+        <el-form-item label="密碼" :label-width="formLabelWidth">
+          <el-input
+            v-model="loginForm.password"
+            autocomplete="off"
+            style="height: 50px; width: 500px"
+          />
+          <el-link
+            @click="verifyEmail = true"
+            style="color: red; margin-left: 15px; font-size: 1.3rem"
+          >
+            忘記密碼
+          </el-link>
+        </el-form-item>
+      </el-form>
+
+      <div style="margin: 10px; width: 98%">
+        <el-button type="warning" plain @click="login"
+         style="width: 178px; height: 60px;">
+          商家登入
+        </el-button>
+      </div>
+      <div style="margin: 10px; width: 98%">
+        <el-button type="warning" plain @click="sellerSignup = true" style="width: 178px; height: 60px">
+          商家註冊
+        </el-button>
+      </div>
+    </div>
+
+    <el-dialog v-model="dialogFormVisible" title="註冊會員">
+      <el-form :model="register">
+        <el-form-item :label-width="formLabelWidth">
+          <el-input
+            v-model="register.userMail"
+            label-width="100px"
+            autocomplete="off"
+            type="register"
+            placeholder="請輸入信箱"
+          />
+        </el-form-item>
+        <el-form-item :label-width="formLabelWidth">
+          <el-input
+            v-model="register.userPassword"
+            label-width="100px"
+            autocomplete="off"
+            type="register"
+            placeholder="請輸入密碼"
+            show-password
+          />
+        </el-form-item>
+        <el-form-item :label-width="formLabelWidth">
+          <el-input
+            v-model="register.userPassword2"
+            label-width="100px"
+            autocomplete="off"
+            type="register"
+            placeholder="密碼確認"
+            show-password
+          />
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button type="primary" @click="registerout"> 註冊</el-button>
+          <el-button @click="dialogFormVisible = false">取消</el-button>
+        </span>
+      </template>
+      <div style="display: flex; justify-content: center;">
           <GoogleReCaptchaV2/>
         </div>
-        
-        <el-button @click="test" style="width: 178px; height: 60px">
+        <br><br>
+        <el-button @click="test" style="width: 300px; height: 70px">
             <img src="../images/googleLogin.png" />
           </el-button>
-      </el-dialog>
 
-      <el-dialog v-model="verifyEmail" title="輸入信箱">
-        <el-form :model="verifyemail">
-          <el-form-item :label-width="formLabelWidth">
-            <el-input
-              v-model="verifyemail.mail"
-              label-width="100px"
-              autocomplete="off"
-              type="forgetPs"
-              placeholder="請輸入信箱"
-            />
-          </el-form-item>
-        </el-form>
+    </el-dialog>
 
-        <template #footer>
-          <span class="dialog-footer">
-            <el-button type="primary" @click=""> 下一步</el-button>
-            <el-button @click="verifyEmail = false">取消</el-button>
-          </span>
-        </template>
-      </el-dialog>
+    <el-dialog v-model="verifyEmail" title="輸入信箱">
+      <el-form :model="verifyemail">
+        <el-form-item :label-width="formLabelWidth">
+          <el-input
+            v-model="verifyemail.mail"
+            label-width="100px"
+            autocomplete="off"
+            type="forgetPs"
+            placeholder="請輸入信箱"
+          />
+        </el-form-item>
+      </el-form>
 
-      <el-dialog v-model="sellerSignup" title="註冊商家">
-        <el-form :model="sellersignup">
-          <el-form-item :label-width="formLabelWidth">
-            <el-input
-              v-model="sellersignup.mail"
-              label-width="100px"
-              autocomplete="off"
-              type="sellersignup"
-              placeholder="請輸入信箱"
-            />
-          </el-form-item>
-          <el-form-item :label-width="formLabelWidth">
-            <el-input
-              v-model="sellersignup.Password"
-              label-width="100px"
-              autocomplete="off"
-              type="sellersignup"
-              placeholder="請輸入密碼"
-              show-password
-            />
-          </el-form-item>
-          <el-form-item :label-width="formLabelWidth">
-            <el-input
-              v-model="sellersignup.Password2"
-              label-width="100px"
-              autocomplete="off"
-              type="sellersignup"
-              placeholder="密碼確認"
-              show-password
-            />
-          </el-form-item>
-          <el-form-item :label-width="formLabelWidth">
-            <el-input
-              v-model="sellersignup.sellerName"
-              label-width="100px"
-              autocomplete="off"
-              type="sellersignup"
-              placeholder="商店名稱"
-            />
-          </el-form-item>
-        </el-form>
-        <template #footer>
-          <span class="dialog-footer">
-            <el-button type="primary" @click="sellersignupout"> 註冊</el-button>
-            <el-button @click="sellerSignup = false">取消</el-button>
-          </span>
-        </template>
-      </el-dialog>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button type="primary" @click=""> 下一步</el-button>
+          <el-button @click="verifyEmail = false">取消</el-button>
+        </span>
+      </template>
+    </el-dialog>
+
+    <el-dialog v-model="sellerSignup" title="註冊商家">
+      <el-form :model="sellersignup">
+        <el-form-item :label-width="formLabelWidth">
+          <el-input
+            v-model="sellersignup.mail"
+            label-width="100px"
+            autocomplete="off"
+            type="sellersignup"
+            placeholder="請輸入信箱"
+          />
+        </el-form-item>
+        <el-form-item :label-width="formLabelWidth">
+          <el-input
+            v-model="sellersignup.Password"
+            label-width="100px"
+            autocomplete="off"
+            type="sellersignup"
+            placeholder="請輸入密碼"
+            show-password
+          />
+        </el-form-item>
+        <el-form-item :label-width="formLabelWidth">
+          <el-input
+            v-model="sellersignup.againPassword"
+            label-width="100px"
+            autocomplete="off"
+            type="sellersignup"
+            placeholder="密碼確認"
+            show-password
+          />
+        </el-form-item>
+      </el-form>
+      <template #footer>
+        <span class="dialog-footer">
+          <el-button type="primary" @click="sellersignupout"> 註冊</el-button>
+          <el-button @click="sellerSignup = false">取消</el-button>
+        </span>
+      </template>
+    </el-dialog>
   </div>
 </template>
 
@@ -212,7 +215,6 @@ const choiceView = (ind) => {
 }
 
 const formLabelWidth = '100px'
-const formLabelWidth2 = '120px'
 
 const form = reactive({
   name: '',
@@ -227,11 +229,7 @@ const form = reactive({
 const register = reactive({
   userMail: '',
   userPassword: '',
-  userPassword2: '',
-  userName:'',
-  userPhone:'',
-  userAdd:'',
-  userId:''
+  userPassword2: ''
 })
 
 const forgetPs = reactive({
@@ -250,30 +248,14 @@ const loginForm = reactive({
 const sellersignup = reactive({
   mail: '',
   Password: '',
-  Password2: '',
-  sellerName:''
+  againPassword: ''
 })
 
 import firebaseConfig from '../firebaseConfig'
-import { API_URL } from '@/config'
+// import { API_URL } from '@/config'
 import { getAuth, signInWithPopup, GoogleAuthProvider } from 'firebase/auth'
 import axios from 'axios'
-import VueRouter from 'vue-router'
 import GoogleReCaptchaV2 from '../components/GoogleReCaptchaV2.vue'
-
-
-// const routes = [
-//   // 動態段以冒號開始
-//   { path: 'success', name: "success", component: SuccessVue },
-// ]
-// const routes = [
-//   {
-//     path: '/success',
-//     component: SuccessVue,
-//     props: "TEST"
-//   }
-// ]
-
 
 firebaseConfig
 
@@ -290,18 +272,20 @@ async function test() {
     // signInWithPopup(auth, googleProvider) 函式：用於彈出 Google 登入視窗，並返回一個結果物件
     const result = await signInWithPopup(auth, googleProvider)
     // uid：使用者的唯一識別碼
-    userUid.value = result.user.uid
+    userUid.value = result.user.email
     // displayName：使用者的顯示名稱
     nickname.value = result.user.displayName
 
     console.log(result)
 
     // 根據需求，可以在登入後的處理中進行相應的操作，例如驗證用戶資訊、儲存登入狀態等。
-    // const response = await axios.post(`${API_URL}googleLogin.php`, {
-    //     userUid: userUid.value,
-    //     nickname: nickname.value,
-    //     accountTypeID: accountTypeID.value
-    // });
+    axios
+    .post(`http://localhost:3300/4A2Bpet/Register`, {
+      userEmail: userUid.value,
+      userPassword: nickname.value,
+      userPassword2: nickname.value,
+        // accountTypeID: accountTypeID.value
+    });
 
     // if (response.data.message === '登入成功') {
     // // alert(response.data.message);
@@ -315,21 +299,20 @@ async function test() {
 
     //使用 window.location.reload() 重新載入頁面。
     // window.location.reload();
-    alert('註冊成功')
-    router.push('/userSetting')
+    alert('登入成功')
+    // router.push('/')
   } catch (error) {
     console.log(error.response)
     alert('發生了一些錯誤，請聯絡管理員!')
     window.location.reload()
   }
 }
-const petServices = ref([]);
 
 const login = () => {
   const userEmail = loginForm.userEmail
   const password = loginForm.password
 
-  console.log(`account=${userEmail}`, `password=${password}`)
+  console.log(`account=${userEmail}`, `password=${password}`, 1, 2, 3)
 
   const user = {
     userEmail: userEmail,
@@ -338,129 +321,71 @@ const login = () => {
   axios
     .post('http://localhost:3300/4A2Bpet/Login', user, {
       headers: {
-    	 'Content-Type': 'application/json'
-		}
+        'Content-Type': 'application/json'
+      }
     })
-    
+
     .then((response) => {
-      alert("登入成功!!");
+      alert('登入成功')
+
+      window.location.href = response.data // 替换Spring Boot端口号和路由
 
       console.log(response.data)
-      // router.push({ 
-      //   name: 'userSetting', 
-      //   // params: { dataList: response.data ? response.data : {} }
-      //   // name: 'userSetting', 
-        // params: {dataList: response.data}
-      // });
-
-      
-
-
+      console.log(response.data.yyy)
     })
     .catch((error) => {
-		alert(error)
+      alert(error)
       console.error(error)
     })
 }
-
-
-
-
-
-
-        // this.user = response.data;
-        // this.$router.replace({ path: "/Index" });
-      // router.push({ name: 'user', params: { userId }})
-      // router.push({ path: `/user/${userId}` }) ;
-
-      // window.location.href= response.data; // 替换Spring Boot端口号和路由
-
-    
-    //把資料帶著跳轉新頁面
-    // if (response.data.status === 'success') {
-    //       this.$router.push({ name: 'Success' });      
-    // const router = new VueRouter({
-    //   routes: [ { path: '/vue', component: YourVueComponent, 
-    //   beforeEnter: (to, from, next) => { console.log(to.query.param); next(); } } ] });
-
 
 const registerout = () => {
   const Email = register.userMail
   const userPassword = register.userPassword
   const userPassword2 = register.userPassword2
-  const userName = register.userName
-  const userPhone = register.userPhone
-  const userId = register.userId
-  
 
-  console.log(`Email=${Email}`,`userPassword=${userPassword}`,`userPassword=${userPassword2}`,`userName=${userName}`)
-  
+  console.log(`Email=${Email}`, `userPassword=${userPassword}`, `userPassword=${userPassword2}`)
+
   const user = {
-    userEmail:Email,
-    userPassword:userPassword,
-    userPassword2:userPassword2,
-    userName:userName,
-    userPhone:userPhone,
-    userId:userId
+    userEmail: Email,
+    userPassword: userPassword,
+    userPassword2: userPassword2
   }
 
-axios
+  axios
     .post('http://localhost:3300/4A2Bpet/Register', user, {
       headers: {
-    	 'Content-Type': 'application/json'
-		}
+        'Content-Type': 'application/json'
+      }
     })
     .then((response) => {
-		  alert(response.data);
+      alert(response.data)
       console.log(response.data)
     })
     .catch((error) => {
-		  alert(error)
+      alert(error)
       console.error(error)
     })
 }
-
 
 const sellersignupout = () => {
-  const Email = sellersignup.mail
-  const sellerPassword = sellersignup.Password
-  const sellerPassword2 = sellersignup.Password2
-  const sellerName = sellersignup.sellerName
-  
-  const user = {
-    sellerId:Email,
-    sellerPassword:sellerPassword,
-    sellerPassword2:sellerPassword2,
-    sellerName:sellerName,
-    
-  }
-
-axios
-    .post('http://localhost:3300/4A2Bpet/SellerRegister', user, {
-      headers: {
-    	 'Content-Type': 'application/json'
-		}
-    })
-    .then((response) => {
-		  alert(response.data);
-      console.log(response.data)
-    })
-    .catch((error) => {
-		  alert(error)
-      console.error(error)
-    })
+  console.log('sellersignup', sellersignup)
 }
-
-
 </script>
 
+<!-- <style src="../assets/seller.css"></style> -->
 <style lang="scss">
+@import url('https://fonts.googleapis.com/css2?family=Varela+Round&display=swap');
 #chose:hover {
-  background: transparent;
+  background: #cd7b00;
   color: white;
 }
 #chose:focus {
-  background: transparent;
+  background: #cd7b00;
+  color: white;
+}
+#chose2{
+  background: #cd7b00;
   color: white;
 }
 .login {
@@ -471,7 +396,7 @@ axios
   /*顯示  彈性盒子佈局  */
   align-items: center;
   justify-content: center;
-  background-image: url('../images/4a2b_icon.png');
+  // background-image: url('../images/4a2b_icon.png');
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
@@ -490,24 +415,38 @@ axios
   margin-right: 10px;
 }
 
-
 .el-button {
   font-size: 1.5rem;
   font-weight: bold;
 }
 .el-form-item__label {
-    display: inline-flex;
-    justify-content: flex-end;
-    align-items: flex-start;
-    flex: 0 0 auto;
-    font-size: 1.5rem;
-    color: var(--el-text-color-regular);
-    height: 32px;
-    line-height: 32px;
-    padding: 0 12px 0 0;
-    box-sizing: border-box;
+  display: inline-flex;
+  justify-content: flex-end;
+  align-items: flex-start;
+  flex: 0 0 auto;
+  font-size: 1.5rem;
+  color: var(--el-text-color-regular);
+  height: 32px;
+  line-height: 32px;
+  padding: 0 12px 0 0;
+  box-sizing: border-box;
 }
-
+.T4a2b:hover {
+  color: #cd7b00;
+}
+.T4a2b{
+  font-family: 'Varela Round', sans-serif;
+  font-weight: bold;
+  font-size: 4rem; 
+  color: black;
+}
+.tag-cloud {
+  display: inline-block;
+  color: #666666;
+  width: 80px;
+  border-radius: 25px;
+  margin-top: 2px;
+  text-align: center;
+  font-size: medium;
+}
 </style>
-
-
