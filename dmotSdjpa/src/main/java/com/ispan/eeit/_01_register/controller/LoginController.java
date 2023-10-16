@@ -1,5 +1,7 @@
 package com.ispan.eeit._01_register.controller;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -34,46 +36,35 @@ public class LoginController {
 //	   private RestTemplate restTemplate;
 	    
 	   
-//	   @PostMapping("/Login1")
-//	   @ResponseBody
-//	   public String Login1(@RequestBody test id) {
-//		   System.out.println(id.getId());
-//		   return "test 測試成功"+id.getId() ;
-//	   }
 	   
 	    @PostMapping("/Login")
 	    @ResponseBody
-		public String Login(@RequestBody User user,Model model ) {
+		public ResponseEntity<User> Login(@RequestBody User user1,Model model) {
 		
-	    	
-	    	
-//	     //裝前端的帳號密碼並組合一個Bean
-//	     User user = new User();
-	    	String userEmial = user.getUserEmail();
-	    	String Password = user.getUserPassword();
-	    	
-	    	System.out.println("我是登入帳號"+user.getUserEmail());
-	    	System.out.println("我是登入密碼"+user.getUserPassword());
-//	     System.out.println("userService="+userService.LoginService(user));
-	     System.out.println(userService.LoginService(user));
-	     if(userService.LoginService(user)==true) {
+//	    	System.out.println("我是登入帳號"+user.getUserEmail());
+//	    	System.out.println("我是登入密碼"+user.getUserPassword());
+
+	     if(userService.LoginService(user1)==true) {
 	    	 
 //	    	 String yyy = user;
 //	    	 String vueAppUrl = "http://localhost:5173/Member"; // 替换成您的Vue.js应用程序的URL
 //	         String responseData = restTemplate.getForObject(vueAppUrl, yyy);      
-//	          //将数据添加到Model中
+	          //将数据添加到Model中
 //	         model.addAttribute("data", yyy);
 //	         emailService.sendForgotPasswordEmail(user);
-	    	 
-	         return "http://localhost:5173";
-	    	 
-	    	 
+	    	 User user = userDao.findUser(user1.getUserEmail());
+	    	
+//	    	 model.addAttribute("user", user);
+//	    	 return "redirect:/vueIndex";
+	    	 return new ResponseEntity<>(user, HttpStatus.OK); 
 	     }
-	     
-	     return "登入失敗";
+//	     return "null";
+	     return new ResponseEntity<>(user1, HttpStatus.BAD_REQUEST); 
 	   
 	     
-	    }   
+	    }  
+	    
+	    
 }
 	
 	

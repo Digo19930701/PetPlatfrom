@@ -17,7 +17,7 @@
               <p class="rowtitle">我的帳號</p>
               <br />
               <el-form-item label="帳號" :label-width="formLabelWidth">
-                <p style="color: #888; padding-left: 10px">xxxxxxxxxx</p>
+                <p style="color: #888; padding-left: 10px">4A2Beeit69@gmail.com</p>
               </el-form-item>
               <el-form-item label="密碼" :label-width="formLabelWidth">
                 <p style="padding-left: 10px">
@@ -37,17 +37,18 @@
             </el-form>
           </div>
           <br />
+
           <div class="background base">
             <el-form :model="settingForm">
               <p class="rowtitle">個人檔案</p>
               <br />
               <el-form-item
                 label="姓名"
-                prop="name"
+                prop="userName"
                 :label-width="formLabelWidth"
                 :rules="[{ required: true, message: '此為必填欄位' }]"
               >
-                <el-input v-model="settingForm.name" label-width="100px" autocomplete="off" />
+                <el-input v-model="settingForm.userName" label-width="100px" autocomplete="off" />
               </el-form-item>
               <el-form-item
                 label="性別"
@@ -124,20 +125,55 @@ import { reactive } from 'vue'
 import UserHeadBar from '../components/UserHeadBar.vue'
 import UserSideBar from '../components/UserSideBar.vue'
 import FootBar from '../components/FootBar.vue'
+import { onMounted,ref } from 'vue';
+import axios from 'axios';
+import { useRoute } from 'vue-router';
+import UserSetting from '../services/UserSetting.js'
+
+// const petServices = ref([]);
+
+// const getServiceById = async () => {
+//   console.log(response.data);
+//   try {
+//     const response = await UserSetting.getuserJSON();
+//     if (response.status === 200) {
+//       petServices.value.push(response.data);
+//       console.log('servicePeriod: ' + petServices.value[0].userName);
+//     }
+//   } catch (error) {
+//     console.error('Error getting petServices:', error);
+//   }
+// };
+
+// onMounted(() => {
+//     getServiceById();
+// });
+
+// const route = useRoute();
+// const dataList = route.params.dataList;
+// console.log('Received dataList:', route.params.dataList);
+// console.log(JSON.stringify(route.params.dataList));
+
+// const route = useRoute();
+
+// onMounted(() => {
+//   console.log("傳遞過來的 dataList:", route.params.dataList);
+// });
+
 const formLabelWidth = '100px'
 
 const settingForm = reactive({
   account: '',
-  phone: '',
-  name: '',
+  phone: '0932111111',
+  userName: 'Digo',
   gender: '',
-  birthday: '',
-  id: '',
+  birthday: '19930701',
+  id: 'A123456789',
   addre: ''
 })
 
 const confirm = () => {
-  console.log('settingForm', settingForm)
+  alert('修改完成!')
 }
 
 const initials = [
@@ -169,6 +205,33 @@ const options = Array.from({ length: 22 }).map((_, idx) => ({
   value: `Option ${idx + 1}`,
   label: `${initials[idx % 10]}`
 }))
+
+// onMounted(async () => {
+//   try {
+//     const response = await axios.get('http://localhost:3300/4A2Bpet/Login', {
+//       headers: {
+//         'Content-Type': 'application/json',
+//       },
+//     });
+//     // 注意這邊你原先設定錯誤，應該用 response.data 來取得後端傳來的 JSON 數據
+//     const data = response.data;
+//     if (data && typeof data === 'object') {
+//       // 將後端傳來的數據賦值到 settingForm
+//       settingForm.account = data.userEmail;
+//       settingForm.phone = data.userPhone;
+//       settingForm.userName = data.userName;
+//       settingForm.gender = data.userGender;
+//       settingForm.birthday = data.userBirthday;
+//       settingForm.id = data.userId;
+//       settingForm.addre = data.userAddre;
+//     }
+//   } catch (error) {
+//     console.error('發生錯誤:', error);
+//   }
+// });
+
+
+
 
 </script>
 <style src="../assets/default.css"></style>
