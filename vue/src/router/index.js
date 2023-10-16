@@ -1,5 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router'
-//import SellerHome from '../views/SellerHomeView.vue'
+import MyHome from '../views/MyHome.vue'
 
 const router = createRouter({
   history: createWebHistory(import.meta.env.BASE_URL),
@@ -8,7 +8,7 @@ const router = createRouter({
     {
       path: '/',
       name: 'myHome',
-      component: () => import('../views/MyHome.vue')
+      component: MyHome
     },
     {
       path: '/search',
@@ -147,15 +147,7 @@ const router = createRouter({
       path: '/userPastOrder',
       name: 'userPastOrder',
       component: () => import('../views/UserPastOrderView.vue')
-    },
-    
-    //測試用連結
-    {
-      path: '/studentTest',
-      name: 'studentTest',
-      component: () => import('../views/Student.vue')
-    },
-    
+    },    
   ]
 })
 

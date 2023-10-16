@@ -25,7 +25,7 @@
       </div>
       <br />
       <div class="table" style="width: 700px">
-        <el-table :data="tableData" border style="width: 700px; font-size: 1.2rem">
+        <el-table :data="tableData" style="width: 700px; font-size: 1.2rem">
           <el-table-column prop="OrderNum" label="訂單編號" width="210" />
           <el-table-column prop="Remit" label="撥款時間" width="147" />
           <el-table-column prop="AccountNumber" label="撥款帳號" width="196" />
