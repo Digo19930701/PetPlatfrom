@@ -19,7 +19,7 @@
           <el-divider />
           <h2>價格範圍 <font-awesome-icon icon="fa-solid fa-money-check-dollar" /></h2>
           <div style="font-size: 20px">
-            NTD{{ val_price_range[0] }} ~ NTD{{ val_price_range[1] }}
+            NT${{ val_price_range[0] }} ~ NT${{ val_price_range[1] }}
           </div>
 
           <div class="slider-demo-block">

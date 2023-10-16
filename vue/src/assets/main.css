@@ -14,7 +14,7 @@ a,
 
 @media (hover: hover) {
   a:hover {
-    color: var(--el-color-primary);
+    color: #cd7b00;
     background: transparent;
   }
 }

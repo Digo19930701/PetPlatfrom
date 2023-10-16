@@ -128,13 +128,13 @@ $themeColor: #f7ddba;
 
       li {
         a {
-          color: #cd7b00;
+          color:black ;
           text-decoration: none;
           font-size: 1.35rem;
           transition: all 0.2s ease;
           padding-bottom: 0.3rem;
           &:hover {
-            color: #368091;
+            color:#cd7b00 ;
           }
         }
       }

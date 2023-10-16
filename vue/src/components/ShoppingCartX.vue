@@ -29,6 +29,7 @@
           <th>預約時間</th>
           <th>單價</th>
           <th>操作</th>
+          <th>備註欄</th>
           <th>寵物資訊</th>
         </tr>
       </table>
@@ -50,7 +51,7 @@
           />
           <div class="name">洗澡&SPA</div>
         </div>
-        <div class="block">
+        <div class="block" >
           <el-date-picker v-model="date" type="date" placeholder="選擇預約日期" :size="size" />
           <el-time-select
             v-model="startTime"
@@ -71,14 +72,15 @@
             :size="size"
           />
         </div>
-        <div style="width: 50%">
+        <div style="width: 45%">
           <!-- <span style="padding-left: 20%">$&emsp;</span>{{ cars.payment }} -->
-          <span style="padding-left: 20%">NT$&emsp;</span>1800
+         <span style="padding-left: 40%">NT$</span>1800
         </div>
-        <div style="width: 1%">
+        <div style="width: 3%">
           <el-button @click="handledelete(index)">刪除</el-button>
         </div>
         <div style="width: 50%; text-align: right">
+          <el-input style="width:150px;" size="large"></el-input>&nbsp;
           <el-select v-model="petInfo" class="m-2" placeholder="選擇寵物" :size="size" disabled>
             <el-option
               v-for="item in options"
@@ -98,7 +100,7 @@
       <table id="checkout">
         <tr>
           <th style="width: 30%">
-            <div>總計<span>$</span>{{ totalAmount }}</div>
+            <div>總計<span>NT$</span>{{ totalAmount }}</div>
           </th>
           <th style="width: 40%"></th>
           <th>
@@ -289,8 +291,8 @@ const handledelete = (index) => {
 #listTitle tr > th:nth-child(4) {
   width: 15%;
 }
-#listTitle tr > th:nth-child(6) {
-  width: 13%;
+#listTitle tr > th:nth-child(7) {
+  width: 12%;
 }
 
 div {
@@ -318,7 +320,7 @@ div .el-button {
 
 .block {
   display: flex;
-
+  padding-left:3%
   /* min-width: 500px; */
 }
 
