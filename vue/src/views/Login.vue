@@ -280,7 +280,7 @@ async function test() {
 
     // 根據需求，可以在登入後的處理中進行相應的操作，例如驗證用戶資訊、儲存登入狀態等。
     axios
-    .post(`http://localhost:3300/4A2Bpet/Register`, {
+    .post(`http://localhost:3300/4A2Bpet/Login`, {
       userEmail: userUid.value,
       userPassword: nickname.value,
       userPassword2: nickname.value,
@@ -328,7 +328,7 @@ const login = () => {
     .then((response) => {
       alert('登入成功')
 
-      window.location.href = response.data // 替换Spring Boot端口号和路由
+      window.location.href = 'http://localhost:5173/userSetting' // 替换Spring Boot端口号和路由
 
       console.log(response.data)
       console.log(response.data.yyy)

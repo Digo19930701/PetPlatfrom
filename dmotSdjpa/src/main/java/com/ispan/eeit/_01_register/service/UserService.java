@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import org.springframework.util.DigestUtils;
 
 import com.ispan.eeit._01_register.dao.UserDao;
 import com.ispan.eeit._01_register.model.User;
@@ -25,7 +26,7 @@ public class UserService {
 //     List<User> uerSQLDate = userDao.findAll();
      
      int userBySQLAccount = userDao.countByUserEmail(user.getUserEmail());
-     String encodedData = Base64.getEncoder().encodeToString(user.getUserPassword().getBytes());
+     String encodedData = DigestUtils.md5DigestAsHex(user.getUserPassword().getBytes());
      int userBySQLPassword = userDao.countByPassword(encodedData);
     
      System.out.println("userBySQLAccount="+userBySQLAccount);
