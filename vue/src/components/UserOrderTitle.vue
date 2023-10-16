@@ -1,7 +1,7 @@
 <template>
   <div>
     <el-row :gutter="20" class="board" style="margin: 0px 0px 5px 0px">
-      <table style="border-collapse: collapse">
+      <table style="border-collapse: collapse" id="ord">
         <tr>
           <td rowspan="2" class="date" style="width: 60px; font-size: 1.5rem">
             <p>週四</p>
@@ -18,7 +18,7 @@
             <!-- <span>{{ serviceName }}</span> -->
           </td>
           <td style="text-align: right; width: 25%">
-            <span class="orderNum" style="font-size: 18px">訂單編號:12asd456q8w4f3</span>
+            <span class="orderNum" style="font-size: 18px">訂單編號:2310031713bt0001</span>
           </td>
         </tr>
         <tr>
@@ -63,7 +63,7 @@ const orderInf = [
     timeStart: '10:00',
     timeEnd: '11:00',
     productClass: '美容',
-    orderNum: '23asd456q8w4f3'
+    orderNum: '2310031713bt0001'
   }
 ]
 const isOpen = ref(false) // Initial value

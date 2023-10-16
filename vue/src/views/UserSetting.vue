@@ -181,7 +181,7 @@ const options = Array.from({ length: 22 }).map((_, idx) => ({
 }))
 </script>
 <style src="../assets/default.css"></style>
-<style lang="scss" scoped>
+<style lang="scss">
 .setting {
   margin: auto;
   height: 80vh;
@@ -216,6 +216,7 @@ const options = Array.from({ length: 22 }).map((_, idx) => ({
     width: 80%;
   }
 }
+
 p {
   font-size: 1.1rem;
 }

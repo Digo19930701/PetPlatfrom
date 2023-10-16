@@ -49,9 +49,9 @@
             cover
             style="width: 100px; height: 70px"
           />
-          <div class="name">洗澡&SPA</div>
+          <div class="name">洗澡&SPA&emsp;狗 中型犬</div>
         </div>
-        <div class="block" >
+        <div class="block">
           <el-date-picker v-model="date" type="date" placeholder="選擇預約日期" :size="size" />
           <el-time-select
             v-model="startTime"
@@ -74,13 +74,13 @@
         </div>
         <div style="width: 45%">
           <!-- <span style="padding-left: 20%">$&emsp;</span>{{ cars.payment }} -->
-         <span style="padding-left: 40%">NT$</span>1800
+          <span style="padding-left: 40%">NT$</span>1800
         </div>
         <div style="width: 3%">
           <el-button @click="handledelete(index)">刪除</el-button>
         </div>
         <div style="width: 50%; text-align: right">
-          <el-input style="width:150px;" size="large"></el-input>&nbsp;
+          <el-input v-model="msg" style="width: 150px; font-size: 1.1rem" size="large" />&nbsp;
           <el-select v-model="petInfo" class="m-2" placeholder="選擇寵物" :size="size" disabled>
             <el-option
               v-for="item in options"
@@ -130,6 +130,7 @@ import { ShoppingTrolley } from '@element-plus/icons-vue'
 import { ElImage, ElMessageBox } from 'element-plus'
 import { useRouter } from 'vue-router'
 
+const msg = ref('討厭剪指甲')
 const router = useRouter()
 const open = () => {
   ElMessageBox.confirm(
@@ -320,7 +321,7 @@ div .el-button {
 
 .block {
   display: flex;
-  padding-left:3%
+  padding-left: 3%;
   /* min-width: 500px; */
 }
 
@@ -371,5 +372,6 @@ div .el-button {
   /* margin-left: 100px; */
   margin-left: 50px;
   margin-top: 25px;
+  width: 60%;
 }
 </style>

@@ -29,7 +29,7 @@
         </td>
         <td class="end orderInf">
           <br />
-          <div class="ownerMsg">備註欄:{{ orderMsg }}</div>
+          <div class="ownerMsg">備註欄: <br />{{ orderMsg }}</div>
         </td>
       </tr>
       <!-- <tr>
@@ -96,14 +96,14 @@ const data = reactive({
   timeline5: '', //撥款
   petName: 'Oli',
   petGender: '男生',
-  userEmail: 'Digo',
-  phoneNumber: '0932075148',
+  userEmail: '趙令文',
+  phoneNumber: '0988123666',
   petClass: '狗',
   petVariety: '柴犬', //品種
   petCharacter: '熱情',
   petAge: '3',
   serviceName: '',
-  orderMsg: '', //訂單備註
+  orderMsg: '討厭剪指甲', //訂單備註
   price: '',
   petImage: ''
 })
@@ -182,10 +182,14 @@ const activities = [
   vertical-align: top;
   padding-left: 20px;
   padding-top: 10px;
+  font-weight: 600;
 }
 
 .side {
   width: 20%;
+}
+.side p {
+  font-weight: 600;
 }
 
 .end {
