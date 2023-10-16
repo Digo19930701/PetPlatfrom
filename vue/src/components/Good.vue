@@ -35,10 +35,10 @@
             <br />
             <el-card class="storeIntro">
               <h2>服務介紹</h2>
-              <span style="width: 800px;">
+              <span style="width: 30%">
                 基本寵物美容
                 <br />
-                洗澡和吹乾：我們提供舒適的洗澡過程，使用溫和的洗髮精，確保您的寵物的皮膚和毛髮保持健康。                                   
+                洗澡和吹乾：我們提供舒適的洗澡過程，使用溫和的洗髮精，確保您的寵物的皮膚和毛髮保持健康。
                 <br />毛髮修剪：根據您的寵物的需要，我們進行修剪、修整和造型，使他們看起來整潔和時尚。
                 <br />指甲修剪：我們小心翼翼地修剪寵物的指甲，確保不會造成不適。 <br /><br />
                 特殊護理
@@ -47,7 +47,7 @@
               </span>
             </el-card>
           </el-space>
-          <br /><br>
+          <br /><br />
           <el-card class="storeC">
             <h3>選擇方案</h3>
             <span>
@@ -185,11 +185,11 @@ const price = def
       font-size: 1.3rem;
     }
     .storeIntro {
-      width: 1360px;
+      width: 1213px;
       background-color: bisque;
       font-size: 1.3rem;
     }
-    .int{
+    .int {
       width: 600px;
     }
     .storeC {
