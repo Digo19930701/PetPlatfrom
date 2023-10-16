@@ -43,7 +43,7 @@
     </el-aside>
     <el-space direction="vertical" class="demo">
       <br />
-    
+
       <el-row v-for="i in 1" :key="i">
         <el-col v-for="(o, index) in 1" :key="o" :span="5" :offset="index > 0 ? 1 : 0">
           <!-- 都先帶0 不知道為什麼跑不出來QAQ -->
@@ -196,7 +196,7 @@ const drawer = ref(false)
 const direction = ref('ltr')
 const value1 = ref('')
 const size = ref('large')
-const val_price_range = ref([500, 5000])
+const val_price_range = ref([500, 6000])
 const value_time = ref('')
 function cancelClick() {
   drawer.value = false

@@ -29,8 +29,7 @@
           <p>年紀: {{ petAge }}</p>
         </td>
         <td class="end orderInf">
-          <!-- <div class="ownerMsg">備註欄:
-            <br>{{ orderMsg }}</div> -->
+          <div class="ownerMsg">備註欄: <br />{{ orderMsg }}</div>
         </td>
       </tr>
       <!-- <tr>
