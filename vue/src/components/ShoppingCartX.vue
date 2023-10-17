@@ -249,8 +249,8 @@ const handledelete = (index) => {
 <style>
 .el-message-box__message p {
   margin: 0;
-  line-height: 30px;
-  font-size: 1rem;
+  line-height: 40px;
+  font-size: 1.7rem;
 }
 </style>
 
