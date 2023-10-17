@@ -17,7 +17,7 @@
               <p class="rowtitle">我的帳號</p>
               <br />
               <el-form-item label="帳號" :label-width="formLabelWidth">
-                <p style="color: #888; padding-left: 10px">4A2Beeit69@gmail.com</p>
+                <p style="color: #888; padding-left: 10px">{{userData.userEmail}}gmail.com</p>
               </el-form-item>
               <el-form-item label="密碼" :label-width="formLabelWidth">
                 <p style="padding-left: 10px">
@@ -48,7 +48,7 @@
                 :label-width="formLabelWidth"
                 :rules="[{ required: true, message: '此為必填欄位' }]"
               >
-                <el-input v-model="settingForm.userName" label-width="100px" autocomplete="off" />
+                <el-input v-model="settingForm.userEmail" label-width="100px" autocomplete="off" />
               </el-form-item>
               <el-form-item
                 label="性別"
@@ -159,21 +159,56 @@ import UserSetting from '../services/UserSetting.js'
 // onMounted(() => {
 //   console.log("傳遞過來的 dataList:", route.params.dataList);
 // });
+const urlParams = new URLSearchParams(window.location.search);
+const userDataParam = urlParams.get('userData');
+// 解析JSON数据
+const userData = JSON.parse(userDataParam);
+
+// 访问JSON数据的属性
+console.log(userData.userEmail);
+console.log(userData.userPassword);
 
 const formLabelWidth = '100px'
 
 const settingForm = reactive({
   account: '',
-  phone: '0932075188',
-  userName: 'Digo',
+  phone: '',
+  userEmail: '',
   gender: '',
-  birthday: '19930701',
-  id: 'A198345326',
+  birthday: '',
+  id: '',
   addre: ''
 })
 
+
+
 const confirm = () => {
-  alert('修改完成!')
+  const Email = settingForm.phone
+  const userPassword = register.userPassword
+  const userPassword2 = register.userPassword2
+
+  console.log(`Email=${Email}`, `userPassword=${userPassword}`, `userPassword=${userPassword2}`)
+
+  const user = {
+    userEmail: Email,
+    userPassword: userPassword,
+    userPassword2: userPassword2
+  }
+
+  axios
+    .post('http://localhost:3300/4A2Bpet/Register', user, {
+      headers: {
+        'Content-Type': 'application/json'
+      }
+    })
+    .then((response) => {
+      alert('修改成功')
+      console.log(response.data)
+    })
+    .catch((error) => {
+      alert(error)
+      console.error(error)
+    })
 }
 
 const initials = [

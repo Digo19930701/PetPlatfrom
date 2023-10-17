@@ -309,35 +309,36 @@ async function test() {
 }
 
 const login = () => {
-  const userEmail = loginForm.userEmail
-  const password = loginForm.password
+  const userEmail = loginForm.userEmail;
+  const password = loginForm.password;
 
-  console.log(`account=${userEmail}`, `password=${password}`, 1, 2, 3)
+  // ...
 
   const user = {
     userEmail: userEmail,
     userPassword: password
-  }
+  };
+
   axios
     .post('http://localhost:3300/4A2Bpet/Login', user, {
       headers: {
         'Content-Type': 'application/json'
       }
     })
-
     .then((response) => {
-      alert('登入成功')
+      alert('登入成功');
+      // 解析JSON格式的响应数据
+      const responseData = response.data;
+      console.log(responseData);
 
-      window.location.href = 'http://localhost:5173/userSetting' // 替换Spring Boot端口号和路由
-
-      console.log(response.data)
-      console.log(response.data.yyy)
+      // 跳转到目标页面并传递参数
+      window.location.href = `http://localhost:5173/userSetting?userData=${JSON.stringify(responseData)}`;
     })
     .catch((error) => {
-      alert(error)
-      console.error(error)
-    })
-}
+      alert(error);
+      console.error(error);
+    });
+};
 
 const registerout = () => {
   const Email = register.userMail
