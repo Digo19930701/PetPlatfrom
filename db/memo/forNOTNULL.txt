@@ -1,0 +1,3 @@
+SET SESSION sql_mode = 'STRICT_ALL_TABLES';
+
+//如果NOT NULL沒給值會給空字串然後只給你警告的話，表示環境不夠嚴謹，可以打這句設定。

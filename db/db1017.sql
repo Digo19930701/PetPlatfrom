@@ -110,41 +110,6 @@ INSERT INTO `banklist` VALUES ('004','臺灣銀行'),('005','臺灣土地銀行'
 UNLOCK TABLES;
 
 --
--- Table structure for table `book_table`
---
-
-DROP TABLE IF EXISTS `book_table`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `book_table` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `author` varchar(255) DEFAULT NULL,
-  `bookNo` varchar(255) DEFAULT NULL,
-  `category` varchar(255) DEFAULT NULL,
-  `coverImage` longtext,
-  `discount` double DEFAULT NULL,
-  `fileName` varchar(255) DEFAULT NULL,
-  `listPrice` double DEFAULT NULL,
-  `mimeType` varchar(255) DEFAULT NULL,
-  `stock` int DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `FK_Publisher_Id` bigint DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_Publisher_Id` (`FK_Publisher_Id`),
-  CONSTRAINT `FK_Publisher_Id` FOREIGN KEY (`FK_Publisher_Id`) REFERENCES `publisher_table` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `book_table`
---
-
-LOCK TABLES `book_table` WRITE;
-/*!40000 ALTER TABLE `book_table` DISABLE KEYS */;
-/*!40000 ALTER TABLE `book_table` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `cart`
 --
 
@@ -176,42 +141,6 @@ CREATE TABLE `cart` (
 LOCK TABLES `cart` WRITE;
 /*!40000 ALTER TABLE `cart` DISABLE KEYS */;
 /*!40000 ALTER TABLE `cart` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `member_table`
---
-
-DROP TABLE IF EXISTS `member_table`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `member_table` (
-  `seqNo` bigint NOT NULL AUTO_INCREMENT,
-  `address` varchar(255) DEFAULT NULL,
-  `comment` longtext,
-  `email` varchar(255) DEFAULT NULL,
-  `fileName` varchar(255) DEFAULT NULL,
-  `memberId` varchar(255) DEFAULT NULL,
-  `memberImage` longblob,
-  `mimeType` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `password` varchar(255) DEFAULT NULL,
-  `phone` varchar(255) DEFAULT NULL,
-  `registerTime` datetime(6) DEFAULT NULL,
-  `totalAmt` double DEFAULT NULL,
-  `unpaid_amount` double DEFAULT NULL,
-  `userType` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`seqNo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `member_table`
---
-
-LOCK TABLES `member_table` WRITE;
-/*!40000 ALTER TABLE `member_table` DISABLE KEYS */;
-/*!40000 ALTER TABLE `member_table` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -269,70 +198,6 @@ CREATE TABLE `notifysetting` (
 LOCK TABLES `notifysetting` WRITE;
 /*!40000 ALTER TABLE `notifysetting` DISABLE KEYS */;
 /*!40000 ALTER TABLE `notifysetting` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `orderitems`
---
-
-DROP TABLE IF EXISTS `orderitems`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `orderitems` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `author` varchar(255) DEFAULT NULL,
-  `bookId` bigint DEFAULT NULL,
-  `description` varchar(255) DEFAULT NULL,
-  `discount` double DEFAULT NULL,
-  `orderNo` int DEFAULT NULL,
-  `publisherName` varchar(255) DEFAULT NULL,
-  `quantity` int DEFAULT NULL,
-  `title` varchar(255) DEFAULT NULL,
-  `unitPrice` double DEFAULT NULL,
-  `FK_OrderBean_orderNo` bigint DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_OrderBean_orderNo` (`FK_OrderBean_orderNo`),
-  CONSTRAINT `FK_OrderBean_orderNo` FOREIGN KEY (`FK_OrderBean_orderNo`) REFERENCES `orders` (`orderNo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `orderitems`
---
-
-LOCK TABLES `orderitems` WRITE;
-/*!40000 ALTER TABLE `orderitems` DISABLE KEYS */;
-/*!40000 ALTER TABLE `orderitems` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
--- Table structure for table `orders`
---
-
-DROP TABLE IF EXISTS `orders`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `orders` (
-  `orderNo` bigint NOT NULL AUTO_INCREMENT,
-  `bno` varchar(255) DEFAULT NULL,
-  `cancelTag` varchar(255) DEFAULT NULL,
-  `invoiceTitle` varchar(255) DEFAULT NULL,
-  `memberId` varchar(255) DEFAULT NULL,
-  `orderDate` datetime(6) DEFAULT NULL,
-  `shippingAddress` varchar(255) DEFAULT NULL,
-  `shippingDate` datetime(6) DEFAULT NULL,
-  `totalAmount` double DEFAULT NULL,
-  PRIMARY KEY (`orderNo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `orders`
---
-
-LOCK TABLES `orders` WRITE;
-/*!40000 ALTER TABLE `orders` DISABLE KEYS */;
-/*!40000 ALTER TABLE `orders` ENABLE KEYS */;
 UNLOCK TABLES;
 
 --
@@ -442,31 +307,6 @@ LOCK TABLES `petinfo` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `publisher_table`
---
-
-DROP TABLE IF EXISTS `publisher_table`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `publisher_table` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `address` varchar(255) DEFAULT NULL,
-  `name` varchar(255) DEFAULT NULL,
-  `url` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `publisher_table`
---
-
-LOCK TABLES `publisher_table` WRITE;
-/*!40000 ALTER TABLE `publisher_table` DISABLE KEYS */;
-/*!40000 ALTER TABLE `publisher_table` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `reviews`
 --
 
@@ -514,8 +354,7 @@ CREATE TABLE `sellerinfo` (
   `unitTime` int NOT NULL,
   `sellerImg` varchar(500) DEFAULT NULL,
   `sellerPark` varchar(300) CHARACTER SET utf8 COLLATE utf8_general_ci DEFAULT NULL,
-  `sellerPassword` varchar(20) NOT NULL,
-  `sellerClass` varchar(255) DEFAULT NULL,
+  `sellerPassword` varchar(255) NOT NULL,
   PRIMARY KEY (`sellerId`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -526,7 +365,7 @@ CREATE TABLE `sellerinfo` (
 
 LOCK TABLES `sellerinfo` WRITE;
 /*!40000 ALTER TABLE `sellerinfo` DISABLE KEYS */;
-INSERT INTO `sellerinfo` VALUES ('SELLER1','sellerName1','sellerDesc1','0912334567','sellerAdd1',3,NULL,'Seller Park 1','sellerPassword1',NULL);
+INSERT INTO `sellerinfo` VALUES ('SELLER1','sellerName1','sellerDesc1','0912334567','sellerAdd1',3,NULL,'Seller Park 1','sellerPassword1'),('seller2','YOIYOI寵物美容','YOIYOI寵物美容是一家專業的寵物美容沙龍，我們致力於為您的寵物提供高品質的美容服務。','0919394959','403台中市西區五權八街141號',60,'https://images.pexels.com/photos/384555/pexels-photo-384555.jpeg?auto=compress&cs=tinysrgb&w=1600','Parking 2','password2'),('seller3','ONE MORE NIGHT寵物精品沙龍','ONE MORE NIGHT寵物精品沙龍是您寵物的完美去處。我們致力於提供一流的寵物美容和護理服務，以確保您的毛茸茸的朋友看起來和感覺都最棒。我們的經驗豐富的美容師將以愛心和專業的態度照顧您的寵物，提供洗澡、修剪、美甲和皮膚護理等多種服務。我們的沙龍設施現代化且乾淨，我們使用高質量的美容產品，確保您的寵物總是保持最佳狀態。','0955655755','Address 3',45,'image3.jpg','Parking 3','password3');
 /*!40000 ALTER TABLE `sellerinfo` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -573,7 +412,7 @@ CREATE TABLE `services` (
 
 LOCK TABLES `services` WRITE;
 /*!40000 ALTER TABLE `services` DISABLE KEYS */;
-INSERT INTO `services` VALUES ('Service Name 1','SERVICE1','SELLER1','BEAUTY','Service Description 1','12:34:56',3,'09:00:00','18:00:00',1,5,'image1.jpg','image2.jpg','image3.jpg','image4.jpg','image5.jpg',1,1,1,1,1,0,0);
+INSERT INTO `services` VALUES ('洗澡和吹乾','Service 2','seller2','BEAUTY','我們的 洗澡和吹乾 服務是為了確保您的寵物總是保持清潔、舒適和健康。我們的專業美容師會使用溫和的洗澡產品，根據您的寵物的需要來選擇適當的洗澡方式。在洗澡過程中，我們會輕柔地清潔您寵物的皮膚和毛髮，去除灰塵、污垢和過多的油脂。我們會確保水溫適中，以確保您的寵物感到舒適。\n\n洗澡結束後，我們會使用專業吹風機輕柔地吹乾您的寵物，確保其毛髮完全乾燥，避免潮濕引起的皮膚問題。我們的美容師會小心地照顧每一隻寵物，確保他們的洗澡和吹乾過程是一個愉快的體驗。\n\n洗澡和吹乾 服務不僅可以讓您的寵物保持清潔和舒適，還可以改善其皮膚和毛髮的健康狀態。無論您的寵物是小狗、貓咪還是其他種類的寵物，我們都將以愛和專業的態度照顧他們，確保他們始終保持最佳的外表和健康。','09:00:00',15,'11:00:00','16:00:00',2,4,'https://images.pexels.com/photos/1741235/pexels-photo-1741235.jpeg?auto=compress&cs=tinysrgb&w=1600','image2_2.jpg','image2_3.jpg','image2_4.jpg','image2_5.jpg',0,1,0,1,0,1,0),('Service Name 1','SERVICE1','SELLER1','BEAUTY','Service Description 1','12:34:56',3,'09:00:00','18:00:00',1,5,'image1.jpg','image2.jpg','image3.jpg','image4.jpg','image5.jpg',1,1,1,1,1,0,0),('毛髮修剪和造型','service103','seller2','BEAUTY','我們的 毛髮修剪和造型 服務旨在為您的寵物提供專業的毛髮修剪和時尚造型','10:00:00',25,'12:00:00','17:00:00',3,6,'https://images.pexels.com/photos/96428/pexels-photo-96428.jpeg?auto=compress&cs=tinysrgb&w=1600','image3_2.jpg','image3_3.jpg','image3_4.jpg','image3_5.jpg',1,1,1,1,0,0,1);
 /*!40000 ALTER TABLE `services` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -606,36 +445,6 @@ LOCK TABLES `servicetypes` WRITE;
 UNLOCK TABLES;
 
 --
--- Table structure for table `shoppingcart`
---
-
-DROP TABLE IF EXISTS `shoppingcart`;
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `shoppingcart` (
-  `shoppingCarId` varchar(255) NOT NULL,
-  `payment` int DEFAULT NULL,
-  `phoneNumber` varchar(255) DEFAULT NULL,
-  `price` int DEFAULT NULL,
-  `serviceImg` longblob,
-  `serviceName` varchar(255) DEFAULT NULL,
-  `servicePeriod` date DEFAULT NULL,
-  `userName` varchar(255) DEFAULT NULL,
-  `variety` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`shoppingCarId`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `shoppingcart`
---
-
-LOCK TABLES `shoppingcart` WRITE;
-/*!40000 ALTER TABLE `shoppingcart` DISABLE KEYS */;
-/*!40000 ALTER TABLE `shoppingcart` ENABLE KEYS */;
-UNLOCK TABLES;
-
---
 -- Table structure for table `useraccount`
 --
 
@@ -644,14 +453,13 @@ DROP TABLE IF EXISTS `useraccount`;
 /*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `useraccount` (
   `userEmail` varchar(50) CHARACTER SET utf8mb4 COLLATE utf8mb4_0900_ai_ci NOT NULL,
-  `userPassword` varchar(20) NOT NULL,
+  `userPassword` varchar(255) NOT NULL,
   `userName` varchar(20) DEFAULT NULL,
   `userGender` varchar(20) NOT NULL,
   `userPhone` varchar(20) DEFAULT NULL,
   `userAdd` varchar(20) DEFAULT NULL,
   `birthDay` date NOT NULL,
   `userId` varchar(20) DEFAULT NULL,
-  `userPassword2` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`userEmail`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -674,4 +482,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2023-10-04 15:35:40
+-- Dump completed on 2023-10-17 11:39:57
