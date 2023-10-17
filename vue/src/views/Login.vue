@@ -24,6 +24,7 @@
             v-model="loginForm.password"
             autocomplete="off"
             style="height: 50px; width: 500px"
+            show-password
           />
           <el-link
             @click="verifyEmail = true"
@@ -66,6 +67,7 @@
             v-model="loginForm.password"
             autocomplete="off"
             style="height: 50px; width: 500px"
+            show-password
           />
           <el-link
             @click="verifyEmail = true"
