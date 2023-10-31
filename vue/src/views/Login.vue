@@ -28,6 +28,7 @@
             v-model="loginForm.password"
             autocomplete="off"
             style="height: 50px; width: 500px"
+            show-password
           />
           <el-link
             @click="verifyEmail = true"
@@ -109,6 +110,7 @@
             autocomplete="off"
             type="register"
             placeholder="請輸入信箱"
+            size="large"
           />
         </el-form-item>
         <el-form-item :label-width="formLabelWidth">
@@ -119,6 +121,7 @@
             type="register"
             placeholder="請輸入密碼"
             show-password
+            size="large"
           />
         </el-form-item>
         <el-form-item :label-width="formLabelWidth">
@@ -129,6 +132,7 @@
             type="register"
             placeholder="密碼確認"
             show-password
+            size="large"
           />
         </el-form-item>
       </el-form>
@@ -192,7 +196,7 @@
             autocomplete="off"
             type="sellersignup"
             placeholder="密碼確認"
-            show-password
+            
           />
         </el-form-item>
       </el-form>
